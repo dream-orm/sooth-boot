@@ -1,0 +1,13 @@
+package ${bussiPackage}.${entityPackage}.service;
+
+import ${bussiPackage}.${entityPackage}.entity.${entityName};
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * @Description: ${tableComment}
+ * @Author: ${author}
+ * @Date:   ${.now?string["yyyy-MM-dd"]}
+ */
+public interface I${entityName}Service {
+
+}

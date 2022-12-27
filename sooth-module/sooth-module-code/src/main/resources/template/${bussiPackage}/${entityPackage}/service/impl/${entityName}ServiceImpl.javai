@@ -1,0 +1,19 @@
+package ${bussiPackage}.${entityPackage}.service.impl;
+
+import ${bussiPackage}.${entityPackage}.entity.${entityName};
+import ${bussiPackage}.${entityPackage}.mapper.${entityName}Mapper;
+import ${bussiPackage}.${entityPackage}.service.I${entityName}Service;
+import org.springframework.stereotype.Service;
+
+/**
+ * @Description:    ${tableComment}
+ * @Author: ${author}
+ * @Date:   ${.now?string["yyyy-MM-dd"]}
+ */
+@Service
+public class ${entityName}ServiceImpl implement I${entityName}Service{
+
+    @Autowire
+    private TemplateMapper templateMapper;
+
+}

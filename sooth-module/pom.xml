@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sooth-boot-parent</artifactId>
+        <groupId>com.moxa.sooth</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sooth-module</artifactId>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <modules>
+        <!--代码生成器-->
+        <module>sooth-module-code</module>
+        <!--基础管理-->
+        <module>sooth-module-category</module>
+        <module>sooth-module-datasource</module>
+        <module>sooth-module-quartz</module>
+        <module>sooth-module-log</module>
+        <module>sooth-module-monitor</module>
+        <!--系统管理-->
+        <module>sooth-module-depart</module>
+        <module>sooth-module-role</module>
+        <module>sooth-module-tenant</module>
+        <module>sooth-module-position</module>
+    </modules>
+</project>

@@ -1,0 +1,205 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.moxa.sooth</groupId>
+    <artifactId>sooth-boot-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.6</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <soothboot.version>1.0.0</soothboot.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- 微服务 -->
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+        <fastjson.version>1.2.83</fastjson.version>
+        <pegdown.version>1.6.0</pegdown.version>
+        <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
+        <knife4j-spring-ui.version>2.0.9</knife4j-spring-ui.version>
+        <!-- 数据库驱动 -->
+        <postgresql.version>42.2.25</postgresql.version>
+        <mysql-connector-java.version>8.0.27</mysql-connector-java.version>
+        <hutool.version>5.3.8</hutool.version>
+
+        <!-- 持久层 -->
+        <mybatis-plus.version>3.5.1</mybatis-plus.version>
+        <dream.version>0.0.1-SNAPSHOT</dream.version>
+        <dynamic-datasource-spring-boot-starter.version>3.2.0</dynamic-datasource-spring-boot-starter.version>
+        <druid.version>1.1.22</druid.version>
+
+        <commons.version>2.6</commons.version>
+        <http-client.version>4.5.13</http-client.version>
+        <!-- shiro -->
+        <shiro.version>1.9.1</shiro.version>
+        <java-jwt.version>3.11.0</java-jwt.version>
+        <shiro-redis.version>3.1.0</shiro-redis.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <!-- Log4j2爆雷漏洞 -->
+        <log4j2.version>2.17.0</log4j2.version>
+        <logback.version>1.2.9</logback.version>
+        <hutool.version>5.3.8</hutool.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+    </properties>
+
+    <modules>
+        <module>sooth-boot-main</module>
+        <module>sooth-boot-core</module>
+        <module>sooth-boot-common</module>
+        <module>sooth-module-system</module>
+        <module>sooth-module</module>
+        <module>sooth-boot-plugin</module>
+        <module>sooth-boot-dependency</module>
+    </modules>
+    <dependencies>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- json -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- markdown -->
+        <dependency>
+            <groupId>org.pegdown</groupId>
+            <artifactId>pegdown</artifactId>
+            <version>${pegdown.version}</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- system 模块-->
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-system-biz</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+
+            <!-- sooth tools -->
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-boot-common</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <!-- sooth core -->
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-boot-core</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <!-- system 单体 api -->
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-system-local-api</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <!--租户管理-->
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-tenant</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-boot-plugin</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.dream</groupId>
+                <artifactId>dream-boot-starter</artifactId>
+                <version>${dream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${http-client.version}</version>
+            </dependency>
+
+            <!-- fileupload -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-io</artifactId>
+                        <groupId>commons-io</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- hutool工具类-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-crypto</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!-- commons-beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+
+        <plugins>
+            <!-- 指定JDK编译版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 打包跳过测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.json</include>
+                    <include>**/*.ftl</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>

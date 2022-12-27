@@ -1,0 +1,13 @@
+${AnsiColor.BRIGHT_BLUE}
+                            _     __          __                            _
+                           / |_  [  |        [  |                          / |_
+ .--.     .--.     .--.   `| |-'  | |--.      | |.--.     .--.     .--.   `| |-'
+( (`\]  / .'`\ \ / .'`\ \  | |    | .-. |     | '/'`\ \ / .'`\ \ / .'`\ \  | |
+ `'.'.  | \__. | | \__. |  | |,   | | | |     |  \__/ | | \__. | | \__. |  | |,
+[\__) )  '.__.'   '.__.'   \__/  [___]|__]   [__;.__.'   '.__.'   '.__.'   \__/
+
+
+${AnsiColor.BRIGHT_GREEN}
+Sooth  Boot Version: 1.0.0
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
+${AnsiColor.BLACK}
