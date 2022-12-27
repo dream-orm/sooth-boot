@@ -1,5 +1,5 @@
 spring:
   application:
-    name: jeecg-system
+    name: sooth-boot
   profiles:
-    active: test
+    active: dev
