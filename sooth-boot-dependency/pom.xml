@@ -24,6 +24,14 @@
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-boot-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-module-monitor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-module-dept</artifactId>
+        </dependency>
         <!--多数据源管理-->
         <dependency>
             <groupId>com.moxa.sooth</groupId>

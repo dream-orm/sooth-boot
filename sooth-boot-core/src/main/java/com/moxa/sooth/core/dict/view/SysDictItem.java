@@ -17,14 +17,10 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysDictItem.class)
-public class SysDictItem extends BaseEntity {
-
-    private static final long serialVersionUID = 1L;
-
+public class SysDictItem {
     /**
      * id
      */
-    @TableId(type = IdType.ASSIGN_ID)
     private String id;
 
     /**

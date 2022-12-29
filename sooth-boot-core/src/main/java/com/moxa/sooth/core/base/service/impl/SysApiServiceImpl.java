@@ -4,6 +4,7 @@ package com.moxa.sooth.core.base.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.template.mapper.TemplateMapper;
+import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.entity.Result;
@@ -60,7 +61,7 @@ public class SysApiServiceImpl implements SysApiService {
         if(StrUtil.isBlank(table)){
             return sysDictService.translateDict(code,value);
         }else{
-            return templateMapper.selectOne("select "+name+" from "+table+" where "+code+"=@$(value)",value,String.class);
+            return templateMapper.selectOne("select "+name+" from "+table+" where "+code+"=@$(value)",new ObjectMap(value),String.class);
         }
     }
 

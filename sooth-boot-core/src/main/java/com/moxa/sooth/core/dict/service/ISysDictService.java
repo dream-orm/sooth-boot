@@ -8,4 +8,6 @@ public interface ISysDictService extends IService<SysDict, SysDict> {
 
 
     String translateDict(String code, Object value);
+
+    void refreshCache();
 }

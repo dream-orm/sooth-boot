@@ -38,10 +38,4 @@ public class DreamConfig {
     public Sequence sequence() {
         return new SnowFlakeSequence();
     }
-
-    @Bean
-    public CacheFactory cacheFactory() {
-        return ()->null;
-    }
-
 }

@@ -1,6 +1,8 @@
 package com.moxa.sooth.core.role.view;
 
+import com.moxa.dream.system.annotation.View;
 import com.moxa.sooth.core.base.entity.BaseEntity;
+import com.moxa.sooth.core.role.table.$SysRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -8,6 +10,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@View($SysRole.class)
 public class SysRole extends BaseEntity {
 
     /**

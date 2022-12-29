@@ -1,5 +1,7 @@
 package com.moxa.sooth.core.base.dream;
 
+import cn.hutool.core.util.BooleanUtil;
+import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.system.config.MappedColumn;
 import com.moxa.dream.system.extractor.Extractor;
 import com.moxa.dream.util.reflection.factory.ObjectFactory;
@@ -19,20 +21,21 @@ public class DictExtractor implements Extractor {
             return;
         }
         objectFactory.set(mappedColumn.getProperty(), value);
-//        Field field = mappedColumn.getField();
-//        if (field.getAnnotation(Dict.class) != null) {
-//            ApplicationContext applicationContext = SpringContextHolder.getApp();
-//            SysApiService sysApiService = applicationContext.getBean(SysApiService.class);
-//            String code = field.getAnnotation(Dict.class).code();
-//            String name = field.getAnnotation(Dict.class).name();
-//            String table = field.getAnnotation(Dict.class).table();
-//            String textValue = sysApiService.translateDict(table, name, code, value);
-//            Object object = objectFactory.getObject();
-//            if (object instanceof BaseDict) {
-//                ((BaseDict) object).put(mappedColumn.getProperty(), textValue);
-//            } else {
-//                throw new SoothBootException(object.getClass() + "字段属性" + field.getName() + "存在注解Dict，必须继承" + BaseDict.class.getName());
-//            }
-//        }
+        Field field = mappedColumn.getField();
+        Dict dictAnnotation;
+        if ((dictAnnotation=field.getAnnotation(Dict.class)) != null) {
+            ApplicationContext applicationContext = SpringContextHolder.getApp();
+            SysApiService sysApiService = applicationContext.getBean(SysApiService.class);
+            String code = dictAnnotation.dicCode();
+            String name = dictAnnotation.dicText();
+            String table = dictAnnotation.dictTable();
+            String textValue = sysApiService.translateDict(table, name, code, value instanceof Boolean?value:String.valueOf(value));
+            Object object = objectFactory.getObject();
+            if (object instanceof BaseDict) {
+                ((BaseDict) object).put(mappedColumn.getProperty(), textValue);
+            } else {
+                throw new SoothBootException(object.getClass() + "字段属性" + field.getName() + "存在注解Dict，必须继承" + BaseDict.class.getName());
+            }
+        }
     }
 }

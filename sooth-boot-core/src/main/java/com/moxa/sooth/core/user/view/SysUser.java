@@ -114,9 +114,6 @@ public class SysUser extends BaseEntity {
     /**
      * 职务，关联职务表
      */
-
-    @Dict(dictTable = "sys_position", dicText = "name", dicCode = "code")
-    @Extract(DictExtractor.class)
     private String post;
 
     /**
@@ -139,9 +136,6 @@ public class SysUser extends BaseEntity {
     /**
      * 负责部门
      */
-
-    @Dict(dictTable = "sys_depart", dicText = "depart_name", dicCode = "id")
-    @Extract(DictExtractor.class)
     private String departIds;
 
     /**

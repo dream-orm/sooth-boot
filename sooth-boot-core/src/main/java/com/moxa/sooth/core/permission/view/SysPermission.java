@@ -20,9 +20,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysPermission.class)
-public class SysPermission extends BaseEntity implements Tree<SysPermission> {
+public class SysPermission extends BaseEntity implements Tree {
     @Ignore
-    private List<SysPermission> children;
+    private List<Tree> children=new ArrayList<>();
     /**
      * id
      */
@@ -170,11 +170,7 @@ public class SysPermission extends BaseEntity implements Tree<SysPermission> {
         return id;
     }
 
-    @Override
-    public void addChild(SysPermission tree) {
-        if (children == null) {
-            children = new ArrayList<>();
-        }
-        children.add(tree);
+    public List<Tree> getChildren() {
+        return children;
     }
 }

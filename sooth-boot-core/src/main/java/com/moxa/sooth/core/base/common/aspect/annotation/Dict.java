@@ -35,11 +35,4 @@ public @interface Dict {
      * @return 返回类型： String
      */
     String dictTable() default "";
-
-
-    String table()default "";
-
-    String code()default "";
-
-    String name()default "";
 }

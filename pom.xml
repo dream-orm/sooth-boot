@@ -101,6 +101,11 @@
                 <artifactId>sooth-boot-core</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-dept</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
             <!-- system 单体 api -->
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
@@ -111,6 +116,11 @@
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-module-tenant</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-monitor</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
