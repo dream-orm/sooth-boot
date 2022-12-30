@@ -22,8 +22,6 @@ import java.util.Date;
 @View($SysUser.class)
 public class SysUser extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
     /**
      * id
      */
@@ -86,11 +84,6 @@ public class SysUser extends BaseEntity {
      */
 
     private String phone;
-
-    /**
-     * 部门code(当前选择登录部门)
-     */
-    private String orgCode;
     /**
      * 状态(1：正常  2：冻结 ）
      */
@@ -104,47 +97,4 @@ public class SysUser extends BaseEntity {
      */
 
     private Integer delFlag;
-
-    /**
-     * 工号，唯一键
-     */
-
-    private String workNo;
-
-    /**
-     * 职务，关联职务表
-     */
-    private String post;
-
-    /**
-     * 座机号
-     */
-
-    private String telephone;
-
-    /**
-     * 同步工作流引擎1同步0不同步
-     */
-    private Integer activitiSync;
-
-    /**
-     * 身份（0 普通成员 1 上级）
-     */
-
-    private Integer userIdentity;
-
-    /**
-     * 负责部门
-     */
-    private String departIds;
-
-    /**
-     * 多租户id配置，编辑用户的时候设置
-     */
-    private String relTenantIds;
-
-    /**
-     * 设备id uniapp推送用
-     */
-    private String clientId;
 }

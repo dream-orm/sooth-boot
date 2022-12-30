@@ -1,12 +1,16 @@
 package com.moxa.sooth.core.user.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
+import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.core.user.mapper.SysUserMapper;
+import com.moxa.sooth.core.user.model.SysUserModel;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -18,5 +22,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUser, SysUser> implements
     @Override
     public SysUser selectOneUser(String username) {
         return sysUserMapper.selectOneUser(username);
+    }
+
+    @Override
+    public Page<SysUser> selectPage(SysUserModel sysUserModel, Page page) {
+        List<SysUser> sysUserList=sysUserMapper.selectPage(sysUserModel,page);
+        page.setRows(sysUserList);
+        return page;
+
     }
 }

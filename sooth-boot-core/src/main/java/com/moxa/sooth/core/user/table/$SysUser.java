@@ -37,21 +37,6 @@ public class $SysUser{
     @Column(value = "update_by", jdbcType =Types.VARCHAR)
     private String updateBy;
     /**
-     *工号，唯一键
-     */
-    @Column(value = "work_no", jdbcType =Types.VARCHAR)
-    private String workNo;
-    /**
-     *登录会话的机构编码
-     */
-    @Column(value = "org_code", jdbcType =Types.VARCHAR)
-    private String orgCode;
-    /**
-     *设备ID
-     */
-    @Column(value = "client_id", jdbcType =Types.VARCHAR)
-    private String clientId;
-    /**
      *主键id
      */
         @Id
@@ -67,11 +52,6 @@ public class $SysUser{
      */
     @Column(value = "update_time", jdbcType =Types.TIMESTAMP)
     private Date updateTime;
-    /**
-     *职务，关联职务表
-     */
-    @Column(value = "post", jdbcType =Types.VARCHAR)
-    private String post;
     /**
      *性别(1-正常,2-冻结)
      */
@@ -93,16 +73,6 @@ public class $SysUser{
     @Column(value = "sex", jdbcType =Types.BIT)
     private Boolean sex;
     /**
-     *身份（1普通成员 2上级）
-     */
-    @Column(value = "user_identity", jdbcType =Types.BIT)
-    private Boolean userIdentity;
-    /**
-     *座机号
-     */
-    @Column(value = "telephone", jdbcType =Types.VARCHAR)
-    private String telephone;
-    /**
      *删除状态(0-正常,1-已删除)
      */
     @Column(value = "del_flag", jdbcType =Types.BIT)
@@ -113,38 +83,19 @@ public class $SysUser{
     @Column(value = "realname", jdbcType =Types.VARCHAR)
     private String realname;
     /**
-     *第三方类型
-     */
-    @Column(value = "third_type", jdbcType =Types.VARCHAR)
-    private String thirdType;
-    /**
      *电子邮件
      */
     @Column(value = "email", jdbcType =Types.VARCHAR)
     private String email;
-    /**
-     *负责部门
-     */
-    @Column(value = "depart_ids", jdbcType =Types.LONGVARCHAR)
-    private String departIds;
     /**
      *创建人
      */
     @Column(value = "create_by", jdbcType =Types.VARCHAR)
     private String createBy;
     /**
-     *第三方登录的唯一标识
-     */
-    @Column(value = "third_id", jdbcType =Types.VARCHAR)
-    private String thirdId;
-    /**
      *密码
      */
     @Column(value = "password", jdbcType =Types.VARCHAR)
     private String password;
-    /**
-     *同步工作流引擎(1-同步,0-不同步)
-     */
-    @Column(value = "activiti_sync", jdbcType =Types.BIT)
-    private Boolean activitiSync;
+
 }
