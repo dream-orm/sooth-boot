@@ -2,9 +2,9 @@ package com.moxa.sooth.core.base.controller;
 
 import com.moxa.dream.system.config.Page;
 import com.moxa.dream.template.service.IService;
+import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

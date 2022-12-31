@@ -27,43 +27,43 @@
     <!-- 根据表名和数据id查询表单评论信息及文件 -->
     <select id="queryCommentList" resultMap="commentResult">
         select a.id,
-        a.table_name,
-        a.table_data_id,
-        a.from_user_id,
-        a.comment_content,
-        a.create_time,
-        a.to_user_id,
-        a.comment_id,
-        b.id as sys_form_file_id,
-        c.id as file_id,
-        c.file_name,
-        c.file_size,
-        c.url,
-        c.file_type,
-        c.store_type
+               a.table_name,
+               a.table_data_id,
+               a.from_user_id,
+               a.comment_content,
+               a.create_time,
+               a.to_user_id,
+               a.comment_id,
+               b.id as sys_form_file_id,
+               c.id as file_id,
+               c.file_name,
+               c.file_size,
+               c.url,
+               c.file_type,
+               c.store_type
         from sys_comment a
-        left join sys_form_file b on b.table_name = 'sys_comment' and b.table_data_id = a.id
-        left join sys_files c on b.file_id = c.id and c.del_flag = '0'
+                 left join sys_form_file b on b.table_name = 'sys_comment' and b.table_data_id = a.id
+                 left join sys_files c on b.file_id = c.id and c.del_flag = '0'
         where a.table_name = #{tableName, jdbcType=VARCHAR}
-        and a.table_data_id = #{formDataId, jdbcType=VARCHAR}
+          and a.table_data_id = #{formDataId, jdbcType=VARCHAR}
         order by a.create_time asc
     </select>
 
     <!-- 根据表名和数据id查询表单文件 -->
     <select id="queryFormFileList" resultType="com.moxa.sooth.modules.system.vo.SysCommentFileVo">
-        select b.id as sys_form_file_id,
-        c.id as file_id,
-        c.file_name as name,
-        c.file_size,
-        c.url,
-        c.file_type as type,
-        c.store_type
+        select b.id        as sys_form_file_id,
+               c.id        as file_id,
+               c.file_name as name,
+               c.file_size,
+               c.url,
+               c.file_type as type,
+               c.store_type
         from sys_comment a
-        join sys_form_file b on b.table_name = 'sys_comment' and b.table_data_id = a.id
-        join sys_files c on b.file_id = c.id
+                 join sys_form_file b on b.table_name = 'sys_comment' and b.table_data_id = a.id
+                 join sys_files c on b.file_id = c.id
         where c.del_flag = '0'
-        and a.table_name = #{tableName, jdbcType=VARCHAR}
-        and a.table_data_id = #{formDataId, jdbcType=VARCHAR}
+          and a.table_name = #{tableName, jdbcType=VARCHAR}
+          and a.table_data_id = #{formDataId, jdbcType=VARCHAR}
         order by a.create_time asc
     </select>
 

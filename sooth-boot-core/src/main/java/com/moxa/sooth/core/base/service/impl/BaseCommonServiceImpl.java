@@ -2,12 +2,12 @@ package com.moxa.sooth.core.base.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
-import com.moxa.sooth.core.base.mapper.BaseCommonMapper;
-import com.moxa.sooth.core.base.service.BaseCommonService;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
 import com.moxa.sooth.core.base.common.util.IpUtils;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
 import com.moxa.sooth.core.base.common.util.oConvertUtils;
+import com.moxa.sooth.core.base.mapper.BaseCommonMapper;
+import com.moxa.sooth.core.base.service.BaseCommonService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.Date;
 @Slf4j
 public class BaseCommonServiceImpl implements BaseCommonService {
 
-//    @Resource
+    //    @Resource
     private BaseCommonMapper baseCommonMapper;
 
     @Override

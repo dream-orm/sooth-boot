@@ -24,7 +24,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class QuartzJobServiceImpl extends ServiceImpl<QuartzJob,QuartzJob> implements IQuartzJobService {
+public class QuartzJobServiceImpl extends ServiceImpl<QuartzJob, QuartzJob> implements IQuartzJobService {
     /**
      * 立即执行的任务分组
      */

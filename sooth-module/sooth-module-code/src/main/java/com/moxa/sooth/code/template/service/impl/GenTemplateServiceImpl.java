@@ -21,6 +21,7 @@ public class GenTemplateServiceImpl extends ServiceImpl<GenTemplateList, GenTemp
     public void preview(long tableId) {
 
     }
+
     @Override
     public List<GenTemplate> selectByGroupId(Long groupId) {
         GenTemplateModel genTemplateModel = new GenTemplateModel();

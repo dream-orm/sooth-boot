@@ -1,6 +1,7 @@
 package com.moxa.sooth.core.base.common.aspect;
 
 import com.moxa.sooth.core.base.common.api.CommonAPI;
+import com.moxa.sooth.core.base.common.aspect.annotation.PermissionData;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import com.moxa.sooth.core.base.common.system.query.QueryRuleEnum;
@@ -8,7 +9,6 @@ import com.moxa.sooth.core.base.common.system.util.JeecgDataAutorUtils;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.system.vo.SysPermissionDataRuleModel;
 import com.moxa.sooth.core.base.common.system.vo.SysUserCacheInfo;
-import com.moxa.sooth.core.base.common.aspect.annotation.PermissionData;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
 import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import lombok.extern.slf4j.Slf4j;

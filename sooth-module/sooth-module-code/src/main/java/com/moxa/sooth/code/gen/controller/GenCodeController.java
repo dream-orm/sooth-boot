@@ -2,8 +2,8 @@ package com.moxa.sooth.code.gen.controller;
 
 import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.service.IGenCodeService;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.common.aspect.annotation.Api;
+import com.moxa.sooth.core.base.entity.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

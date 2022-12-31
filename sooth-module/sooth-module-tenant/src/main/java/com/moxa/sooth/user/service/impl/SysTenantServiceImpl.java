@@ -1,8 +1,8 @@
 package com.moxa.sooth.user.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.user.view.SysTenant;
 import com.moxa.sooth.user.service.ISysTenantService;
+import com.moxa.sooth.user.view.SysTenant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

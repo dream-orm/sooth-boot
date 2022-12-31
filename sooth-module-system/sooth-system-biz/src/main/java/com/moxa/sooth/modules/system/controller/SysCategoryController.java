@@ -1,20 +1,20 @@
 package com.moxa.sooth.modules.system.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.common.system.query.QueryGenerator;
 import com.moxa.sooth.core.base.common.system.vo.DictModel;
 import com.moxa.sooth.core.base.common.util.SqlInjectionUtil;
 import com.moxa.sooth.core.base.common.util.oConvertUtils;
+import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.modules.system.entity.SysCategory;
 import com.moxa.sooth.modules.system.model.TreeSelectModel;
 import com.moxa.sooth.modules.system.service.ISysCategoryService;
 import lombok.extern.slf4j.Slf4j;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

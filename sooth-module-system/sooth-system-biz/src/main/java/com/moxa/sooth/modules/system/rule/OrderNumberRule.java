@@ -1,8 +1,8 @@
 package com.moxa.sooth.modules.system.rule;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.sooth.core.base.common.handler.IFillRuleHandler;
-import cn.hutool.core.util.StrUtil;
 import org.apache.commons.lang.math.RandomUtils;
 
 import java.text.SimpleDateFormat;

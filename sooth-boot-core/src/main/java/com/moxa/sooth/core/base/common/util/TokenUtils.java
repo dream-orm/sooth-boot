@@ -1,7 +1,6 @@
 package com.moxa.sooth.core.base.common.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.moxa.sooth.core.base.util.RedisUtil;
 import com.moxa.sooth.common.constant.CacheConstant;
 import com.moxa.sooth.core.base.common.api.CommonAPI;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
@@ -9,6 +8,7 @@ import com.moxa.sooth.core.base.common.desensitization.util.SensitiveInfoUtil;
 import com.moxa.sooth.core.base.common.exception.SoothBoot401Exception;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
+import com.moxa.sooth.core.base.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;

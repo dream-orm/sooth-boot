@@ -17,6 +17,7 @@ import java.util.List;
 public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPermission> implements ISysPermissionService {
     @Autowired
     private SysPermissionMapper sysPermissionMapper;
+
     @Override
     public List<SysPermission> selectAuths(String username) {
         return sysPermissionMapper.selectAuths(username);
@@ -24,6 +25,6 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPerm
 
     @Override
     public List<SysPermission> selectTree(SysPermissionModel sysPermissionModel) {
-        return templateMapper.selectTree(SysPermission.class,sysPermissionModel);
+        return templateMapper.selectTree(SysPermission.class, sysPermissionModel);
     }
 }

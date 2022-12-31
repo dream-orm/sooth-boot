@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class SysPermissionMenuTypeModel {
-    @Conditional(value = EqCondition.class,filterNull = false)
+    @Conditional(value = EqCondition.class, filterNull = false)
     private Integer menuType;
 
 }

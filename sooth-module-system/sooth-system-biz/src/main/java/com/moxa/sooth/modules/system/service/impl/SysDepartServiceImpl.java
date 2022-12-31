@@ -1,5 +1,6 @@
 package com.moxa.sooth.modules.system.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -20,7 +21,6 @@ import com.moxa.sooth.modules.system.model.SysDepartTreeModel;
 import com.moxa.sooth.modules.system.service.ISysDepartService;
 import com.moxa.sooth.modules.system.util.FindsDepartsChildrenUtil;
 import io.netty.util.internal.StringUtil;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

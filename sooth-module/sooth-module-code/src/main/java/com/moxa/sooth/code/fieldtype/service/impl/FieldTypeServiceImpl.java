@@ -7,8 +7,8 @@ import com.moxa.sooth.code.fieldtype.model.FieldTypeModel;
 import com.moxa.sooth.code.fieldtype.service.IFieldTypeService;
 import com.moxa.sooth.code.fieldtype.util.FieldTypeUtil;
 import com.moxa.sooth.code.fieldtype.view.FieldType;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
+import com.moxa.sooth.core.base.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

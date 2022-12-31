@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SysDeptController extends BaseController<ISysDeptService, SysDept, SysDeptModel> {
 
     @GetMapping("listTree")
-        public Result listTree(SysDeptModel deptModel){
+    public Result listTree(SysDeptModel deptModel) {
         return Result.ok(service.listTree(deptModel));
-        }
+    }
 }

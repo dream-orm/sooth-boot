@@ -2,15 +2,17 @@ package com.moxa.main;
 
 import com.moxa.dream.boot.bean.ConfigurationBean;
 import com.moxa.dream.drive.listener.DebugListener;
-import com.moxa.dream.system.cache.CacheFactory;
 import com.moxa.dream.system.core.listener.Listener;
 import com.moxa.dream.template.sequence.Sequence;
 import com.moxa.sooth.core.base.dream.SnowFlakeSequence;
 import com.moxa.sooth.plugin.Module;
 import com.moxa.sooth.plugin.ModuleSelector;
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,5 +39,11 @@ public class DreamConfig {
     @Bean
     public Sequence sequence() {
         return new SnowFlakeSequence();
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.master")
+    public DataSource dataSource() {
+        return new HikariDataSource();
     }
 }

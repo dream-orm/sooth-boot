@@ -1,14 +1,14 @@
 package com.moxa.sooth.modules.system.controller;
 
-import com.moxa.sooth.core.base.entity.Result;
+import cn.hutool.core.util.StrUtil;
+import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import com.moxa.sooth.core.base.common.util.SqlInjectionUtil;
+import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.modules.system.mapper.SysDictMapper;
 import com.moxa.sooth.modules.system.model.DuplicateCheckVo;
 import com.moxa.sooth.modules.system.security.DictQueryBlackListHandler;
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import lombok.extern.slf4j.Slf4j;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

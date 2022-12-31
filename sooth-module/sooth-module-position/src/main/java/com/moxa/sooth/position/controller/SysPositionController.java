@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *  职务表
+ * 职务表
  */
 @Slf4j
 @Api(tags = "职务表")

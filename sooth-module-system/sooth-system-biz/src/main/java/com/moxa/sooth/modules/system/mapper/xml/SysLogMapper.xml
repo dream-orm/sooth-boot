@@ -20,8 +20,8 @@
         select count(1)
         from sys_log
         where log_type = 1
-        and create_time &gt;= #{dayStart}
-        and create_time &lt; #{dayEnd}
+          and create_time &gt;= #{dayStart}
+          and create_time &lt; #{dayEnd}
     </select>
 
     <!-- 获取今日访问总IP数 -->
@@ -29,8 +29,8 @@
         select count(distinct (ip))
         from sys_log
         where log_type = 1
-        and create_time &gt;= #{dayStart}
-        and create_time &lt; #{dayEnd}
+          and create_time &gt;= #{dayStart}
+          and create_time &lt; #{dayEnd}
     </select>
 
     <!-- 首页访问统计 -->

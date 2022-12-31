@@ -25,15 +25,6 @@ public class SpringContextHolder implements ApplicationContextAware {
     }
 
     /**
-     * 实现ApplicationContextAware接口的context注入函数, 将其存入静态变量.
-     */
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        // NOSONAR
-        SpringContextHolder.applicationContext = applicationContext;
-    }
-
-    /**
      * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型.
      */
     public static <T> T getBean(String name) {
@@ -57,7 +48,6 @@ public class SpringContextHolder implements ApplicationContextAware {
         return t;
     }
 
-
     /**
      * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型.
      */
@@ -77,6 +67,15 @@ public class SpringContextHolder implements ApplicationContextAware {
         if (applicationContext == null) {
             throw new IllegalStateException("applicaitonContext未注入,请在applicationContext.xml中定义SpringContextHolder");
         }
+    }
+
+    /**
+     * 实现ApplicationContextAware接口的context注入函数, 将其存入静态变量.
+     */
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        // NOSONAR
+        SpringContextHolder.applicationContext = applicationContext;
     }
 
 }

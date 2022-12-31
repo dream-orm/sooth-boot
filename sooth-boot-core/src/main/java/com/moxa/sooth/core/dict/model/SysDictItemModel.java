@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class SysDictItemModel {
-    @Conditional(value = EqCondition.class,filterNull = false)
+    @Conditional(value = EqCondition.class, filterNull = false)
     private String dictId;
     @Sort(Order.ASC)
     private Integer sortOrder;

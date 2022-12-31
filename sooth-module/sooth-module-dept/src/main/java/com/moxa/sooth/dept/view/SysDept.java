@@ -1,6 +1,5 @@
 package com.moxa.sooth.dept.view;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
@@ -12,7 +11,6 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * <p>
@@ -25,7 +23,7 @@ import java.util.Objects;
 @Data
 @View($SysDept.class)
 public class SysDept extends BaseEntity implements Tree {
-    private List<SysDept>children=new ArrayList<>();
+    private List<SysDept> children = new ArrayList<>();
     /**
      * ID
      */
@@ -68,7 +66,7 @@ public class SysDept extends BaseEntity implements Tree {
     }
 
     @Override
-    public List<?extends Tree> getChildren() {
+    public List<? extends Tree> getChildren() {
         return children;
     }
 }

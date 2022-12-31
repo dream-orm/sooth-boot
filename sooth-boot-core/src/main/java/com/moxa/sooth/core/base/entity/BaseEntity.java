@@ -7,6 +7,7 @@ import com.moxa.dream.template.wrap.DateWrapper;
 import com.moxa.sooth.core.base.dream.UserWrapper;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+
 @Data
 public abstract class BaseEntity extends BaseDict {
     /**

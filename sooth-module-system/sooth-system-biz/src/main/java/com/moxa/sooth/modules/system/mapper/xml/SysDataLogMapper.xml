@@ -6,7 +6,7 @@
         select max(data_version) as mvn
         from sys_data_log
         where data_table = #{tableName}
-        and data_id = #{dataId}
+          and data_id = #{dataId}
     </select>
 
 </mapper>

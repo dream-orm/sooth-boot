@@ -1,8 +1,8 @@
 package com.moxa.sooth.position.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.position.view.SysPosition;
 import com.moxa.sooth.position.service.ISysPositionService;
+import com.moxa.sooth.position.view.SysPosition;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

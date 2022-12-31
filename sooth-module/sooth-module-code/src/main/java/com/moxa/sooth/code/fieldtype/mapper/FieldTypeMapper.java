@@ -3,6 +3,7 @@ package com.moxa.sooth.code.fieldtype.mapper;
 import com.moxa.dream.system.annotation.Mapper;
 import com.moxa.dream.system.annotation.Sql;
 import com.moxa.sooth.code.fieldtype.view.FieldType;
+
 import java.util.List;
 
 @Mapper

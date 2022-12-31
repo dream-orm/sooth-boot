@@ -11,12 +11,12 @@ import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.DataBaseConstant;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
 import com.moxa.sooth.core.base.common.system.vo.SysUserCacheInfo;
 import com.moxa.sooth.core.base.common.util.DateUtils;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
 import com.moxa.sooth.core.base.common.util.oConvertUtils;
+import com.moxa.sooth.core.base.entity.Result;
 import org.apache.shiro.SecurityUtils;
 
 import javax.servlet.ServletResponse;

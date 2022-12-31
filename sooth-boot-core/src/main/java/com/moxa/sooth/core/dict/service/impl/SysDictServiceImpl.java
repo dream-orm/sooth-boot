@@ -1,6 +1,5 @@
 package com.moxa.sooth.core.dict.service.impl;
 
-import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.antlr.invoker.$Invoker;
 import com.moxa.sooth.common.constant.CacheConstant;
@@ -19,13 +18,13 @@ import java.util.Set;
 @Slf4j
 public class SysDictServiceImpl extends ServiceImpl<SysDict, SysDict> implements ISysDictService {
     @Autowired
+    public RedisTemplate<String, Object> redisTemplate;
+    @Autowired
     private SysDictMapper sysDictMapper;
 
-    @Autowired
-    public RedisTemplate<String, Object> redisTemplate;
     @Override
     public String translateDict(String code, Object value) {
-        return sysDictMapper.translateDict(code,value);
+        return sysDictMapper.translateDict(code, value);
 
     }
 

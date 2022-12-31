@@ -110,7 +110,7 @@
         SELECT *
         FROM sys_permission
         where del_flag = 0
-        and id in (select permission_id from sys_depart_permission where depart_id = #{departId})
+          and id in (select permission_id from sys_depart_permission where depart_id = #{departId})
         order by sort_no ASC
     </select>
 

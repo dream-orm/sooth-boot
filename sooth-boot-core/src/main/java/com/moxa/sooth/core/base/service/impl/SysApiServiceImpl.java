@@ -37,6 +37,7 @@ public class SysApiServiceImpl implements SysApiService {
     private ISysPermissionService sysPermissionService;
     @Autowired
     private TemplateMapper templateMapper;
+
     @Override
     public SysUser selectOneUser(String username) {
         return sysUserService.selectOneUser(username);
@@ -58,10 +59,10 @@ public class SysApiServiceImpl implements SysApiService {
 
     @Override
     public String translateDict(String table, String name, String code, Object value) {
-        if(StrUtil.isBlank(table)){
-            return sysDictService.translateDict(code,value);
-        }else{
-            return templateMapper.selectOne("select "+name+" from "+table+" where "+code+"=@$(value)",new ObjectMap(value),String.class);
+        if (StrUtil.isBlank(table)) {
+            return sysDictService.translateDict(code, value);
+        } else {
+            return templateMapper.selectOne("select " + name + " from " + table + " where " + code + "=@$(value)", new ObjectMap(value), String.class);
         }
     }
 

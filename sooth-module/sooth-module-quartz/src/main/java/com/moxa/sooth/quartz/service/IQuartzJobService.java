@@ -12,7 +12,7 @@ import java.util.List;
  * @Date: 2019-04-28
  * @Version: V1.1
  */
-public interface IQuartzJobService extends IService<QuartzJob,QuartzJob> {
+public interface IQuartzJobService extends IService<QuartzJob, QuartzJob> {
 
     /**
      * 通过类名寻找定时任务

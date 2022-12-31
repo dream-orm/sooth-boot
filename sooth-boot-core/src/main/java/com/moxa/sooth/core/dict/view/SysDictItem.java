@@ -1,13 +1,10 @@
 package com.moxa.sooth.core.dict.view;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
 import com.moxa.sooth.core.base.entity.BaseDict;
-import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.dict.table.$SysDictItem;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

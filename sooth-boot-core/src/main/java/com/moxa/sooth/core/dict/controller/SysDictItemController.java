@@ -2,7 +2,6 @@ package com.moxa.sooth.core.dict.controller;
 
 
 import com.moxa.sooth.core.base.common.aspect.annotation.Api;
-import com.moxa.sooth.core.base.common.system.vo.DictModel;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.dict.model.SysDictItemModel;
@@ -23,7 +22,7 @@ import java.util.List;
 public class SysDictItemController extends BaseController<ISysDictItemService, SysDictItem, SysDictItemModel> {
     @RequestMapping(value = "{code}", method = RequestMethod.GET)
     public Result<List<SysDictItem>> getDictItems(@PathVariable("code") String code) {
-        List<SysDictItem>dictItemList=service.getDictItems(code);
+        List<SysDictItem> dictItemList = service.getDictItems(code);
         return Result.ok(dictItemList);
     }
 

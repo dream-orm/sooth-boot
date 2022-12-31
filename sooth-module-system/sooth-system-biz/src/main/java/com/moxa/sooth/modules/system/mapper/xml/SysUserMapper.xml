@@ -7,7 +7,7 @@
         select *
         from sys_user
         where username = #{username}
-        and del_flag = 0
+          and del_flag = 0
     </select>
 
     <!-- 根据部门Id查询 -->
@@ -62,7 +62,7 @@
         select *
         from sys_user
         where phone = #{phone}
-        and del_flag = 0
+          and del_flag = 0
     </select>
 
     <!-- 根据邮箱查询用户信息 -->
@@ -70,7 +70,7 @@
         select *
         from sys_user
         where email = #{email}
-        and del_flag = 0
+          and del_flag = 0
     </select>
 
     <!-- SQL片段：getUserByOrgCode 的 FROM 和 WHERE 部分 -->
@@ -148,12 +148,12 @@
     <!-- 更新被逻辑删除的用户 -->
     <update id="revertLogicDeleted">
         UPDATE
-        sys_user
-        SET del_flag = 0,
-        update_by = #{entity.updateBy},
-        update_time = #{entity.updateTime}
+            sys_user
+        SET del_flag    = 0,
+            update_by   = #{entity.updateBy},
+            update_time = #{entity.updateTime}
         WHERE del_flag = 1
-        AND id IN (${userIds})
+          AND id IN (${userIds})
     </update>
 
     <!-- 彻底删除被逻辑删除的用户 -->
@@ -161,7 +161,7 @@
         DELETE
         FROM sys_user
         WHERE del_flag = 1
-        AND id IN (${userIds})
+          AND id IN (${userIds})
     </delete>
 
     <!-- 更新空字符串为null -->

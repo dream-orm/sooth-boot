@@ -6,7 +6,6 @@ import com.moxa.dream.system.annotation.Table;
 import lombok.Data;
 
 import java.sql.Types;
-import java.util.Date;
 
 /**
  * 【请填写功能名称】  sys_dict_item

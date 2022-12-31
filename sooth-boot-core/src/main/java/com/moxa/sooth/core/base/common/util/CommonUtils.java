@@ -1,21 +1,17 @@
 package com.moxa.sooth.core.base.common.util;
 
-import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
-import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.toolkit.JdbcUtils;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.DataBaseConstant;
 import com.moxa.sooth.core.base.common.constant.ServiceNameConstants;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -88,6 +84,7 @@ public class CommonUtils {
             return false;
         }
     }
+
     /**
      * 全局获取平台数据库类型（作废了）
      *
@@ -127,43 +124,6 @@ public class CommonUtils {
         }
     }
 
-    /**
-     * 根据数据源key获取DataSourceProperty
-     *
-     * @param sourceKey
-     * @return
-     */
-    public static DataSourceProperty getDataSourceProperty(String sourceKey) {
-        DynamicDataSourceProperties prop = SpringContextUtils.getApplicationContext().getBean(DynamicDataSourceProperties.class);
-        Map<String, DataSourceProperty> map = prop.getDatasource();
-        DataSourceProperty db = (DataSourceProperty) map.get(sourceKey);
-        return db;
-    }
-
-    /**
-     * 根据sourceKey 获取数据源连接
-     *
-     * @param sourceKey
-     * @return
-     * @throws SQLException
-     */
-    public static Connection getDataSourceConnect(String sourceKey) throws SQLException {
-        if (oConvertUtils.isEmpty(sourceKey)) {
-            sourceKey = "master";
-        }
-        DynamicDataSourceProperties prop = SpringContextUtils.getApplicationContext().getBean(DynamicDataSourceProperties.class);
-        Map<String, DataSourceProperty> map = prop.getDatasource();
-        DataSourceProperty db = (DataSourceProperty) map.get(sourceKey);
-        if (db == null) {
-            return null;
-        }
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName(db.getDriverClassName());
-        ds.setUrl(db.getUrl());
-        ds.setUsername(db.getUsername());
-        ds.setPassword(db.getPassword());
-        return ds.getConnection();
-    }
 
     /**
      * 获取数据库类型

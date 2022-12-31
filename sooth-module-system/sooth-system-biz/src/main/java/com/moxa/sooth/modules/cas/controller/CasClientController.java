@@ -1,10 +1,11 @@
 package com.moxa.sooth.modules.cas.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
-import com.moxa.sooth.core.base.util.RedisUtil;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
+import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.core.base.util.RedisUtil;
 import com.moxa.sooth.modules.cas.util.CasServiceUtil;
 import com.moxa.sooth.modules.cas.util.XmlUtils;
 import com.moxa.sooth.modules.system.entity.SysDepart;
@@ -12,7 +13,6 @@ import com.moxa.sooth.modules.system.entity.SysUser;
 import com.moxa.sooth.modules.system.service.ISysDepartService;
 import com.moxa.sooth.modules.system.service.ISysUserService;
 import lombok.extern.slf4j.Slf4j;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

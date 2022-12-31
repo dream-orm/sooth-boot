@@ -7,8 +7,8 @@
         SELECT *
         FROM sys_depart_role
         WHERE depart_id IN (SELECT id
-        FROM sys_depart
-        WHERE id IN (SELECT dep_id FROM sys_user_depart WHERE user_id = #{userId})
-        AND org_code LIKE CONCAT(#{orgCode}, '%'))
+                            FROM sys_depart
+                            WHERE id IN (SELECT dep_id FROM sys_user_depart WHERE user_id = #{userId})
+                              AND org_code LIKE CONCAT(#{orgCode}, '%'))
     </select>
 </mapper>

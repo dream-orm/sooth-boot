@@ -1,5 +1,6 @@
 package com.moxa.sooth.modules.system.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -8,7 +9,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.moxa.sooth.modules.system.entity.SysCheckRule;
 import com.moxa.sooth.modules.system.mapper.SysCheckRuleMapper;
 import com.moxa.sooth.modules.system.service.ISysCheckRuleService;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Pattern;

@@ -1,12 +1,12 @@
 package com.moxa.sooth.core.base.config.shiro;
 
-import com.moxa.sooth.core.base.util.RedisUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
 import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.service.SysApiService;
+import com.moxa.sooth.core.base.util.RedisUtil;
 import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;

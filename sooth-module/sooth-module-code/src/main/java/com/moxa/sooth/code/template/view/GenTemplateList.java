@@ -16,7 +16,7 @@ public class GenTemplateList extends BaseDict {
     @Extract(DictExtractor.class)
     private Long groupId;
     private String name;
-//    @Dict(dicCode = "valid_status")
+    //    @Dict(dicCode = "valid_status")
 //    @Extract(DictExtractor.class)
     private Boolean validStatus;
 }

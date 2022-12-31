@@ -1,9 +1,9 @@
 package com.moxa.sooth.datasource.controller;
 
 
+import com.moxa.sooth.core.base.common.aspect.annotation.Module;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.base.common.aspect.annotation.Module;
 import com.moxa.sooth.datasource.model.SysDataSourceModel;
 import com.moxa.sooth.datasource.service.ISysDataSourceService;
 import com.moxa.sooth.datasource.view.SysDataSource;

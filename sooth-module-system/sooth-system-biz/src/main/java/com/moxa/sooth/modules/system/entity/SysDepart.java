@@ -6,9 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.moxa.dream.system.annotation.Extract;
-import com.moxa.sooth.core.base.entity.BaseDict;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.entity.BaseDict;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

@@ -50,11 +50,11 @@
             <artifactId>sooth-module-quartz</artifactId>
             <version>${soothboot.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.moxa.sooth</groupId>-->
-<!--            <artifactId>sooth-system-biz</artifactId>-->
-<!--            <version>${soothboot.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.moxa.sooth</groupId>-->
+        <!--            <artifactId>sooth-system-biz</artifactId>-->
+        <!--            <version>${soothboot.version}</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 </project>

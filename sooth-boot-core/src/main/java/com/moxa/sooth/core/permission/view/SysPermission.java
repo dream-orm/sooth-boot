@@ -22,7 +22,7 @@ import java.util.List;
 @View($SysPermission.class)
 public class SysPermission extends BaseEntity implements Tree {
     @Ignore
-    private List<Tree> children=new ArrayList<>();
+    private List<Tree> children = new ArrayList<>();
     /**
      * id
      */

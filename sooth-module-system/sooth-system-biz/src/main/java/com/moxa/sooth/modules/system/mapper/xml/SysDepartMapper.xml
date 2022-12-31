@@ -14,10 +14,10 @@
         SELECT *
         FROM sys_depart
         WHERE id IN (SELECT dep_id
-        FROM sys_user_depart
-        WHERE user_id = (SELECT id
-        FROM sys_user
-        WHERE username = #{username}))
+                     FROM sys_user_depart
+                     WHERE user_id = (SELECT id
+                                      FROM sys_user
+                                      WHERE username = #{username}))
     </select>
 
     <!-- 根据部门Id查询,当前和下级所有部门IDS -->
@@ -25,7 +25,7 @@
         select id
         from sys_depart
         where del_flag = '0'
-        and org_code like concat((select org_code from sys_depart where id = #{departId}), '%')
+          and org_code like concat((select org_code from sys_depart where id = #{departId}), '%')
     </select>
 
     <!--根据部门编码获取我的部门下所有部门ids -->
@@ -54,7 +54,7 @@
         select *
         from sys_depart
         where del_flag = '0'
-        and org_category = '1'
-        and org_code = #{orgCode,jdbcType=VARCHAR}
+          and org_category = '1'
+          and org_code = #{orgCode,jdbcType=VARCHAR}
     </select>
 </mapper>

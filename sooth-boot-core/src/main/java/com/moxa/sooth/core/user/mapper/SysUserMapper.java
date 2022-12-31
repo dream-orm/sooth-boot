@@ -14,6 +14,7 @@ import java.util.List;
 public interface SysUserMapper {
     @Sql("select @all() from sys_user where username=@$(username)")
     SysUser selectOneUser(String username);
+
     @PageQuery
     @Sql("select @all() from sys_user " +
             "inner join sys_user_dept sud on sys_user.id=sud.user_id " +
@@ -22,7 +23,7 @@ public interface SysUserMapper {
             "and realname like concat('%',@$(userModel.realname),'%') " +
             "and phone like concat('%',@$(userModel.phone),'%') " +
             "and sys_dept.id in (@foreach(userModel.deptIds)))")
-    List<SysUser> selectPage(@Param("userModel") SysUserModel userModel,@Param("page") Page page);
+    List<SysUser> selectPage(@Param("userModel") SysUserModel userModel, @Param("page") Page page);
 
     @PageQuery
     @Sql("select @all() from sys_user where  id in (select user_id from sys_user_role where role_id=@$(roleId))")
