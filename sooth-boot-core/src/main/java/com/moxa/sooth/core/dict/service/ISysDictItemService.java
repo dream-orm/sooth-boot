@@ -9,4 +9,6 @@ import java.util.List;
 public interface ISysDictItemService extends IService<SysDictItem, SysDictItem> {
 
     List<SysDictItem> getDictItems(String code);
+
+    int deleteByDictId(Object id);
 }

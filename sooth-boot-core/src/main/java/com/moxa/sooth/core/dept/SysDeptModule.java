@@ -1,9 +1,9 @@
-package com.moxa.sooth.dict;
+package com.moxa.sooth.core.dept;
 
 
 import com.moxa.sooth.plugin.Module;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan
-public class SysCategoryModule implements Module {
+public class SysDeptModule implements Module {
 }

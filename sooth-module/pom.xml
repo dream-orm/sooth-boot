@@ -19,13 +19,11 @@
         <!--代码生成器-->
         <module>sooth-module-code</module>
         <!--基础管理-->
-        <module>sooth-module-category</module>
         <module>sooth-module-datasource</module>
         <module>sooth-module-quartz</module>
         <module>sooth-module-log</module>
         <module>sooth-module-monitor</module>
         <!--系统管理-->
-        <module>sooth-module-dept</module>
         <module>sooth-module-role</module>
         <module>sooth-module-tenant</module>
         <module>sooth-module-position</module>

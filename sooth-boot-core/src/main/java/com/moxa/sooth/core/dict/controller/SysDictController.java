@@ -15,10 +15,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sys/dict")
 @Slf4j
 public class SysDictController extends BaseController<ISysDictService, SysDict, SysDictModel> {
-    @RequestMapping(value = "/refreshCache")
-    public Result<?> refreshCache() {
-        service.refreshCache();
-        Result<?> result = new Result<SysDict>();
-        return result;
-    }
+
 }

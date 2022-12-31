@@ -88,15 +88,15 @@
                 <artifactId>sooth-boot-core</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-module-dept</artifactId>
-                <version>${soothboot.version}</version>
-            </dependency>
             <!-- system 单体 api -->
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-system-local-api</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-log</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <!--租户管理-->

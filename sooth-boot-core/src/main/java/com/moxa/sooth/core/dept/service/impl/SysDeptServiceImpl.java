@@ -1,9 +1,9 @@
-package com.moxa.sooth.dept.service.impl;
+package com.moxa.sooth.core.dept.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.dept.model.SysDeptModel;
-import com.moxa.sooth.dept.service.ISysDeptService;
-import com.moxa.sooth.dept.view.SysDept;
+import com.moxa.sooth.core.dept.model.SysDeptModel;
+import com.moxa.sooth.core.dept.service.ISysDeptService;
+import com.moxa.sooth.core.dept.view.SysDept;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

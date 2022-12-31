@@ -3,13 +3,18 @@ package com.moxa.sooth.core.dict.service.impl;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.antlr.invoker.$Invoker;
 import com.moxa.sooth.common.constant.CacheConstant;
+import com.moxa.sooth.core.base.common.exception.SoothBootException;
+import com.moxa.sooth.core.dict.mapper.SysDictItemMapper;
 import com.moxa.sooth.core.dict.mapper.SysDictMapper;
+import com.moxa.sooth.core.dict.model.SysDictCodeExistModel;
+import com.moxa.sooth.core.dict.service.ISysDictItemService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
 import com.moxa.sooth.core.dict.view.SysDict;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -18,31 +23,32 @@ import java.util.Set;
 @Slf4j
 public class SysDictServiceImpl extends ServiceImpl<SysDict, SysDict> implements ISysDictService {
     @Autowired
-    public RedisTemplate<String, Object> redisTemplate;
-    @Autowired
     private SysDictMapper sysDictMapper;
 
+    @Autowired
+    private ISysDictItemService dictItemService;
     @Override
     public String translateDict(String code, Object value) {
         return sysDictMapper.translateDict(code, value);
 
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public void refreshCache() {
-        $Invoker i;
-        //清空字典缓存
-        Set keys = redisTemplate.keys(CacheConstant.SYS_DICT_CACHE + "*");
-        Set keys7 = redisTemplate.keys(CacheConstant.SYS_ENABLE_DICT_CACHE + "*");
-        Set keys2 = redisTemplate.keys(CacheConstant.SYS_DICT_TABLE_CACHE + "*");
-        Set keys21 = redisTemplate.keys(CacheConstant.SYS_DICT_TABLE_BY_KEYS_CACHE + "*");
-        Set keys3 = redisTemplate.keys(CacheConstant.SYS_DEPARTS_CACHE + "*");
-        Set keys4 = redisTemplate.keys(CacheConstant.SYS_DEPART_IDS_CACHE + "*");
-        redisTemplate.delete(keys);
-        redisTemplate.delete(keys2);
-        redisTemplate.delete(keys21);
-        redisTemplate.delete(keys3);
-        redisTemplate.delete(keys4);
-        redisTemplate.delete(keys7);
+    public int deleteById(Object id) {
+        dictItemService.deleteByDictId(id);
+        return super.deleteById(id);
     }
-}
+
+    private void checkCodeExist(SysDict sysDict){
+        SysDictCodeExistModel dictCodeExistModel=new SysDictCodeExistModel();
+        dictCodeExistModel.setDictCode(sysDict.getDictCode());
+        if(templateMapper.exist(SysDict.class,dictCodeExistModel)){
+            throw new SoothBootException("字典编码"+sysDict.getDictCode()+"已经存在");
+        }
+    }
+    @Override
+    public int insert(SysDict sysDict) {
+        checkCodeExist(sysDict);
+        return super.insert(sysDict);
+    }}

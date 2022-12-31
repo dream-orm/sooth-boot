@@ -1,4 +1,4 @@
-package com.moxa.sooth.dept.table;
+package com.moxa.sooth.core.dept.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;
@@ -36,8 +36,8 @@ public class $SysDept {
     /**
      * 排序
      */
-    @Column(value = "dept_order", jdbcType = Types.INTEGER)
-    private Integer deptOrder;
+    @Column(value = "order_no", jdbcType = Types.DOUBLE)
+    private Double orderNo;
     /**
      * 创建人
      */

@@ -1,4 +1,4 @@
-package com.moxa.sooth.dept.model;
+package com.moxa.sooth.core.dept.model;
 
 import com.moxa.dream.template.annotation.Conditional;
 import com.moxa.dream.template.annotation.Order;
@@ -11,5 +11,5 @@ public class SysDeptModel {
     @Conditional(ContainsCondition.class)
     private String deptName;
     @Sort(Order.ASC)
-    private Integer deptOrder;
+    private Double orderNo;
 }

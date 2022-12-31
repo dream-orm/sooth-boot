@@ -28,10 +28,6 @@
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-module-monitor</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.moxa.sooth</groupId>
-            <artifactId>sooth-module-dept</artifactId>
-        </dependency>
         <!--多数据源管理-->
         <dependency>
             <groupId>com.moxa.sooth</groupId>
@@ -49,6 +45,10 @@
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-module-quartz</artifactId>
             <version>${soothboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-module-log</artifactId>
         </dependency>
         <!--        <dependency>-->
         <!--            <groupId>com.moxa.sooth</groupId>-->

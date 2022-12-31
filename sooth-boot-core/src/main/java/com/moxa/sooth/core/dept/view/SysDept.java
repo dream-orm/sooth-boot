@@ -1,4 +1,4 @@
-package com.moxa.sooth.dept.view;
+package com.moxa.sooth.core.dept.view;
 
 import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
@@ -6,20 +6,12 @@ import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
 import com.moxa.sooth.core.base.entity.BaseEntity;
-import com.moxa.sooth.dept.table.$SysDept;
+import com.moxa.sooth.core.dept.table.$SysDept;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <p>
- * 部门表
- * <p>
- *
- * @Author Steve
- * @Since 2019-01-22
- */
 @Data
 @View($SysDept.class)
 public class SysDept extends BaseEntity implements Tree {
@@ -41,7 +33,7 @@ public class SysDept extends BaseEntity implements Tree {
      * 排序
      */
 
-    private Integer deptOrder;
+    private Double orderNo;
     /**
      * 描述
      */
@@ -56,7 +48,6 @@ public class SysDept extends BaseEntity implements Tree {
     /**
      * 删除状态（0，正常，1已删除）
      */
-    @Dict(dicCode = "del_flag")
     @Extract(DictExtractor.class)
     private String delFlag;
 

@@ -1,8 +1,8 @@
-package com.moxa.sooth.dept.service;
+package com.moxa.sooth.core.dept.service;
 
 import com.moxa.dream.template.service.IService;
-import com.moxa.sooth.dept.model.SysDeptModel;
-import com.moxa.sooth.dept.view.SysDept;
+import com.moxa.sooth.core.dept.model.SysDeptModel;
+import com.moxa.sooth.core.dept.view.SysDept;
 
 import java.util.List;
 

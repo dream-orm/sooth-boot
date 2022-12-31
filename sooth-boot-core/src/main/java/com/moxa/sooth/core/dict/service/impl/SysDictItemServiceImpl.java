@@ -20,4 +20,9 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItem, SysDictItem
     public List<SysDictItem> getDictItems(String code) {
         return dictItemMapper.getDictItems(code);
     }
+
+    @Override
+    public int deleteByDictId(Object dictId) {
+        return dictItemMapper.deleteByDictId(dictId);
+    }
 }
