@@ -11,16 +11,16 @@ import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.permission.model.SysPermissionMenuTypeModel;
 import com.moxa.sooth.core.permission.model.SysPermissionModel;
-import com.moxa.sooth.core.permission.model.SysPermissionTree;
+import com.moxa.sooth.core.permission.model.SysRolePermissionModel;
 import com.moxa.sooth.core.permission.service.ISysPermissionService;
+import com.moxa.sooth.core.permission.service.ISysRolePermissionService;
+import com.moxa.sooth.core.permission.table.SysRolePermission;
 import com.moxa.sooth.core.permission.view.SysPermission;
 import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -35,6 +35,9 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * 子菜单
      */
     private static final String CHILDREN = "children";
+    @Autowired
+    private ISysRolePermissionService rolePermissionService;
+
     /**
      * 加载数据节点
      *
@@ -94,6 +97,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         }
         return result;
     }
+
     /**
      * 【vue3专用】获取
      * 1、查询用户拥有的按钮/表单访问权限
@@ -118,7 +122,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             JSONArray authArray = new JSONArray();
             this.getAuthJsonArray(authArray, metaList);
             // 查询所有的权限
-            SysPermissionMenuTypeModel sysPermissionMenuTypeModel=new SysPermissionMenuTypeModel();
+            SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
             sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
             List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
             JSONArray allAuthArray = new JSONArray();
@@ -136,6 +140,20 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             return Result.error("查询失败:" + e.getMessage());
         }
     }
+
+    /**
+     * 查询角色授权
+     *
+     * @return
+     */
+    @RequestMapping(value = "/queryRolePermission", method = RequestMethod.GET)
+    public Result<List<String>> queryRolePermission(@RequestParam(name = "roleId") String roleId) {
+        SysRolePermissionModel rolePermissionModel = new SysRolePermissionModel();
+        rolePermissionModel.setRoleId(roleId);
+        List<SysRolePermission> list = rolePermissionService.selectList(rolePermissionModel);
+        return Result.ok(list.stream().map(sysRolePermission -> String.valueOf(sysRolePermission.getPermissionId())).collect(Collectors.toList()));
+    }
+
     /**
      * 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示
      *

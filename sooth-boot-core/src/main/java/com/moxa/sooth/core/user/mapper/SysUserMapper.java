@@ -23,4 +23,8 @@ public interface SysUserMapper {
             "and phone like concat('%',@$(userModel.phone),'%') " +
             "and sys_dept.id in (@foreach(userModel.deptIds)))")
     List<SysUser> selectPage(@Param("userModel") SysUserModel userModel,@Param("page") Page page);
+
+    @PageQuery
+    @Sql("select @all() from sys_user where  id in (select user_id from sys_user_role where role_id=@$(roleId))")
+    List<SysUser> getUserByRoleId(@Param("roleId") String roleId, @Param("page") Page page);
 }

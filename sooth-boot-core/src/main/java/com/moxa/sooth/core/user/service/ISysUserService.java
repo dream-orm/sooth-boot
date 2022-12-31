@@ -9,4 +9,6 @@ public interface ISysUserService extends IService<SysUser, SysUser> {
 
 
     SysUser selectOneUser(String username);
+
+    Page<SysUser> getUserByRoleId(String roleId, Page page);
 }

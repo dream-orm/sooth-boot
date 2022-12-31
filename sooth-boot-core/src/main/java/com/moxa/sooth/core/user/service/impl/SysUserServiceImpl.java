@@ -29,6 +29,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUser, SysUser> implements
         List<SysUser> sysUserList=sysUserMapper.selectPage((SysUserModel) sysUserModel,page);
         page.setRows(sysUserList);
         return page;
+    }
 
+    @Override
+    public Page<SysUser> getUserByRoleId(String roleId, Page page) {
+        List<SysUser>sysUserList= sysUserMapper.getUserByRoleId(roleId,page);
+        page.setRows(sysUserList);
+        return page;
     }
 }
