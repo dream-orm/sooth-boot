@@ -21,12 +21,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUser, SysUser> implements
 
     @Override
     public SysUser selectOneUser(String username) {
-        return sysUserMapper.selectOneUser(username);
+         return sysUserMapper.selectOneUser(username);
     }
 
     @Override
-    public Page<SysUser> selectPage(SysUserModel sysUserModel, Page page) {
-        List<SysUser> sysUserList=sysUserMapper.selectPage(sysUserModel,page);
+    public Page<SysUser> selectPage(Object sysUserModel, Page page) {
+        List<SysUser> sysUserList=sysUserMapper.selectPage((SysUserModel) sysUserModel,page);
         page.setRows(sysUserList);
         return page;
 

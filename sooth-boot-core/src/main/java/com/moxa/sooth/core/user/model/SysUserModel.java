@@ -10,12 +10,8 @@ import java.util.List;
 
 @Data
 public class SysUserModel {
-    @Conditional(ContainsCondition.class)
     private String username;
-    @Conditional(ContainsCondition.class)
     private String realname;
-    @Conditional(ContainsCondition.class)
     private String phone;
-    @Conditional(value = InCondition.class,table = "sys_dept")
-    private List<String> deptId;
+    private List<String> deptIds;
 }

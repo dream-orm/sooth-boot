@@ -21,6 +21,6 @@ public interface SysUserMapper {
             "where @not(sys_user.username like concat('%',@$(userModel.username),'%') " +
             "and realname like concat('%',@$(userModel.realname),'%') " +
             "and phone like concat('%',@$(userModel.phone),'%') " +
-            "and sys_dept.id in (@foreach(@$(userModel.deptIds))))")
+            "and sys_dept.id in (@foreach(userModel.deptIds)))")
     List<SysUser> selectPage(@Param("userModel") SysUserModel userModel,@Param("page") Page page);
 }

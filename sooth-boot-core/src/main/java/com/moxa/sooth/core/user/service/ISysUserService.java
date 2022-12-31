@@ -9,6 +9,4 @@ public interface ISysUserService extends IService<SysUser, SysUser> {
 
 
     SysUser selectOneUser(String username);
-
-    Page<SysUser> selectPage(SysUserModel sysUserModel, Page page);
 }

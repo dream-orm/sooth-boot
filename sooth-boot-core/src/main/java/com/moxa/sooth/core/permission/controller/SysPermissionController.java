@@ -55,25 +55,6 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         return result;
     }
 
-    private void getTreeList(List<SysPermissionTree> treeList, List<SysPermission> metaList, SysPermissionTree temp) {
-        for (SysPermission permission : metaList) {
-            String tempPid = permission.getParentId();
-            SysPermissionTree tree = new SysPermissionTree(permission);
-            if (temp == null && oConvertUtils.isEmpty(tempPid)) {
-                treeList.add(tree);
-                if (!tree.getIsLeaf()) {
-                    getTreeList(treeList, metaList, tree);
-                }
-            } else if (temp != null && tempPid != null && tempPid.equals(temp.getId())) {
-                temp.getChildren().add(tree);
-                if (!tree.getIsLeaf()) {
-                    getTreeList(treeList, metaList, tree);
-                }
-            }
-
-        }
-    }
-
     @GetMapping(value = "/getUserPermissionByToken")
     //@DynamicTable(value = DynamicTableConstant.SYS_ROLE_INDEX)
     public Result<?> getUserPermissionByToken(HttpServletRequest request) {
