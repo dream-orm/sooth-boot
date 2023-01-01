@@ -1,7 +1,6 @@
 package com.moxa.sooth.core.base.common.system.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.moxa.sooth.core.base.common.desensitization.annotation.SensitiveField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -25,25 +24,25 @@ public class LoginUser {
     /**
      * 登录人id
      */
-    @SensitiveField
+
     private String id;
 
     /**
      * 登录人账号
      */
-    @SensitiveField
+
     private String username;
 
     /**
      * 登录人名字
      */
-    @SensitiveField
+
     private String realname;
 
     /**
      * 登录人密码
      */
-    @SensitiveField
+
     private String password;
 
     /**
@@ -53,13 +52,13 @@ public class LoginUser {
     /**
      * 头像
      */
-    @SensitiveField
+
     private String avatar;
 
     /**
      * 生日
      */
-    @SensitiveField
+
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
@@ -72,13 +71,13 @@ public class LoginUser {
     /**
      * 电子邮件
      */
-    @SensitiveField
+
     private String email;
 
     /**
      * 电话
      */
-    @SensitiveField
+
     private String phone;
 
     /**
@@ -110,13 +109,13 @@ public class LoginUser {
     /**
      * 职务，关联职务表
      */
-    @SensitiveField
+
     private String post;
 
     /**
      * 座机号
      */
-    @SensitiveField
+
     private String telephone;
 
     /**

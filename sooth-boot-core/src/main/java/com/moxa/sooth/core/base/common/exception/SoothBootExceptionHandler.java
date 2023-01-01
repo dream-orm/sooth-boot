@@ -9,10 +9,8 @@ import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.redis.connection.PoolException;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -31,20 +29,11 @@ public class SoothBootExceptionHandler {
      * 处理自定义异常
      */
     @ExceptionHandler(SoothBootException.class)
-    public Result<?> handleJeecgBootException(SoothBootException e) {
+    public Result<?> handleSoothBootException(SoothBootException e) {
         log.error(e.getMessage(), e);
         return Result.error(e.getMessage());
     }
 
-    /**
-     * 处理自定义异常
-     */
-    @ExceptionHandler(SoothBoot401Exception.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public Result<?> handleJeecgBoot401Exception(SoothBoot401Exception e) {
-        log.error(e.getMessage(), e);
-        return new Result(401, e.getMessage());
-    }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public Result<?> handlerNoFoundException(Exception e) {

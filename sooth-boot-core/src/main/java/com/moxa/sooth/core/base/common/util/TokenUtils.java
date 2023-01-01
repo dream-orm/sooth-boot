@@ -4,8 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.common.constant.CacheConstant;
 import com.moxa.sooth.core.base.common.api.CommonAPI;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.desensitization.util.SensitiveInfoUtil;
-import com.moxa.sooth.core.base.common.exception.SoothBoot401Exception;
+import com.moxa.sooth.core.base.common.exception.SoothBootException;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
 import com.moxa.sooth.core.base.util.RedisUtil;
@@ -49,28 +48,28 @@ public class TokenUtils {
      */
     public static boolean verifyToken(String token, CommonAPI commonApi, RedisUtil redisUtil) {
         if (StrUtil.isBlank(token)) {
-            throw new SoothBoot401Exception("token不能为空!");
+            throw new SoothBootException("token不能为空!");
         }
 
         // 解密获得username，用于和数据库进行对比
         String username = JwtUtil.getUsername(token);
         if (username == null) {
-            throw new SoothBoot401Exception("token非法无效!");
+            throw new SoothBootException("token非法无效!");
         }
 
         // 查询用户信息
         LoginUser user = TokenUtils.getLoginUser(username, commonApi, redisUtil);
         //LoginUser user = commonApi.getUserByName(username);
         if (user == null) {
-            throw new SoothBoot401Exception("用户不存在!");
+            throw new SoothBootException("用户不存在!");
         }
         // 判断用户状态
         if (user.getStatus() != 1) {
-            throw new SoothBoot401Exception("账号已被锁定,请联系管理员!");
+            throw new SoothBootException("账号已被锁定,请联系管理员!");
         }
         // 校验token是否超时失效 & 或者账号密码是否错误
         if (!jwtTokenRefresh(token, username, user.getPassword(), redisUtil)) {
-            throw new SoothBoot401Exception(CommonConstant.TOKEN_IS_INVALID_MSG);
+            throw new SoothBootException(CommonConstant.TOKEN_IS_INVALID_MSG);
         }
         return true;
     }
@@ -111,13 +110,7 @@ public class TokenUtils {
         String loginUserKey = CacheConstant.SYS_USERS_CACHE + "::" + username;
         //【重要】此处通过redis原生获取缓存用户，是为了解决微服务下system服务挂了，其他服务互调不通问题---
         if (redisUtil.hasKey(loginUserKey)) {
-            try {
-                loginUser = (LoginUser) redisUtil.get(loginUserKey);
-                //解密用户
-                SensitiveInfoUtil.handlerObject(loginUser, false);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            loginUser = (LoginUser) redisUtil.get(loginUserKey);
         } else {
             // 查询用户信息
             loginUser = commonApi.getUserByName(username);

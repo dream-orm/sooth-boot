@@ -17,11 +17,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
 
-/**
- * @Author Scott
- * @Date 2018-07-12 14:23
- * @Desc JWT工具类
- **/
 public class JwtUtil {
 
     /**
