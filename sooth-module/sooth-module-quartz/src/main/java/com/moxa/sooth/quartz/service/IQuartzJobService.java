@@ -6,12 +6,7 @@ import org.quartz.SchedulerException;
 
 import java.util.List;
 
-/**
- * @Description: 定时任务在线管理
- * @Author: jeecg-boot
- * @Date: 2019-04-28
- * @Version: V1.1
- */
+
 public interface IQuartzJobService extends IService<QuartzJob, QuartzJob> {
 
     /**

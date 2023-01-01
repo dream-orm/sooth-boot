@@ -11,7 +11,7 @@ import com.moxa.sooth.code.gen.util.TemplateUtil;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.code.template.service.IGenTemplateService;
 import com.moxa.sooth.code.template.view.GenTemplate;
-import com.moxa.sooth.core.base.common.util.ClientUtil;
+import com.moxa.sooth.core.base.util.ClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

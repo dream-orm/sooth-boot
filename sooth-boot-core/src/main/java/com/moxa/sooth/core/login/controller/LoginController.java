@@ -4,13 +4,13 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.sooth.common.constant.CacheConstant;
+import com.moxa.sooth.common.util.Md5Util;
+import com.moxa.sooth.common.util.PasswordUtil;
 import com.moxa.sooth.common.util.RandImageUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.system.util.JwtUtil;
-import com.moxa.sooth.core.base.common.util.Md5Util;
-import com.moxa.sooth.core.base.common.util.PasswordUtil;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
+import com.moxa.sooth.core.base.util.JwtUtil;
 import com.moxa.sooth.core.base.util.RedisUtil;
 import com.moxa.sooth.core.login.model.SysLoginModel;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -167,7 +167,7 @@ public class LoginController {
             String lowerCaseCode = code.toLowerCase();
 
             // 加入密钥作为混淆，避免简单的拼接，被外部利用，用户自定义该密钥即可
-            String origin = lowerCaseCode + key ;
+            String origin = lowerCaseCode + key;
             String realKey = Md5Util.md5Encode(origin, "utf-8");
 
             redisUtil.set(realKey, lowerCaseCode, 60);

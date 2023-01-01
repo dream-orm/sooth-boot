@@ -1,6 +1,7 @@
 package com.moxa.sooth.quartz.controller;
 
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
+import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.quartz.service.IQuartzJobService;
 import com.moxa.sooth.quartz.view.QuartzJob;
@@ -12,16 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
-/**
- * @Description: 定时任务在线管理
- * @Author: jeecg-boot
- * @Date: 2019-01-02
- * @Version:V1.0
- */
 @RestController
 @RequestMapping("/sys/quartzJob")
 @Slf4j
-public class QuartzJobController {
+public class QuartzJobController extends BaseController<IQuartzJobService, QuartzJob, QuartzJob> {
     @Autowired
     private IQuartzJobService quartzJobService;
     @Autowired

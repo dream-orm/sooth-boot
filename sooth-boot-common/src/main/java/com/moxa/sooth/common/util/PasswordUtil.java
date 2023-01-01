@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.common.util;
+package com.moxa.sooth.common.util;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;

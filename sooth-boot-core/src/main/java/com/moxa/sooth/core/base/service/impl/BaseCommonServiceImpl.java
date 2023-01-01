@@ -1,13 +1,13 @@
 package com.moxa.sooth.core.base.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.moxa.sooth.common.util.SnowFlake;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
-import com.moxa.sooth.core.base.common.util.IpUtils;
-import com.moxa.sooth.core.base.common.util.SnowFlake;
-import com.moxa.sooth.core.base.common.util.SpringContextUtils;
 import com.moxa.sooth.core.base.mapper.BaseCommonMapper;
 import com.moxa.sooth.core.base.service.BaseCommonService;
+import com.moxa.sooth.core.base.util.IpUtils;
+import com.moxa.sooth.core.base.util.SpringContextUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class BaseCommonServiceImpl implements BaseCommonService {
         }
     }
 
-    @Override
+    //    @Override
     public void addLog(String logContent, Integer logType, Integer operatetype, LoginUser user) {
         LogDTO sysLog = new LogDTO();
         sysLog.setId(String.valueOf(SnowFlake.nextId()));
@@ -74,11 +74,5 @@ public class BaseCommonServiceImpl implements BaseCommonService {
             log.warn(e.getMessage());
         }
     }
-
-    @Override
-    public void addLog(String logContent, Integer logType, Integer operateType) {
-        addLog(logContent, logType, operateType, null);
-    }
-
 
 }

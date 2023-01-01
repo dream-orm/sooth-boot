@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.common.util;
+package com.moxa.sooth.core.base.util;
 
 import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;

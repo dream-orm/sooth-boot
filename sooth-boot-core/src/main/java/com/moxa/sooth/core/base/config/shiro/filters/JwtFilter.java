@@ -2,18 +2,14 @@ package com.moxa.sooth.core.base.config.shiro.filters;
 
 import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.config.shiro.JwtToken;
+import com.moxa.sooth.core.base.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 public class JwtFilter extends BasicHttpAuthenticationFilter {

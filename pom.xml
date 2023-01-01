@@ -88,6 +88,11 @@
             </dependency>
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-quartz</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-boot-plugin</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
@@ -106,7 +111,6 @@
                 <artifactId>httpclient</artifactId>
                 <version>${http-client.version}</version>
             </dependency>
-
             <!-- fileupload -->
             <dependency>
                 <groupId>commons-fileupload</groupId>

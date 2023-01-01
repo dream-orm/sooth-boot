@@ -96,7 +96,6 @@ public interface CommonConstant {
     Integer USER_FREEZE = 2;
 
 
-
     String X_ACCESS_TOKEN = "X-Access-Token";
 
 

@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.common.system.util;
+package com.moxa.sooth.core.base.util;
 
 import cn.hutool.core.util.StrUtil;
 import com.auth0.jwt.JWT;

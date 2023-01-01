@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.common.util;
+package com.moxa.sooth.common.util;
 
 
 import cn.hutool.core.util.CharsetUtil;
@@ -43,17 +43,4 @@ public class SecurityUtil {
         return decryptResult;
     }
     //---AES加密---------end---------
-
-    /**
-     * 主函数
-     */
-    public static void main(String[] args) {
-        String content = "test1111";
-        String encrypt = jiami(content);
-        System.out.println(encrypt);
-        //构建
-        String decrypt = jiemi(encrypt);
-        //解密为字符串
-        System.out.println(decrypt);
-    }
 }

@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.common.util;
+package com.moxa.sooth.core.base.util;
 
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;

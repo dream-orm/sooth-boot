@@ -1,6 +1,6 @@
 package com.moxa.sooth.quartz.job;
 
-import com.moxa.sooth.core.base.common.util.DateUtils;
+import com.moxa.sooth.core.base.util.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 

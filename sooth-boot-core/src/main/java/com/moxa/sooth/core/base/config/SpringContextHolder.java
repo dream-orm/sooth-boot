@@ -77,5 +77,4 @@ public class SpringContextHolder implements ApplicationContextAware {
         // NOSONAR
         SpringContextHolder.applicationContext = applicationContext;
     }
-
 }

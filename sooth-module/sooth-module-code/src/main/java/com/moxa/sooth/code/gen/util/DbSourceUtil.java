@@ -6,7 +6,7 @@ import com.moxa.sooth.code.fieldtype.view.FieldType;
 import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
-import com.moxa.sooth.core.base.common.util.SpringContextUtils;
+import com.moxa.sooth.core.base.util.SpringContextUtils;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

@@ -3,7 +3,7 @@ package com.moxa.sooth.quartz.service.impl;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
-import com.moxa.sooth.core.base.common.util.DateUtils;
+import com.moxa.sooth.core.base.util.DateUtils;
 import com.moxa.sooth.quartz.model.QuartzJobNameModel;
 import com.moxa.sooth.quartz.service.IQuartzJobService;
 import com.moxa.sooth.quartz.view.QuartzJob;

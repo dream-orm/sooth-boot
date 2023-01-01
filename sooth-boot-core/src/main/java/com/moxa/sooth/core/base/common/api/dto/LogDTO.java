@@ -1,6 +1,6 @@
 package com.moxa.sooth.core.base.common.api.dto;
 
-import com.moxa.sooth.core.base.common.system.vo.LoginUser;
+import com.moxa.sooth.core.user.view.SysUser;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -30,7 +30,7 @@ public class LogDTO implements Serializable {
     /**
      * 登录用户
      */
-    private LoginUser loginUser;
+    private SysUser sysUser;
 
     private String id;
     private String createBy;
@@ -72,16 +72,4 @@ public class LogDTO implements Serializable {
 
     }
 
-    public LogDTO(String logContent, Integer logType, Integer operatetype) {
-        this.logContent = logContent;
-        this.logType = logType;
-        this.operateType = operatetype;
-    }
-
-    public LogDTO(String logContent, Integer logType, Integer operatetype, LoginUser loginUser) {
-        this.logContent = logContent;
-        this.logType = logType;
-        this.operateType = operatetype;
-        this.loginUser = loginUser;
-    }
 }
