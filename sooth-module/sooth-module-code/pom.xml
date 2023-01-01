@@ -20,10 +20,5 @@
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-boot-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.moxa.sooth</groupId>
-            <artifactId>sooth-module-datasource</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 </project>

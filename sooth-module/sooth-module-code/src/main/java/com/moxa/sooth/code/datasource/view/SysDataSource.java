@@ -1,11 +1,11 @@
-package com.moxa.sooth.datasource.view;
+package com.moxa.sooth.code.datasource.view;
 
 import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
+import com.moxa.sooth.code.datasource.table.$SysDataSource;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
 import com.moxa.sooth.core.base.entity.BaseEntity;
-import com.moxa.sooth.datasource.table.$SysDataSource;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -20,19 +20,19 @@ public class SysDataSource extends BaseEntity {
     /**
      * id
      */
-    private java.lang.String id;
+    private String id;
     /**
      * 数据源名称
      */
 
 
-    private java.lang.String name;
+    private String name;
     /**
      * 描述
      */
 
 
-    private java.lang.String remark;
+    private String remark;
     /**
      * 数据库类型
      */
@@ -40,41 +40,41 @@ public class SysDataSource extends BaseEntity {
 
 
     @Extract(DictExtractor.class)
-    private java.lang.String dbType;
+    private String dbType;
     /**
      * 驱动类
      */
 
 
-    private java.lang.String dbDriver;
+    private String dbDriver;
     /**
      * 数据源地址
      */
 
 
-    private java.lang.String dbUrl;
+    private String dbUrl;
     /**
      * 数据库名称
      */
 
 
-    private java.lang.String dbName;
+    private String dbName;
     /**
      * 用户名
      */
 
 
-    private java.lang.String dbUsername;
+    private String dbUsername;
     /**
      * 密码
      */
 
 
-    private java.lang.String dbPassword;
+    private String dbPassword;
     /**
      * 所属部门
      */
 
 
-    private java.lang.String sysOrgCode;
+    private String sysOrgCode;
 }

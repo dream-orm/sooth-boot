@@ -1,7 +1,7 @@
-package com.moxa.sooth.datasource.service;
+package com.moxa.sooth.code.datasource.service;
 
 import com.moxa.dream.template.service.IService;
-import com.moxa.sooth.datasource.view.SysDataSource;
+import com.moxa.sooth.code.datasource.view.SysDataSource;
 
 /**
  * @Description: 多数据源管理

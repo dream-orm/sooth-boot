@@ -1,11 +1,11 @@
-package com.moxa.sooth.datasource.controller;
+package com.moxa.sooth.code.datasource.controller;
 
 
+import com.moxa.sooth.code.datasource.model.SysDataSourceModel;
+import com.moxa.sooth.code.datasource.service.ISysDataSourceService;
+import com.moxa.sooth.code.datasource.view.SysDataSource;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.datasource.model.SysDataSourceModel;
-import com.moxa.sooth.datasource.service.ISysDataSourceService;
-import com.moxa.sooth.datasource.view.SysDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

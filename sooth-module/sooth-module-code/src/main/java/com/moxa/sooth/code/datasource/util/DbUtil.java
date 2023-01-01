@@ -1,8 +1,8 @@
-package com.moxa.sooth.datasource.util;
+package com.moxa.sooth.code.datasource.util;
 
 import cn.hutool.core.util.StrUtil;
+import com.moxa.sooth.code.datasource.view.SysDataSource;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
-import com.moxa.sooth.datasource.view.SysDataSource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

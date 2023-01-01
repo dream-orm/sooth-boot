@@ -1,4 +1,4 @@
-package com.moxa.sooth.datasource.table;
+package com.moxa.sooth.code.datasource.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;

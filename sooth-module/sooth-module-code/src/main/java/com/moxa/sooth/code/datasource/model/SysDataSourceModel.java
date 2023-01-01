@@ -1,4 +1,4 @@
-package com.moxa.sooth.datasource.model;
+package com.moxa.sooth.code.datasource.model;
 
 import com.moxa.dream.template.annotation.Conditional;
 import com.moxa.dream.template.condition.ContainsCondition;
