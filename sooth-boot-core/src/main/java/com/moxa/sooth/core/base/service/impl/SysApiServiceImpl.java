@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.template.mapper.TemplateMapper;
 import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
@@ -76,7 +75,7 @@ public class SysApiServiceImpl implements SysApiService {
         Set<String> permissionSet = new HashSet<>();
         List<SysPermission> permissionList = sysPermissionService.selectAuths(username);
         for (SysPermission po : permissionList) {
-            if (oConvertUtils.isNotEmpty(po.getPerms())) {
+            if (StrUtil.isNotEmpty(po.getPerms())) {
                 permissionSet.add(po.getPerms());
             }
         }

@@ -1,7 +1,7 @@
 package com.moxa.sooth.core.base.common.util.security;
 
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 
 /**
  * jdbc连接校验
@@ -25,7 +25,7 @@ public class JdbcSecurityUtil {
      * @return
      */
     public static void validate(String jdbcUrl) {
-        if (oConvertUtils.isEmpty(jdbcUrl)) {
+        if (StrUtil.isEmpty(jdbcUrl)) {
             return;
         }
         String urlConcatChar = "?";

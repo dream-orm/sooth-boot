@@ -1,7 +1,6 @@
 package com.moxa.sooth.core.base.common.aspect.annotation;
 
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.constant.enums.ModuleType;
 
 import java.lang.annotation.*;
 
@@ -38,10 +37,4 @@ public @interface AutoLog {
      */
     int operateType() default 0;
 
-    /**
-     * 模块类型 默认为common
-     *
-     * @return
-     */
-    ModuleType module() default ModuleType.COMMON;
 }

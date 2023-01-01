@@ -4,7 +4,7 @@ import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Maps;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
+import com.moxa.sooth.core.base.common.util.ConvertUtils;
 import com.moxa.sooth.monitor.domain.RedisInfo;
 import com.moxa.sooth.monitor.exception.RedisConnectException;
 import com.moxa.sooth.monitor.service.RedisService;
@@ -42,8 +42,8 @@ public class RedisServiceImpl implements RedisService {
         RedisInfo redisInfo = null;
         for (Map.Entry<Object, Object> entry : info.entrySet()) {
             redisInfo = new RedisInfo();
-            redisInfo.setKey(oConvertUtils.getString(entry.getKey()));
-            redisInfo.setValue(oConvertUtils.getString(entry.getValue()));
+            redisInfo.setKey(ConvertUtils.getString(entry.getKey()));
+            redisInfo.setValue(ConvertUtils.getString(entry.getValue()));
             infoList.add(redisInfo);
         }
         return infoList;
@@ -65,7 +65,7 @@ public class RedisServiceImpl implements RedisService {
         Map<String, Object> map = null;
         Properties info = redisConnectionFactory.getConnection().info();
         for (Map.Entry<Object, Object> entry : info.entrySet()) {
-            String key = oConvertUtils.getString(entry.getKey());
+            String key = ConvertUtils.getString(entry.getKey());
             if ("used_memory".equals(key)) {
                 map = new HashMap(5);
                 map.put("used_memory", entry.getValue());

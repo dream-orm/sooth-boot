@@ -1,10 +1,11 @@
 package com.moxa.sooth.core.base.config.shiro;
 
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
+import com.moxa.sooth.core.base.common.util.ConvertUtils;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.base.util.RedisUtil;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -94,7 +95,7 @@ public class ShiroRealm extends AuthorizingRealm {
         String token = (String) auth.getCredentials();
         if (token == null) {
             HttpServletRequest req = SpringContextUtils.getHttpServletRequest();
-            log.info("————————身份认证失败——————————IP地址:  " + oConvertUtils.getIpAddrByRequest(req) + "，URL:" + req.getRequestURI());
+            log.info("————————身份认证失败——————————IP地址:  " + ConvertUtils.getIpAddrByRequest(req) + "，URL:" + req.getRequestURI());
             throw new AuthenticationException("token为空!");
         }
         // 校验token有效性
@@ -147,7 +148,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     public boolean jwtTokenRefresh(String token, String userName, String passWord) {
         String cacheToken = String.valueOf(redisUtil.get(CommonConstant.PREFIX_USER_TOKEN + token));
-        if (oConvertUtils.isNotEmpty(cacheToken)) {
+        if (StrUtil.isNotEmpty(cacheToken)) {
             // 校验token有效性
             if (!JwtUtil.verify(cacheToken, userName, passWord)) {
                 String newAuthorization = JwtUtil.sign(userName, passWord);

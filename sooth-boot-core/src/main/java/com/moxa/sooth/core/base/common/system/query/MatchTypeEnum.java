@@ -1,6 +1,6 @@
 package com.moxa.sooth.core.base.common.system.query;
 
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 查询链接规则
@@ -25,14 +25,14 @@ public enum MatchTypeEnum {
     }
 
     public static MatchTypeEnum getByValue(Object value) {
-        if (oConvertUtils.isEmpty(value)) {
+        if (value == null) {
             return null;
         }
         return getByValue(value.toString());
     }
 
     public static MatchTypeEnum getByValue(String value) {
-        if (oConvertUtils.isEmpty(value)) {
+        if (StrUtil.isEmpty(value)) {
             return null;
         }
         for (MatchTypeEnum val : values()) {

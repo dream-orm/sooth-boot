@@ -1,15 +1,14 @@
 package com.moxa.sooth.core.login.controller;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.sooth.common.constant.CacheConstant;
 import com.moxa.sooth.common.util.RandImageUtil;
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.util.Md5Util;
 import com.moxa.sooth.core.base.common.util.PasswordUtil;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.config.SoothBootConfig;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
@@ -28,7 +27,6 @@ import java.util.LinkedHashMap;
 
 @RestController
 @RequestMapping("/sys")
-@Api(tags = "用户登录")
 @Slf4j
 public class LoginController {
     private final String BASE_CHECK_CODES = "qwertyuiplkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBNM1234567890";
@@ -86,7 +84,7 @@ public class LoginController {
     public Result<JSONObject> getUserInfo(HttpServletRequest request) {
         Result<JSONObject> result = new Result<JSONObject>();
         String username = JwtUtil.getUserNameByToken(request);
-        if (oConvertUtils.isNotEmpty(username)) {
+        if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
             SysUser sysUser = sysApiService.selectOneUser(username);
             JSONObject obj = new JSONObject();
@@ -108,7 +106,7 @@ public class LoginController {
     public Result<Object> logout(HttpServletRequest request, HttpServletResponse response) {
         //用户退出逻辑
         String token = request.getHeader(CommonConstant.X_ACCESS_TOKEN);
-        if (oConvertUtils.isEmpty(token)) {
+        if (StrUtil.isEmpty(token)) {
             return Result.error("退出登录失败！");
         }
         String username = JwtUtil.getUsername(token);

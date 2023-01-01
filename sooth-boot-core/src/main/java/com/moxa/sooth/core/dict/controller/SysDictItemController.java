@@ -1,7 +1,6 @@
 package com.moxa.sooth.core.dict.controller;
 
 
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.dict.model.SysDictItemModel;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Api(tags = "数据字典")
 @RestController
 @RequestMapping("/sys/dictItem")
 @Slf4j

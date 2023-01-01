@@ -1,6 +1,6 @@
 package com.moxa.sooth.core.base.common.system.query;
 
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * Query 规则 常量
@@ -76,7 +76,7 @@ public enum QueryRuleEnum {
     }
 
     public static QueryRuleEnum getByValue(String value) {
-        if (oConvertUtils.isEmpty(value)) {
+        if (StrUtil.isEmpty(value)) {
             return null;
         }
         for (QueryRuleEnum val : values()) {

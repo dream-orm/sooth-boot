@@ -2,7 +2,6 @@ package com.moxa.sooth.core.user.service;
 
 import com.moxa.dream.system.config.Page;
 import com.moxa.dream.template.service.IService;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.user.model.SysUserPasswordModel;
 import com.moxa.sooth.core.user.view.SysUser;
 

@@ -1,11 +1,11 @@
 package com.moxa.sooth.core.base.service.impl;
 
-import com.baomidou.mybatisplus.core.toolkit.IdWorker;
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
 import com.moxa.sooth.core.base.common.util.IpUtils;
+import com.moxa.sooth.core.base.common.util.SnowFlake;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.mapper.BaseCommonMapper;
 import com.moxa.sooth.core.base.service.BaseCommonService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +24,8 @@ public class BaseCommonServiceImpl implements BaseCommonService {
 
     @Override
     public void addLog(LogDTO logDTO) {
-        if (oConvertUtils.isEmpty(logDTO.getId())) {
-            logDTO.setId(String.valueOf(IdWorker.getId()));
+        if (StrUtil.isEmpty(logDTO.getId())) {
+            logDTO.setId(String.valueOf(SnowFlake.nextId()));
         }
         //保存日志（异常捕获处理，防止数据太大存储失败，导致业务失败）JT-238
         try {
@@ -40,7 +40,7 @@ public class BaseCommonServiceImpl implements BaseCommonService {
     @Override
     public void addLog(String logContent, Integer logType, Integer operatetype, LoginUser user) {
         LogDTO sysLog = new LogDTO();
-        sysLog.setId(String.valueOf(IdWorker.getId()));
+        sysLog.setId(String.valueOf(SnowFlake.nextId()));
         //注解上的描述,操作日志内容
         sysLog.setLogContent(logContent);
         sysLog.setLogType(logType);

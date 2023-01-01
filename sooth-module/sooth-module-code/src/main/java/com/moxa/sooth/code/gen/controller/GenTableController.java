@@ -6,7 +6,6 @@ import com.moxa.sooth.code.gen.model.GenTableModel;
 import com.moxa.sooth.code.gen.service.IGenTableService;
 import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
@@ -19,7 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-@Api(tags = "代码生成")
 @RestController
 @RequestMapping("/gen/table")
 public class GenTableController {

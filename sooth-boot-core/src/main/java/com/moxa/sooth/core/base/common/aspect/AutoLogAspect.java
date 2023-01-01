@@ -5,12 +5,9 @@ import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
 import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.constant.enums.ModuleType;
 import com.moxa.sooth.core.base.common.constant.enums.OperateTypeEnum;
 import com.moxa.sooth.core.base.common.util.IpUtils;
 import com.moxa.sooth.core.base.common.util.SpringContextUtils;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.BaseCommonService;
 import com.moxa.sooth.core.user.view.SysUser;
 import org.apache.shiro.SecurityUtils;
@@ -75,9 +72,6 @@ public class AutoLogAspect {
         if (syslog != null) {
             //update-begin-author:taoyan date:
             String content = syslog.value();
-            if (syslog.module() == ModuleType.ONLINE) {
-                content = getOnlineLogContent(obj, content);
-            }
             //注解上的描述,操作日志内容
             dto.setLogType(syslog.logType());
             dto.setLogContent(content);
@@ -181,29 +175,6 @@ public class AutoLogAspect {
         return params;
     }
 
-    /**
-     * online日志内容拼接
-     *
-     * @param obj
-     * @param content
-     * @return
-     */
-    private String getOnlineLogContent(Object obj, String content) {
-        if (Result.class.isInstance(obj)) {
-            Result res = (Result) obj;
-            String msg = res.getMessage();
-            String tableName = res.getOnlTable();
-            if (oConvertUtils.isNotEmpty(tableName)) {
-                content += ",表名:" + tableName;
-            }
-            if (res.isSuccess()) {
-                content += "," + (oConvertUtils.isEmpty(msg) ? "操作成功" : msg);
-            } else {
-                content += "," + (oConvertUtils.isEmpty(msg) ? "操作失败" : msg);
-            }
-        }
-        return content;
-    }
 
 
     /*    private void saveSysLog(ProceedingJoinPoint joinPoint, long time, Object obj) {

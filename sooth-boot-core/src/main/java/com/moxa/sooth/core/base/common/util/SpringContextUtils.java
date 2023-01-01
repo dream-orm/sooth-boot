@@ -1,5 +1,6 @@
 package com.moxa.sooth.core.base.common.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.ServiceNameConstants;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -11,10 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @Description: spring上下文工具类
- * @author: jeecg-boot
- */
+
 @Component
 public class SpringContextUtils implements ApplicationContextAware {
 
@@ -59,7 +57,7 @@ public class SpringContextUtils implements ApplicationContextAware {
         StringBuffer url = request.getRequestURL();
         //微服务情况下，获取gateway的basePath
         String basePath = request.getHeader(ServiceNameConstants.X_GATEWAY_BASE_PATH);
-        if (oConvertUtils.isNotEmpty(basePath)) {
+        if (StrUtil.isNotEmpty(basePath)) {
             return basePath;
         } else {
             return url.delete(url.length() - request.getRequestURI().length(), url.length()).toString();

@@ -1,9 +1,7 @@
 package com.moxa.sooth.core.base.mapper;
 
-import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
+import com.moxa.dream.system.annotation.Param;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
-import org.apache.ibatis.annotations.Param;
-
 
 public interface BaseCommonMapper {
 
@@ -12,7 +10,6 @@ public interface BaseCommonMapper {
      *
      * @param dto
      */
-    @InterceptorIgnore(illegalSql = "true", tenantLine = "true")
     void saveLog(@Param("dto") LogDTO dto);
 
 }

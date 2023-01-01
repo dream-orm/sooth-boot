@@ -1,5 +1,6 @@
 package com.moxa.sooth.core.base.common.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 
 /**
@@ -68,7 +69,7 @@ public class MyClassLoader extends ClassLoader {
                     start = end + 1;
                     end = packName.indexOf(".", start);
                 }
-                if (oConvertUtils.isNotEmpty(pathBuilder.toString())) {
+                if (StrUtil.isNotEmpty(pathBuilder.toString())) {
                     path = pathBuilder.toString();
                 }
                 path = path + packName.substring(start) + "/";

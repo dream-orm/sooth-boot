@@ -1,9 +1,9 @@
 package com.moxa.sooth.core.base.common.desensitization.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.desensitization.annotation.SensitiveField;
 import com.moxa.sooth.core.base.common.desensitization.enums.SensitiveEnum;
 import com.moxa.sooth.core.base.common.util.encryption.AesEncryptUtil;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
@@ -67,9 +67,8 @@ public class SensitiveInfoUtil {
      */
     public static Object handlerObject(Object obj, boolean isEncode) throws IllegalAccessException {
         log.debug(" obj --> " + obj.toString());
-        long startTime = System.currentTimeMillis();
-        if (oConvertUtils.isEmpty(obj)) {
-            return obj;
+        if (obj == null) {
+            return null;
         }
         // 判断是不是一个对象
         Field[] fields = obj.getClass().getDeclaredFields();
@@ -143,7 +142,7 @@ public class SensitiveInfoUtil {
             log.debug("数据解密错误，原数据:" + data);
         }
         //解决debug模式下，加解密失效导致中文被解密变成空的问题
-        if (oConvertUtils.isEmpty(result) && oConvertUtils.isNotEmpty(data)) {
+        if (StrUtil.isEmpty(result) && StrUtil.isNotEmpty(data)) {
             result = data;
         }
         return result;
@@ -205,7 +204,7 @@ public class SensitiveInfoUtil {
      * @return <例子：李**>
      */
     private static String chineseName(String fullName) {
-        if (oConvertUtils.isEmpty(fullName)) {
+        if (StrUtil.isEmpty(fullName)) {
             return "";
         }
         return formatRight(fullName, 1);
@@ -219,7 +218,7 @@ public class SensitiveInfoUtil {
      * @return <例子：李**>
      */
     private static String chineseName(String familyName, String firstName) {
-        if (oConvertUtils.isEmpty(familyName) || oConvertUtils.isEmpty(firstName)) {
+        if (StrUtil.isEmpty(familyName) || StrUtil.isEmpty(firstName)) {
             return "";
         }
         return chineseName(familyName + firstName);
@@ -232,7 +231,7 @@ public class SensitiveInfoUtil {
      * @return <例子：*************5762>
      */
     private static String idCardNum(String id) {
-        if (oConvertUtils.isEmpty(id)) {
+        if (StrUtil.isEmpty(id)) {
             return "";
         }
         return formatLeft(id, 4);
@@ -246,7 +245,7 @@ public class SensitiveInfoUtil {
      * @return <例子：****1234>
      */
     private static String fixedPhone(String num) {
-        if (oConvertUtils.isEmpty(num)) {
+        if (StrUtil.isEmpty(num)) {
             return "";
         }
         return formatLeft(num, 4);
@@ -259,7 +258,7 @@ public class SensitiveInfoUtil {
      * @return <例子:138******1234>
      */
     private static String mobilePhone(String num) {
-        if (oConvertUtils.isEmpty(num)) {
+        if (StrUtil.isEmpty(num)) {
             return "";
         }
         int len = num.length();
@@ -277,7 +276,7 @@ public class SensitiveInfoUtil {
      * @return <例子：北京市海淀区****>
      */
     private static String address(String address, int sensitiveSize) {
-        if (oConvertUtils.isEmpty(address)) {
+        if (StrUtil.isEmpty(address)) {
             return "";
         }
         int len = address.length();
@@ -294,7 +293,7 @@ public class SensitiveInfoUtil {
      * @return <例子:g**@163.com>
      */
     private static String email(String email) {
-        if (oConvertUtils.isEmpty(email)) {
+        if (StrUtil.isEmpty(email)) {
             return "";
         }
         int index = email.indexOf("@");
@@ -314,7 +313,7 @@ public class SensitiveInfoUtil {
      * @return <例子:6222600**********1234>
      */
     private static String bankCard(String cardNum) {
-        if (oConvertUtils.isEmpty(cardNum)) {
+        if (StrUtil.isEmpty(cardNum)) {
             return "";
         }
         return formatBetween(cardNum, 6, 4);
@@ -327,7 +326,7 @@ public class SensitiveInfoUtil {
      * @return <例子:12********>
      */
     private static String cnapsCode(String code) {
-        if (oConvertUtils.isEmpty(code)) {
+        if (StrUtil.isEmpty(code)) {
             return "";
         }
         return formatRight(code, 2);

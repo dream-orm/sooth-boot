@@ -1,12 +1,13 @@
 package com.moxa.sooth.core.permission.controller;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
+import com.moxa.sooth.core.base.common.util.ConvertUtils;
 import com.moxa.sooth.core.base.common.util.Md5Util;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.permission.model.SysPermissionMenuTypeModel;
@@ -65,7 +66,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         try {
             //直接获取当前用户不适用前端token
             SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-            if (oConvertUtils.isEmpty(sysUser)) {
+            if (sysUser == null) {
                 return Result.error("请登录系统！");
             }
             List<SysPermission> metaList = service.selectAuths(sysUser.getUsername());
@@ -109,7 +110,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         try {
             // 直接获取当前用户
             SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-            if (oConvertUtils.isEmpty(sysUser)) {
+            if (sysUser == null) {
                 return Result.error("请登录系统！");
             }
             // 获取当前用户的权限集合
@@ -238,12 +239,12 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             if (json == null) {
                 continue;
             }
-            if (parentJson == null && oConvertUtils.isEmpty(tempPid)) {
+            if (parentJson == null && StrUtil.isEmpty(tempPid)) {
                 jsonArray.add(json);
                 if (!permission.isLeaf()) {
                     getPermissionJsonArray(jsonArray, metaList, json);
                 }
-            } else if (parentJson != null && oConvertUtils.isNotEmpty(tempPid) && tempPid.equals(parentJson.getString("id"))) {
+            } else if (parentJson != null && StrUtil.isNotEmpty(tempPid) && tempPid.equals(parentJson.getString("id"))) {
                 // 类型( 0：一级菜单 1：子菜单 2：按钮 )
                 if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
                     JSONObject metaJson = parentJson.getJSONObject("meta");
@@ -304,7 +305,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             }
 
             // 重要规则：路由name (通过URL生成路由name,路由name供前端开发，页面跳转使用)
-            if (oConvertUtils.isNotEmpty(permission.getComponentName())) {
+            if (StrUtil.isNotEmpty(permission.getComponentName())) {
                 json.put("name", permission.getComponentName());
             } else {
                 json.put("name", urlToRouteName(permission.getUrl()));
@@ -342,19 +343,19 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
 
             //update-begin--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
             String component = permission.getComponent();
-            if (oConvertUtils.isNotEmpty(permission.getComponentName()) || oConvertUtils.isNotEmpty(component)) {
-                meta.put("componentName", oConvertUtils.getString(permission.getComponentName(), component.substring(component.lastIndexOf("/") + 1)));
+            if (StrUtil.isNotEmpty(permission.getComponentName()) || StrUtil.isNotEmpty(component)) {
+                meta.put("componentName", ConvertUtils.getString(permission.getComponentName(), component.substring(component.lastIndexOf("/") + 1)));
             }
             //update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
 
-            if (oConvertUtils.isEmpty(permission.getParentId())) {
+            if (StrUtil.isEmpty(permission.getParentId())) {
                 // 一级菜单跳转地址
                 json.put("redirect", permission.getRedirect());
-                if (oConvertUtils.isNotEmpty(permission.getIcon())) {
+                if (StrUtil.isNotEmpty(permission.getIcon())) {
                     meta.put("icon", permission.getIcon());
                 }
             } else {
-                if (oConvertUtils.isNotEmpty(permission.getIcon())) {
+                if (StrUtil.isNotEmpty(permission.getIcon())) {
                     meta.put("icon", permission.getIcon());
                 }
             }
@@ -393,7 +394,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @return
      */
     private String urlToRouteName(String url) {
-        if (oConvertUtils.isNotEmpty(url)) {
+        if (StrUtil.isNotEmpty(url)) {
             if (url.startsWith(SymbolConstant.SINGLE_SLASH)) {
                 url = url.substring(1);
             }

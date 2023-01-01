@@ -1,6 +1,6 @@
 //package com.moxa.sooth.common.util.superSearch;
 //
-//import com.moxa.sooth.common.util.oConvertUtils;
+//import com.moxa.sooth.common.util.StrUtil;
 //
 ///**
 // * Query 规则 常量
@@ -58,7 +58,7 @@
 //    }
 //
 //    public static QueryRuleEnum getByValue(String value){
-//    	if(oConvertUtils.isEmpty(value)) {
+//    	if(StrUtil.isEmpty(value)) {
 //    		return null;
 //    	}
 //        for(QueryRuleEnum val :values()){

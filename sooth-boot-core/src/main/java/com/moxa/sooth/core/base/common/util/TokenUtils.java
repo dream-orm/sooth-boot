@@ -85,8 +85,8 @@ public class TokenUtils {
      * @return
      */
     private static boolean jwtTokenRefresh(String token, String userName, String passWord, RedisUtil redisUtil) {
-        String cacheToken = oConvertUtils.getString(redisUtil.get(CommonConstant.PREFIX_USER_TOKEN + token));
-        if (oConvertUtils.isNotEmpty(cacheToken)) {
+        String cacheToken = ConvertUtils.getString(redisUtil.get(CommonConstant.PREFIX_USER_TOKEN + token));
+        if (StrUtil.isNotEmpty(cacheToken)) {
             // 校验token有效性
             if (!JwtUtil.verify(cacheToken, userName, passWord)) {
                 String newAuthorization = JwtUtil.sign(userName, passWord);

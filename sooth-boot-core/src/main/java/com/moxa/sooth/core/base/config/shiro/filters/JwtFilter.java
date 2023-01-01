@@ -3,7 +3,6 @@ package com.moxa.sooth.core.base.config.shiro.filters;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.config.shiro.JwtToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
@@ -65,7 +64,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String token = httpServletRequest.getHeader(CommonConstant.X_ACCESS_TOKEN);
         // update-begin--Author:lvdandan Date:20210105 for：JT-355 OA聊天添加token验证，获取token参数
-        if (oConvertUtils.isEmpty(token)) {
+        if (StrUtil.isEmpty(token)) {
             token = httpServletRequest.getParameter("token");
         }
         // update-end--Author:lvdandan Date:20210105 for：JT-355 OA聊天添加token验证，获取token参数

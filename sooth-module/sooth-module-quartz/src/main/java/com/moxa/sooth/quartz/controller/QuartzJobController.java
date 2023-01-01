@@ -1,6 +1,5 @@
 package com.moxa.sooth.quartz.controller;
 
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.quartz.service.IQuartzJobService;
@@ -22,7 +21,6 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("/sys/quartzJob")
 @Slf4j
-@Api(tags = "定时任务接口")
 public class QuartzJobController {
     @Autowired
     private IQuartzJobService quartzJobService;

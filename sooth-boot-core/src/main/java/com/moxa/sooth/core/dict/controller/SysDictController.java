@@ -2,7 +2,6 @@ package com.moxa.sooth.core.dict.controller;
 
 
 import com.moxa.sooth.core.base.controller.BaseController;
-import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.dict.model.SysDictModel;
 import com.moxa.sooth.core.dict.service.ISysDictService;
 import com.moxa.sooth.core.dict.view.SysDict;

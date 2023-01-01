@@ -5,7 +5,6 @@ import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.code.baseclass.model.BaseClassModel;
 import com.moxa.sooth.code.baseclass.service.IBaseClassService;
 import com.moxa.sooth.code.baseclass.view.BaseClass;
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
@@ -17,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-@Api(tags = "基类管理")
 @RestController
 @RequestMapping("/generate/baseClass")
 public class BaseClassController {

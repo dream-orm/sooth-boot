@@ -1,8 +1,8 @@
 package com.moxa.sooth.core.base.common.system.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.system.annotation.EnumDict;
 import com.moxa.sooth.core.base.common.system.vo.DictModel;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -75,7 +75,7 @@ public class ResourceUtil {
                 if (enumDict != null) {
                     EnumDict annotation = clazz.getAnnotation(EnumDict.class);
                     String key = annotation.value();
-                    if (oConvertUtils.isNotEmpty(key)) {
+                    if (StrUtil.isNotEmpty(key)) {
                         List<DictModel> list = (List<DictModel>) clazz.getDeclaredMethod(METHOD_NAME).invoke(null);
                         enumDictData.put(key, list);
                     }

@@ -17,18 +17,9 @@
         <soothboot.version>1.0.0</soothboot.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-
         <fastjson.version>1.2.83</fastjson.version>
-        <pegdown.version>1.6.0</pegdown.version>
-        <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
-        <knife4j-spring-ui.version>2.0.9</knife4j-spring-ui.version>
-
         <mysql-connector-java.version>8.0.27</mysql-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
-
-        <!-- 持久层 -->
-        <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <dream.version>0.0.1-SNAPSHOT</dream.version>
         <commons.version>2.6</commons.version>
         <http-client.version>4.5.13</http-client.version>
@@ -48,7 +39,6 @@
         <module>sooth-boot-main</module>
         <module>sooth-boot-core</module>
         <module>sooth-boot-common</module>
-        <module>sooth-module-system</module>
         <module>sooth-module</module>
         <module>sooth-boot-plugin</module>
         <module>sooth-boot-dependency</module>
@@ -69,13 +59,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- system 模块-->
-            <dependency>
-                <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-system-biz</artifactId>
-                <version>${soothboot.version}</version>
-            </dependency>
-
             <!-- sooth tools -->
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
@@ -86,12 +69,6 @@
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-boot-core</artifactId>
-                <version>${soothboot.version}</version>
-            </dependency>
-            <!-- system 单体 api -->
-            <dependency>
-                <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-system-local-api</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>

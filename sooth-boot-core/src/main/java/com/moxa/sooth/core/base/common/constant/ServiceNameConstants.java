@@ -18,21 +18,9 @@
 
 package com.moxa.sooth.core.base.common.constant;
 
-/**
- * @author scott
- * @date 2019年05月18日
- * 服务名称
- */
+
 public interface ServiceNameConstants {
 
-    /**
-     * 微服务名：系统管理模块
-     */
-    String SERVICE_SYSTEM = "jeecg-system";
-    /**
-     * 微服务名： demo模块
-     */
-    String SERVICE_DEMO = "jeecg-demo";
 
     /**
      * gateway通过header传递根路径 basePath

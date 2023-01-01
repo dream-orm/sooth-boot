@@ -5,7 +5,6 @@ import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.code.fieldtype.model.FieldTypeModel;
 import com.moxa.sooth.code.fieldtype.service.IFieldTypeService;
 import com.moxa.sooth.code.fieldtype.view.FieldType;
-import com.moxa.sooth.core.base.common.aspect.annotation.Api;
 import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 
 @Slf4j
-@Api(tags = "字段类型映射")
 @RestController
 @RequestMapping("/generate/fieldType")
 public class FieldTypeController {

@@ -2,7 +2,6 @@ package com.moxa.sooth.core.base.config.shiro;
 
 import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.util.oConvertUtils;
 import com.moxa.sooth.core.base.config.SoothBootConfig;
 import com.moxa.sooth.core.base.config.shiro.filters.CustomShiroFilterFactoryBean;
 import com.moxa.sooth.core.base.config.shiro.filters.JwtFilter;
@@ -73,7 +72,7 @@ public class ShiroConfig {
         //支持yml方式，配置拦截排除
         if (soothBootConfig != null && soothBootConfig.getShiro() != null) {
             String shiroExcludeUrls = soothBootConfig.getShiro().getExcludeUrls();
-            if (oConvertUtils.isNotEmpty(shiroExcludeUrls)) {
+            if (StrUtil.isNotEmpty(shiroExcludeUrls)) {
                 String[] permissionUrl = shiroExcludeUrls.split(",");
                 for (String url : permissionUrl) {
                     filterChainDefinitionMap.put(url, "anon");
@@ -268,7 +267,7 @@ public class ShiroConfig {
             Set<HostAndPort> portSet = new HashSet<>();
             lettuceConnectionFactory.getClusterConfiguration().getClusterNodes().forEach(node -> portSet.add(new HostAndPort(node.getHost(), node.getPort())));
             //update-begin--Author:scott Date:20210531 for：修改集群模式下未设置redis密码的bug issues/I3QNIC
-            if (oConvertUtils.isNotEmpty(lettuceConnectionFactory.getPassword())) {
+            if (StrUtil.isNotEmpty(lettuceConnectionFactory.getPassword())) {
                 JedisCluster jedisCluster = new JedisCluster(portSet, 2000, 2000, 5,
                         lettuceConnectionFactory.getPassword(), new GenericObjectPoolConfig());
                 redisManager.setPassword(lettuceConnectionFactory.getPassword());

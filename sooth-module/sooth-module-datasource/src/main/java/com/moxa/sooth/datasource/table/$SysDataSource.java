@@ -49,11 +49,6 @@ public class $SysDataSource {
     @Column(value = "create_time", jdbcType = Types.TIMESTAMP)
     private Date createTime;
     /**
-     * 数据源编码
-     */
-    @Column(value = "code", jdbcType = Types.VARCHAR)
-    private String code;
-    /**
      * 数据源地址
      */
     @Column(value = "db_url", jdbcType = Types.VARCHAR)
