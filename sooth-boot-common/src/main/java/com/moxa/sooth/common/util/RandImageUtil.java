@@ -60,8 +60,6 @@ public class RandImageUtil {
         //删除 \r\n
         base64 = base64.replaceAll("\n", "").replaceAll("\r", "");
 
-        //写到指定位置
-        //ImageIO.write(bufferedImage, "png", new File(""));
 
         return BASE64_PRE + base64;
     }

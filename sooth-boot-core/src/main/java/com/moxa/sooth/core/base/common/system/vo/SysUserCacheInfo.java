@@ -4,10 +4,6 @@ import com.moxa.sooth.core.base.common.util.DateUtils;
 
 import java.util.List;
 
-/**
- * @Description: 用户缓存信息
- * @author: jeecg-boot
- */
 public class SysUserCacheInfo {
 
     private String sysUserCode;

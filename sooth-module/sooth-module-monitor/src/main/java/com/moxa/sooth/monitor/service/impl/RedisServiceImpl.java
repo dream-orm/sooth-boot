@@ -3,7 +3,6 @@ package com.moxa.sooth.monitor.service.impl;
 import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Maps;
 import com.moxa.sooth.core.base.common.util.ConvertUtils;
 import com.moxa.sooth.monitor.domain.RedisInfo;
 import com.moxa.sooth.monitor.exception.RedisConnectException;
@@ -90,7 +89,7 @@ public class RedisServiceImpl implements RedisService {
         if (REDIS_MESSAGE.equals(type)) {
             List<RedisInfo> redisInfo = getRedisInfo();
             for (RedisInfo info : redisInfo) {
-                Map<String, Object> map = Maps.newHashMap();
+                Map<String, Object> map = new HashMap<>();
                 BeanMap beanMap = BeanMap.create(info);
                 for (Object key : beanMap.keySet()) {
                     map.put(key + "", beanMap.get(key));

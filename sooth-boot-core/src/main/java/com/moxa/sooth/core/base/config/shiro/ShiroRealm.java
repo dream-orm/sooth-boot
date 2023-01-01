@@ -25,14 +25,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
-
-/**
- * @Description: 用户登录鉴权和获取用户授权
- * @Author: Scott
- * @Date: 2019-4-23 8:13
- * @Version: 1.1
- */
-@Component
 @Slf4j
 public class ShiroRealm extends AuthorizingRealm {
     @Lazy
@@ -171,14 +163,5 @@ public class ShiroRealm extends AuthorizingRealm {
         return false;
     }
 
-    /**
-     * 清除当前用户的权限认证缓存
-     *
-     * @param principals 权限信息
-     */
-    @Override
-    public void clearCache(PrincipalCollection principals) {
-        super.clearCache(principals);
-    }
 
 }

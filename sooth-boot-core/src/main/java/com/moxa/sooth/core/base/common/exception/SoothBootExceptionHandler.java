@@ -15,12 +15,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-/**
- * 异常处理器
- *
- * @Author scott
- * @Date 2019
- */
 @RestControllerAdvice
 @Slf4j
 public class SoothBootExceptionHandler {

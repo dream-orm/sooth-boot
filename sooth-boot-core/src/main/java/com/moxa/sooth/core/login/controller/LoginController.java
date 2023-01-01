@@ -9,7 +9,6 @@ import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.system.util.JwtUtil;
 import com.moxa.sooth.core.base.common.util.Md5Util;
 import com.moxa.sooth.core.base.common.util.PasswordUtil;
-import com.moxa.sooth.core.base.config.SoothBootConfig;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.base.util.RedisUtil;
@@ -30,10 +29,9 @@ import java.util.LinkedHashMap;
 @Slf4j
 public class LoginController {
     private final String BASE_CHECK_CODES = "qwertyuiplkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBNM1234567890";
+
     @Autowired
     private RedisUtil redisUtil;
-    @Autowired
-    private SoothBootConfig soothBootConfig;
     @Autowired
     private SysApiService sysApiService;
 
@@ -48,7 +46,7 @@ public class LoginController {
             return result;
         }
         String lowerCaseCaptcha = captcha.toLowerCase();
-        String origin = lowerCaseCaptcha + sysLoginModel.getCheckKey() + soothBootConfig.getSignatureSecret();
+        String origin = lowerCaseCaptcha + sysLoginModel.getCheckKey();
         String realKey = Md5Util.md5Encode(origin, "utf-8");
         Object checkCode = redisUtil.get(realKey);
         if (checkCode == null || !checkCode.toString().equals(lowerCaseCaptcha)) {
@@ -146,22 +144,6 @@ public class LoginController {
         redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, token);
         redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME * 2 / 1000);
         obj.put("token", token);
-
-//        String tenantIds = sysUser.getRelTenantIds();
-//        if (StrUtil.isNotBlank(tenantIds)) {
-//            List<Integer> tenantIdList = new ArrayList<>();
-//            for (String id : tenantIds.split(SymbolConstant.COMMA)) {
-//                tenantIdList.add(Integer.valueOf(id));
-//            }
-//            // 该方法仅查询有效的租户，如果返回0个就说明所有的租户均无效。
-//            List<SysTenant> tenantList = sysTenantService.queryEffectiveTenant(tenantIdList);
-//            if (tenantList.size() == 0) {
-//                result.error500("与该用户关联的租户均已被冻结，无法登录！");
-//                return result;
-//            } else {
-//                obj.put("tenantList", tenantList);
-//            }
-//        }
         obj.put("userInfo", sysUser);
         result.setResult(obj);
         result.success("登录成功");
@@ -185,7 +167,7 @@ public class LoginController {
             String lowerCaseCode = code.toLowerCase();
 
             // 加入密钥作为混淆，避免简单的拼接，被外部利用，用户自定义该密钥即可
-            String origin = lowerCaseCode + key + soothBootConfig.getSignatureSecret();
+            String origin = lowerCaseCode + key ;
             String realKey = Md5Util.md5Encode(origin, "utf-8");
 
             redisUtil.set(realKey, lowerCaseCode, 60);
