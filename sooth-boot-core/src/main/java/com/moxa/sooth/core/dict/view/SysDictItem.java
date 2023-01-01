@@ -19,12 +19,12 @@ public class SysDictItem extends BaseDict {
     /**
      * id
      */
-    private String id;
+    private Long id;
 
     /**
      * 字典id
      */
-    private String dictId;
+    private Long dictId;
 
     /**
      * 字典项文本
@@ -49,12 +49,4 @@ public class SysDictItem extends BaseDict {
      */
 
     private Double orderNo;
-
-
-    /**
-     * 状态（1启用 0不启用）
-     */
-    @Dict(dicCode = "dict_item_status")
-    @Extract(DictExtractor.class)
-    private Integer status;
 }

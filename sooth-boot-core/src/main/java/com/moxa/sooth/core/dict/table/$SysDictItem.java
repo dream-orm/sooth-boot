@@ -35,14 +35,8 @@ public class $SysDictItem {
     /**
      * 字典id
      */
-    @Column(value = "dict_id", jdbcType = Types.VARCHAR)
-    private String dictId;
-    /**
-     * 状态（1启用 0不启用）
-     */
-    @Column(value = "status", jdbcType = Types.INTEGER)
-    private Integer status;
-
+    @Column(value = "dict_id", jdbcType = Types.BIGINT)
+    private Long dictId;
     /**
      * 字典项文本
      */

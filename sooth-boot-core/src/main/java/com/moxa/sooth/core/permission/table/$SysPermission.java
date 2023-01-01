@@ -56,8 +56,8 @@ public class $SysPermission {
      * 主键id
      */
     @Id
-    @Column(value = "id", jdbcType = Types.VARCHAR)
-    private String id;
+    @Column(value = "id", jdbcType = Types.BIGINT)
+    private Long id;
     /**
      * 是否路由菜单: 0:不是  1:是（默认值1）
      */

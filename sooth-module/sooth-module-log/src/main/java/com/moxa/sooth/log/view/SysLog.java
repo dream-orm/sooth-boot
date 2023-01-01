@@ -21,7 +21,7 @@ public class SysLog extends BaseEntity {
     /**
      * id
      */
-    private String id;
+    private Long id;
 
     /**
      * 耗时
@@ -59,7 +59,7 @@ public class SysLog extends BaseEntity {
     /**
      * 操作人用户账户
      */
-    private String userid;
+    private Long userid;
     /**
      * 操作详细日志
      */

@@ -27,7 +27,7 @@ public class QuartzJob extends BaseDict {
     /**
      * id
      */
-    private String id;
+    private Long id;
     /**
      * 创建人
      */

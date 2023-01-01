@@ -10,6 +10,7 @@ import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.util.ConvertUtils;
 import com.moxa.sooth.core.base.util.Md5Util;
+import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
 import com.moxa.sooth.core.permission.model.SysPermissionMenuTypeModel;
 import com.moxa.sooth.core.permission.model.SysPermissionModel;
 import com.moxa.sooth.core.permission.model.SysRolePermissionModel;
@@ -148,13 +149,18 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @return
      */
     @RequestMapping(value = "/queryRolePermission", method = RequestMethod.GET)
-    public Result<List<String>> queryRolePermission(@RequestParam(name = "roleId") String roleId) {
+    public Result<List<Long>> queryRolePermission(@RequestParam(name = "roleId") String roleId) {
         SysRolePermissionModel rolePermissionModel = new SysRolePermissionModel();
         rolePermissionModel.setRoleId(roleId);
         List<SysRolePermission> list = rolePermissionService.selectList(rolePermissionModel);
-        return Result.ok(list.stream().map(sysRolePermission -> String.valueOf(sysRolePermission.getPermissionId())).collect(Collectors.toList()));
+        return Result.ok(list.stream().map(sysRolePermission -> sysRolePermission.getPermissionId()).collect(Collectors.toList()));
     }
 
+    @PostMapping("saveRolePermission")
+    public Result saveRolePermission(@RequestBody SysPermissionEditModel sysPermissionEditModel){
+        service.saveRolePermission(sysPermissionEditModel);
+        return Result.ok("角色授权成功");
+    }
     /**
      * 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示
      *

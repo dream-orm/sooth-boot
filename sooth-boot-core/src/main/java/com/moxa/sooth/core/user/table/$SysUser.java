@@ -17,11 +17,6 @@ public class $SysUser {
     @Column(value = "phone", jdbcType = Types.VARCHAR)
     private String phone;
     /**
-     * 多租户标识
-     */
-    @Column(value = "rel_tenant_ids", jdbcType = Types.VARCHAR)
-    private String relTenantIds;
-    /**
      * 创建时间
      */
     @Column(value = "create_time", jdbcType = Types.TIMESTAMP)
@@ -40,8 +35,8 @@ public class $SysUser {
      * 主键id
      */
     @Id
-    @Column(value = "id", jdbcType = Types.VARCHAR)
-    private String id;
+    @Column(value = "id", jdbcType = Types.BIGINT)
+    private Long id;
     /**
      * 头像
      */

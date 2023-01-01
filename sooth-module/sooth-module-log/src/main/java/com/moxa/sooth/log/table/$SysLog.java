@@ -25,8 +25,8 @@ public class $SysLog {
     /**
      * 操作用户账号
      */
-    @Column(value = "userid", jdbcType = Types.VARCHAR)
-    private String userid;
+    @Column(value = "userid", jdbcType = Types.BIGINT)
+    private Long userid;
     /**
      * 请求类型
      */
@@ -36,8 +36,8 @@ public class $SysLog {
      *
      */
     @Id
-    @Column(value = "id", jdbcType = Types.VARCHAR)
-    private String id;
+    @Column(value = "id", jdbcType = Types.BIGINT)
+    private Long id;
     /**
      * 操作用户名称
      */

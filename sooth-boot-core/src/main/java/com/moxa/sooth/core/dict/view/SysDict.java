@@ -13,13 +13,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @View($SysDict.class)
 public class SysDict extends BaseEntity {
-
-    private static final long serialVersionUID = 1L;
-
     /**
      * id
      */
-    private String id;
+    private Long id;
 
     /**
      * [预留字段，暂时无用]
