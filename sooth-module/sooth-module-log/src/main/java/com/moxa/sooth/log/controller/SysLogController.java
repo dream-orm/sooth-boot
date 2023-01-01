@@ -9,14 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * <p>
- * 系统日志表 前端控制器
- * </p>
- *
- * @Author zhangweijian
- * @since 2018-12-26
- */
 @RestController
 @RequestMapping("/sys/log")
 @Slf4j

@@ -1,4 +1,4 @@
-package com.moxa.sooth.common.util;
+package com.moxa.sooth.core.base.util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

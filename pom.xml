@@ -15,54 +15,30 @@
 
     <properties>
         <soothboot.version>1.0.0</soothboot.version>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <fastjson.version>1.2.83</fastjson.version>
-        <mysql-connector-java.version>8.0.27</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
         <dream.version>0.0.1-SNAPSHOT</dream.version>
-        <commons.version>2.6</commons.version>
         <http-client.version>4.5.13</http-client.version>
         <!-- shiro -->
-        <shiro.version>1.9.1</shiro.version>
-        <java-jwt.version>3.11.0</java-jwt.version>
-        <dom4j.version>1.6.1</dom4j.version>
-        <!-- Log4j2爆雷漏洞 -->
-        <log4j2.version>2.17.0</log4j2.version>
-        <logback.version>1.2.9</logback.version>
+        <shiro.version>1.10.0</shiro.version>
+        <java-jwt.version>4.2.1</java-jwt.version>
         <hutool.version>5.3.8</hutool.version>
-        <commons-beanutils.version>1.9.4</commons-beanutils.version>
     </properties>
 
     <modules>
         <module>sooth-boot-main</module>
         <module>sooth-boot-core</module>
-        <module>sooth-boot-common</module>
         <module>sooth-module</module>
         <module>sooth-boot-plugin</module>
         <module>sooth-boot-dependency</module>
     </modules>
-    <dependencies>
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <!-- json -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-    </dependencies>
-
     <dependencyManagement>
         <dependencies>
-            <!-- sooth tools -->
             <dependency>
-                <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-boot-common</artifactId>
-                <version>${soothboot.version}</version>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
             <!-- sooth core -->
             <dependency>
@@ -73,12 +49,6 @@
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-module-log</artifactId>
-                <version>${soothboot.version}</version>
-            </dependency>
-            <!--租户管理-->
-            <dependency>
-                <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-module-tenant</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
@@ -102,26 +72,9 @@
                 <version>${dream.version}</version>
             </dependency>
             <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>${dom4j.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>${http-client.version}</version>
-            </dependency>
-            <!-- fileupload -->
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>1.4</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>commons-io</artifactId>
-                        <groupId>commons-io</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <!-- hutool工具类-->
             <dependency>
@@ -133,12 +86,6 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-crypto</artifactId>
                 <version>${hutool.version}</version>
-            </dependency>
-            <!-- commons-beanutils -->
-            <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils</artifactId>
-                <version>${commons-beanutils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -164,19 +111,5 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                    <include>**/*.json</include>
-                    <include>**/*.ftl</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 </project>

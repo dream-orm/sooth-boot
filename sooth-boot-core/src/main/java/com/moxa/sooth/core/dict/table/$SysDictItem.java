@@ -20,8 +20,8 @@ public class $SysDictItem {
      *
      */
     @Id
-    @Column(value = "id", jdbcType = Types.VARCHAR)
-    private String id;
+    @Column(value = "id", jdbcType = Types.BIGINT)
+    private Long id;
     /**
      * 描述
      */
@@ -30,8 +30,8 @@ public class $SysDictItem {
     /**
      * 排序
      */
-    @Column(value = "sort_order", jdbcType = Types.INTEGER)
-    private Integer sortOrder;
+    @Column(value = "order_no", jdbcType = Types.DOUBLE)
+    private Double orderNo;
     /**
      * 字典id
      */

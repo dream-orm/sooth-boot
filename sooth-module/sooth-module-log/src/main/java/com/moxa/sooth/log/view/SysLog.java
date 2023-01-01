@@ -18,9 +18,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @View($SysLog.class)
 public class SysLog extends BaseEntity {
-
-    private static final long serialVersionUID = 1L;
-
     /**
      * id
      */
@@ -74,12 +71,5 @@ public class SysLog extends BaseEntity {
     @Dict(dicCode = "log_type")
     @Extract(DictExtractor.class)
     private Integer logType;
-
-    /**
-     * 操作类型（1查询，2添加，3修改，4删除,5导入，6导出）
-     */
-    @Dict(dicCode = "operate_type")
-    @Extract(DictExtractor.class)
-    private Integer operateType;
 
 }

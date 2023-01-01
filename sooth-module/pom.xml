@@ -23,7 +23,5 @@
         <module>sooth-module-quartz</module>
         <module>sooth-module-log</module>
         <module>sooth-module-monitor</module>
-        <!--系统管理-->
-        <module>sooth-module-tenant</module>
     </modules>
 </project>

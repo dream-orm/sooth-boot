@@ -48,7 +48,7 @@ public class SysDictItem extends BaseDict {
      * 排序
      */
 
-    private Integer sortOrder;
+    private Double orderNo;
 
 
     /**

@@ -71,8 +71,8 @@ public class $SysLog {
     /**
      * 日志内容
      */
-    @Column(value = "log_content", jdbcType = Types.VARCHAR)
-    private String logContent;
+    @Column(value = "content", jdbcType = Types.VARCHAR)
+    private String content;
     /**
      * 更新人
      */
@@ -88,11 +88,6 @@ public class $SysLog {
      */
     @Column(value = "create_time", jdbcType = Types.TIMESTAMP)
     private Date createTime;
-    /**
-     * 操作类型
-     */
-    @Column(value = "operate_type", jdbcType = Types.INTEGER)
-    private Integer operateType;
     /**
      * 更新时间
      */

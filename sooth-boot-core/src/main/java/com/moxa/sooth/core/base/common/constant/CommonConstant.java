@@ -103,11 +103,6 @@ public interface CommonConstant {
 
 
     /**
-     * 微服务读取配置文件属性 服务地址
-     */
-    String CLOUD_SERVER_KEY = "spring.cloud.nacos.discovery.server-addr";
-
-    /**
      * POST请求
      */
     String HTTP_POST = "POST";

@@ -21,8 +21,8 @@ public class $SysDict {
      *
      */
     @Id
-    @Column(value = "id", jdbcType = Types.VARCHAR)
-    private String id;
+    @Column(value = "id", jdbcType = Types.BIGINT)
+    private Long id;
     /**
      * 字典类型0为string,1为number
      */

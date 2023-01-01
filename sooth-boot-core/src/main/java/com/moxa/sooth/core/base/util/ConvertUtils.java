@@ -1,13 +1,12 @@
 package com.moxa.sooth.core.base.util;
 
+import cn.hutool.core.io.IoUtil;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeanUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -666,14 +665,8 @@ public class ConvertUtils {
      * @return
      */
     public static String readStatic(String url) {
-        String json = "";
-        try {
-            //换个写法，解决springboot读取jar包中文件的问题
-            InputStream stream = ConvertUtils.class.getClassLoader().getResourceAsStream(url.replace("classpath:", ""));
-            json = IOUtils.toString(stream, "UTF-8");
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        }
-        return json;
+        //换个写法，解决springboot读取jar包中文件的问题
+        InputStream stream = ConvertUtils.class.getClassLoader().getResourceAsStream(url.replace("classpath:", ""));
+        return IoUtil.read(stream, "UTF-8");
     }
 }

@@ -1,12 +1,12 @@
 package com.moxa.sooth.core.base.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.moxa.sooth.common.util.SnowFlake;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
 import com.moxa.sooth.core.base.common.system.vo.LoginUser;
 import com.moxa.sooth.core.base.mapper.BaseCommonMapper;
 import com.moxa.sooth.core.base.service.BaseCommonService;
 import com.moxa.sooth.core.base.util.IpUtils;
+import com.moxa.sooth.core.base.util.SnowFlake;
 import com.moxa.sooth.core.base.util.SpringContextUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;

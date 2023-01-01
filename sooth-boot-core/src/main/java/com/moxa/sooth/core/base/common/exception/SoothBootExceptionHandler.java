@@ -1,7 +1,5 @@
 package com.moxa.sooth.core.base.common.exception;
 
-import cn.hutool.core.util.ObjectUtil;
-import com.moxa.sooth.common.enums.SentinelErrorInfoEnum;
 import com.moxa.sooth.core.base.entity.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.AuthorizationException;
@@ -50,13 +48,6 @@ public class SoothBootExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Result<?> handleException(Exception e) {
         log.error(e.getMessage(), e);
-        //update-begin---author:zyf ---date:20220411  for：处理Sentinel限流自定义异常
-        Throwable throwable = e.getCause();
-        SentinelErrorInfoEnum errorInfoEnum = SentinelErrorInfoEnum.getErrorByException(throwable);
-        if (ObjectUtil.isNotEmpty(errorInfoEnum)) {
-            return Result.error(errorInfoEnum.getError());
-        }
-        //update-end---author:zyf ---date:20220411  for：处理Sentinel限流自定义异常
         return Result.error("操作失败，" + e.getMessage());
     }
 

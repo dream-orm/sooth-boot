@@ -11,5 +11,5 @@ public class SysDictItemModel {
     @Conditional(value = EqCondition.class, filterNull = false)
     private String dictId;
     @Sort(Order.ASC)
-    private Integer sortOrder;
+    private Double orderNo;
 }
