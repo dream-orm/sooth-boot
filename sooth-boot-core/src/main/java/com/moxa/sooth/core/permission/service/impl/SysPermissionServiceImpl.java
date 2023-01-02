@@ -4,6 +4,7 @@ import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.sooth.core.permission.mapper.SysPermissionMapper;
 import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
 import com.moxa.sooth.core.permission.model.SysPermissionModel;
+import com.moxa.sooth.core.permission.model.SysRolePermissionModel;
 import com.moxa.sooth.core.permission.service.ISysPermissionService;
 import com.moxa.sooth.core.permission.service.ISysRolePermissionService;
 import com.moxa.sooth.core.permission.table.SysRolePermission;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -42,16 +44,16 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPerm
     public void saveRolePermission(SysPermissionEditModel sysPermissionEditModel) {
         Long roleId = sysPermissionEditModel.getRoleId();
         List<Long> permissionIds = sysPermissionEditModel.getPermissionIds();
-        List<Long> oldPermissionIds = sysPermissionEditModel.getOldPermissionIds();
+        SysRolePermissionModel sysRolePermissionModel = new SysRolePermissionModel();
+        sysRolePermissionModel.setRoleId(roleId);
+        Map<Long, Long> permissionMap = sysRolePermissionService.selectList(sysRolePermissionModel).stream()
+                .collect(Collectors.toMap(SysRolePermission::getPermissionId, SysRolePermission::getId));
         if (permissionIds == null) {
             permissionIds = new ArrayList<>();
         }
-        if (oldPermissionIds == null) {
-            oldPermissionIds = new ArrayList<>();
-        }
         List<Long> newPermissionIds = new ArrayList<>();
         for (Long permissionId : permissionIds) {
-            if (!oldPermissionIds.remove(permissionId)) {
+            if (permissionMap.remove(permissionId) == null) {
                 newPermissionIds.add(permissionId);
             }
         }
@@ -64,8 +66,8 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPerm
             }).collect(Collectors.toList());
             sysRolePermissionService.batchInsert(sysRolePermissionList);
         }
-        if (!oldPermissionIds.isEmpty()) {
-            sysRolePermissionService.deleteByIds(oldPermissionIds);
+        if (!permissionMap.isEmpty()) {
+            sysRolePermissionService.deleteByIds(permissionMap.values().stream().collect(Collectors.toList()));
         }
     }
 }

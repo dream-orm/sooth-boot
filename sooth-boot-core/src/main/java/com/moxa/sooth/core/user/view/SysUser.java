@@ -88,7 +88,7 @@ public class SysUser extends BaseEntity {
      * 状态(1：正常  2：冻结 ）
      */
 
-    @Dict(dicCode = "user_status")
+    @Dict(dicCode = "status")
     @Extract(DictExtractor.class)
     private Integer status;
 

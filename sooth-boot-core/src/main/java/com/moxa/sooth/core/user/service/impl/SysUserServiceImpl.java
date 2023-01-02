@@ -36,13 +36,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUser, SysUser> implements
     }
 
     @Override
-    public Page<SysUser> getUserByRoleId(String roleId, Page page) {
-        List<SysUser> sysUserList = sysUserMapper.getUserByRoleId(roleId, page);
-        page.setRows(sysUserList);
-        return page;
-    }
-
-    @Override
     public int updatePassword(SysUserPasswordModel userPasswordModel) {
         SysUser sysUser = sysUserMapper.selectOneUser(userPasswordModel.getUsername());
         if (sysUser == null) {

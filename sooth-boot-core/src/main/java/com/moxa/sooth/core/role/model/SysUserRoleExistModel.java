@@ -1,11 +1,13 @@
-package com.moxa.sooth.core.permission.model;
+package com.moxa.sooth.core.role.model;
 
 import com.moxa.dream.template.annotation.Conditional;
 import com.moxa.dream.template.condition.EqCondition;
 import lombok.Data;
 
 @Data
-public class SysRolePermissionModel {
+public class SysUserRoleExistModel {
     @Conditional(value = EqCondition.class, filterNull = false)
     private Long roleId;
+    @Conditional(value = EqCondition.class, filterNull = false)
+    private Long userId;
 }

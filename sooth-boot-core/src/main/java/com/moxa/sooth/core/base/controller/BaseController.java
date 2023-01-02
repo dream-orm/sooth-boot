@@ -61,7 +61,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
 
     @AutoLog(value = "通过id删除")
     @DeleteMapping(value = "/remove")
-    public Result remove(@RequestParam(name = "id") String id) {
+    public Result remove(@RequestParam(name = "id") Long id) {
         if (retBool(service.deleteById(id))) {
             return Result.ok("删除成功");
         } else {
@@ -71,8 +71,8 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
 
     @AutoLog(value = "批量删除")
     @DeleteMapping(value = "/removeBatch")
-    public Result removeBatch(@RequestParam(name = "ids") String ids) {
-        if (retBool(service.deleteByIds(Arrays.asList(ids.split(","))))) {
+    public Result removeBatch(@RequestParam(name = "ids") List<Long> ids) {
+        if (retBool(service.deleteByIds(ids))) {
             return Result.ok("批量删除成功");
         } else {
             return Result.error("批量删除失败");
@@ -81,7 +81,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
 
     @AutoLog(value = "通过id查询")
     @GetMapping(value = "/get")
-    public Result get(@RequestParam(name = "id") String id) {
+    public Result get(@RequestParam(name = "id") Long id) {
         Object result = service.selectById(id);
         return Result.ok(result);
     }

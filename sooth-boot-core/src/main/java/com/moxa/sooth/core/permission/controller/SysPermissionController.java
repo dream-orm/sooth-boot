@@ -149,7 +149,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @return
      */
     @RequestMapping(value = "/queryRolePermission", method = RequestMethod.GET)
-    public Result<List<Long>> queryRolePermission(@RequestParam(name = "roleId") String roleId) {
+    public Result<List<Long>> queryRolePermission(@RequestParam(name = "roleId") Long roleId) {
         SysRolePermissionModel rolePermissionModel = new SysRolePermissionModel();
         rolePermissionModel.setRoleId(roleId);
         List<SysRolePermission> list = rolePermissionService.selectList(rolePermissionModel);
@@ -157,10 +157,11 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
     }
 
     @PostMapping("saveRolePermission")
-    public Result saveRolePermission(@RequestBody SysPermissionEditModel sysPermissionEditModel){
+    public Result saveRolePermission(@RequestBody SysPermissionEditModel sysPermissionEditModel) {
         service.saveRolePermission(sysPermissionEditModel);
         return Result.ok("角色授权成功");
     }
+
     /**
      * 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示
      *

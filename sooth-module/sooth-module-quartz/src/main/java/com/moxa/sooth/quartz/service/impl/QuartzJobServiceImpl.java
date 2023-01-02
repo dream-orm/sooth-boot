@@ -139,9 +139,10 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJob, QuartzJob> impl
      * @param cronExpression
      * @param parameter
      */
-    private void schedulerAdd(Long id, String jobClassName, String cronExpression, String parameter){
-        schedulerAdd(String.valueOf(id),jobClassName,cronExpression,parameter);
+    private void schedulerAdd(Long id, String jobClassName, String cronExpression, String parameter) {
+        schedulerAdd(String.valueOf(id), jobClassName, cronExpression, parameter);
     }
+
     private void schedulerAdd(String id, String jobClassName, String cronExpression, String parameter) {
         try {
             // 启动调度器
@@ -174,6 +175,7 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJob, QuartzJob> impl
     private void schedulerDelete(Long id) {
         schedulerDelete(String.valueOf(id));
     }
+
     private void schedulerDelete(String id) {
         try {
             scheduler.pauseTrigger(TriggerKey.triggerKey(id));
