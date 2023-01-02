@@ -1,6 +1,7 @@
 package com.moxa.sooth.core.base.dream;
 
 import com.moxa.dream.system.config.MappedColumn;
+import com.moxa.dream.system.config.MappedStatement;
 import com.moxa.dream.system.extractor.Extractor;
 import com.moxa.dream.util.reflection.factory.ObjectFactory;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
@@ -14,7 +15,7 @@ import java.lang.reflect.Field;
 
 public class DictExtractor implements Extractor {
     @Override
-    public void extract(MappedColumn mappedColumn, Object value, ObjectFactory objectFactory) {
+    public void extract(MappedColumn mappedColumn, Object value, ObjectFactory objectFactory, MappedStatement mappedStatement) {
         if (value == null) {
             return;
         }

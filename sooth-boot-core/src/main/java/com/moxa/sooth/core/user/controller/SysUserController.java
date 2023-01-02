@@ -7,6 +7,7 @@ import com.moxa.sooth.core.user.model.SysUserModel;
 import com.moxa.sooth.core.user.model.SysUserPasswordModel;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
+import com.moxa.sooth.core.user.view.SysUserEditView;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,24 @@ public class SysUserController extends BaseController<ISysUserService, SysUser, 
             return Result.ok("密码修改成功");
         } else {
             return Result.error("密码修改失败");
+        }
+    }
+
+    @PostMapping("/saveUser")
+    public Result saveUser(@RequestBody SysUserEditView userEditView) {
+        if (retBool(service.saveUser(userEditView))) {
+            return Result.ok("添加成功");
+        } else {
+            return Result.ok("添加失败");
+        }
+    }
+
+    @PostMapping("/editUser")
+    public Result editUser(@RequestBody SysUserEditView userEditView) {
+        if (retBool(service.editUser(userEditView))) {
+            return Result.ok("编辑成功");
+        } else {
+            return Result.ok("编辑失败");
         }
     }
 }

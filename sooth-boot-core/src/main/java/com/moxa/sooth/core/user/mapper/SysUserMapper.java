@@ -7,6 +7,7 @@ import com.moxa.dream.system.annotation.Sql;
 import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.core.user.model.SysUserModel;
 import com.moxa.sooth.core.user.view.SysUser;
+import com.moxa.sooth.core.user.view.SysUserListView;
 
 import java.util.List;
 
@@ -23,5 +24,5 @@ public interface SysUserMapper {
             "and realname like concat('%',@$(userModel.realname),'%') " +
             "and phone like concat('%',@$(userModel.phone),'%') " +
             "and sys_dept.id in (@foreach(userModel.deptIds))))")
-    List<SysUser> selectPage(@Param("userModel") SysUserModel userModel, @Param("page") Page page);
+    List<SysUserListView> selectPage(@Param("userModel") SysUserModel userModel, @Param("page") Page page);
 }

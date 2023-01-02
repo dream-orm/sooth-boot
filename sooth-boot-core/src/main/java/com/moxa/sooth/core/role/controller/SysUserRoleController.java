@@ -12,6 +12,8 @@ import com.moxa.sooth.core.role.view.SysUserRoleView;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/sys/userRole")
@@ -25,5 +27,10 @@ public class SysUserRoleController extends BaseController<ISysUserRoleService, S
     @RequestMapping(value = "/getUserByRoleId", method = RequestMethod.GET)
     public Result<Page<SysUserRoleView>> getUserByRoleId(@RequestParam String roleId, PageModel pageModel) {
         return Result.ok(service.getUserByRoleId(roleId, pageModel.toPage()));
+    }
+
+    @RequestMapping(value = "/getRoleByUserId", method = RequestMethod.GET)
+    public Result<List<SysUserRole>> getRoleByUserId(@RequestParam Long userId) {
+        return Result.ok(service.getRoleByUserId(userId));
     }
 }
