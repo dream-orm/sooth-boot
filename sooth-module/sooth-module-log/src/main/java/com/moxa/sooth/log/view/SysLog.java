@@ -63,7 +63,7 @@ public class SysLog extends BaseEntity {
     /**
      * 操作详细日志
      */
-    private String logContent;
+    private String content;
 
     /**
      * 日志类型（1登录日志，2操作日志）

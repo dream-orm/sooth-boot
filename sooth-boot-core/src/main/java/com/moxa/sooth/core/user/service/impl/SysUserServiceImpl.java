@@ -13,6 +13,7 @@ import com.moxa.sooth.core.role.table.SysUserRole;
 import com.moxa.sooth.core.user.mapper.SysUserMapper;
 import com.moxa.sooth.core.user.model.SysUserModel;
 import com.moxa.sooth.core.user.model.SysUserPasswordModel;
+import com.moxa.sooth.core.user.model.SysUserUserIdModel;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
 import com.moxa.sooth.core.user.view.SysUserEditView;
@@ -74,6 +75,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
     @Transactional(rollbackFor = Exception.class)
     @Override
     public int saveUser(SysUserEditView userEditView) {
+        SysUserUserIdModel userUserIdModel = new SysUserUserIdModel();
+        userUserIdModel.setUsername(userEditView.getUsername());
+        if (exist(userUserIdModel)) {
+            throw new SoothBootException("账号" + userEditView.getUsername() + "已存在");
+        }
         int count = templateMapper.insert(userEditView);
         List<Long> roleIdList = userEditView.getRoleIdList();
         List<Long> deptIdList = userEditView.getDeptIdList();
@@ -101,7 +107,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
             sysUserRoleList = new ArrayList<>();
         }
         Map<Long, Long> userRoleMap = sysUserRoleList.stream().collect(Collectors.toMap(SysUserRole::getRoleId, SysUserRole::getId));
-        List<SysUserRole> userRoleList=new ArrayList<>();
+        List<SysUserRole> userRoleList = new ArrayList<>();
         if (CollUtil.isNotEmpty(roleIdList)) {
             for (Long roleId : roleIdList) {
                 if (userRoleMap.remove(roleId) == null) {
@@ -128,7 +134,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
             sysUserDeptList = new ArrayList<>();
         }
         Map<Long, Long> userDeptMap = sysUserDeptList.stream().collect(Collectors.toMap(SysUserDept::getDeptId, SysUserDept::getId));
-        List<SysUserDept> userDeptList=new ArrayList<>();
+        List<SysUserDept> userDeptList = new ArrayList<>();
         if (CollUtil.isNotEmpty(deptIdList)) {
             for (Long deptId : deptIdList) {
                 if (userDeptMap.remove(deptId) == null) {
