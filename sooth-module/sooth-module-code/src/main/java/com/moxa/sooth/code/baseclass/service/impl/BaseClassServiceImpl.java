@@ -32,7 +32,7 @@ public class BaseClassServiceImpl implements IBaseClassService {
             throw new SoothBootException("字段类型" + baseClass.getName() + "已经存在");
         }
         templateMapper.insert(baseClass);
-        return Result.OK("添加成功！");
+        return Result.ok("添加成功！");
     }
 
     @Override
@@ -42,13 +42,13 @@ public class BaseClassServiceImpl implements IBaseClassService {
             throw new SoothBootException("字段类型" + baseClass.getName() + "已经存在");
         }
         templateMapper.updateById(baseClass);
-        return Result.OK("编辑成功!");
+        return Result.ok("编辑成功!");
     }
 
     @Override
     public Result delete(String id) {
         templateMapper.deleteById(BaseClass.class, id);
-        return Result.OK("删除成功!");
+        return Result.ok("删除成功!");
     }
 
     @Override

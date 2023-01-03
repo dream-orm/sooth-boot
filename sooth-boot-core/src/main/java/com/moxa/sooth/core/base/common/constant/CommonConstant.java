@@ -62,15 +62,6 @@ public interface CommonConstant {
     Integer SC_OK_200 = 200;
 
     /**
-     * 访问权限认证未通过 510
-     */
-    Integer SC_JEECG_NO_AUTHZ = 510;
-
-    /**
-     * 登录用户Shiro权限缓存KEY前缀
-     */
-    String PREFIX_USER_SHIRO_CACHE = "shiro:cache:org.jeecg.config.shiro.ShiroRealm.authorizationCache:";
-    /**
      * 登录用户Token令牌缓存KEY前缀
      */
     String PREFIX_USER_TOKEN = "prefix_user_token_";
@@ -93,7 +84,7 @@ public interface CommonConstant {
     String STATUS_1 = "1";
 
 
-    Integer USER_FREEZE = 2;
+    Integer USER_FREEZE = 1;
 
 
     String X_ACCESS_TOKEN = "X-Access-Token";

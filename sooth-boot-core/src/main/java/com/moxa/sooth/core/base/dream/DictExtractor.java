@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 
 public class DictExtractor implements Extractor {
     @Override
-    public void extract(MappedColumn mappedColumn, Object value, ObjectFactory objectFactory, MappedStatement mappedStatement) {
+    public void extract(MappedStatement mappedStatement, MappedColumn mappedColumn, Object value, ObjectFactory objectFactory) {
         if (value == null) {
             return;
         }

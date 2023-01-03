@@ -39,12 +39,9 @@ public class SysDept extends BaseEntity implements Tree {
      */
 
     private String description;
-    /**
-     * 状态（1启用，0不启用）
-     */
-    @Dict(dicCode = "depart_status")
+    @Dict(dicCode = "status")
     @Extract(DictExtractor.class)
-    private String status;
+    private Integer status;
     /**
      * 删除状态（0，正常，1已删除）
      */

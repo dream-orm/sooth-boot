@@ -52,7 +52,6 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         try {
             List<SysPermission> treeList = service.selectTree(sysPermissionModel);
             result.setResult(treeList);
-            result.setSuccess(true);
             log.info("======获取全部菜单数据=====耗时:" + (System.currentTimeMillis() - start) + "毫秒");
         } catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -94,7 +93,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             json.put("allAuth", allauthjsonArray);
             result.setResult(json);
         } catch (Exception e) {
-            result.error500("查询失败:" + e.getMessage());
+            result.error("查询失败:" + e.getMessage());
             log.error(e.getMessage(), e);
         }
         return result;
@@ -136,7 +135,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             result.put("auth", authArray);
             //全部权限配置集合（按钮权限，访问权限）
             result.put("allAuth", allAuthArray);
-            return Result.OK(result);
+            return Result.ok(result);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return Result.error("查询失败:" + e.getMessage());

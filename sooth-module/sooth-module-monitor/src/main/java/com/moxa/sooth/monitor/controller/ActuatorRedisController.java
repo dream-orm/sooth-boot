@@ -118,9 +118,9 @@ public class ActuatorRedisController {
                 log.info(map.toString());
             }
             res.setResult(list);
-            res.success("查询成功");
+            res.ok("查询成功");
         } catch (Exception e) {
-            res.error500("查询失败" + e.getMessage());
+            res.error("查询失败" + e.getMessage());
         }
         return res;
     }

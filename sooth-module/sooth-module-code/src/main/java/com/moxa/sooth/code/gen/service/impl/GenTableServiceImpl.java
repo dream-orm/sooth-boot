@@ -50,7 +50,7 @@ public class GenTableServiceImpl implements IGenTableService {
             throw new SoothBootException("表名称" + genTable.getTableName() + "已经存在");
         }
         templateMapper.insert(genTable);
-        return Result.OK("添加成功！");
+        return Result.ok("添加成功！");
     }
 
     @Override
@@ -60,13 +60,13 @@ public class GenTableServiceImpl implements IGenTableService {
             throw new SoothBootException("字段类型" + genTable.getTableName() + "已经存在");
         }
         templateMapper.updateById(genTable);
-        return Result.OK("编辑成功!");
+        return Result.ok("编辑成功!");
     }
 
     @Override
     public Result delete(String id) {
         templateMapper.deleteById(GenTable.class, id);
-        return Result.OK("删除成功!");
+        return Result.ok("删除成功!");
     }
 
     @Transactional(rollbackFor = Exception.class)

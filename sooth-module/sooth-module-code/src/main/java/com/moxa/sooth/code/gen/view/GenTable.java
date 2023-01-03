@@ -7,12 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-/**
- * @Description: 基类管理
- * @Author: jeecg-boot
- * @Date: 2019-12-25
- * @Version: V1.0
- */
+
 @Data
 @View($GenTable.class)
 @EqualsAndHashCode(callSuper = false)

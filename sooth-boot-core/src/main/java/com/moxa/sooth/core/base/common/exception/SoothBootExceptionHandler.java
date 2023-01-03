@@ -16,48 +16,31 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @RestControllerAdvice
 @Slf4j
 public class SoothBootExceptionHandler {
-
-    /**
-     * 处理自定义异常
-     */
-    @ExceptionHandler(SoothBootException.class)
-    public Result<?> handleSoothBootException(SoothBootException e) {
-        log.error(e.getMessage(), e);
-        return Result.error(e.getMessage());
-    }
-
-
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public Result<?> handlerNoFoundException(Exception e) {
-        log.error(e.getMessage(), e);
-        return Result.error(404, "路径不存在，请检查路径是否正确");
-    }
-
-    @ExceptionHandler(DuplicateKeyException.class)
-    public Result<?> handleDuplicateKeyException(DuplicateKeyException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("数据库中已存在该记录");
-    }
-
-    @ExceptionHandler({UnauthorizedException.class, AuthorizationException.class})
-    public Result<?> handleAuthorizationException(AuthorizationException e) {
-        log.error(e.getMessage(), e);
-        return Result.noauth("没有权限，请联系管理员授权");
-    }
-
     @ExceptionHandler(Exception.class)
     public Result<?> handleException(Exception e) {
         log.error(e.getMessage(), e);
-        return Result.error("操作失败，" + e.getMessage());
+        return handleRouteException(e);
     }
 
-    /**
-     * @param e
-     * @return
-     * @Author 政辉
-     */
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Result<?> httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+    private Result<?>handleRouteException(Exception e){
+        if(e instanceof SoothBootException){
+            return Result.error(e.getMessage());
+        }else if(e instanceof HttpRequestMethodNotSupportedException){
+            return httpRequestMethodNotSupportedException((HttpRequestMethodNotSupportedException)e);
+        }else if(e instanceof UnauthorizedException||e instanceof AuthorizationException){
+            return Result.error("没有权限，请联系管理员授权");
+        }else if(e instanceof DuplicateKeyException){
+            return Result.error("数据库中已存在该记录");
+        }else if(e instanceof DataIntegrityViolationException){
+            return Result.error("执行数据库异常,违反了完整性例如：违反惟一约束、违反非空限制、字段内容超出长度等");
+        }else if(e instanceof PoolException){
+            return Result.error("Redis 连接异常!");
+        }else{
+            return Result.error("操作失败，" + e.getMessage());
+        }
+    }
+
+    private Result<?> httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         StringBuffer sb = new StringBuffer();
         sb.append("不支持");
         sb.append(e.getMethod());
@@ -72,29 +55,6 @@ public class SoothBootExceptionHandler {
         }
         log.error(sb.toString(), e);
         //return Result.error("没有权限，请联系管理员授权");
-        return Result.error(405, sb.toString());
+        return Result.error(sb.toString());
     }
-
-    /**
-     * spring默认上传大小100MB 超出大小捕获异常MaxUploadSizeExceededException
-     */
-    @ExceptionHandler(MaxUploadSizeExceededException.class)
-    public Result<?> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("文件大小超出10MB限制, 请压缩或降低文件质量! ");
-    }
-
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public Result<?> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
-        log.error(e.getMessage(), e);
-        //【issues/3624】数据库执行异常handleDataIntegrityViolationException提示有误 #3624
-        return Result.error("执行数据库异常,违反了完整性例如：违反惟一约束、违反非空限制、字段内容超出长度等");
-    }
-
-    @ExceptionHandler(PoolException.class)
-    public Result<?> handlePoolException(PoolException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("Redis 连接异常!");
-    }
-
 }

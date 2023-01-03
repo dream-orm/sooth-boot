@@ -6,7 +6,6 @@ import com.moxa.sooth.core.base.common.api.dto.LogDTO;
 import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.constant.enums.OperateTypeEnum;
-import com.moxa.sooth.core.base.service.BaseCommonService;
 import com.moxa.sooth.core.base.util.IpUtils;
 import com.moxa.sooth.core.base.util.SpringContextUtils;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -22,7 +21,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +31,6 @@ import java.util.Date;
 @Component
 public class AutoLogAspect {
 
-    @Resource
-    private BaseCommonService baseCommonService;
 
     @Pointcut("@annotation(com.moxa.sooth.core.base.common.aspect.annotation.AutoLog)")
     public void logPointCut() {
@@ -75,10 +71,6 @@ public class AutoLogAspect {
         dto.setMethod(className + "." + methodName + "()");
 
 
-        //设置操作类型
-        if (CommonConstant.LOG_TYPE_2 == dto.getLogType()) {
-            dto.setOperateType(getOperateType(methodName, syslog.operateType()));
-        }
 
         //获取request
         HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
@@ -97,30 +89,8 @@ public class AutoLogAspect {
         dto.setCostTime(time);
         dto.setCreateTime(new Date());
         //保存系统日志
-        baseCommonService.addLog(dto);
     }
 
-
-    /**
-     * 获取操作类型
-     */
-    private int getOperateType(String methodName, int operateType) {
-        if (operateType > 0) {
-            return operateType;
-        }
-        //update-begin---author:wangshuai ---date:20220331  for：阿里云代码扫描规范(不允许任何魔法值出现在代码中)------------
-        return OperateTypeEnum.getTypeByMethodName(methodName);
-        //update-end---author:wangshuai ---date:20220331  for：阿里云代码扫描规范(不允许任何魔法值出现在代码中)------------
-    }
-
-    /**
-     * @param request:   request
-     * @param joinPoint: joinPoint
-     * @Description: 获取请求参数
-     * @author: scott
-     * @date: 2020/4/16 0:10
-     * @Return: java.lang.String
-     */
     private String getReqestParams(HttpServletRequest request, JoinPoint joinPoint) {
         String httpMethod = request.getMethod();
         String params = "";

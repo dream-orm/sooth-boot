@@ -12,12 +12,14 @@ import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.LinkedHashMap;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/sys")
@@ -28,6 +30,8 @@ public class LoginController {
     @Autowired
     private RedisUtil redisUtil;
     @Autowired
+    private RedisTemplate redisTemplate;
+    @Autowired
     private SysApiService sysApiService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -37,7 +41,7 @@ public class LoginController {
         String password = sysLoginModel.getPassword();
         String captcha = sysLoginModel.getCaptcha();
         if (captcha == null) {
-            result.error500("验证码无效");
+            result.error("验证码无效");
             return result;
         }
         String lowerCaseCaptcha = captcha.toLowerCase();
@@ -60,7 +64,7 @@ public class LoginController {
         String userpassword = PasswordUtil.encrypt(username, password, sysUser.getSalt());
         String syspassword = sysUser.getPassword();
         if (!syspassword.equals(userpassword)) {
-            result.error500("用户名或密码错误");
+            result.error("用户名或密码错误");
             return result;
         }
         //用户登录信息
@@ -106,10 +110,7 @@ public class LoginController {
         SysUser sysUser = sysApiService.selectOneUser(username);
         if (sysUser != null) {
             log.info(" 用户名:  " + sysUser.getRealname() + ",退出成功！ ");
-            //清空用户登录Token缓存
-            redisUtil.del(CommonConstant.PREFIX_USER_TOKEN + token);
-            //清空用户登录Shiro权限缓存
-            redisUtil.del(CommonConstant.PREFIX_USER_SHIRO_CACHE + sysUser.getId());
+            redisTemplate.delete(CommonConstant.PREFIX_USER_TOKEN + token);
             //调用shiro的logout
             SecurityUtils.getSubject().logout();
             return Result.ok("退出登录成功！");
@@ -134,12 +135,11 @@ public class LoginController {
         // 生成token
         String token = JwtUtil.sign(username, syspassword);
         // 设置token缓存有效时间
-        redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, token);
-        redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME * 2 / 1000);
+        redisTemplate.opsForValue().set(CommonConstant.PREFIX_USER_TOKEN + token, token, JwtUtil.EXPIRE_TIME * 2 / 1000, TimeUnit.SECONDS);
         obj.put("token", token);
         obj.put("userInfo", sysUser);
         result.setResult(obj);
-        result.success("登录成功");
+        result.ok("登录成功");
         return result;
     }
 
@@ -167,11 +167,10 @@ public class LoginController {
             log.info("获取验证码，Redis key = {}，checkCode = {}", realKey, code);
             //返回前端
             String base64 = RandImageUtil.generate(code);
-            res.setSuccess(true);
             res.setResult(base64);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            res.error500("获取验证码失败,请检查redis配置!");
+            res.error("获取验证码失败,请检查redis配置!");
             return res;
         }
         return res;

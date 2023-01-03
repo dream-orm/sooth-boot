@@ -37,19 +37,19 @@ public class FieldTypeServiceImpl implements IFieldTypeService {
             throw new SoothBootException("字段类型" + fieldType.getColumnType() + "已经存在");
         }
         templateMapper.insert(fieldType);
-        return Result.OK("添加成功！");
+        return Result.ok("添加成功！");
     }
 
     @Override
     public Result edit(FieldType fieldType) {
         templateMapper.updateById(fieldType);
-        return Result.OK("编辑成功!");
+        return Result.ok("编辑成功!");
     }
 
     @Override
     public Result delete(String id) {
         templateMapper.deleteById(FieldType.class, id);
-        return Result.OK("删除成功!");
+        return Result.ok("删除成功!");
     }
 
     @Override

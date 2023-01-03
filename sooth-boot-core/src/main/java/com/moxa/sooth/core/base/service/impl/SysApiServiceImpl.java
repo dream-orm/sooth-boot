@@ -46,11 +46,11 @@ public class SysApiServiceImpl implements SysApiService {
     public Result<JSONObject> checkUserIsEffective(SysUser sysUser) {
         Result<JSONObject> result = new Result<>();
         if (sysUser == null) {
-            result.error500("该用户不存在，请注册");
+            result.error("该用户不存在，请注册");
             return result;
         }
         if (CommonConstant.USER_FREEZE.equals(sysUser.getStatus())) {
-            result.error500("该用户已冻结");
+            result.error("该用户已冻结");
             return result;
         }
         return result;

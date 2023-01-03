@@ -19,9 +19,6 @@ import java.util.Date;
 
 public class JwtUtil {
 
-    /**
-     * Token有效期为1小时（Token在reids中缓存时间为两倍）
-     */
     public static final long EXPIRE_TIME = 60 * 60 * 1000;
 
     /**
@@ -82,7 +79,7 @@ public class JwtUtil {
     }
 
     /**
-     * 生成签名,5min后过期
+     * 生成签名
      *
      * @param username 用户名
      * @param secret   用户的密码

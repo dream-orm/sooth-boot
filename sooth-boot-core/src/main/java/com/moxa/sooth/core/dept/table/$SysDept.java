@@ -23,11 +23,6 @@ public class $SysDept {
     @Column(value = "update_time", jdbcType = Types.TIMESTAMP)
     private Date updateTime;
     /**
-     * 缩写
-     */
-    @Column(value = "depart_name_abbr", jdbcType = Types.VARCHAR)
-    private String departNameAbbr;
-    /**
      * ID
      */
     @Id
@@ -66,8 +61,8 @@ public class $SysDept {
     /**
      * 状态（1启用，0不启用）
      */
-    @Column(value = "status", jdbcType = Types.VARCHAR)
-    private String status;
+    @Column(value = "status", jdbcType = Types.INTEGER)
+    private Integer status;
     /**
      * 更新人
      */
