@@ -2,6 +2,8 @@ package com.moxa.sooth.core.user.view;
 
 import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
+import com.moxa.dream.template.annotation.Wrap;
+import com.moxa.dream.template.wrap.ZeroWrapper;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.user.table.$SysUser;
 import lombok.Data;

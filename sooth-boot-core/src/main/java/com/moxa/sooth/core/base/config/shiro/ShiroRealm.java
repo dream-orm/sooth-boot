@@ -21,7 +21,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -136,10 +135,10 @@ public class ShiroRealm extends AuthorizingRealm {
      * @return
      */
     public boolean jwtTokenRefresh(String token, String userName, String passWord) {
-        String cacheToken = (String)redisTemplate.opsForValue().get(CommonConstant.PREFIX_USER_TOKEN + token);
+        String cacheToken = (String) redisTemplate.opsForValue().get(CommonConstant.PREFIX_USER_TOKEN + token);
         if (StrUtil.isNotBlank(cacheToken)) {
             // 校验token有效性
-            if (!JwtUtil.verify(cacheToken, userName, passWord)) {
+            if (JwtUtil.verify(cacheToken, userName, passWord)) {
                 String newAuthorization = JwtUtil.sign(userName, passWord);
                 redisTemplate.opsForValue().set(CommonConstant.PREFIX_USER_TOKEN + token, newAuthorization, JwtUtil.EXPIRE_TIME * 2 / 1000, TimeUnit.SECONDS);
                 return true;

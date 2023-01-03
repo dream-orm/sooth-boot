@@ -4,7 +4,10 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
+import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
+import com.moxa.sooth.core.base.config.SoothProperties;
+import com.moxa.sooth.core.base.util.ConvertUtils;
 import com.moxa.sooth.core.base.util.PasswordUtil;
 import com.moxa.sooth.core.dept.service.ISysUserDeptService;
 import com.moxa.sooth.core.dept.table.SysUserDept;
@@ -28,7 +31,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 @Service
 @Slf4j
 public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> implements ISysUserService {
@@ -38,7 +40,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
     private ISysUserRoleService userRoleService;
     @Autowired
     private ISysUserDeptService userDeptService;
-
+    @Autowired
+    private SoothProperties soothProperties;
     @Override
     public SysUser selectOneUser(String username) {
         return sysUserMapper.selectOneUser(username);
@@ -49,6 +52,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
         List<SysUserListView> sysUserList = sysUserMapper.selectPage((SysUserModel) sysUserModel, page);
         page.setRows(sysUserList);
         return page;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public int deleteById(Object id) {
+        List<SysUserRole> userRoleList = userRoleService.getRoleByUserId((Long) id);
+        if (CollUtil.isNotEmpty(userRoleList)) {
+            List<Long> userRoleIdList = userRoleList.stream().map(SysUserRole::getId).collect(Collectors.toList());
+            log.debug("删除用户ID："+id+"关联的角色ID："+userRoleIdList);
+            userRoleService.deleteByIds(userRoleIdList);
+        }
+        List<SysUserDept> userDeptList = userDeptService.getDeptByUserId((Long) id);
+        if (CollUtil.isNotEmpty(userDeptList)) {
+            List<Long> userDeptIdList = userDeptList.stream().map(SysUserDept::getId).collect(Collectors.toList());
+            log.debug("删除用户ID："+id+"关联的部门ID："+userDeptIdList);
+            userDeptService.deleteByIds(userDeptIdList);
+        }
+        log.debug("删除用户ID："+id);
+        return super.deleteById(id);
     }
 
     @Override
@@ -80,12 +102,26 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
         if (exist(userUserIdModel)) {
             throw new SoothBootException("账号" + userEditView.getUsername() + "已存在");
         }
-        int count = templateMapper.insert(userEditView);
+        SysUser sysUser=new SysUser();
+        sysUser.setUsername(userEditView.getUsername());
+        sysUser.setRealname(userEditView.getRealname());
+        sysUser.setSex(userEditView.getSex());
+        sysUser.setPhone(userEditView.getPhone());
+        sysUser.setStatus(0);
+        sysUser.setDelFlag(0);
+        sysUser.setSalt(ConvertUtils.randomGen(8));
+        String password = PasswordUtil.encrypt(sysUser.getUsername(), soothProperties.getDefaultPassword(), sysUser.getSalt());
+        sysUser.setPassword(password);
+        templateMapper.insertFetchKey(sysUser);
+        Long id = sysUser.getId();
+        if (id == null) {
+            throw new SoothBootException("新增用户失败");
+        }
         List<Long> roleIdList = userEditView.getRoleIdList();
         List<Long> deptIdList = userEditView.getDeptIdList();
-        updateRole(userEditView.getId(), roleIdList);
-        updateDept(userEditView.getId(), deptIdList);
-        return count;
+        updateRole(id, roleIdList);
+        updateDept(id, deptIdList);
+        return 1;
     }
 
     @Transactional(rollbackFor = Exception.class)

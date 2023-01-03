@@ -5,7 +5,6 @@ import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.moxa.sooth.core.base.common.api.dto.LogDTO;
 import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.constant.enums.OperateTypeEnum;
 import com.moxa.sooth.core.base.util.IpUtils;
 import com.moxa.sooth.core.base.util.SpringContextUtils;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -69,7 +68,6 @@ public class AutoLogAspect {
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = signature.getName();
         dto.setMethod(className + "." + methodName + "()");
-
 
 
         //获取request

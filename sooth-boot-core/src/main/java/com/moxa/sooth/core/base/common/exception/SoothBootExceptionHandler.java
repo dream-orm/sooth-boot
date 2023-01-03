@@ -10,8 +10,6 @@ import org.springframework.data.redis.connection.PoolException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 @RestControllerAdvice
 @Slf4j
@@ -22,20 +20,20 @@ public class SoothBootExceptionHandler {
         return handleRouteException(e);
     }
 
-    private Result<?>handleRouteException(Exception e){
-        if(e instanceof SoothBootException){
+    private Result<?> handleRouteException(Exception e) {
+        if (e instanceof SoothBootException) {
             return Result.error(e.getMessage());
-        }else if(e instanceof HttpRequestMethodNotSupportedException){
-            return httpRequestMethodNotSupportedException((HttpRequestMethodNotSupportedException)e);
-        }else if(e instanceof UnauthorizedException||e instanceof AuthorizationException){
+        } else if (e instanceof HttpRequestMethodNotSupportedException) {
+            return httpRequestMethodNotSupportedException((HttpRequestMethodNotSupportedException) e);
+        } else if (e instanceof UnauthorizedException || e instanceof AuthorizationException) {
             return Result.error("没有权限，请联系管理员授权");
-        }else if(e instanceof DuplicateKeyException){
+        } else if (e instanceof DuplicateKeyException) {
             return Result.error("数据库中已存在该记录");
-        }else if(e instanceof DataIntegrityViolationException){
+        } else if (e instanceof DataIntegrityViolationException) {
             return Result.error("执行数据库异常,违反了完整性例如：违反惟一约束、违反非空限制、字段内容超出长度等");
-        }else if(e instanceof PoolException){
+        } else if (e instanceof PoolException) {
             return Result.error("Redis 连接异常!");
-        }else{
+        } else {
             return Result.error("操作失败，" + e.getMessage());
         }
     }

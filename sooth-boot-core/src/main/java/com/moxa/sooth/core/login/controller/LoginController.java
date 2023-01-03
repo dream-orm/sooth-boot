@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,13 +35,11 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result<JSONObject> login(@RequestBody SysLoginModel sysLoginModel) {
-        Result<JSONObject> result = new Result<>();
         String username = sysLoginModel.getUsername();
         String password = sysLoginModel.getPassword();
         String captcha = sysLoginModel.getCaptcha();
         if (captcha == null) {
-            result.error("验证码无效");
-            return result;
+            return Result.error("验证码无效");
         }
         String lowerCaseCaptcha = captcha.toLowerCase();
         String origin = lowerCaseCaptcha + sysLoginModel.getCheckKey();
@@ -50,27 +47,20 @@ public class LoginController {
         Object checkCode = redisUtil.get(realKey);
         if (checkCode == null || !checkCode.toString().equals(lowerCaseCaptcha)) {
             log.warn("验证码错误，key= {} , Ui checkCode= {}, Redis checkCode = {}", sysLoginModel.getCheckKey(), lowerCaseCaptcha, checkCode);
-            // 改成特殊的code 便于前端判断
-            result.setCode(HttpStatus.PRECONDITION_FAILED.value());
-            return result;
+            return Result.error("验证码错误");
         }
         SysUser sysUser = sysApiService.selectOneUser(username);
-        result = sysApiService.checkUserIsEffective(sysUser);
-        if (!result.isSuccess()) {
-            return result;
-        }
-
+        sysApiService.checkUserIsEffective(sysUser);
         //2. 校验用户名或密码是否正确
         String userpassword = PasswordUtil.encrypt(username, password, sysUser.getSalt());
         String syspassword = sysUser.getPassword();
         if (!syspassword.equals(userpassword)) {
-            result.error("用户名或密码错误");
-            return result;
+            return Result.error("用户名或密码错误");
         }
         //用户登录信息
-        result = userInfo(sysUser);
+        JSONObject result = userInfo(sysUser);
         redisUtil.del(realKey);
-        return result;
+        return Result.ok(result, "登录成功");
     }
 
 
@@ -79,16 +69,17 @@ public class LoginController {
      */
     @GetMapping("/user/getUserInfo")
     public Result<JSONObject> getUserInfo(HttpServletRequest request) {
-        Result<JSONObject> result = new Result<JSONObject>();
         String username = JwtUtil.getUserNameByToken(request);
         if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
             SysUser sysUser = sysApiService.selectOneUser(username);
-            JSONObject obj = new JSONObject();
-            obj.put("userInfo", sysUser);
-            result.setResult(obj);
+            if (sysUser != null) {
+                JSONObject obj = new JSONObject();
+                obj.put("userInfo", sysUser);
+                return Result.ok(obj);
+            }
         }
-        return result;
+        return Result.error("获取用户信息失败");
 
     }
 
@@ -125,8 +116,7 @@ public class LoginController {
      * @param sysUser
      * @return
      */
-    private Result<JSONObject> userInfo(SysUser sysUser) {
-        Result<JSONObject> result = new Result<>();
+    private JSONObject userInfo(SysUser sysUser) {
         String username = sysUser.getUsername();
         String syspassword = sysUser.getPassword();
         // 获取用户部门信息
@@ -138,9 +128,7 @@ public class LoginController {
         redisTemplate.opsForValue().set(CommonConstant.PREFIX_USER_TOKEN + token, token, JwtUtil.EXPIRE_TIME * 2 / 1000, TimeUnit.SECONDS);
         obj.put("token", token);
         obj.put("userInfo", sysUser);
-        result.setResult(obj);
-        result.ok("登录成功");
-        return result;
+        return obj;
     }
 
     /**
@@ -152,7 +140,6 @@ public class LoginController {
 
     @GetMapping(value = "/randomImage/{key}")
     public Result<String> randomImage(HttpServletResponse response, @PathVariable("key") String key) {
-        Result<String> res = new Result<String>();
         try {
             //生成验证码
             String code = RandomUtil.randomString(BASE_CHECK_CODES, 4);
@@ -167,13 +154,11 @@ public class LoginController {
             log.info("获取验证码，Redis key = {}，checkCode = {}", realKey, code);
             //返回前端
             String base64 = RandImageUtil.generate(code);
-            res.setResult(base64);
+            return Result.ok(base64);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            res.error("获取验证码失败,请检查redis配置!");
-            return res;
+            return Result.error("获取验证码失败,请检查redis配置!");
         }
-        return res;
     }
 
     /**

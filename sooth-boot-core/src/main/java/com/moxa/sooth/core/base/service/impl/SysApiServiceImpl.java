@@ -2,11 +2,10 @@ package com.moxa.sooth.core.base.service.impl;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.template.mapper.TemplateMapper;
 import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.core.base.common.exception.SoothBootException;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
 import com.moxa.sooth.core.permission.service.ISysPermissionService;
@@ -43,17 +42,13 @@ public class SysApiServiceImpl implements SysApiService {
     }
 
     @Override
-    public Result<JSONObject> checkUserIsEffective(SysUser sysUser) {
-        Result<JSONObject> result = new Result<>();
+    public void checkUserIsEffective(SysUser sysUser) {
         if (sysUser == null) {
-            result.error("该用户不存在，请注册");
-            return result;
+            throw new SoothBootException("该用户不存在，请注册");
         }
         if (CommonConstant.USER_FREEZE.equals(sysUser.getStatus())) {
-            result.error("该用户已冻结");
-            return result;
+            throw new SoothBootException("该用户已冻结");
         }
-        return result;
     }
 
     @Override

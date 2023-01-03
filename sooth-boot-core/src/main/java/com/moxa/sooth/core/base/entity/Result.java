@@ -14,7 +14,7 @@ public class Result<T> implements Serializable {
      * 返回处理消息
      */
 
-    private String message = "";
+    private String message;
 
     /**
      * 返回代码
@@ -28,7 +28,7 @@ public class Result<T> implements Serializable {
 
     private T result;
 
-    public Result() {
+    private Result() {
     }
 
     public Result(Integer code, String message) {
@@ -42,10 +42,10 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-    public static Result ok(String msg) {
-        Result<String> r = new Result();
+    public static <T> Result<T> ok(T data, String msg) {
+        Result<T> r = new Result();
         r.code = CommonConstant.SC_OK_200;
-        r.result = msg;
+        r.result = data;
         r.message = msg;
         return r;
     }

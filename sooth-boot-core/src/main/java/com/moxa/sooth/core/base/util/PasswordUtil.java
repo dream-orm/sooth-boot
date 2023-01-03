@@ -10,7 +10,7 @@ import java.security.SecureRandom;
 
 /**
  * @Description: 密码工具类
- * @author: jeecg-boot
+ * @author: sooth-boot
  */
 public class PasswordUtil {
 

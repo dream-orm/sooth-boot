@@ -24,7 +24,6 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,57 +45,41 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @return
      */
     @RequestMapping(value = "/listTree", method = RequestMethod.GET)
-    public Result<List<SysPermission>> list(SysPermissionModel sysPermissionModel, HttpServletRequest req) {
-        long start = System.currentTimeMillis();
-        Result<List<SysPermission>> result = new Result<>();
-        try {
-            List<SysPermission> treeList = service.selectTree(sysPermissionModel);
-            result.setResult(treeList);
-            log.info("======获取全部菜单数据=====耗时:" + (System.currentTimeMillis() - start) + "毫秒");
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return result;
+    public Result<List<SysPermission>> list(SysPermissionModel sysPermissionModel) {
+        List<SysPermission> treeList = service.selectTree(sysPermissionModel);
+        return Result.ok(treeList);
     }
 
     @GetMapping(value = "/getUserPermissionByToken")
-    //@DynamicTable(value = DynamicTableConstant.SYS_ROLE_INDEX)
-    public Result<?> getUserPermissionByToken(HttpServletRequest request) {
-        Result<JSONObject> result = new Result<JSONObject>();
-        try {
-            //直接获取当前用户不适用前端token
-            SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-            if (sysUser == null) {
-                return Result.error("请登录系统！");
-            }
-            List<SysPermission> metaList = service.selectAuths(sysUser.getUsername());
-
-            JSONObject json = new JSONObject();
-            JSONArray menujsonArray = new JSONArray();
-            this.getPermissionJsonArray(menujsonArray, metaList, null);
-            //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
-            this.handleFirstLevelMenuHidden(menujsonArray);
-
-            JSONArray authjsonArray = new JSONArray();
-            this.getAuthJsonArray(authjsonArray, metaList);
-            //查询所有的权限
-            SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
-            sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
-            List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
-            JSONArray allauthjsonArray = new JSONArray();
-            this.getAllAuthJsonArray(allauthjsonArray, allAuthList);
-            //路由菜单
-            json.put("menu", menujsonArray);
-            //按钮权限（用户拥有的权限集合）
-            json.put("auth", authjsonArray);
-            //全部权限配置集合（按钮权限，访问权限）
-            json.put("allAuth", allauthjsonArray);
-            result.setResult(json);
-        } catch (Exception e) {
-            result.error("查询失败:" + e.getMessage());
-            log.error(e.getMessage(), e);
+    public Result<?> getUserPermissionByToken() {
+        //直接获取当前用户不适用前端token
+        SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
+        if (sysUser == null) {
+            return Result.error("请登录系统！");
         }
-        return result;
+        List<SysPermission> metaList = service.selectAuths(sysUser.getUsername());
+
+        JSONObject json = new JSONObject();
+        JSONArray menujsonArray = new JSONArray();
+        this.getPermissionJsonArray(menujsonArray, metaList, null);
+        //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
+        this.handleFirstLevelMenuHidden(menujsonArray);
+
+        JSONArray authjsonArray = new JSONArray();
+        this.getAuthJsonArray(authjsonArray, metaList);
+        //查询所有的权限
+        SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
+        sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
+        List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
+        JSONArray allauthjsonArray = new JSONArray();
+        this.getAllAuthJsonArray(allauthjsonArray, allAuthList);
+        //路由菜单
+        json.put("menu", menujsonArray);
+        //按钮权限（用户拥有的权限集合）
+        json.put("auth", authjsonArray);
+        //全部权限配置集合（按钮权限，访问权限）
+        json.put("allAuth", allauthjsonArray);
+        return Result.ok(json);
     }
 
     /**
