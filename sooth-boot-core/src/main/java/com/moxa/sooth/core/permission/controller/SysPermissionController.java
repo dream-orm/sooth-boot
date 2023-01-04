@@ -118,7 +118,8 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             result.put("auth", authArray);
             //全部权限配置集合（按钮权限，访问权限）
             result.put("allAuth", allAuthArray);
-            return Result.ok(result);
+//            return Result.ok(result);
+            return Result.ok(allAuthArray);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return Result.error("查询失败:" + e.getMessage());
