@@ -25,7 +25,7 @@ public class SysUserRoleController extends BaseController<ISysUserRoleService, S
     }
 
     @RequestMapping(value = "/getUserByRoleId", method = RequestMethod.GET)
-    public Result<Page<SysUserRoleView>> getUserByRoleId(@RequestParam String roleId, PageModel pageModel) {
+    public Result<Page<SysUserRoleView>> getUserByRoleId(@RequestParam Long roleId, PageModel pageModel) {
         return Result.ok(service.getUserByRoleId(roleId, pageModel.toPage()));
     }
 

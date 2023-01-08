@@ -47,7 +47,7 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRole, SysUserRole
     }
 
     @Override
-    public Page<SysUserRoleView> getUserByRoleId(String roleId, Page page) {
+    public Page<SysUserRoleView> getUserByRoleId(Long roleId, Page page) {
         List<SysUserRoleView> userRoleViewList = userRoleMapper.getUserByRoleId(roleId, page);
         page.setRows(userRoleViewList);
         return page;

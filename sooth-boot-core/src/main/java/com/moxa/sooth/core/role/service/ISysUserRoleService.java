@@ -12,7 +12,7 @@ public interface ISysUserRoleService extends IService<SysUserRole, SysUserRole> 
 
     void saveUserRole(SysUserRoleModel userRoleModel);
 
-    Page<SysUserRoleView> getUserByRoleId(String roleId, Page toPage);
+    Page<SysUserRoleView> getUserByRoleId(Long roleId, Page toPage);
 
     List<SysUserRole> getRoleByUserId(Long userId);
 }

@@ -13,5 +13,5 @@ import java.util.List;
 public interface SysUserRoleMapper {
     @PageQuery
     @Sql("select sys_user_role.id,@all(sys_user) from sys_user_role left join sys_user on sys_user_role.user_id=sys_user.id where role_id=@$(roleId)")
-    List<SysUserRoleView> getUserByRoleId(@Param("roleId") String roleId, @Param("page") Page page);
+    List<SysUserRoleView> getUserByRoleId(@Param("roleId") Long roleId, @Param("page") Page page);
 }
