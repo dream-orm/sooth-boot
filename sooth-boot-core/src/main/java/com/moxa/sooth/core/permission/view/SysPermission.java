@@ -21,7 +21,7 @@ import java.util.List;
 @Accessors(chain = true)
 @View($SysPermission.class)
 public class SysPermission extends BaseEntity implements Tree {
-    @Ignore
+
     private List<Tree> children = new ArrayList<>();
     /**
      * id

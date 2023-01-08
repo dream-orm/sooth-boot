@@ -16,4 +16,10 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDept, SysDept> implements
     public List<SysDept> listTree(SysDeptModel deptModel) {
         return templateMapper.selectTree(SysDept.class, deptModel);
     }
+
+    @Override
+    public int deleteById(Object id) {
+
+        return super.deleteById(id);
+    }
 }

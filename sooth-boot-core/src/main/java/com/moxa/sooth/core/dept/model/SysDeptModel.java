@@ -10,6 +10,8 @@ import lombok.Data;
 public class SysDeptModel {
     @Conditional(ContainsCondition.class)
     private String deptName;
+    @Conditional(ContainsCondition.class)
+    private String deptCode;
     @Sort(Order.ASC)
     private Double orderNo;
 }

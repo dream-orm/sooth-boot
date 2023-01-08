@@ -16,7 +16,6 @@ import com.moxa.sooth.core.role.table.SysUserRole;
 import com.moxa.sooth.core.user.mapper.SysUserMapper;
 import com.moxa.sooth.core.user.model.SysUserModel;
 import com.moxa.sooth.core.user.model.SysUserPasswordModel;
-import com.moxa.sooth.core.user.model.SysUserUserIdModel;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
 import com.moxa.sooth.core.user.view.SysUserEditView;
@@ -97,11 +96,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
     @Transactional(rollbackFor = Exception.class)
     @Override
     public int saveUser(SysUserEditView userEditView) {
-        SysUserUserIdModel userUserIdModel = new SysUserUserIdModel();
-        userUserIdModel.setUsername(userEditView.getUsername());
-        if (exist(userUserIdModel)) {
-            throw new SoothBootException("账号" + userEditView.getUsername() + "已存在");
-        }
         SysUser sysUser=new SysUser();
         sysUser.setUsername(userEditView.getUsername());
         sysUser.setRealname(userEditView.getRealname());

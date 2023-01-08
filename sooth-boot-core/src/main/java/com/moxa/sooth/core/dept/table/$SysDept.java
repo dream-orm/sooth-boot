@@ -58,6 +58,9 @@ public class $SysDept {
      */
     @Column(value = "dept_name", jdbcType = Types.VARCHAR)
     private String deptName;
+
+    @Column(value = "dept_code", jdbcType = Types.VARCHAR)
+    private String deptCode;
     /**
      * 状态（1启用，0不启用）
      */

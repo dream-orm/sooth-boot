@@ -5,6 +5,7 @@ import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.dream.annotation.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.dept.table.$SysDept;
 import lombok.Data;
@@ -29,6 +30,9 @@ public class SysDept extends BaseEntity implements Tree {
      */
 
     private String deptName;
+
+    @Unique(msg="部门编码已存在")
+    private String deptCode;
     /**
      * 排序
      */

@@ -1,6 +1,7 @@
 package com.moxa.sooth.core.role.view;
 
 import com.moxa.dream.system.annotation.View;
+import com.moxa.sooth.core.base.dream.annotation.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.role.table.$SysRole;
 import lombok.Data;
@@ -27,7 +28,7 @@ public class SysRole extends BaseEntity {
     /**
      * 角色编码
      */
-
+    @Unique(msg = "角色编码已存在")
     private String roleCode;
 
     /**

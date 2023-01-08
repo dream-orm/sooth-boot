@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
+import com.moxa.dream.template.annotation.validate.NotNull;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.dream.annotation.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.user.table.$SysUser;
 import lombok.Data;
@@ -30,7 +32,8 @@ public class SysUser extends BaseEntity {
     /**
      * 登录账号
      */
-
+    @NotNull(msg="账号不能为空")
+    @Unique(msg="账号已存在")
     private String username;
 
     /**
