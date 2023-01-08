@@ -2,11 +2,6 @@ package com.moxa.sooth.core.base.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
-/**
- * @Author Scott
- * @create 2018-07-12 15:19
- * @desc
- **/
 public class JwtToken implements AuthenticationToken {
 
     private static final long serialVersionUID = 1L;

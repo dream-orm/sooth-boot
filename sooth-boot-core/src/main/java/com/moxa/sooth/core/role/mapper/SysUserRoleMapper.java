@@ -5,13 +5,14 @@ import com.moxa.dream.system.annotation.PageQuery;
 import com.moxa.dream.system.annotation.Param;
 import com.moxa.dream.system.annotation.Sql;
 import com.moxa.dream.system.config.Page;
+import com.moxa.sooth.core.role.mapper.provider.SysUserRoleMapperProvider;
+import com.moxa.sooth.core.role.model.SysUserRoleGroupByRoleIdModel;
 import com.moxa.sooth.core.role.view.SysUserRoleView;
 
 import java.util.List;
 
-@Mapper
+@Mapper(SysUserRoleMapperProvider.class)
 public interface SysUserRoleMapper {
     @PageQuery
-    @Sql("select sys_user_role.id,@all(sys_user) from sys_user_role left join sys_user on sys_user_role.user_id=sys_user.id where role_id=@$(roleId)")
-    List<SysUserRoleView> getUserByRoleId(@Param("roleId") Long roleId, @Param("page") Page page);
+    List<SysUserRoleView> getUserByRoleId(@Param("model") SysUserRoleGroupByRoleIdModel userRoleGroupByRoleIdModel, @Param("page") Page page);
 }

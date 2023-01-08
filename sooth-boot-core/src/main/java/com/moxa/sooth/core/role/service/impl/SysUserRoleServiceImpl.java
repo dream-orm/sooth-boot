@@ -5,6 +5,7 @@ import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.core.role.mapper.SysUserRoleMapper;
 import com.moxa.sooth.core.role.model.SysUserRoleExistModel;
+import com.moxa.sooth.core.role.model.SysUserRoleGroupByRoleIdModel;
 import com.moxa.sooth.core.role.model.SysUserRoleModel;
 import com.moxa.sooth.core.role.model.SysUserRoleUserIdModel;
 import com.moxa.sooth.core.role.service.ISysUserRoleService;
@@ -47,8 +48,8 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRole, SysUserRole
     }
 
     @Override
-    public Page<SysUserRoleView> getUserByRoleId(Long roleId, Page page) {
-        List<SysUserRoleView> userRoleViewList = userRoleMapper.getUserByRoleId(roleId, page);
+    public Page<SysUserRoleView> getUserByRoleId(SysUserRoleGroupByRoleIdModel userRoleGroupByRoleIdModel, Page page) {
+        List<SysUserRoleView> userRoleViewList = userRoleMapper.getUserByRoleId(userRoleGroupByRoleIdModel, page);
         page.setRows(userRoleViewList);
         return page;
     }

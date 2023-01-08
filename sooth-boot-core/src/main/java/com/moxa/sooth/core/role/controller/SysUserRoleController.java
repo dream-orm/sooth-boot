@@ -6,6 +6,7 @@ import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.role.model.SysUserRoleModel;
+import com.moxa.sooth.core.role.model.SysUserRoleGroupByRoleIdModel;
 import com.moxa.sooth.core.role.service.ISysUserRoleService;
 import com.moxa.sooth.core.role.table.SysUserRole;
 import com.moxa.sooth.core.role.view.SysUserRoleView;
@@ -25,8 +26,8 @@ public class SysUserRoleController extends BaseController<ISysUserRoleService, S
     }
 
     @RequestMapping(value = "/getUserByRoleId", method = RequestMethod.GET)
-    public Result<Page<SysUserRoleView>> getUserByRoleId(@RequestParam Long roleId, PageModel pageModel) {
-        return Result.ok(service.getUserByRoleId(roleId, pageModel.toPage()));
+    public Result<Page<SysUserRoleView>> getUserByRoleId(SysUserRoleGroupByRoleIdModel userRoleGroupByRoleIdModel, PageModel pageModel) {
+        return Result.ok(service.getUserByRoleId(userRoleGroupByRoleIdModel, pageModel.toPage()));
     }
 
     @RequestMapping(value = "/getRoleByUserId", method = RequestMethod.GET)
