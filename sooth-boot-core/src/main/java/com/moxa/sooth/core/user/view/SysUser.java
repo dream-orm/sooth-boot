@@ -32,8 +32,8 @@ public class SysUser extends BaseEntity {
     /**
      * 登录账号
      */
-    @NotNull(msg="账号不能为空")
-    @Unique(msg="账号已存在")
+    @NotNull(msg = "账号不能为空")
+    @Unique(msg = "账号已存在")
     private String username;
 
     /**

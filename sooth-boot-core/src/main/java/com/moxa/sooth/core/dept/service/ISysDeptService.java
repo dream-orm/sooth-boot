@@ -9,4 +9,6 @@ import java.util.List;
 public interface ISysDeptService extends IService<SysDept, SysDept> {
 
     List<SysDept> listTree(SysDeptModel deptModel);
+
+    List<Long> listDeepTree(List<Long> deptList);
 }

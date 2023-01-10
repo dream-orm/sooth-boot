@@ -15,7 +15,7 @@ import java.util.List;
 
 @Data
 @View($SysDept.class)
-public class SysDept extends BaseEntity implements Tree {
+public class SysDept extends BaseEntity implements Tree<Long> {
     private List<SysDept> children = new ArrayList<>();
     /**
      * ID
@@ -24,14 +24,14 @@ public class SysDept extends BaseEntity implements Tree {
     /**
      * 父机构ID
      */
-    private String parentId;
+    private Long parentId;
     /**
      * 机构/部门名称
      */
 
     private String deptName;
 
-    @Unique(msg="部门编码已存在")
+    @Unique(msg = "部门编码已存在")
     private String deptCode;
     /**
      * 排序
@@ -50,11 +50,11 @@ public class SysDept extends BaseEntity implements Tree {
      * 删除状态（0，正常，1已删除）
      */
     @Extract(DictExtractor.class)
-    private String delFlag;
+    private Integer delFlag;
 
     @Override
-    public String getTreeId() {
-        return String.valueOf(id);
+    public Long getTreeId() {
+        return id;
     }
 
     @Override

@@ -48,6 +48,11 @@ public class $SysRole {
     @Column(value = "role_code", jdbcType = Types.VARCHAR)
     private String roleCode;
     /**
+     * 角色部门
+     */
+    @Column(value = "dept_id", jdbcType = Types.BIGINT)
+    private Long deptId;
+    /**
      * 描述
      */
     @Column(value = "description", jdbcType = Types.VARCHAR)

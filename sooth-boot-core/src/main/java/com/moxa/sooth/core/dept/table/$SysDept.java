@@ -41,8 +41,8 @@ public class $SysDept {
     /**
      * 父机构ID
      */
-    @Column(value = "parent_id", jdbcType = Types.VARCHAR)
-    private String parentId;
+    @Column(value = "parent_id", jdbcType = Types.BIGINT)
+    private Long parentId;
     /**
      * 描述
      */
@@ -74,6 +74,6 @@ public class $SysDept {
     /**
      * 删除状态（0，正常，1已删除）
      */
-    @Column(value = "del_flag", jdbcType = Types.VARCHAR)
-    private String delFlag;
+    @Column(value = "del_flag", jdbcType = Types.INTEGER)
+    private Integer delFlag;
 }

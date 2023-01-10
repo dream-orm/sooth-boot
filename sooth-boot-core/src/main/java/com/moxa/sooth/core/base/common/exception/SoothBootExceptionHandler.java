@@ -77,7 +77,7 @@ public class SoothBootExceptionHandler {
         }
         log.error(sb.toString(), e);
         //return Result.error("没有权限，请联系管理员授权");
-        return Result.error( sb.toString());
+        return Result.error(sb.toString());
     }
 
     /**

@@ -81,8 +81,8 @@ public class $SysPermission {
     /**
      * 父id
      */
-    @Column(value = "parent_id", jdbcType = Types.VARCHAR)
-    private String parentId;
+    @Column(value = "parent_id", jdbcType = Types.BIGINT)
+    private Long parentId;
     /**
      * 组件名字
      */

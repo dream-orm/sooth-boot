@@ -224,17 +224,17 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             if (permission.getMenuType() == null) {
                 continue;
             }
-            String tempPid = permission.getParentId();
+            Long tempPid = permission.getParentId();
             JSONObject json = getPermissionJsonObject(permission);
             if (json == null) {
                 continue;
             }
-            if (parentJson == null && StrUtil.isEmpty(tempPid)) {
+            if (parentJson == null && tempPid != null) {
                 jsonArray.add(json);
                 if (!permission.isLeaf()) {
                     getPermissionJsonArray(jsonArray, metaList, json);
                 }
-            } else if (parentJson != null && StrUtil.isNotEmpty(tempPid) && tempPid.equals(parentJson.getString("id"))) {
+            } else if (parentJson != null && tempPid != null && tempPid.equals(parentJson.getString("id"))) {
                 // 类型( 0：一级菜单 1：子菜单 2：按钮 )
                 if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
                     JSONObject metaJson = parentJson.getJSONObject("meta");
@@ -338,7 +338,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             }
             //update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
 
-            if (StrUtil.isEmpty(permission.getParentId())) {
+            if (permission.getParentId() != null) {
                 // 一级菜单跳转地址
                 json.put("redirect", permission.getRedirect());
                 if (StrUtil.isNotEmpty(permission.getIcon())) {

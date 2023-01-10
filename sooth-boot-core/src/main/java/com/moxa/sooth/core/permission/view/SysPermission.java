@@ -1,7 +1,6 @@
 package com.moxa.sooth.core.permission.view;
 
 import com.moxa.dream.system.annotation.Extract;
-import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
@@ -20,7 +19,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysPermission.class)
-public class SysPermission extends BaseEntity implements Tree {
+public class SysPermission extends BaseEntity implements Tree<Long> {
 
     private List<Tree> children = new ArrayList<>();
     /**
@@ -31,7 +30,7 @@ public class SysPermission extends BaseEntity implements Tree {
     /**
      * 父id
      */
-    private String parentId;
+    private Long parentId;
 
     /**
      * 菜单名称
@@ -141,8 +140,8 @@ public class SysPermission extends BaseEntity implements Tree {
 
 
     @Override
-    public String getTreeId() {
-        return String.valueOf(id);
+    public Long getTreeId() {
+        return id;
     }
 
     public List<Tree> getChildren() {

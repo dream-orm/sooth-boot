@@ -4,7 +4,6 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
-import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
 import com.moxa.sooth.core.base.config.SoothProperties;
 import com.moxa.sooth.core.base.util.ConvertUtils;
@@ -41,6 +40,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
     private ISysUserDeptService userDeptService;
     @Autowired
     private SoothProperties soothProperties;
+
     @Override
     public SysUser selectOneUser(String username) {
         return sysUserMapper.selectOneUser(username);
@@ -59,16 +59,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
         List<SysUserRole> userRoleList = userRoleService.getRoleByUserId((Long) id);
         if (CollUtil.isNotEmpty(userRoleList)) {
             List<Long> userRoleIdList = userRoleList.stream().map(SysUserRole::getId).collect(Collectors.toList());
-            log.debug("删除用户ID："+id+"关联的角色ID："+userRoleIdList);
+            log.debug("删除用户ID：" + id + "关联的角色ID：" + userRoleIdList);
             userRoleService.deleteByIds(userRoleIdList);
         }
         List<SysUserDept> userDeptList = userDeptService.getDeptByUserId((Long) id);
         if (CollUtil.isNotEmpty(userDeptList)) {
             List<Long> userDeptIdList = userDeptList.stream().map(SysUserDept::getId).collect(Collectors.toList());
-            log.debug("删除用户ID："+id+"关联的部门ID："+userDeptIdList);
+            log.debug("删除用户ID：" + id + "关联的部门ID：" + userDeptIdList);
             userDeptService.deleteByIds(userDeptIdList);
         }
-        log.debug("删除用户ID："+id);
+        log.debug("删除用户ID：" + id);
         return super.deleteById(id);
     }
 
@@ -96,7 +96,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
     @Transactional(rollbackFor = Exception.class)
     @Override
     public int saveUser(SysUserEditView userEditView) {
-        SysUser sysUser=new SysUser();
+        SysUser sysUser = new SysUser();
         sysUser.setUsername(userEditView.getUsername());
         sysUser.setRealname(userEditView.getRealname());
         sysUser.setSex(userEditView.getSex());

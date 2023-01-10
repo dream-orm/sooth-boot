@@ -1,10 +1,16 @@
 package com.moxa.main;
 
+import com.moxa.dream.antlr.invoker.Invoker;
 import com.moxa.dream.boot.bean.ConfigurationBean;
 import com.moxa.dream.drive.listener.DebugListener;
+import com.moxa.dream.mate.permission.inject.PermissionInject;
+import com.moxa.dream.mate.permission.invoker.PermissionGetInvoker;
+import com.moxa.dream.mate.permission.invoker.PermissionInjectInvoker;
 import com.moxa.dream.system.core.listener.Listener;
+import com.moxa.dream.system.inject.Inject;
 import com.moxa.dream.template.sequence.Sequence;
 import com.moxa.sooth.core.base.dream.SnowFlakeSequence;
+import com.moxa.sooth.core.base.dream.handler.SoothPermissionHandler;
 import com.moxa.sooth.plugin.Module;
 import com.moxa.sooth.plugin.ModuleSelector;
 import com.zaxxer.hikari.HikariDataSource;
@@ -41,6 +47,15 @@ public class DreamConfig {
         return new SnowFlakeSequence();
     }
 
+    @Bean
+    public Invoker[]invokers() {
+        return new Invoker[]{new PermissionInjectInvoker(),new PermissionGetInvoker()};
+    }
+
+    @Bean
+    public Inject[]injects(){
+        return new Inject[]{new PermissionInject(new SoothPermissionHandler())};
+    }
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.master")
     public DataSource dataSource() {
