@@ -1,5 +1,6 @@
 package com.moxa.sooth.core.permission.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.sooth.core.permission.mapper.SysPermissionMapper;
 import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
@@ -34,7 +35,7 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPerm
         return sysPermissionMapper.selectAuths(username);
     }
     @Override
-    public List<SysPermission> getMenu(String username) {
+    public JSONArray getMenu(String username) {
         return sysPermissionMapper.getMenu(username);
     }
     @Override

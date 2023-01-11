@@ -58,29 +58,22 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         if (sysUser == null) {
             return Result.error("请登录系统！");
         }
-        List<SysPermission> metaList = service.getMenu(sysUser.getUsername());
+        JSONArray menuArray = service.getMenu(sysUser.getUsername());
         JSONObject json = new JSONObject();
-        JSONArray menujsonArray = new JSONArray();
-        for (SysPermission permission : metaList) {
-            menujsonArray.add(getPermissionJsonObject(permission));
-        }
-        //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
-        this.handleFirstLevelMenuHidden(menujsonArray);
-
-        JSONArray authjsonArray = new JSONArray();
-        this.getAuthJsonArray(authjsonArray, metaList);
-        //查询所有的权限
-        SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
-        sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
-        List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
-        JSONArray allauthjsonArray = new JSONArray();
-        this.getAllAuthJsonArray(allauthjsonArray, allAuthList);
+//        JSONArray authjsonArray = new JSONArray();
+//        this.getAuthJsonArray(authjsonArray, menuArray);
+//        //查询所有的权限
+//        SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
+//        sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
+//        List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
+//        JSONArray allauthjsonArray = new JSONArray();
+//        this.getAllAuthJsonArray(allauthjsonArray, allAuthList);
         //路由菜单
-        json.put("menu", menujsonArray);
+        json.put("menu", menuArray);
         //按钮权限（用户拥有的权限集合）
-        json.put("auth", authjsonArray);
+//        json.put("auth", authjsonArray);
         //全部权限配置集合（按钮权限，访问权限）
-        json.put("allAuth", allauthjsonArray);
+//        json.put("allAuth", allauthjsonArray);
         return Result.ok(json);
     }
 
@@ -147,31 +140,6 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         return Result.ok("角色授权成功");
     }
 
-    /**
-     * 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示
-     *
-     * @param jsonArray
-     */
-    private void handleFirstLevelMenuHidden(JSONArray jsonArray) {
-        jsonArray = jsonArray.stream().map(obj -> {
-            JSONObject returnObj = new JSONObject();
-            JSONObject jsonObj = (JSONObject) obj;
-            if (jsonObj.containsKey(CHILDREN)) {
-                JSONArray childrens = jsonObj.getJSONArray(CHILDREN);
-                childrens = childrens.stream().filter(arrObj -> !"true".equals(((JSONObject) arrObj).getString("hidden"))).collect(Collectors.toCollection(JSONArray::new));
-                if (childrens == null || childrens.size() == 0) {
-                    jsonObj.put("hidden", true);
-
-                    //vue3版本兼容代码
-                    JSONObject meta = new JSONObject();
-                    meta.put("hideMenu", true);
-                    jsonObj.put("meta", meta);
-                }
-            }
-            return returnObj;
-        }).collect(Collectors.toCollection(JSONArray::new));
-    }
-
 
     /**
      * 获取权限JSON数组
@@ -211,198 +179,6 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
                 json.put("describe", permission.getName());
                 jsonArray.add(json);
             }
-        }
-    }
-
-//    /**
-//     * 获取菜单JSON数组
-//     *
-//     * @param jsonArray
-//     * @param metaList
-//     * @param parentJson
-//     */
-//    private void getPermissionJsonArray(JSONArray jsonArray, List<SysPermission> metaList, JSONObject parentJson) {
-//        for (SysPermission permission : metaList) {
-//            if (permission.getMenuType() == null) {
-//                continue;
-//            }
-//            JSONObject json = getPermissionJsonObject(permission);
-//            if (json == null) {
-//                continue;
-//            }
-//                // 类型( 0：一级菜单 1：子菜单 2：按钮 )
-//                if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-//                    JSONObject metaJson = parentJson.getJSONObject("meta");
-//                    if (metaJson.containsKey("permissionList")) {
-//                        metaJson.getJSONArray("permissionList").add(json);
-//                    } else {
-//                        JSONArray permissionList = new JSONArray();
-//                        permissionList.add(json);
-//                        metaJson.put("permissionList", permissionList);
-//                    }
-//                    // 类型( 0：一级菜单 1：子菜单 2：按钮 )
-//                } else if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_1) || permission.getMenuType().equals(CommonConstant.MENU_TYPE_0)) {
-//                    if (parentJson.containsKey("children")) {
-//                        parentJson.getJSONArray("children").add(json);
-//                    } else {
-//                        JSONArray children = new JSONArray();
-//                        children.add(json);
-//                        parentJson.put("children", children);
-//                    }
-//                }
-//        }
-//    }
-
-    /**
-     * 根据菜单配置生成路由json
-     *
-     * @param permission
-     * @return
-     */
-    private JSONObject getPermissionJsonObject(SysPermission permission) {
-        JSONObject json = new JSONObject();
-        // 类型(0：一级菜单 1：子菜单 2：按钮)
-        if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-            json.put("action", permission.getPerms());
-            json.put("type", permission.getPermsType());
-            json.put("describe", permission.getName());
-            return null;
-        } else if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_0) || permission.getMenuType().equals(CommonConstant.MENU_TYPE_1)) {
-            json.put("id", permission.getId());
-            if (permission.isRoute()) {
-                //表示生成路由
-                json.put("route", "1");
-            } else {
-                //表示不生成路由
-                json.put("route", "0");
-            }
-
-            if (isWwwHttpUrl(permission.getUrl())) {
-                json.put("path", Md5Util.md5Encode(permission.getUrl(), "utf-8"));
-            } else {
-                json.put("path", permission.getUrl());
-            }
-
-            // 重要规则：路由name (通过URL生成路由name,路由name供前端开发，页面跳转使用)
-            if (StrUtil.isNotEmpty(permission.getComponentName())) {
-                json.put("name", permission.getComponentName());
-            } else {
-                json.put("name", urlToRouteName(permission.getUrl()));
-            }
-
-            JSONObject meta = new JSONObject();
-            // 是否隐藏路由，默认都是显示的
-            if (permission.isHidden()) {
-                json.put("hidden", true);
-                //vue3版本兼容代码
-                meta.put("hideMenu", true);
-            }
-            // 聚合路由
-            if (permission.isAlwaysShow()) {
-                json.put("alwaysShow", true);
-            }
-            json.put("component", permission.getComponent());
-            // 由用户设置是否缓存页面 用布尔值
-            if (permission.isKeepAlive()) {
-                meta.put("keepAlive", true);
-            } else {
-                meta.put("keepAlive", false);
-            }
-
-            /*update_begin author:wuxianquan date:20190908 for:往菜单信息里添加外链菜单打开方式 */
-            //外链菜单打开方式
-            if (permission.isInternalOrExternal()) {
-                meta.put("internalOrExternal", true);
-            } else {
-                meta.put("internalOrExternal", false);
-            }
-            /* update_end author:wuxianquan date:20190908 for: 往菜单信息里添加外链菜单打开方式*/
-
-            meta.put("title", permission.getName());
-
-            //update-begin--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
-            String component = permission.getComponent();
-            if (StrUtil.isNotEmpty(permission.getComponentName()) || StrUtil.isNotEmpty(component)) {
-                meta.put("componentName", ConvertUtils.getString(permission.getComponentName(), component.substring(component.lastIndexOf("/") + 1)));
-            }
-            //update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
-
-            if (permission.getParentId() != null) {
-                // 一级菜单跳转地址
-                json.put("redirect", permission.getRedirect());
-            }
-            if (StrUtil.isNotEmpty(permission.getIcon())) {
-                meta.put("icon", permission.getIcon());
-            }
-
-            if (isWwwHttpUrl(permission.getUrl())) {
-                meta.put("url", permission.getUrl());
-            }
-            // update-begin--Author:sunjianlei  Date:20210918 for：新增适配vue3项目的隐藏tab功能
-            if (permission.isHideTab()) {
-                meta.put("hideTab", true);
-            }
-            json.put("meta", meta);
-        }
-        List<SysPermission> children = permission.getChildren();
-        if (CollUtil.isNotEmpty(children)) {
-            for (SysPermission childPermission : children) {
-                JSONObject permissionJsonObject = getPermissionJsonObject(childPermission);
-                if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-                    JSONObject metaJson = json.getJSONObject("meta");
-                    if (metaJson.containsKey("permissionList")) {
-                        metaJson.getJSONArray("permissionList").add(permissionJsonObject);
-                    } else {
-                        JSONArray permissionList = new JSONArray();
-                        permissionList.add(permissionJsonObject);
-                        metaJson.put("permissionList", permissionList);
-                    }
-                } else if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_0) || childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_1)) {
-                    if (json.containsKey("children")) {
-                        json.getJSONArray("children").add(permissionJsonObject);
-                    } else {
-                        JSONArray childrenArray = new JSONArray();
-                        childrenArray.add(permissionJsonObject);
-                        json.put("children", childrenArray);
-                    }
-                }
-            }
-        }
-        return json;
-    }
-
-    /**
-     * 判断是否外网URL 例如： http://localhost:8080/jeecg-boot/swagger-ui.html#/ 支持特殊格式： {{
-     * window._CONFIG['domianURL'] }}/druid/ {{ JS代码片段 }}，前台解析会自动执行JS代码片段
-     *
-     * @return
-     */
-    private boolean isWwwHttpUrl(String url) {
-        boolean flag = url != null && (url.startsWith(CommonConstant.HTTP_PROTOCOL) || url.startsWith(CommonConstant.HTTPS_PROTOCOL) || url.startsWith(SymbolConstant.DOUBLE_LEFT_CURLY_BRACKET));
-        if (flag) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * 通过URL生成路由name（去掉URL前缀斜杠，替换内容中的斜杠‘/’为-） 举例： URL = /isystem/role RouteName =
-     * isystem-role
-     *
-     * @return
-     */
-    private String urlToRouteName(String url) {
-        if (StrUtil.isNotEmpty(url)) {
-            if (url.startsWith(SymbolConstant.SINGLE_SLASH)) {
-                url = url.substring(1);
-            }
-            url = url.replace("/", "-");
-
-            // 特殊标记
-            url = url.replace(":", "@");
-            return url;
-        } else {
-            return null;
         }
     }
 }

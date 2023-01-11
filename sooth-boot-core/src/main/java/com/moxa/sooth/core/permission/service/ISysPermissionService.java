@@ -1,5 +1,6 @@
 package com.moxa.sooth.core.permission.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.moxa.dream.template.service.IService;
 import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
 import com.moxa.sooth.core.permission.model.SysPermissionModel;
@@ -11,7 +12,7 @@ public interface ISysPermissionService extends IService<SysPermission, SysPermis
 
     List<SysPermission> selectAuths(String username);
 
-    List<SysPermission> getMenu(String username);
+    JSONArray getMenu(String username);
 
     List<SysPermission> selectTree(SysPermissionModel sysPermissionModel);
 
