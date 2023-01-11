@@ -1,6 +1,7 @@
 package com.moxa.sooth.core.permission.controller;
 
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -57,11 +58,12 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         if (sysUser == null) {
             return Result.error("请登录系统！");
         }
-        List<SysPermission> metaList = service.selectAuths(sysUser.getUsername());
-
+        List<SysPermission> metaList = service.getMenu(sysUser.getUsername());
         JSONObject json = new JSONObject();
         JSONArray menujsonArray = new JSONArray();
-        this.getPermissionJsonArray(menujsonArray, metaList, null);
+        for (SysPermission permission : metaList) {
+            menujsonArray.add(getPermissionJsonObject(permission));
+        }
         //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
         this.handleFirstLevelMenuHidden(menujsonArray);
 
@@ -212,57 +214,44 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         }
     }
 
-    /**
-     * 获取菜单JSON数组
-     *
-     * @param jsonArray
-     * @param metaList
-     * @param parentJson
-     */
-    private void getPermissionJsonArray(JSONArray jsonArray, List<SysPermission> metaList, JSONObject parentJson) {
-        for (SysPermission permission : metaList) {
-            if (permission.getMenuType() == null) {
-                continue;
-            }
-            Long tempPid = permission.getParentId();
-            JSONObject json = getPermissionJsonObject(permission);
-            if (json == null) {
-                continue;
-            }
-            if (parentJson == null && tempPid != null) {
-                jsonArray.add(json);
-                if (!permission.isLeaf()) {
-                    getPermissionJsonArray(jsonArray, metaList, json);
-                }
-            } else if (parentJson != null && tempPid != null && tempPid.equals(parentJson.getString("id"))) {
-                // 类型( 0：一级菜单 1：子菜单 2：按钮 )
-                if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-                    JSONObject metaJson = parentJson.getJSONObject("meta");
-                    if (metaJson.containsKey("permissionList")) {
-                        metaJson.getJSONArray("permissionList").add(json);
-                    } else {
-                        JSONArray permissionList = new JSONArray();
-                        permissionList.add(json);
-                        metaJson.put("permissionList", permissionList);
-                    }
-                    // 类型( 0：一级菜单 1：子菜单 2：按钮 )
-                } else if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_1) || permission.getMenuType().equals(CommonConstant.MENU_TYPE_0)) {
-                    if (parentJson.containsKey("children")) {
-                        parentJson.getJSONArray("children").add(json);
-                    } else {
-                        JSONArray children = new JSONArray();
-                        children.add(json);
-                        parentJson.put("children", children);
-                    }
-
-                    if (!permission.isLeaf()) {
-                        getPermissionJsonArray(jsonArray, metaList, json);
-                    }
-                }
-            }
-
-        }
-    }
+//    /**
+//     * 获取菜单JSON数组
+//     *
+//     * @param jsonArray
+//     * @param metaList
+//     * @param parentJson
+//     */
+//    private void getPermissionJsonArray(JSONArray jsonArray, List<SysPermission> metaList, JSONObject parentJson) {
+//        for (SysPermission permission : metaList) {
+//            if (permission.getMenuType() == null) {
+//                continue;
+//            }
+//            JSONObject json = getPermissionJsonObject(permission);
+//            if (json == null) {
+//                continue;
+//            }
+//                // 类型( 0：一级菜单 1：子菜单 2：按钮 )
+//                if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
+//                    JSONObject metaJson = parentJson.getJSONObject("meta");
+//                    if (metaJson.containsKey("permissionList")) {
+//                        metaJson.getJSONArray("permissionList").add(json);
+//                    } else {
+//                        JSONArray permissionList = new JSONArray();
+//                        permissionList.add(json);
+//                        metaJson.put("permissionList", permissionList);
+//                    }
+//                    // 类型( 0：一级菜单 1：子菜单 2：按钮 )
+//                } else if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_1) || permission.getMenuType().equals(CommonConstant.MENU_TYPE_0)) {
+//                    if (parentJson.containsKey("children")) {
+//                        parentJson.getJSONArray("children").add(json);
+//                    } else {
+//                        JSONArray children = new JSONArray();
+//                        children.add(json);
+//                        parentJson.put("children", children);
+//                    }
+//                }
+//        }
+//    }
 
     /**
      * 根据菜单配置生成路由json
@@ -274,9 +263,9 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         JSONObject json = new JSONObject();
         // 类型(0：一级菜单 1：子菜单 2：按钮)
         if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-            //json.put("action", permission.getPerms());
-            //json.put("type", permission.getPermsType());
-            //json.put("describe", permission.getName());
+            json.put("action", permission.getPerms());
+            json.put("type", permission.getPermsType());
+            json.put("describe", permission.getName());
             return null;
         } else if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_0) || permission.getMenuType().equals(CommonConstant.MENU_TYPE_1)) {
             json.put("id", permission.getId());
@@ -341,14 +330,11 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             if (permission.getParentId() != null) {
                 // 一级菜单跳转地址
                 json.put("redirect", permission.getRedirect());
-                if (StrUtil.isNotEmpty(permission.getIcon())) {
-                    meta.put("icon", permission.getIcon());
-                }
-            } else {
-                if (StrUtil.isNotEmpty(permission.getIcon())) {
-                    meta.put("icon", permission.getIcon());
-                }
             }
+            if (StrUtil.isNotEmpty(permission.getIcon())) {
+                meta.put("icon", permission.getIcon());
+            }
+
             if (isWwwHttpUrl(permission.getUrl())) {
                 meta.put("url", permission.getUrl());
             }
@@ -356,10 +342,32 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             if (permission.isHideTab()) {
                 meta.put("hideTab", true);
             }
-            // update-end--Author:sunjianlei  Date:20210918 for：新增适配vue3项目的隐藏tab功能
             json.put("meta", meta);
         }
-
+        List<SysPermission> children = permission.getChildren();
+        if (CollUtil.isNotEmpty(children)) {
+            for (SysPermission childPermission : children) {
+                JSONObject permissionJsonObject = getPermissionJsonObject(childPermission);
+                if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
+                    JSONObject metaJson = json.getJSONObject("meta");
+                    if (metaJson.containsKey("permissionList")) {
+                        metaJson.getJSONArray("permissionList").add(permissionJsonObject);
+                    } else {
+                        JSONArray permissionList = new JSONArray();
+                        permissionList.add(permissionJsonObject);
+                        metaJson.put("permissionList", permissionList);
+                    }
+                } else if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_0) || childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_1)) {
+                    if (json.containsKey("children")) {
+                        json.getJSONArray("children").add(permissionJsonObject);
+                    } else {
+                        JSONArray childrenArray = new JSONArray();
+                        childrenArray.add(permissionJsonObject);
+                        json.put("children", childrenArray);
+                    }
+                }
+            }
+        }
         return json;
     }
 

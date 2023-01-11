@@ -21,7 +21,7 @@ import java.util.List;
 @View($SysPermission.class)
 public class SysPermission extends BaseEntity implements Tree<Long> {
 
-    private List<Tree> children = new ArrayList<>();
+    private List<SysPermission> children = new ArrayList<>();
     /**
      * id
      */
@@ -143,8 +143,8 @@ public class SysPermission extends BaseEntity implements Tree<Long> {
     public Long getTreeId() {
         return id;
     }
-
-    public List<Tree> getChildren() {
+    @Override
+    public List<SysPermission> getChildren() {
         return children;
     }
 }

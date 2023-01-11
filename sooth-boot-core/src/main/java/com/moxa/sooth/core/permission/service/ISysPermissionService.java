@@ -11,6 +11,8 @@ public interface ISysPermissionService extends IService<SysPermission, SysPermis
 
     List<SysPermission> selectAuths(String username);
 
+    List<SysPermission> getMenu(String username);
+
     List<SysPermission> selectTree(SysPermissionModel sysPermissionModel);
 
     void saveRolePermission(SysPermissionEditModel sysPermissionEditModel);
