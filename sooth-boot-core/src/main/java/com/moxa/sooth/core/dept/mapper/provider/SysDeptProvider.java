@@ -6,6 +6,7 @@ import com.moxa.dream.system.provider.ActionProvider;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
 import com.moxa.dream.template.resulthandler.TreeUtil;
+import com.moxa.sooth.core.dept.view.SysDept;
 import com.moxa.sooth.core.user.view.SysUser;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class SysDeptProvider {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return "select id,parent_id from sys_dept";
+                return "select dept_id,parent_id from sys_dept";
             }
 
             @Override
@@ -28,13 +29,13 @@ public class SysDeptProvider {
 
             @Override
             public Class<?> colType() {
-                return SysUser.class;
+                return SysDept.class;
             }
 
             @Override
             public ResultSetHandler resultSetHandler() {
                 return ((resultSet, mappedStatement, session) -> {
-                    List<Tree> treeList = (List<Tree>) new TreeResultSetHandler().result(resultSet, mappedStatement, session);
+                    List<SysDept> treeList = (List<SysDept>) new TreeResultSetHandler().result(resultSet, mappedStatement, session);
                     List<Long> treeIdList = ((Map<String, List<Long>>) mappedStatement.getArg()).get("list");
                     List<? extends Tree> deepTreeList = TreeUtil.deepTree(treeList, treeIdList);
                     return deepTreeId(deepTreeList);

@@ -28,7 +28,7 @@ public class SoothPermissionHandler implements PermissionHandler {
             sysDeptService = SpringContextUtils.getBean(ISysDeptService.class);
         }
         Permission permission = methodInfo.get(Permission.class);
-        return (permission == null || permission.value()) && tableInfo.getFieldName("dept_id") != null;
+        return (permission != null) && tableInfo.getFieldName("dept_id") != null;
     }
 
     @Override

@@ -1,9 +1,5 @@
 package com.moxa.sooth.core.base.common.constant;
 
-/**
- * @Description: 通用常量
- * @author: jeecg-boot
- */
 public interface CommonConstant {
 
     /**
@@ -20,37 +16,6 @@ public interface CommonConstant {
      * 系统日志类型： 操作
      */
     int LOG_TYPE_2 = 2;
-
-    /**
-     * 操作日志类型： 查询
-     */
-    int OPERATE_TYPE_1 = 1;
-
-    /**
-     * 操作日志类型： 添加
-     */
-    int OPERATE_TYPE_2 = 2;
-
-    /**
-     * 操作日志类型： 更新
-     */
-    int OPERATE_TYPE_3 = 3;
-
-    /**
-     * 操作日志类型： 删除
-     */
-    int OPERATE_TYPE_4 = 4;
-
-    /**
-     * 操作日志类型： 倒入
-     */
-    int OPERATE_TYPE_5 = 5;
-
-    /**
-     * 操作日志类型： 导出
-     */
-    int OPERATE_TYPE_6 = 6;
-
 
     /**
      * {@code 500 Server Error} (HTTP/1.0 - RFC 1945)

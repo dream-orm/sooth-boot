@@ -18,25 +18,32 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SysPermissionProvider {
-    private String sql = "SELECT @all(sys_permission),p.perms,p.sort_no\n" +
-            " FROM sys_permission p\n" +
-            " WHERE exists(\n" +
-            " select a.id from sys_role_permission a\n" +
-            " inner join sys_role b on a.role_id = b.id\n" +
-            " inner join sys_user_role c on c.role_id = b.id\n" +
-            " inner join sys_user d on d.id = c.user_id\n" +
-            " where p.id = a.permission_id AND d.username = @$(username)\n" +
-            " )order by sort_no ASC";
-
     public String selectAuths() {
-        return sql;
+        return "SELECT @all(sys_permission)\n" +
+                " FROM sys_permission p\n" +
+                " WHERE exists(\n" +
+                " select a.id from sys_role_permission a\n" +
+                " inner join sys_role b on a.role_id = b.id\n" +
+                " inner join sys_user_role c on c.role_id = b.id\n" +
+                " inner join sys_user d on d.id = c.user_id\n" +
+                " where p.id = a.permission_id AND d.username = @$(username)\n" +
+                " )order by sort_no ASC";
     }
 
     public ActionProvider getMenu() {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return sql;
+                return "SELECT @all(sys_permission)\n" +
+                        " FROM sys_permission p\n" +
+                        " WHERE exists(\n" +
+                        " select a.id from sys_role_permission a\n" +
+                        " inner join sys_role b on a.role_id = b.id\n" +
+                        " inner join sys_user_role c on c.role_id = b.id\n" +
+                        " inner join sys_user d on d.id = c.user_id\n" +
+                        " where p.id = a.permission_id AND d.username = @$(username)\n" +
+                        " and (p.menu_type=0 or p.menu_type=1)" +
+                        " )order by sort_no ASC";
             }
 
             @Override
@@ -72,81 +79,73 @@ public class SysPermissionProvider {
              */
             private JSONObject getPermissionJsonObject(SysPermission permission) {
                 JSONObject json = new JSONObject();
-                // 类型(0：一级菜单 1：子菜单 2：按钮)
-                if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-                    json.put("action", permission.getPerms());
-                    json.put("type", permission.getPermsType());
-                    json.put("describe", permission.getName());
-                    return null;
-                } else if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_0) || permission.getMenuType().equals(CommonConstant.MENU_TYPE_1)) {
-                    json.put("id", permission.getId());
-                    if (permission.isRoute()) {
-                        //表示生成路由
-                        json.put("route", "1");
-                    } else {
-                        //表示不生成路由
-                        json.put("route", "0");
-                    }
-
-                    if (isWwwHttpUrl(permission.getUrl())) {
-                        json.put("path", Md5Util.md5Encode(permission.getUrl(), "utf-8"));
-                    } else {
-                        json.put("path", permission.getUrl());
-                    }
-
-                    // 重要规则：路由name (通过URL生成路由name,路由name供前端开发，页面跳转使用)
-                    if (StrUtil.isNotEmpty(permission.getComponentName())) {
-                        json.put("name", permission.getComponentName());
-                    } else {
-                        json.put("name", urlToRouteName(permission.getUrl()));
-                    }
-
-                    JSONObject meta = new JSONObject();
-                    // 是否隐藏路由，默认都是显示的
-                    if (permission.isHidden()) {
-                        json.put("hidden", true);
-                        //vue3版本兼容代码
-                        meta.put("hideMenu", true);
-                    }
-                    // 聚合路由
-                    if (permission.isAlwaysShow()) {
-                        json.put("alwaysShow", true);
-                    }
-                    json.put("component", permission.getComponent());
-                    // 由用户设置是否缓存页面 用布尔值
-                    if (permission.isKeepAlive()) {
-                        meta.put("keepAlive", true);
-                    } else {
-                        meta.put("keepAlive", false);
-                    }
-                    //外链菜单打开方式
-                    if (permission.isInternalOrExternal()) {
-                        meta.put("internalOrExternal", true);
-                    } else {
-                        meta.put("internalOrExternal", false);
-                    }
-                    meta.put("title", permission.getName());
-
-                    String component = permission.getComponent();
-                    if (StrUtil.isNotEmpty(permission.getComponentName()) || StrUtil.isNotEmpty(component)) {
-                        meta.put("componentName", ConvertUtils.getString(permission.getComponentName(), component.substring(component.lastIndexOf("/") + 1)));
-                    }
-                    if (StrUtil.isNotEmpty(permission.getRedirect())) {
-                        // 一级菜单跳转地址
-                        json.put("redirect", permission.getRedirect());
-                    }
-                    if (StrUtil.isNotEmpty(permission.getIcon())) {
-                        meta.put("icon", permission.getIcon());
-                    }
-
-                    if (isWwwHttpUrl(permission.getUrl())) {
-                        meta.put("url", permission.getUrl());
-                    }
-                    if (permission.isHideTab()) {
-                        meta.put("hideTab", true);
-                    }
-                    json.put("meta", meta);
+                json.put("id", permission.getId());
+                if (permission.isRoute()) {
+                    //表示生成路由
+                    json.put("route", "1");
+                } else {
+                    //表示不生成路由
+                    json.put("route", "0");
                 }
+
+                if (isWwwHttpUrl(permission.getUrl())) {
+                    json.put("path", Md5Util.md5Encode(permission.getUrl(), "utf-8"));
+                } else {
+                    json.put("path", permission.getUrl());
+                }
+
+                // 重要规则：路由name (通过URL生成路由name,路由name供前端开发，页面跳转使用)
+                if (StrUtil.isNotEmpty(permission.getComponentName())) {
+                    json.put("name", permission.getComponentName());
+                } else {
+                    json.put("name", urlToRouteName(permission.getUrl()));
+                }
+
+                JSONObject meta = new JSONObject();
+                // 是否隐藏路由，默认都是显示的
+                if (permission.isHidden()) {
+                    json.put("hidden", true);
+                    //vue3版本兼容代码
+                    meta.put("hideMenu", true);
+                }
+                // 聚合路由
+                if (permission.isAlwaysShow()) {
+                    json.put("alwaysShow", true);
+                }
+                json.put("component", permission.getComponent());
+                // 由用户设置是否缓存页面 用布尔值
+                if (permission.isKeepAlive()) {
+                    meta.put("keepAlive", true);
+                } else {
+                    meta.put("keepAlive", false);
+                }
+                //外链菜单打开方式
+                if (permission.isInternalOrExternal()) {
+                    meta.put("internalOrExternal", true);
+                } else {
+                    meta.put("internalOrExternal", false);
+                }
+                meta.put("title", permission.getName());
+
+                String component = permission.getComponent();
+                if (StrUtil.isNotEmpty(permission.getComponentName()) || StrUtil.isNotEmpty(component)) {
+                    meta.put("componentName", ConvertUtils.getString(permission.getComponentName(), component.substring(component.lastIndexOf("/") + 1)));
+                }
+                if (StrUtil.isNotEmpty(permission.getRedirect())) {
+                    // 一级菜单跳转地址
+                    json.put("redirect", permission.getRedirect());
+                }
+                if (StrUtil.isNotEmpty(permission.getIcon())) {
+                    meta.put("icon", permission.getIcon());
+                }
+
+                if (isWwwHttpUrl(permission.getUrl())) {
+                    meta.put("url", permission.getUrl());
+                }
+                if (permission.isHideTab()) {
+                    meta.put("hideTab", true);
+                }
+                json.put("meta", meta);
                 List<SysPermission> children = permission.getChildren();
                 if (CollUtil.isNotEmpty(children)) {
                     for (SysPermission childPermission : children) {

@@ -26,8 +26,8 @@ public class $SysDept {
      * ID
      */
     @Id
-    @Column(value = "id", jdbcType = Types.BIGINT)
-    private Long id;
+    @Column(value = "dept_id", jdbcType = Types.BIGINT)
+    private Long deptId;
     /**
      * 排序
      */

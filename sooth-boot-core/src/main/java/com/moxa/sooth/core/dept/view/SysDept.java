@@ -20,7 +20,7 @@ public class SysDept extends BaseEntity implements Tree<Long> {
     /**
      * ID
      */
-    private Long id;
+    private Long deptId;
     /**
      * 父机构ID
      */
@@ -54,7 +54,7 @@ public class SysDept extends BaseEntity implements Tree<Long> {
 
     @Override
     public Long getTreeId() {
-        return id;
+        return deptId;
     }
 
     @Override
