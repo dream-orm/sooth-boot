@@ -12,8 +12,8 @@ import lombok.Data;
 @View($GenTemplate.class)
 public class GenTemplateList extends BaseDict {
     private Long id;
-    @Dict(dictTable = "gen_template_group", dicText = "name", dicCode = "id")
-    @Extract(DictExtractor.class)
+//    @Dict(dictTable = "gen_template_group", dicText = "name", dicCode = "id")
+//    @Extract(DictExtractor.class)
     private Long groupId;
     private String name;
     //    @Dict(dicCode = "valid_status")
