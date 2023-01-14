@@ -1,16 +1,11 @@
 package com.moxa.sooth.core.permission.controller;
 
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.base.util.ConvertUtils;
-import com.moxa.sooth.core.base.util.Md5Util;
 import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
 import com.moxa.sooth.core.permission.model.SysPermissionMenuTypeModel;
 import com.moxa.sooth.core.permission.model.SysPermissionModel;
@@ -33,12 +28,12 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/sys/permission")
 public class SysPermissionController extends BaseController<ISysPermissionService, SysPermission, SysPermissionModel> {
-    /**
-     * 子菜单
-     */
-    private static final String CHILDREN = "children";
     @Autowired
     private ISysRolePermissionService rolePermissionService;
+
+    public SysPermissionController() {
+        super("权限管理");
+    }
 
     /**
      * 加载数据节点

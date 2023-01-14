@@ -48,14 +48,15 @@ public class DreamConfig {
     }
 
     @Bean
-    public Invoker[]invokers() {
-        return new Invoker[]{new PermissionInjectInvoker(),new PermissionGetInvoker()};
+    public Invoker[] invokers() {
+        return new Invoker[]{new PermissionInjectInvoker(), new PermissionGetInvoker()};
     }
 
     @Bean
-    public Inject[]injects(){
+    public Inject[] injects() {
         return new Inject[]{new PermissionInject(new SoothPermissionHandler())};
     }
+
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.master")
     public DataSource dataSource() {

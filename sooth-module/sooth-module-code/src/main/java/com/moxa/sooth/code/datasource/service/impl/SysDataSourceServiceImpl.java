@@ -20,6 +20,6 @@ public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSource, SysData
 
     @Override
     public List<SysDataSourceListView> listLabel() {
-        return templateMapper.selectList(SysDataSourceListView.class,null);
+        return templateMapper.selectList(SysDataSourceListView.class, null);
     }
 }

@@ -34,10 +34,12 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPerm
     public List<SysPermission> selectAuths(String username) {
         return sysPermissionMapper.selectAuths(username);
     }
+
     @Override
     public JSONArray getMenu(String username) {
         return sysPermissionMapper.getMenu(username);
     }
+
     @Override
     public List<SysPermission> selectTree(SysPermissionModel sysPermissionModel) {
         return templateMapper.selectTree(SysPermission.class, sysPermissionModel);

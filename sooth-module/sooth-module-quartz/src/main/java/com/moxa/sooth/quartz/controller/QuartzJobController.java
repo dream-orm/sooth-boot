@@ -1,17 +1,15 @@
 package com.moxa.sooth.quartz.controller;
 
-import com.moxa.sooth.core.base.common.constant.SymbolConstant;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.quartz.service.IQuartzJobService;
 import com.moxa.sooth.quartz.view.QuartzJob;
 import lombok.extern.slf4j.Slf4j;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sys/quartzJob")
@@ -19,6 +17,11 @@ import java.util.Arrays;
 public class QuartzJobController extends BaseController<IQuartzJobService, QuartzJob, QuartzJob> {
     @Autowired
     private IQuartzJobService quartzJobService;
+
+    public QuartzJobController() {
+        super("定时任务");
+    }
+
     /**
      * 暂停定时任务
      *
@@ -51,6 +54,7 @@ public class QuartzJobController extends BaseController<IQuartzJobService, Quart
 //        scheduler.resumeJob(JobKey.jobKey(job.getJobClassName().trim()));
         return Result.ok("启动定时任务成功");
     }
+
     /**
      * 立即执行
      *

@@ -19,7 +19,6 @@
         <!--代码生成器-->
         <module>sooth-module-code</module>
         <module>sooth-module-quartz</module>
-        <module>sooth-module-log</module>
         <module>sooth-module-monitor</module>
     </modules>
 </project>

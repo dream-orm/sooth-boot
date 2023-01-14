@@ -7,8 +7,7 @@ import com.moxa.sooth.code.baseclass.view.BaseClass;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
-public class BaseClassServiceImpl extends ServiceImpl<BaseClass,BaseClass> implements IBaseClassService {
+public class BaseClassServiceImpl extends ServiceImpl<BaseClass, BaseClass> implements IBaseClassService {
 
 }

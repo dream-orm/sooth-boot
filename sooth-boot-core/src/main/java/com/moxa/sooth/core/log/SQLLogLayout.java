@@ -1,11 +1,11 @@
-package com.moxa.sooth.log;
+package com.moxa.sooth.core.log;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.LayoutBase;
 import com.moxa.dream.system.config.Command;
 import com.moxa.sooth.core.base.util.ClientUtil;
+import com.moxa.sooth.core.log.model.SQLLogModel;
 import com.moxa.sooth.core.user.view.SysUser;
-import com.moxa.sooth.log.model.SQLLogModel;
 
 import java.util.Date;
 

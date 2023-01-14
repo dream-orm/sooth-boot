@@ -7,7 +7,6 @@ import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
 import com.moxa.dream.template.resulthandler.TreeUtil;
 import com.moxa.sooth.core.dept.view.SysDept;
-import com.moxa.sooth.core.user.view.SysUser;
 
 import java.util.ArrayList;
 import java.util.Collection;

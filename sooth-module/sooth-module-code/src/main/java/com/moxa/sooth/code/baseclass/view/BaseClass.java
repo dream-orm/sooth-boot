@@ -22,8 +22,8 @@ public class BaseClass extends BaseEntity {
     /**
      * 基类全类名
      */
-    @NotBlank(msg="基类全类名不能为空")
-    @Unique(msg="基类全类名已存在")
+    @NotBlank(msg = "基类全类名不能为空")
+    @Unique(msg = "基类全类名已存在")
     private String className;
     /**
      * 基类字段

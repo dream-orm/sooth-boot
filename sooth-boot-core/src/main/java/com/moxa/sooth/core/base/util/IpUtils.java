@@ -7,13 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * IP地址
- *
- * @Author scott
- * @email jeecgos@163.com
- * @Date 2019年01月14日
- */
+
 public class IpUtils {
     private static Logger logger = LoggerFactory.getLogger(IpUtils.class);
 

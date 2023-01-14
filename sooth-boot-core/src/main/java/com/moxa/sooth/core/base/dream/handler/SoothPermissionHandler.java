@@ -21,10 +21,10 @@ public class SoothPermissionHandler implements PermissionHandler {
 
     @Override
     public boolean isPermissionInject(MethodInfo methodInfo, TableInfo tableInfo) {
-        if(sysUserDeptService==null){
-            sysUserDeptService=SpringContextUtils.getBean(ISysUserDeptService.class);
+        if (sysUserDeptService == null) {
+            sysUserDeptService = SpringContextUtils.getBean(ISysUserDeptService.class);
         }
-        if(sysDeptService==null){
+        if (sysDeptService == null) {
             sysDeptService = SpringContextUtils.getBean(ISysDeptService.class);
         }
         Permission permission = methodInfo.get(Permission.class);
@@ -34,7 +34,7 @@ public class SoothPermissionHandler implements PermissionHandler {
     @Override
     public String getPermission(MethodInfo methodInfo, TableInfo tableInfo, String alias) {
         SysUser loginUser = ClientUtil.getLoginUser();
-        if(loginUser!=null) {
+        if (loginUser != null) {
             Long id = loginUser.getId();
             List<SysUserDept> userDeptList = sysUserDeptService.getDeptByUserId(id);
             if (CollUtil.isNotEmpty(userDeptList)) {
@@ -51,7 +51,7 @@ public class SoothPermissionHandler implements PermissionHandler {
                 }
             }
             return "1<>1";
-        }else{
+        } else {
             return "1=1";
         }
     }

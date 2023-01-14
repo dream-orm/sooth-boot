@@ -1,14 +1,16 @@
-package com.moxa.sooth.log.view;
+package com.moxa.sooth.core.log.view;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
 import com.moxa.sooth.core.base.dream.DictExtractor;
-import com.moxa.sooth.core.base.entity.BaseEntity;
-import com.moxa.sooth.log.table.$SysLog;
+import com.moxa.sooth.core.base.entity.BaseDict;
+import com.moxa.sooth.core.log.table.$SysLog;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 系统日志表
@@ -17,7 +19,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysLog.class)
-public class SysLog extends BaseEntity {
+public class SysLog extends BaseDict {
     /**
      * id
      */
@@ -55,21 +57,31 @@ public class SysLog extends BaseEntity {
     /**
      * 操作人用户名称
      */
-    private String username;
+    private String realname;
     /**
      * 操作人用户账户
      */
-    private Long userid;
-    /**
-     * 操作详细日志
-     */
-    private String content;
+    private String username;
 
-    /**
-     * 日志类型（1登录日志，2操作日志）
-     */
+    private String message;
+
+    private String stackTrace;
+
+    private String exceptionClass;
+
     @Dict(dicCode = "log_type")
     @Extract(DictExtractor.class)
-    private Integer logType;
+    private String logType;
 
+    private String bizModule;
+
+    private String description;
+
+    private String userAgent;
+
+    private Integer status;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    protected java.util.Date createTime;
 }

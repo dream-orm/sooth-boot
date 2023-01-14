@@ -13,11 +13,6 @@ public interface CommonConstant {
     Integer STATUS_DISABLE = -1;
 
     /**
-     * 系统日志类型： 操作
-     */
-    int LOG_TYPE_2 = 2;
-
-    /**
      * {@code 500 Server Error} (HTTP/1.0 - RFC 1945)
      */
     Integer SC_INTERNAL_SERVER_ERROR_500 = 500;
@@ -25,7 +20,6 @@ public interface CommonConstant {
      * {@code 200 OK} (HTTP/1.0 - RFC 1945)
      */
     Integer SC_OK_200 = 200;
-
     /**
      * 登录用户Token令牌缓存KEY前缀
      */

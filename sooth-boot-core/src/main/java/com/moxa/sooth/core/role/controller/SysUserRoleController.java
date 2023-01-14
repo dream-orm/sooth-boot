@@ -19,6 +19,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/sys/userRole")
 public class SysUserRoleController extends BaseController<ISysUserRoleService, SysUserRole, SysUserRoleModel> {
+    public SysUserRoleController() {
+        super("用户角色");
+    }
+
     @PostMapping("saveUserRole")
     public Result saveUserRole(@RequestBody SysUserRoleModel userRoleModel) {
         service.saveUserRole(userRoleModel);

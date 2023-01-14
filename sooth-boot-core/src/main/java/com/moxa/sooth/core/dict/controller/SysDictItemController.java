@@ -18,6 +18,10 @@ import java.util.List;
 @RequestMapping("/sys/dictItem")
 @Slf4j
 public class SysDictItemController extends BaseController<ISysDictItemService, SysDictItem, SysDictItemModel> {
+    public SysDictItemController() {
+        super("字典项管理");
+    }
+
     @RequestMapping(value = "{code}", method = RequestMethod.GET)
     public Result<List<SysDictItem>> getDictItems(@PathVariable("code") String code) {
         List<SysDictItem> dictItemList = service.getDictItems(code);

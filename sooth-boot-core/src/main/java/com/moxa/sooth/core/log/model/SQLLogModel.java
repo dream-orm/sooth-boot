@@ -1,4 +1,4 @@
-package com.moxa.sooth.log.model;
+package com.moxa.sooth.core.log.model;
 
 import lombok.Getter;
 import lombok.Setter;

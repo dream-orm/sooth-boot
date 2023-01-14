@@ -57,15 +57,6 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-
-    public static <T> Result<T> error(String msg, T data) {
-        Result<T> r = new Result();
-        r.code = CommonConstant.SC_INTERNAL_SERVER_ERROR_500;
-        r.message = msg;
-        r.result = data;
-        return r;
-    }
-
     public static <T> Result<T> error(String msg) {
         Result<T> r = new Result();
         r.code = CommonConstant.SC_INTERNAL_SERVER_ERROR_500;

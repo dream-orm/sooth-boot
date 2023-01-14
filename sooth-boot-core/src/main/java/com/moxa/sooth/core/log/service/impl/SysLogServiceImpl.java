@@ -1,8 +1,8 @@
-package com.moxa.sooth.log.service.impl;
+package com.moxa.sooth.core.log.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.log.service.ISysLogService;
-import com.moxa.sooth.log.view.SysLog;
+import com.moxa.sooth.core.log.service.ISysLogService;
+import com.moxa.sooth.core.log.view.SysLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

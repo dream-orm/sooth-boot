@@ -1,4 +1,4 @@
-package com.moxa.sooth.log;
+package com.moxa.sooth.core.log;
 
 
 import com.moxa.sooth.plugin.Module;

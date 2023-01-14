@@ -37,6 +37,7 @@ public class LoginController {
     private SysApiService sysApiService;
     @Autowired
     private Configuration configuration;
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result<JSONObject> login(@RequestBody SysLoginModel sysLoginModel) {
         String username = sysLoginModel.getUsername();
@@ -116,19 +117,21 @@ public class LoginController {
 
     /**
      * 刷新缓存
+     *
      * @return
      */
     @RequestMapping(value = "/refreshCache")
     public Result refreshCache() {
         CacheFactory cacheFactory = configuration.getCacheFactory();
-        if(cacheFactory!=null){
+        if (cacheFactory != null) {
             Cache cache = cacheFactory.getCache();
-            if(cache!=null){
+            if (cache != null) {
                 cache.clear();
             }
         }
-        return Result.ok(null,"刷新成功");
+        return Result.ok(null, "刷新成功");
     }
+
     /**
      * 用户信息
      *

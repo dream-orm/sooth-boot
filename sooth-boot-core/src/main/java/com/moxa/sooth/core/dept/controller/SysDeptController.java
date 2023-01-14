@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sys/dept")
 @Slf4j
 public class SysDeptController extends BaseController<ISysDeptService, SysDept, SysDeptModel> {
+    public SysDeptController() {
+        super("部门管理");
+    }
 
     @GetMapping("listTree")
     public Result listTree(SysDeptModel deptModel) {

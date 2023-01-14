@@ -14,5 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sys/dict")
 @Slf4j
 public class SysDictController extends BaseController<ISysDictService, SysDict, SysDictModel> {
-
+    public SysDictController() {
+        super("字典管理");
+    }
 }

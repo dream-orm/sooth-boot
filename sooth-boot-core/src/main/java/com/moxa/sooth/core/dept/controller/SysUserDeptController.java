@@ -18,6 +18,10 @@ import java.util.List;
 @RequestMapping("/sys/userDept")
 @Slf4j
 public class SysUserDeptController extends BaseController<ISysUserDeptService, SysUserDept, SysUserDeptModel> {
+    public SysUserDeptController() {
+        super("用户部门");
+    }
+
     @RequestMapping(value = "/getDeptByUserId", method = RequestMethod.GET)
     public Result<List<SysUserDept>> getDeptByUserId(@RequestParam Long userId) {
         return Result.ok(service.getDeptByUserId(userId));

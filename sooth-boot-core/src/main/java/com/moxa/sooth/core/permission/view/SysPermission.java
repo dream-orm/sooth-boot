@@ -143,6 +143,7 @@ public class SysPermission extends BaseEntity implements Tree<Long> {
     public Long getTreeId() {
         return id;
     }
+
     @Override
     public List<SysPermission> getChildren() {
         return children;

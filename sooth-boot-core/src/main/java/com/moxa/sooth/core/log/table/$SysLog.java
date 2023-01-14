@@ -1,4 +1,4 @@
-package com.moxa.sooth.log.table;
+package com.moxa.sooth.core.log.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;
@@ -8,15 +8,20 @@ import lombok.Data;
 import java.sql.Types;
 import java.util.Date;
 
-/**
- * 系统日志  sys_log
- *
- * @author moxa
- * @date 2022-11-13
- */
 @Data
 @Table("sys_log")
 public class $SysLog {
+    /**
+     * 业务模块
+     */
+    @Column(value = "biz_module", jdbcType = Types.VARCHAR)
+    private String bizModule;
+    /**
+     * 操作描述
+     */
+    @Column(value = "description", jdbcType = Types.VARCHAR)
+    private String description;
+
     /**
      * 请求参数
      */
@@ -25,13 +30,19 @@ public class $SysLog {
     /**
      * 操作用户账号
      */
-    @Column(value = "userid", jdbcType = Types.BIGINT)
-    private Long userid;
+    @Column(value = "username", jdbcType = Types.VARCHAR)
+    private String username;
     /**
      * 请求类型
      */
     @Column(value = "request_type", jdbcType = Types.VARCHAR)
     private String requestType;
+    /**
+     * 浏览器
+     */
+
+    @Column(value = "user_agent", jdbcType = Types.VARCHAR)
+    private String userAgent;
     /**
      *
      */
@@ -41,18 +52,18 @@ public class $SysLog {
     /**
      * 操作用户名称
      */
-    @Column(value = "username", jdbcType = Types.VARCHAR)
-    private String username;
+    @Column(value = "realname", jdbcType = Types.VARCHAR)
+    private String realname;
     /**
      * 耗时
      */
     @Column(value = "cost_time", jdbcType = Types.BIGINT)
     private Long costTime;
     /**
-     * 日志类型（1登录日志，2操作日志）
+     * 日志类型
      */
-    @Column(value = "log_type", jdbcType = Types.INTEGER)
-    private Integer logType;
+    @Column(value = "log_type", jdbcType = Types.VARCHAR)
+    private String logType;
     /**
      * IP
      */
@@ -69,28 +80,39 @@ public class $SysLog {
     @Column(value = "create_by", jdbcType = Types.VARCHAR)
     private String createBy;
     /**
-     * 日志内容
+     * 错误信息
      */
-    @Column(value = "content", jdbcType = Types.VARCHAR)
-    private String content;
+    @Column(value = "message", jdbcType = Types.VARCHAR)
+    private String message;
+
     /**
-     * 更新人
+     * 详尽异常
      */
-    @Column(value = "update_by", jdbcType = Types.VARCHAR)
-    private String updateBy;
+    @Column(value = "stack_trace", jdbcType = Types.LONGVARCHAR)
+    private String stackTrace;
+
+    /**
+     * 异常类
+     */
+    @Column(value = "exception_class", jdbcType = Types.VARCHAR)
+    private String exceptionClass;
+
     /**
      * 请求路径
      */
     @Column(value = "request_url", jdbcType = Types.VARCHAR)
     private String requestUrl;
     /**
+     * 成功状态
+     */
+    @Column(value = "status", jdbcType = Types.INTEGER)
+    private Integer status;
+
+    /**
      * 创建时间
      */
     @Column(value = "create_time", jdbcType = Types.TIMESTAMP)
     private Date createTime;
-    /**
-     * 更新时间
-     */
-    @Column(value = "update_time", jdbcType = Types.TIMESTAMP)
-    private Date updateTime;
+
+
 }

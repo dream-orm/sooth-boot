@@ -1,27 +1,30 @@
 package com.moxa.sooth.code.fieldtype.controller;
 
 
-import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.code.fieldtype.model.FieldTypeModel;
 import com.moxa.sooth.code.fieldtype.service.IFieldTypeService;
 import com.moxa.sooth.code.fieldtype.view.FieldType;
-import com.moxa.sooth.core.base.common.aspect.annotation.AutoLog;
 import com.moxa.sooth.core.base.controller.BaseController;
-import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.core.log.annotation.AutoLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
 @RequestMapping("/generate/fieldType")
-public class FieldTypeController extends BaseController<IFieldTypeService,FieldType,FieldTypeModel> {
+public class FieldTypeController extends BaseController<IFieldTypeService, FieldType, FieldTypeModel> {
 
     @Autowired
     private IFieldTypeService fieldTypeService;
+
+    public FieldTypeController() {
+        super("字段映射");
+    }
 
 
     @GetMapping(value = "/listAttrType")
