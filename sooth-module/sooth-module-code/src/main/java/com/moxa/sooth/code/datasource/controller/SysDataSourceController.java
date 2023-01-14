@@ -12,12 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
 @RestController
 @RequestMapping("/sys/dataSource")
 public class SysDataSourceController extends BaseController<ISysDataSourceService, SysDataSource, SysDataSourceModel> {
+
     @RequestMapping(value = "/testConnection", method = RequestMethod.POST)
     public Result<?> testConnection(@RequestBody SysDataSource sysDataSource) {
-        return Result.ok(service.testConnection(sysDataSource));
+        if(service.testConnection(sysDataSource)) {
+            return Result.ok(null,"连接成功");
+        }else{
+            return Result.error("连接失败");
+        }
+    }
+    @RequestMapping(value = "/listLabel", method = RequestMethod.GET)
+    public Result<?> listLabel() {
+        return Result.ok(service.listLabel());
     }
 }

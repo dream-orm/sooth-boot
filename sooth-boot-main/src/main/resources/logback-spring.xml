@@ -18,7 +18,7 @@
 <!--        </filter>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--日志文件输出的文件名 -->
-            <FileNamePattern>${LOG_HOME}/sql-error/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/sql/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <!--日志文件保留天数 -->
             <MaxHistory>30</MaxHistory>
             <maxFileSize>10MB</maxFileSize>
@@ -45,7 +45,7 @@
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="SQL_LOG"/>
+<!--        <appender-ref ref="SQL_LOG"/>-->
     </root>
 
 </configuration>

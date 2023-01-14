@@ -68,7 +68,7 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJob, QuartzJob> impl
     @Transactional(rollbackFor = SoothBootException.class)
     public boolean resumeJob(QuartzJob quartzJob) {
         schedulerDelete(quartzJob.getId());
-        schedulerAdd(quartzJob.getId(), quartzJob.getJobClassName().trim(), quartzJob.getCronExpression().trim(), quartzJob.getParameter());
+        schedulerAdd(quartzJob.getId(), quartzJob.getJobClassName(), quartzJob.getCronExpression(), quartzJob.getParameter());
         quartzJob.setStatus(CommonConstant.STATUS_NORMAL);
         return 1 == super.updateById(quartzJob);
     }
@@ -103,7 +103,7 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJob, QuartzJob> impl
 
     @Override
     public void execute(QuartzJob quartzJob) throws Exception {
-        String jobName = quartzJob.getJobClassName().trim();
+        String jobName = quartzJob.getJobClassName();
         Date startDate = new Date();
         String ymd = DateUtils.date2Str(startDate, DateUtils.yyyymmddhhmmss.get());
         String identity = jobName + ymd;

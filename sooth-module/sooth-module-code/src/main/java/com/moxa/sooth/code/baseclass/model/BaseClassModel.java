@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class BaseClassModel {
     @Conditional(ContainsCondition.class)
-    private String name;
+    private String className;
 
 }

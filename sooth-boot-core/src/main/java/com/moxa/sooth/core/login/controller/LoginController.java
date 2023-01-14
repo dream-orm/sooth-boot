@@ -3,6 +3,9 @@ package com.moxa.sooth.core.login.controller;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.moxa.dream.system.cache.Cache;
+import com.moxa.dream.system.cache.CacheFactory;
+import com.moxa.dream.system.config.Configuration;
 import com.moxa.sooth.core.base.common.constant.CommonConstant;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
@@ -32,7 +35,8 @@ public class LoginController {
     private RedisTemplate redisTemplate;
     @Autowired
     private SysApiService sysApiService;
-
+    @Autowired
+    private Configuration configuration;
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result<JSONObject> login(@RequestBody SysLoginModel sysLoginModel) {
         String username = sysLoginModel.getUsername();
@@ -110,6 +114,21 @@ public class LoginController {
         }
     }
 
+    /**
+     * 刷新缓存
+     * @return
+     */
+    @RequestMapping(value = "/refreshCache")
+    public Result refreshCache() {
+        CacheFactory cacheFactory = configuration.getCacheFactory();
+        if(cacheFactory!=null){
+            Cache cache = cacheFactory.getCache();
+            if(cache!=null){
+                cache.clear();
+            }
+        }
+        return Result.ok(null,"刷新成功");
+    }
     /**
      * 用户信息
      *

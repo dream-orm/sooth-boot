@@ -8,15 +8,10 @@ import lombok.Data;
 import java.sql.Types;
 import java.util.Date;
 
-/**
- * 【请填写功能名称】  gen_base_class
- *
- * @author moxa
- * @date 2022-11-13
- */
+
 @Data
 @Table("gen_base_class")
-public class BaseClassTable {
+public class $BaseClass {
     /**
      *
      */
@@ -24,15 +19,11 @@ public class BaseClassTable {
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;
     /**
-     * 基类名称
+     * 基类全类名
      */
-    @Column(value = "name", jdbcType = Types.VARCHAR)
-    private String name;
-    /**
-     * 基类包名
-     */
-    @Column(value = "package_name", jdbcType = Types.VARCHAR)
-    private String packageName;
+    @Column(value = "class_name", jdbcType = Types.VARCHAR)
+    private String className;
+
     /**
      * 基类字段
      */

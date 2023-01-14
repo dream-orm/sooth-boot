@@ -1,14 +1,11 @@
 package com.moxa.sooth.code.fieldtype.service.impl;
 
-import com.moxa.dream.system.config.Page;
-import com.moxa.dream.template.mapper.TemplateMapper;
+import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.sooth.code.fieldtype.mapper.FieldTypeMapper;
-import com.moxa.sooth.code.fieldtype.model.FieldTypeModel;
 import com.moxa.sooth.code.fieldtype.service.IFieldTypeService;
 import com.moxa.sooth.code.fieldtype.util.FieldTypeUtil;
 import com.moxa.sooth.code.fieldtype.view.FieldType;
 import com.moxa.sooth.core.base.common.exception.SoothBootException;
-import com.moxa.sooth.core.base.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,59 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Description: 多数据源管理
- * @Author: jeecg-boot
- * @Date: 2019-12-25
- * @Version: V1.0
- */
 @Service
-public class FieldTypeServiceImpl implements IFieldTypeService {
-    @Autowired
-    private TemplateMapper templateMapper;
+public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> implements IFieldTypeService {
     @Autowired
     private FieldTypeMapper fieldTypeMapper;
 
-    @Override
-    public Result save(FieldType fieldType) {
-        if (fieldTypeMapper.selectByColumnType(fieldType.getColumnType()) != null) {
-            throw new SoothBootException("字段类型" + fieldType.getColumnType() + "已经存在");
-        }
-        templateMapper.insert(fieldType);
-        return Result.ok("添加成功！");
-    }
-
-    @Override
-    public Result edit(FieldType fieldType) {
-        templateMapper.updateById(fieldType);
-        return Result.ok("编辑成功!");
-    }
-
-    @Override
-    public Result delete(String id) {
-        templateMapper.deleteById(FieldType.class, id);
-        return Result.ok("删除成功!");
-    }
-
-    @Override
-    public int removeByIds(List<String> ids) {
-        return templateMapper.deleteByIds(FieldType.class, ids);
-    }
-
-    @Override
-    public Page<FieldType> selectPage(FieldTypeModel fieldTypeModel, Page page) {
-        return templateMapper.selectPage(FieldType.class, fieldTypeModel, page);
-    }
-
-    @Override
-    public List<FieldType> selectAll() {
-        return fieldTypeMapper.selectAll();
-    }
-
-    @Override
-    public FieldType selectById(int id) {
-        return templateMapper.selectById(FieldType.class, id);
-    }
 
     @Override
     public void initFieldType() {
