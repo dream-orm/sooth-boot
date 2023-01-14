@@ -32,7 +32,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     @PostMapping(value = "/save")
     public Result save(@RequestBody EditView editView) {
         if (retBool(service.insert(editView))) {
-            return Result.ok("添加成功");
+            return Result.ok(null,"添加成功");
         } else {
             return Result.error("添加失败");
         }
@@ -42,7 +42,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     @PutMapping(value = "/edit")
     public Result putEdit(@RequestBody EditView editView) {
         if (retBool(service.updateNonById(editView))) {
-            return Result.ok("编辑成功");
+            return Result.ok(null,"编辑成功");
         } else {
             return Result.error("编辑失败");
         }
@@ -52,7 +52,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     @PostMapping(value = "/edit")
     public Result postEdit(@RequestBody EditView editView) {
         if (retBool(service.updateById(editView))) {
-            return Result.ok("编辑成功");
+            return Result.ok(null,"编辑成功");
         } else {
             return Result.error("编辑失败");
         }
@@ -62,7 +62,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     @DeleteMapping(value = "/remove")
     public Result remove(@RequestParam(name = "id") Long id) {
         if (retBool(service.deleteById(id))) {
-            return Result.ok("删除成功");
+            return Result.ok(null,"删除成功");
         } else {
             return Result.error("删除失败");
         }
@@ -72,7 +72,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     @DeleteMapping(value = "/removeBatch")
     public Result removeBatch(@RequestParam(name = "ids") List<Long> ids) {
         if (retBool(service.deleteByIds(ids))) {
-            return Result.ok("批量删除成功");
+            return Result.ok(null,"批量删除成功");
         } else {
             return Result.error("批量删除失败");
         }

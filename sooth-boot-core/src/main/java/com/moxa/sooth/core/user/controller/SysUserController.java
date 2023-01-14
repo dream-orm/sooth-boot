@@ -20,7 +20,7 @@ public class SysUserController extends BaseController<ISysUserService, SysUser, 
     @RequestMapping(value = "/updatePassword", method = RequestMethod.PUT)
     public Result<?> updatePassword(@RequestBody SysUserPasswordModel userPasswordModel) {
         if (retBool(service.updatePassword(userPasswordModel))) {
-            return Result.ok("密码修改成功");
+            return Result.ok(null,"密码修改成功");
         } else {
             return Result.error("密码修改失败");
         }
@@ -29,18 +29,18 @@ public class SysUserController extends BaseController<ISysUserService, SysUser, 
     @PostMapping("/saveUser")
     public Result saveUser(@RequestBody SysUserEditView userEditView) {
         if (retBool(service.saveUser(userEditView))) {
-            return Result.ok("添加成功");
+            return Result.ok(null,"添加成功");
         } else {
-            return Result.ok("添加失败");
+            return Result.error("添加失败");
         }
     }
 
     @PostMapping("/editUser")
     public Result editUser(@RequestBody SysUserEditView userEditView) {
         if (retBool(service.editUser(userEditView))) {
-            return Result.ok("编辑成功");
+            return Result.ok(null,"编辑成功");
         } else {
-            return Result.ok("编辑失败");
+            return Result.error("编辑失败");
         }
     }
 }
