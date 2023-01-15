@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysLog.class)
-public class SysLog extends BaseDict {
+public class SysLogListView extends BaseDict {
     /**
      * id
      */
@@ -33,48 +33,17 @@ public class SysLog extends BaseDict {
     private String ip;
 
     /**
-     * 请求参数
-     */
-    private String requestParam;
-
-    /**
-     * 请求类型
-     */
-    private String requestType;
-
-    /**
-     * 请求路径
-     */
-    private String requestUrl;
-    /**
-     * 请求方法
-     */
-    private String method;
-
-    /**
      * 操作人用户名称
      */
     private String realname;
-    /**
-     * 操作人用户账户
-     */
-    private String username;
-
-    private String message;
-
-    private String stackTrace;
-
-    private String exceptionClass;
-
-    @Dict(dicCode = "log_type")
-    @Extract(DictExtractor.class)
-    private String logType;
 
     private String bizModule;
 
     private String description;
 
-    private String userAgent;
+    @Dict(dicCode = "log_type")
+    @Extract(DictExtractor.class)
+    private String logType;
 
     @Extract(DictExtractor.class)
     @Dict(dicCode = "success_status")

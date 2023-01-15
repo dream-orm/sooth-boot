@@ -91,7 +91,7 @@ public class LogAspect {
             return value;
         } catch (Throwable e) {
             sysLog.setMessage(e.getMessage());
-            sysLog.setStackTrace(ExceptionUtil.stacktraceToString(e));
+            sysLog.setStackTrace(ExceptionUtil.stacktraceToString(e,5000));
             sysLog.setExceptionClass(e.getClass().getName());
             sysLog.setStatus(1);
             throw e;
@@ -117,6 +117,7 @@ public class LogAspect {
         //获取request
         HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
         sysLog.setRequestType(request.getMethod());
+        sysLog.setRequestUrl(request.getRequestURI());
         sysLog.setUserAgent(request.getHeader("User-Agent"));
         //请求的参数
         sysLog.setRequestParam(getReqestParams(request, joinPoint));
