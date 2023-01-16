@@ -111,10 +111,8 @@ public class ShiroRealm extends AuthorizingRealm {
         if (username == null) {
             throw new AuthenticationException("token非法无效!");
         }
-
         // 查询用户信息
         SysUser sysUser = sysApiService.selectOneUser(username);
-        sysApiService.checkUserIsEffective(sysUser);
         if (!jwtTokenRefresh(token, username, sysUser.getPassword())) {
             throw new AuthenticationException(CommonConstant.TOKEN_IS_INVALID_MSG);
         }

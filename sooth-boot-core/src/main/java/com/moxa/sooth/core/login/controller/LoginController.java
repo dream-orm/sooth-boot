@@ -2,6 +2,7 @@ package com.moxa.sooth.core.login.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.digest.BCrypt;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.system.cache.Cache;
 import com.moxa.dream.system.cache.CacheFactory;
@@ -43,7 +44,13 @@ public class LoginController {
         String username = sysLoginModel.getUsername();
         String password = sysLoginModel.getPassword();
         String captcha = sysLoginModel.getCaptcha();
-        if (captcha == null) {
+        if(StrUtil.isEmpty(username)){
+            return Result.error("账号不能为空");
+        }
+        if(StrUtil.isEmpty(password)){
+            return Result.error("密码不能为空");
+        }
+        if (StrUtil.isEmpty(captcha)) {
             return Result.error("验证码无效");
         }
         String lowerCaseCaptcha = captcha.toLowerCase();
@@ -55,11 +62,7 @@ public class LoginController {
             return Result.error("验证码错误");
         }
         SysUser sysUser = sysApiService.selectOneUser(username);
-        sysApiService.checkUserIsEffective(sysUser);
-        //2. 校验用户名或密码是否正确
-        String userpassword = PasswordUtil.encrypt(username, password, sysUser.getSalt());
-        String syspassword = sysUser.getPassword();
-        if (!syspassword.equals(userpassword)) {
+        if(!BCrypt.checkpw(password,sysUser.getPassword())){
             return Result.error("用户名或密码错误");
         }
         //用户登录信息
@@ -78,41 +81,37 @@ public class LoginController {
         if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
             SysUser sysUser = sysApiService.selectOneUser(username);
-            if (sysUser != null) {
-                JSONObject obj = new JSONObject();
-                obj.put("userInfo", sysUser);
-                return Result.ok(obj);
-            }
+            JSONObject obj = new JSONObject();
+            obj.put("userInfo", sysUser);
+            return Result.ok(obj);
         }
         return Result.error("获取用户信息失败");
-
     }
 
     /**
      * 退出登录
      *
      * @param request
-     * @param response
      * @return
      */
     @RequestMapping(value = "/logout")
-    public Result<Object> logout(HttpServletRequest request, HttpServletResponse response) {
+    public Result<Object> logout(HttpServletRequest request) {
         //用户退出逻辑
         String token = request.getHeader(CommonConstant.X_ACCESS_TOKEN);
         if (StrUtil.isEmpty(token)) {
-            return Result.error("退出登录失败！");
+            return Result.error("Token无效");
         }
         String username = JwtUtil.getUsername(token);
-        SysUser sysUser = sysApiService.selectOneUser(username);
-        if (sysUser != null) {
-            log.info(" 用户名:  " + sysUser.getRealname() + ",退出成功！ ");
-            redisTemplate.delete(CommonConstant.PREFIX_USER_TOKEN + token);
-            //调用shiro的logout
-            SecurityUtils.getSubject().logout();
-            return Result.ok("退出登录成功！");
-        } else {
-            return Result.error("Token无效!");
+        if (StrUtil.isEmpty(username)) {
+            return Result.error("Token无效");
         }
+        SysUser loginUser = ClientUtil.getLoginUser();
+        if(loginUser==null||!loginUser.getUsername().equals(username)){
+            return Result.ok("退出登录失败");
+        }
+        redisTemplate.delete(CommonConstant.PREFIX_USER_TOKEN + token);
+        SecurityUtils.getSubject().logout();
+        return Result.ok("退出登录成功");
     }
 
     /**
@@ -156,12 +155,11 @@ public class LoginController {
     /**
      * 后台生成图形验证码 ：有效
      *
-     * @param response
      * @param key
      */
 
     @GetMapping(value = "/randomImage/{key}")
-    public Result<String> randomImage(HttpServletResponse response, @PathVariable("key") String key) {
+    public Result<String> randomImage(@PathVariable("key") String key) {
         try {
             //生成验证码
             String code = RandomUtil.randomString(BASE_CHECK_CODES, 4);

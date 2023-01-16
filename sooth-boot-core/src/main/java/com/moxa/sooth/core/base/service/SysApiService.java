@@ -9,8 +9,6 @@ public interface SysApiService {
 
     SysUser selectOneUser(String username);
 
-    void checkUserIsEffective(SysUser sysUser);
-
     String translateDict(String table, String name, String code, Object value);
 
     Set<String> selectRoles(String username);

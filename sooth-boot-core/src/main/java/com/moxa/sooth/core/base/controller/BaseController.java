@@ -46,7 +46,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
-    @AutoLog(value = "非空编辑")
+    @AutoLog(value = "非空修改")
     @PutMapping(value = "/edit")
     public Result putEdit(@RequestBody EditView editView) {
         if (retBool(service.updateNonById(editView))) {
@@ -56,7 +56,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
-    @AutoLog(value = "全量编辑")
+    @AutoLog(value = "修改")
     @PostMapping(value = "/edit")
     public Result postEdit(@RequestBody EditView editView) {
         if (retBool(service.updateById(editView))) {
@@ -66,7 +66,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
-    @AutoLog(value = "通过id删除")
+    @AutoLog(value = "删除")
     @DeleteMapping(value = "/remove")
     public Result remove(@RequestParam(name = "id") Long id) {
         if (retBool(service.deleteById(id))) {

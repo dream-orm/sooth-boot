@@ -1,9 +1,12 @@
 package com.moxa.sooth.core.login.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SysLoginModel {
 
     private String username;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String captcha;

@@ -38,17 +38,11 @@ public class SysApiServiceImpl implements SysApiService {
 
     @Override
     public SysUser selectOneUser(String username) {
-        return sysUserService.selectOneUser(username);
-    }
-
-    @Override
-    public void checkUserIsEffective(SysUser sysUser) {
+        SysUser sysUser = sysUserService.selectOneUser(username);
         if (sysUser == null) {
-            throw new SoothBootException("该用户不存在，请注册");
+            throw new SoothBootException("用户不存在");
         }
-        if (CommonConstant.USER_FREEZE.equals(sysUser.getStatus())) {
-            throw new SoothBootException("该用户已冻结");
-        }
+        return sysUser;
     }
 
     @Override

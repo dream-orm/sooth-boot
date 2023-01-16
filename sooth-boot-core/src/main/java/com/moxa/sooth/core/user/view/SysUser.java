@@ -47,13 +47,6 @@ public class SysUser extends BaseEntity {
      */
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-
-    /**
-     * md5密码盐
-     */
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String salt;
-
     /**
      * 头像
      */
@@ -61,39 +54,17 @@ public class SysUser extends BaseEntity {
     private String avatar;
 
     /**
-     * 生日
-     */
-
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birthday;
-
-    /**
-     * 性别（1：男 2：女）
+     * 性别
      */
 
     @Dict(dicCode = "sex")
     @Extract(DictExtractor.class)
     private Integer sex;
-
-    /**
-     * 电子邮件
-     */
-
-    private String email;
-
     /**
      * 电话
      */
 
     private String phone;
-    /**
-     * 状态(1：正常  2：冻结 ）
-     */
-
-    @Dict(dicCode = "status")
-    @Extract(DictExtractor.class)
-    private Integer status;
 
     /**
      * 删除状态（0，正常，1已删除）

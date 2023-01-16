@@ -44,8 +44,4 @@ public class SysUserListView extends BaseDict {
      */
 
     private String phone;
-
-    @Dict(dicCode = "status")
-    @Extract(DictExtractor.class)
-    private Integer status;
 }

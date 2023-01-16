@@ -8,34 +8,6 @@ management:
       exposure:
         include: metrics,httptrace
 spring:
-  ## quartz定时任务,采用数据库方式
-  quartz:
-    job-store-type: jdbc
-    initialize-schema: embedded
-    #定时任务启动开关，true-开  false-关
-    auto-startup: true
-    #延迟1秒启动定时任务
-    startup-delay: 1s
-    #启动时更新己存在的Job
-    overwrite-existing-jobs: true
-    properties:
-      org:
-        quartz:
-          scheduler:
-            instanceName: MyScheduler
-            instanceId: AUTO
-          jobStore:
-            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            tablePrefix: QRTZ_
-            isClustered: true
-            misfireThreshold: 12000
-            clusterCheckinInterval: 15000
-          threadPool:
-            class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 10
-            threadPriority: 5
-            threadsInheritContextClassLoaderOfInitializingThread: true
   datasource:
     master:
       pool-name: MasterDataSource

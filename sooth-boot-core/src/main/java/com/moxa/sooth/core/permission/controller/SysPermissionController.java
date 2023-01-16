@@ -132,7 +132,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
     @PostMapping("saveRolePermission")
     public Result saveRolePermission(@RequestBody SysPermissionEditModel sysPermissionEditModel) {
         service.saveRolePermission(sysPermissionEditModel);
-        return Result.ok("角色授权成功");
+        return Result.ok(null,"角色授权成功");
     }
 
 
