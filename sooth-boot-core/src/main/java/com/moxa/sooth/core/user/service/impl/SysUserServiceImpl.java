@@ -5,16 +5,17 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.BCrypt;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
-import com.moxa.sooth.core.base.common.exception.SoothBootException;
 import com.moxa.sooth.core.base.config.SoothProperties;
+import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.dept.service.ISysUserDeptService;
 import com.moxa.sooth.core.dept.table.SysUserDept;
 import com.moxa.sooth.core.role.service.ISysUserRoleService;
 import com.moxa.sooth.core.role.table.SysUserRole;
 import com.moxa.sooth.core.user.mapper.SysUserMapper;
+import com.moxa.sooth.core.user.model.BasicInfoModel;
+import com.moxa.sooth.core.user.model.PasswordModel;
 import com.moxa.sooth.core.user.model.SysUserModel;
-import com.moxa.sooth.core.user.model.SysUserPasswordModel;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
 import com.moxa.sooth.core.user.view.SysUserEditView;
@@ -73,7 +74,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
     }
 
     @Override
-    public int updatePassword(SysUserPasswordModel userPasswordModel) {
+    public int updatePassword(PasswordModel userPasswordModel) {
         String oldPassword = userPasswordModel.getOldPassword();
         String newPassword = userPasswordModel.getPassword();
         String confirmPassword = userPasswordModel.getConfirmPassword();
@@ -83,19 +84,28 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
         if (StrUtil.isEmpty(newPassword)) {
             throw new SoothBootException("新密码不允许为空");
         }
-        if(!newPassword.equals(confirmPassword)){
+        if (!newPassword.equals(confirmPassword)) {
             throw new SoothBootException("两次输入密码不一致");
         }
         SysUser sysUser = ClientUtil.getLoginUser();
         if (sysUser == null) {
             throw new SoothBootException("用户不存在");
         }
-        if(!BCrypt.checkpw(oldPassword,sysUser.getPassword())){
+        if (!BCrypt.checkpw(oldPassword, sysUser.getPassword())) {
             throw new SoothBootException("旧密码输入错误");
         }
         String password = BCrypt.hashpw(userPasswordModel.getPassword());
-        sysUser.setPassword(password);
-        return updateById(sysUser);
+        return sysUserMapper.updatePassword(sysUser.getId(), password);
+    }
+
+    @Override
+    public int updateBasicInfo(BasicInfoModel basicInfoModel) {
+        SysUser sysUser = ClientUtil.getLoginUser();
+        if (sysUser == null) {
+            throw new SoothBootException("用户不存在");
+        }
+        basicInfoModel.setId(sysUser.getId());
+        return templateMapper.updateById(basicInfoModel);
     }
 
     @Transactional(rollbackFor = Exception.class)

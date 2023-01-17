@@ -15,19 +15,19 @@ import java.util.List;
 
 @Data
 public class SysLogModel {
-    @Conditional(value = ContainsCondition.class,or = true)
+    @Conditional(value = ContainsCondition.class, or = true)
     private String bizModule;
-    @Conditional(value = ContainsCondition.class,or = true)
+    @Conditional(value = ContainsCondition.class, or = true)
     private String realname;
-    @Conditional(value = ContainsCondition.class,or = true)
+    @Conditional(value = ContainsCondition.class, or = true)
     private String description;
     @Conditional(InCondition.class)
-    private List<String>logType;
+    private List<String> logType;
     @Conditional(InCondition.class)
-    private List<Integer>status;
+    private List<Integer> status;
     @Sort(Order.DESC)
     @Conditional(BetweenCondition.class)
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private List<Date>createTime;
+    private List<Date> createTime;
 }

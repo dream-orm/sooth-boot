@@ -1,7 +1,7 @@
 package com.moxa.sooth.core.base.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.moxa.sooth.core.base.common.constant.CommonConstant;
+import com.moxa.sooth.core.base.constant.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

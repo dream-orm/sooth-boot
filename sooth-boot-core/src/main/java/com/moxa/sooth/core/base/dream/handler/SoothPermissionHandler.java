@@ -5,8 +5,8 @@ import com.moxa.dream.mate.permission.inject.PermissionHandler;
 import com.moxa.dream.system.config.MethodInfo;
 import com.moxa.dream.system.table.TableInfo;
 import com.moxa.sooth.core.base.annotation.Permission;
+import com.moxa.sooth.core.base.config.App;
 import com.moxa.sooth.core.base.util.ClientUtil;
-import com.moxa.sooth.core.base.util.SpringContextUtils;
 import com.moxa.sooth.core.dept.service.ISysDeptService;
 import com.moxa.sooth.core.dept.service.ISysUserDeptService;
 import com.moxa.sooth.core.dept.table.SysUserDept;
@@ -22,10 +22,10 @@ public class SoothPermissionHandler implements PermissionHandler {
     @Override
     public boolean isPermissionInject(MethodInfo methodInfo, TableInfo tableInfo) {
         if (sysUserDeptService == null) {
-            sysUserDeptService = SpringContextUtils.getBean(ISysUserDeptService.class);
+            sysUserDeptService = App.getBean(ISysUserDeptService.class);
         }
         if (sysDeptService == null) {
-            sysDeptService = SpringContextUtils.getBean(ISysDeptService.class);
+            sysDeptService = App.getBean(ISysDeptService.class);
         }
         Permission permission = methodInfo.get(Permission.class);
         return (permission != null) && tableInfo.getFieldName("dept_id") != null;

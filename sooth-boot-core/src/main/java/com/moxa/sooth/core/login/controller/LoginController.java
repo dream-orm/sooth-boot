@@ -3,14 +3,17 @@ package com.moxa.sooth.core.login.controller;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.BCrypt;
+import cn.hutool.crypto.digest.MD5;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.system.cache.Cache;
 import com.moxa.dream.system.cache.CacheFactory;
 import com.moxa.dream.system.config.Configuration;
-import com.moxa.sooth.core.base.common.constant.CommonConstant;
+import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
-import com.moxa.sooth.core.base.util.*;
+import com.moxa.sooth.core.base.util.ClientUtil;
+import com.moxa.sooth.core.base.util.JwtUtil;
+import com.moxa.sooth.core.base.util.RandImageUtil;
 import com.moxa.sooth.core.login.model.SysLoginModel;
 import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +23,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -29,9 +31,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class LoginController {
     private final String BASE_CHECK_CODES = "qwertyuiplkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBNM1234567890";
-
-    @Autowired
-    private RedisUtil redisUtil;
     @Autowired
     private RedisTemplate redisTemplate;
     @Autowired
@@ -44,10 +43,10 @@ public class LoginController {
         String username = sysLoginModel.getUsername();
         String password = sysLoginModel.getPassword();
         String captcha = sysLoginModel.getCaptcha();
-        if(StrUtil.isEmpty(username)){
+        if (StrUtil.isEmpty(username)) {
             return Result.error("账号不能为空");
         }
-        if(StrUtil.isEmpty(password)){
+        if (StrUtil.isEmpty(password)) {
             return Result.error("密码不能为空");
         }
         if (StrUtil.isEmpty(captcha)) {
@@ -55,19 +54,19 @@ public class LoginController {
         }
         String lowerCaseCaptcha = captcha.toLowerCase();
         String origin = lowerCaseCaptcha + sysLoginModel.getCheckKey();
-        String realKey = Md5Util.md5Encode(origin, "utf-8");
-        Object checkCode = redisUtil.get(realKey);
+        String realKey = MD5.create().digestHex(origin);
+        Object checkCode = redisTemplate.opsForValue().get(realKey);
         if (checkCode == null || !checkCode.toString().equals(lowerCaseCaptcha)) {
             log.warn("验证码错误，key= {} , Ui checkCode= {}, Redis checkCode = {}", sysLoginModel.getCheckKey(), lowerCaseCaptcha, checkCode);
             return Result.error("验证码错误");
         }
         SysUser sysUser = sysApiService.selectOneUser(username);
-        if(!BCrypt.checkpw(password,sysUser.getPassword())){
+        if (!BCrypt.checkpw(password, sysUser.getPassword())) {
             return Result.error("用户名或密码错误");
         }
         //用户登录信息
         JSONObject result = userInfo(sysUser);
-        redisUtil.del(realKey);
+        redisTemplate.delete(realKey);
         return Result.ok(result, "登录成功");
     }
 
@@ -106,7 +105,7 @@ public class LoginController {
             return Result.error("Token无效");
         }
         SysUser loginUser = ClientUtil.getLoginUser();
-        if(loginUser==null||!loginUser.getUsername().equals(username)){
+        if (loginUser == null || !loginUser.getUsername().equals(username)) {
             return Result.ok("退出登录失败");
         }
         redisTemplate.delete(CommonConstant.PREFIX_USER_TOKEN + token);
@@ -168,9 +167,8 @@ public class LoginController {
 
             // 加入密钥作为混淆，避免简单的拼接，被外部利用，用户自定义该密钥即可
             String origin = lowerCaseCode + key;
-            String realKey = Md5Util.md5Encode(origin, "utf-8");
-
-            redisUtil.set(realKey, lowerCaseCode, 60);
+            String realKey = MD5.create().digestHex(origin);
+            redisTemplate.opsForValue().set(realKey, lowerCaseCode, 60, TimeUnit.SECONDS);
             log.info("获取验证码，Redis key = {}，checkCode = {}", realKey, code);
             //返回前端
             String base64 = RandImageUtil.generate(code);
@@ -195,8 +193,8 @@ public class LoginController {
             return Result.error("验证码无效");
         }
         String lowerCaseCaptcha = captcha.toLowerCase();
-        String realKey = Md5Util.md5Encode(lowerCaseCaptcha + checkKey, "utf-8");
-        Object checkCode = redisUtil.get(realKey);
+        String realKey = MD5.create().digestHex(lowerCaseCaptcha + checkKey);
+        Object checkCode = redisTemplate.opsForValue().get(realKey);
         if (checkCode == null || !checkCode.equals(lowerCaseCaptcha)) {
             return Result.error("验证码错误");
         }

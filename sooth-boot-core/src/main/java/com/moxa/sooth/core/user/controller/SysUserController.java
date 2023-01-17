@@ -1,11 +1,12 @@
 package com.moxa.sooth.core.user.controller;
 
 
+import com.moxa.sooth.core.base.annotation.AutoLog;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.log.annotation.AutoLog;
+import com.moxa.sooth.core.user.model.BasicInfoModel;
+import com.moxa.sooth.core.user.model.PasswordModel;
 import com.moxa.sooth.core.user.model.SysUserModel;
-import com.moxa.sooth.core.user.model.SysUserPasswordModel;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
 import com.moxa.sooth.core.user.view.SysUserEditView;
@@ -23,11 +24,21 @@ public class SysUserController extends BaseController<ISysUserService, SysUser, 
 
     @AutoLog("修改密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.PUT)
-    public Result<?> updatePassword(@RequestBody SysUserPasswordModel userPasswordModel) {
+    public Result<?> updatePassword(@RequestBody PasswordModel userPasswordModel) {
         if (retBool(service.updatePassword(userPasswordModel))) {
             return Result.ok(null, "密码修改成功");
         } else {
             return Result.error("密码修改失败");
+        }
+    }
+
+    @AutoLog("修改基本信息")
+    @RequestMapping(value = "/updateBasicInfo", method = RequestMethod.PUT)
+    public Result<?> updateBasicInfo(@RequestBody BasicInfoModel basicInfoModel) {
+        if (retBool(service.updateBasicInfo(basicInfoModel))) {
+            return Result.ok(null, "基本信息修改成功");
+        } else {
+            return Result.error("基本信息修改失败");
         }
     }
 
@@ -40,6 +51,7 @@ public class SysUserController extends BaseController<ISysUserService, SysUser, 
             return Result.error("添加失败");
         }
     }
+
     @AutoLog("编辑")
     @PostMapping("/editUser")
     public Result editUser(@RequestBody SysUserEditView userEditView) {

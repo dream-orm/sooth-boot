@@ -41,8 +41,8 @@ public class $SysDict {
     /**
      * 字典名称
      */
-    @Column(value = "dict_name", jdbcType = Types.VARCHAR)
-    private String dictName;
+    @Column(value = "name", jdbcType = Types.VARCHAR)
+    private String name;
     /**
      * 创建时间
      */
@@ -56,8 +56,8 @@ public class $SysDict {
     /**
      * 字典编码
      */
-    @Column(value = "dict_code", jdbcType = Types.VARCHAR)
-    private String dictCode;
+    @Column(value = "code", jdbcType = Types.VARCHAR)
+    private String code;
     /**
      * 更新时间
      */

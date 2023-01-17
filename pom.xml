@@ -18,20 +18,18 @@
         <fastjson.version>1.2.83</fastjson.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
-        <dream.version>0.0.1-SNAPSHOT</dream.version>
+        <dream.version>1.0.0</dream.version>
         <http-client.version>4.5.13</http-client.version>
-        <!-- shiro -->
         <shiro.version>1.10.0</shiro.version>
         <java-jwt.version>4.2.1</java-jwt.version>
         <hutool.version>5.3.8</hutool.version>
     </properties>
 
     <modules>
-        <module>sooth-boot-main</module>
         <module>sooth-boot-core</module>
-        <module>sooth-module</module>
+        <module>sooth-boot-module</module>
         <module>sooth-boot-plugin</module>
-        <module>sooth-boot-dependency</module>
+        <module>sooth-boot-drive</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -80,26 +78,33 @@
         </dependencies>
     </dependencyManagement>
     <build>
-
         <plugins>
-            <!-- 指定JDK编译版本 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <!-- 打包跳过测试 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>inner-nexus-release</name>
+            <url>http://192.168.0.243:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>inner-nexus-snapshot</name>
+            <url>http://192.168.0.243:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

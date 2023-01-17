@@ -2,15 +2,15 @@ package com.moxa.sooth.core.permission.mapper.provider;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.digest.MD5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.system.core.resultsethandler.ResultSetHandler;
 import com.moxa.dream.system.provider.ActionProvider;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
-import com.moxa.sooth.core.base.common.constant.CommonConstant;
-import com.moxa.sooth.core.base.common.constant.SymbolConstant;
+import com.moxa.sooth.core.base.constant.CommonConstant;
+import com.moxa.sooth.core.base.constant.SymbolConstant;
 import com.moxa.sooth.core.base.util.ConvertUtils;
-import com.moxa.sooth.core.base.util.Md5Util;
 import com.moxa.sooth.core.permission.view.SysPermission;
 
 import java.util.Collection;
@@ -89,7 +89,7 @@ public class SysPermissionProvider {
                 }
 
                 if (isWwwHttpUrl(permission.getUrl())) {
-                    json.put("path", Md5Util.md5Encode(permission.getUrl(), "utf-8"));
+                    json.put("path", MD5.create().digestHex(permission.getUrl()));
                 } else {
                     json.put("path", permission.getUrl());
                 }

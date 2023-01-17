@@ -1,17 +1,14 @@
 package com.moxa.sooth.core.permission.view;
 
-import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
-import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
-import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.permission.table.$SysPermission;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +18,7 @@ import java.util.List;
 @View($SysPermission.class)
 public class SysPermission extends BaseEntity implements Tree<Long> {
 
-    private List<SysPermission> children = new ArrayList<>();
+    private List<SysPermission> children;
     /**
      * id
      */
@@ -78,8 +75,8 @@ public class SysPermission extends BaseEntity implements Tree<Long> {
     /**
      * 类型（0：一级菜单；1：子菜单 ；2：按钮权限）
      */
-    @Dict(dicCode = "menu_type")
-    @Extract(DictExtractor.class)
+    @Dict(code = "menu_type")
+
     private Integer menuType;
 
     /**
@@ -147,5 +144,10 @@ public class SysPermission extends BaseEntity implements Tree<Long> {
     @Override
     public List<SysPermission> getChildren() {
         return children;
+    }
+
+    @Override
+    public void setChildren(List<? extends Tree> children) {
+        this.children = (List<SysPermission>) children;
     }
 }

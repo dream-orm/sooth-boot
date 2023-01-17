@@ -29,12 +29,12 @@ public class SysDict extends BaseEntity {
     /**
      * 字典名称
      */
-    private String dictName;
+    private String name;
 
     /**
      * 字典编码
      */
-    private String dictCode;
+    private String code;
 
     /**
      * 描述

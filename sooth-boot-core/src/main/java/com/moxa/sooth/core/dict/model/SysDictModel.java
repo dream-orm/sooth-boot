@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class SysDictModel {
     @Conditional(ContainsCondition.class)
-    private String dictCode;
+    private String code;
     @Conditional(ContainsCondition.class)
-    private String dictName;
+    private String name;
 }

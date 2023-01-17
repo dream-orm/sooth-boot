@@ -3,10 +3,10 @@ package com.moxa.sooth.core.base.controller;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.system.config.Page;
 import com.moxa.dream.template.service.IService;
-import com.moxa.sooth.core.base.common.exception.SoothBootException;
+import com.moxa.sooth.core.base.annotation.AutoLog;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.log.annotation.AutoLog;
+import com.moxa.sooth.core.base.exception.SoothBootException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     private String bizModule;
 
     public BaseController(String bizModule) {
-        if(StrUtil.isBlank(bizModule)){
+        if (StrUtil.isBlank(bizModule)) {
             throw new SoothBootException("业务模块名不能为空");
         }
         this.bizModule = bizModule;

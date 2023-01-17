@@ -12,7 +12,7 @@ import com.moxa.dream.template.validate.ValidateDreamRunTimeException;
 import com.moxa.dream.template.validate.Validator;
 import com.moxa.dream.util.common.NonCollection;
 import com.moxa.dream.util.common.ObjectMap;
-import com.moxa.sooth.core.base.util.SpringContextUtils;
+import com.moxa.sooth.core.base.config.App;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class UniqueValidator implements Validator<Object> {
             methodInfo.setSql("select 1 from " + tableName + " where " + column + "=@$(v) limit 1");
             methodInfo.setRowType(NonCollection.class);
             methodInfo.setColType(Integer.class);
-            session = SpringContextUtils.getBean(Session.class);
+            session = App.getBean(Session.class);
             return true;
         } else {
             return false;

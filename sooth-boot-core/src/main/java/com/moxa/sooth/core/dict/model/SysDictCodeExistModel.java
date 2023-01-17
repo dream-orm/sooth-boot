@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class SysDictCodeExistModel {
     @Conditional(value = EqCondition.class, filterNull = false)
-    private String dictCode;
+    private String code;
 }

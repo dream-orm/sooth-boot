@@ -1,6 +1,6 @@
 package com.moxa.sooth.core.base.entity;
 
-import com.moxa.sooth.core.base.common.constant.CommonConstant;
+import com.moxa.sooth.core.base.constant.CommonConstant;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -7,12 +7,7 @@ import lombok.Data;
 
 import java.sql.Types;
 
-/**
- * 【请填写功能名称】  sys_dict_item
- *
- * @author moxa
- * @date 2022-11-13
- */
+
 @Data
 @Table("sys_dict_item")
 public class $SysDictItem {
@@ -40,11 +35,11 @@ public class $SysDictItem {
     /**
      * 字典项文本
      */
-    @Column(value = "item_text", jdbcType = Types.VARCHAR)
-    private String itemText;
+    @Column(value = "name", jdbcType = Types.VARCHAR)
+    private String name;
     /**
      * 字典项值
      */
-    @Column(value = "item_value", jdbcType = Types.VARCHAR)
-    private String itemValue;
+    @Column(value = "value", jdbcType = Types.VARCHAR)
+    private String value;
 }

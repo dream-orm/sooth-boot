@@ -1,21 +1,15 @@
 package com.moxa.sooth.core.user.view;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotNull;
-import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
-import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.dream.annotation.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.user.table.$SysUser;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 
 
 @Data
@@ -57,8 +51,8 @@ public class SysUser extends BaseEntity {
      * 性别
      */
 
-    @Dict(dicCode = "sex")
-    @Extract(DictExtractor.class)
+    @Dict(code = "sex")
+
     private Integer sex;
     /**
      * 电话

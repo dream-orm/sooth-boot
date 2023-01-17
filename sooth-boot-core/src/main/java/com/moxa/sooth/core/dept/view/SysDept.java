@@ -1,22 +1,19 @@
 package com.moxa.sooth.core.dept.view;
 
-import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
-import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
-import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.dream.annotation.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.dept.table.$SysDept;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @View($SysDept.class)
 public class SysDept extends BaseEntity implements Tree<Long> {
-    private List<SysDept> children = new ArrayList<>();
+    private List<SysDept> children;
     /**
      * ID
      */
@@ -43,13 +40,12 @@ public class SysDept extends BaseEntity implements Tree<Long> {
      */
 
     private String description;
-    @Dict(dicCode = "status")
-    @Extract(DictExtractor.class)
+    @Dict(code = "status")
+
     private Integer status;
     /**
      * 删除状态（0，正常，1已删除）
      */
-    @Extract(DictExtractor.class)
     private Integer delFlag;
 
     @Override
@@ -60,5 +56,10 @@ public class SysDept extends BaseEntity implements Tree<Long> {
     @Override
     public List<? extends Tree> getChildren() {
         return children;
+    }
+
+    @Override
+    public void setChildren(List<? extends Tree> children) {
+        this.children = (List<SysDept>) children;
     }
 }

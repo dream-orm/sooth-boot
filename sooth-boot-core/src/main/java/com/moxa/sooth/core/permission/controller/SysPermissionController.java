@@ -3,7 +3,7 @@ package com.moxa.sooth.core.permission.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.moxa.sooth.core.base.common.constant.CommonConstant;
+import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
@@ -132,7 +132,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
     @PostMapping("saveRolePermission")
     public Result saveRolePermission(@RequestBody SysPermissionEditModel sysPermissionEditModel) {
         service.saveRolePermission(sysPermissionEditModel);
-        return Result.ok(null,"角色授权成功");
+        return Result.ok(null, "角色授权成功");
     }
 
 

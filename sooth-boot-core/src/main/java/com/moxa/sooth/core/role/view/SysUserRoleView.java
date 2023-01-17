@@ -1,8 +1,6 @@
 package com.moxa.sooth.core.role.view;
 
-import com.moxa.dream.system.annotation.Extract;
-import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
-import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseDict;
 import lombok.Data;
 
@@ -15,7 +13,7 @@ public class SysUserRoleView extends BaseDict {
 
     private String realname;
 
-    @Dict(dicCode = "status")
-    @Extract(DictExtractor.class)
+    @Dict(code = "status")
+
     private String status;
 }

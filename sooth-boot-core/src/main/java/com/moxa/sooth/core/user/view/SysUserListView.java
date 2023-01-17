@@ -1,9 +1,7 @@
 package com.moxa.sooth.core.user.view;
 
-import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
-import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
-import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseDict;
 import com.moxa.sooth.core.user.table.$SysUser;
 import lombok.Data;
@@ -35,8 +33,8 @@ public class SysUserListView extends BaseDict {
     private String realname;
 
 
-    @Dict(dicCode = "sex")
-    @Extract(DictExtractor.class)
+    @Dict(code = "sex")
+
     private Integer sex;
 
     /**

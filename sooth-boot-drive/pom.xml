@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sooth-boot-parent</artifactId>
+        <groupId>com.moxa.sooth</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sooth-boot-drive</artifactId>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <!--模块插件-->
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-boot-plugin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-boot-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-module-monitor</artifactId>
+        </dependency>
+        <!--代码生成-->
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-module-code</artifactId>
+            <version>${soothboot.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

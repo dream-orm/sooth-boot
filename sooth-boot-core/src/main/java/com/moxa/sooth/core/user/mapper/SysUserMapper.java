@@ -25,4 +25,7 @@ public interface SysUserMapper {
             "and phone like concat('%',@$(userModel.phone),'%') " +
             "and sys_dept.dept_id in (@foreach(userModel.deptIds))))")
     List<SysUserListView> selectPage(@Param("userModel") SysUserModel userModel, @Param("page") Page page);
+
+    @Sql("update sys_user set password=@$(password) where id=@$(id)")
+    int updatePassword(@Param("id") Long id, @Param("password") String password);
 }

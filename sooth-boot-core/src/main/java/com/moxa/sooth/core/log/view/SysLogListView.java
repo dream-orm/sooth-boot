@@ -1,10 +1,8 @@
 package com.moxa.sooth.core.log.view;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
-import com.moxa.sooth.core.base.common.aspect.annotation.Dict;
-import com.moxa.sooth.core.base.dream.DictExtractor;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseDict;
 import com.moxa.sooth.core.log.table.$SysLog;
 import lombok.Data;
@@ -41,12 +39,12 @@ public class SysLogListView extends BaseDict {
 
     private String description;
 
-    @Dict(dicCode = "log_type")
-    @Extract(DictExtractor.class)
+    @Dict(code = "log_type")
+
     private String logType;
 
-    @Extract(DictExtractor.class)
-    @Dict(dicCode = "success_status")
+
+    @Dict(code = "success_status")
     private Integer status;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
