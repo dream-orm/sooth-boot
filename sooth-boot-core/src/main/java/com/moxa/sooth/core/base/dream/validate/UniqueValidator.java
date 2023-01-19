@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.dream.vaalidate;
+package com.moxa.sooth.core.base.dream.validate;
 
 import com.moxa.dream.system.config.Command;
 import com.moxa.dream.system.config.Configuration;
@@ -32,7 +32,7 @@ public class UniqueValidator implements Validator<Object> {
             String column = columnInfo.getColumn();
             methodInfo = new MethodInfo();
             methodInfo.setConfiguration(configuration);
-            methodInfo.setSql("select 1 from " + tableName + " where " + column + "=@$(v) limit 1");
+            methodInfo.setSql("select 1 from " + tableName + " where " + column + "=@?(v) limit 1");
             methodInfo.setRowType(NonCollection.class);
             methodInfo.setColType(Integer.class);
             session = App.getBean(Session.class);

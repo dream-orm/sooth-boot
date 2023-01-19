@@ -9,5 +9,5 @@ public class SysUserModel {
     private String username;
     private String realname;
     private String phone;
-    private List<String> deptIds;
+    private List<Long> deptIds;
 }

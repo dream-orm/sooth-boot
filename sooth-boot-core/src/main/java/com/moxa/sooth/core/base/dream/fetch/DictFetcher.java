@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.dream;
+package com.moxa.sooth.core.base.dream.fetch;
 
 import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.template.fetch.Fetcher;
@@ -22,9 +22,9 @@ public class DictFetcher implements Fetcher {
         String code = StrUtil.utf8Str(paramMap.get(CODE));
         String name = StrUtil.utf8Str(paramMap.get(NAME));
         String table = StrUtil.utf8Str(paramMap.get(TABLE));
-        String textValue = sysApiService.translateDict(table, name, code, value instanceof Boolean ? value : String.valueOf(value));
+//        String textValue = sysApiService.getDictItemName(table, name, code, value instanceof Boolean ? value : String.valueOf(value));
         if (result instanceof BaseDict) {
-            ((BaseDict) result).put(property, textValue);
+//            ((BaseDict) result).put(property, textValue);
         } else {
             throw new SoothBootException(result.getClass() + "必须继承" + BaseDict.class.getName());
         }

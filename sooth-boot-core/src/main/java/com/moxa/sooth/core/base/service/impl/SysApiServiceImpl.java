@@ -45,11 +45,11 @@ public class SysApiServiceImpl implements SysApiService {
     }
 
     @Override
-    public String translateDict(String table, String name, String code, Object value) {
+    public String getDictItemName(String table, String name, String code, String value) {
         if (StrUtil.isBlank(table)) {
-            return sysDictService.translateDict(code, value);
+            return sysDictService.getDictItemName(code, value);
         } else {
-            return templateMapper.selectOne("select " + name + " from " + table + " where " + code + "=@$(value)", new ObjectMap(value), String.class);
+            return templateMapper.selectOne("select " + name + " from " + table + " where " + code + "=@?(value)", new ObjectMap(value), String.class);
         }
     }
 

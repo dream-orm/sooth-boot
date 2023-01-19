@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface CodeGenMapper {
-    @Sql("select id from gen_base_class where name=@$(name) limit 1")
+    @Sql("select id from gen_base_class where name=@?(name) limit 1")
     Long selectByName(String name);
 
     @Sql("select @all() from gen_base_class")

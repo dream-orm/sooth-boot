@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.moxa.dream.template.annotation.Wrap;
 import com.moxa.dream.template.annotation.WrapType;
 import com.moxa.dream.template.wrap.DateWrapper;
-import com.moxa.sooth.core.base.dream.UserWrapper;
+import com.moxa.sooth.core.base.dream.wrap.UserWrapper;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.dream;
+package com.moxa.sooth.core.base.dream.wrap;
 
 import com.moxa.dream.template.wrap.Wrapper;
 import com.moxa.sooth.core.base.util.SecurityUtil;

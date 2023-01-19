@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.dream;
+package com.moxa.sooth.core.base.dream.sequence;
 
 import com.moxa.dream.system.table.TableInfo;
 import com.moxa.dream.template.sequence.AbstractSequence;

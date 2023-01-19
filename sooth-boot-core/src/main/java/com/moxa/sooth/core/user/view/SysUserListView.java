@@ -1,8 +1,8 @@
 package com.moxa.sooth.core.user.view;
 
 import com.moxa.dream.system.annotation.View;
-import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseDict;
+import com.moxa.sooth.core.dict.view.SysDict;
 import com.moxa.sooth.core.user.table.$SysUser;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysUser.class)
-public class SysUserListView extends BaseDict {
+public class SysUserListView extends BaseDict{
 
     /**
      * id
@@ -33,8 +33,6 @@ public class SysUserListView extends BaseDict {
     private String realname;
 
 
-    @Dict(code = "sex")
-
     private Integer sex;
 
     /**
@@ -42,4 +40,6 @@ public class SysUserListView extends BaseDict {
      */
 
     private String phone;
+
+    private SysDict sexDict;
 }

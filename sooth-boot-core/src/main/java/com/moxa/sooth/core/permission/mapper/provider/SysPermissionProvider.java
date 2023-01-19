@@ -26,7 +26,7 @@ public class SysPermissionProvider {
                 " inner join sys_role b on a.role_id = b.id\n" +
                 " inner join sys_user_role c on c.role_id = b.id\n" +
                 " inner join sys_user d on d.id = c.user_id\n" +
-                " where p.id = a.permission_id AND d.username = @$(username)\n" +
+                " where p.id = a.permission_id AND d.username = @?(username)\n" +
                 " )order by sort_no ASC";
     }
 
@@ -41,7 +41,7 @@ public class SysPermissionProvider {
                         " inner join sys_role b on a.role_id = b.id\n" +
                         " inner join sys_user_role c on c.role_id = b.id\n" +
                         " inner join sys_user d on d.id = c.user_id\n" +
-                        " where p.id = a.permission_id AND d.username = @$(username)\n" +
+                        " where p.id = a.permission_id AND d.username = @?(username)\n" +
                         " and (p.menu_type=0 or p.menu_type=1)" +
                         " )order by sort_no ASC";
             }

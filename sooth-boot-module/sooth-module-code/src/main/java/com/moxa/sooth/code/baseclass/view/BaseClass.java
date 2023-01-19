@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 
 @Data
 @View($BaseClass.class)
@@ -28,5 +30,5 @@ public class BaseClass extends BaseEntity {
     /**
      * 基类字段
      */
-    private String fields;
+    private String[] fields;
 }

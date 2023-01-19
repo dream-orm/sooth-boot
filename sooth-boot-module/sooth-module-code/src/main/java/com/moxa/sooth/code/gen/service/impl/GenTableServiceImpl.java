@@ -1,6 +1,7 @@
 package com.moxa.sooth.code.gen.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
 import com.moxa.dream.template.mapper.TemplateMapper;
 import com.moxa.dream.util.common.ObjectUtil;
@@ -25,14 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Connection;
 import java.util.List;
 
-/**
- * @Description: 多数据源管理
- * @Author: jeecg-boot
- * @Date: 2019-12-25
- * @Version: V1.0
- */
 @Service
-public class GenTableServiceImpl implements IGenTableService {
+public class GenTableServiceImpl extends ServiceImpl<GenTable,GenTable> implements IGenTableService {
     @Autowired
     private TemplateMapper templateMapper;
     @Autowired

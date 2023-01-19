@@ -24,7 +24,7 @@ public class App implements ApplicationContextAware {
      *
      * @return
      */
-    public static ApplicationContext getApp() {
+    private static ApplicationContext getApp() {
         return applicationContext;
     }
 

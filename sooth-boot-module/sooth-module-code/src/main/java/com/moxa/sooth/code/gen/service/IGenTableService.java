@@ -1,6 +1,7 @@
 package com.moxa.sooth.code.gen.service;
 
 import com.moxa.dream.system.config.Page;
+import com.moxa.dream.template.service.IService;
 import com.moxa.sooth.code.gen.model.GenTableModel;
 import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
@@ -9,7 +10,7 @@ import com.moxa.sooth.core.base.entity.Result;
 import java.util.List;
 
 
-public interface IGenTableService {
+public interface IGenTableService extends IService<GenTable,GenTable> {
 
 
     Result save(GenTable genTable);

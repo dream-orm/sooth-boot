@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.base.dream;
+package com.moxa.sooth.core.base.dream.extract;
 
 import com.moxa.dream.system.extractor.Extractor;
 import com.moxa.dream.util.reflection.factory.ObjectFactory;

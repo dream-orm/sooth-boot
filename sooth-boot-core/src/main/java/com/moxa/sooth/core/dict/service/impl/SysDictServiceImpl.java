@@ -7,6 +7,7 @@ import com.moxa.sooth.core.dict.model.SysDictCodeExistModel;
 import com.moxa.sooth.core.dict.service.ISysDictItemService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
 import com.moxa.sooth.core.dict.view.SysDict;
+import com.moxa.sooth.core.dict.view.SysDictItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,8 @@ public class SysDictServiceImpl extends ServiceImpl<SysDict, SysDict> implements
     private ISysDictItemService dictItemService;
 
     @Override
-    public String translateDict(String code, Object value) {
-        return sysDictMapper.translateDict(code, value);
-
+    public String getDictItemName(String code, String value) {
+        return sysDictMapper.getDictItemName(code, value);
     }
 
     @Transactional(rollbackFor = Exception.class)

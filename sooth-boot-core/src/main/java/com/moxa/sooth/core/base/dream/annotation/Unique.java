@@ -1,7 +1,7 @@
 package com.moxa.sooth.core.base.dream.annotation;
 
 import com.moxa.dream.template.annotation.Validated;
-import com.moxa.sooth.core.base.dream.vaalidate.UniqueValidator;
+import com.moxa.sooth.core.base.dream.validate.UniqueValidator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

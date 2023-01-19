@@ -1,7 +1,7 @@
 package com.moxa.sooth.core.base.annotation;
 
 import com.moxa.dream.template.annotation.Fetch;
-import com.moxa.sooth.core.base.dream.DictFetcher;
+import com.moxa.sooth.core.base.dream.fetch.DictFetcher;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

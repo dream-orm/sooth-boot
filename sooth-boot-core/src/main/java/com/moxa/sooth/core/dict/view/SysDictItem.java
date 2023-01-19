@@ -27,13 +27,13 @@ public class SysDictItem extends BaseDict {
      * 字典项文本
      */
 
-    private String itemText;
+    private String name;
 
     /**
      * 字典项值
      */
 
-    private String itemValue;
+    private String value;
 
     /**
      * 描述

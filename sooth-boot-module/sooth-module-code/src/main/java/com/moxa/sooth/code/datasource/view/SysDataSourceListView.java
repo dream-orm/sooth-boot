@@ -12,6 +12,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class SysDataSourceListView extends BaseDict {
-    private String id;
+    private Long id;
     private String name;
 }

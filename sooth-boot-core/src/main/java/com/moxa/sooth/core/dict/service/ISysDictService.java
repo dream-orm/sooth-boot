@@ -7,5 +7,5 @@ import com.moxa.sooth.core.dict.view.SysDict;
 public interface ISysDictService extends IService<SysDict, SysDict> {
 
 
-    String translateDict(String code, Object value);
+    String getDictItemName(String code, String value);
 }

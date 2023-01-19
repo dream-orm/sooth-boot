@@ -9,7 +9,7 @@ public interface SysApiService {
 
     SysUser selectOneUser(String username);
 
-    String translateDict(String table, String name, String code, Object value);
+    String getDictItemName(String table, String name, String code, String value);
 
     Set<String> selectRoles(String username);
 
