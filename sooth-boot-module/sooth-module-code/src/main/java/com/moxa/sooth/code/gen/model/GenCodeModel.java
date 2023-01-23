@@ -8,12 +8,13 @@ import java.util.List;
 @Data
 public class GenCodeModel {
     private Long id;
-    private Long groupId;
+    private List<Long> templateIds;
     private String author;
     private String templateName;
     private String entityName;
     private String moduleName;
     private String packageName;
+    private String className;
     private String tableComment;
     private String tableName;
     private String searchType;

@@ -39,12 +39,14 @@ public class GenCodeServiceImpl implements IGenCodeService {
         }
         List<GenTableField> columns = genTableFieldService.selectList(genCodeModel.getId());
         genCodeModel.setColumns(columns);
-        List<GenTemplate> genTemplateList = genTemplateService.selectByGroupId(genCodeModel.getGroupId());
+        List<GenTemplate> genTemplateList = genTemplateService.selectByIds(genCodeModel.getTemplateIds());
         Map<String, Object> map = BeanUtil.beanToMap(genCodeModel);
         if (!CollUtil.isEmpty(genTemplateList)) {
             for (GenTemplate genTemplate : genTemplateList) {
+                map.put("templateName",genTemplate.getName());
                 String content = genTemplate.getContent();
                 String template = TemplateUtil.getContent(content, map);
+                System.out.println(template);
             }
         }
     }

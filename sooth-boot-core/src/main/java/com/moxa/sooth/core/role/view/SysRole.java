@@ -2,6 +2,7 @@ package com.moxa.sooth.core.role.view;
 
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotNull;
+import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.dream.annotation.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.role.table.$SysRole;
@@ -27,6 +28,7 @@ public class SysRole extends BaseEntity {
     private String roleName;
 
     @NotNull(msg = "角色部门不能为空")
+    @Dict(code = "dept_id",name ="dept_name",table = "sys_dept")
     private Long deptId;
 
     /**

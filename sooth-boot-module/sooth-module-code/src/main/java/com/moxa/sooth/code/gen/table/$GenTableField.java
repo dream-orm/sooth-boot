@@ -36,8 +36,8 @@ public class $GenTableField {
     /**
      * 字段类型
      */
-    @Column(value = "data_type", jdbcType = Types.INTEGER)
-    private Integer dataType;
+    @Column(value = "column_type", jdbcType = Types.INTEGER)
+    private Integer columnType;
     /**
      * 字段类型
      */

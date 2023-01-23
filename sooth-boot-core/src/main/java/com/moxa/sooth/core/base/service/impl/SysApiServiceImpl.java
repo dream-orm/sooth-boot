@@ -45,7 +45,7 @@ public class SysApiServiceImpl implements SysApiService {
     }
 
     @Override
-    public String getDictItemName(String table, String name, String code, String value) {
+    public String getDictItemName(String table, String name, String code, Object value) {
         if (StrUtil.isBlank(table)) {
             return sysDictService.getDictItemName(code, value);
         } else {

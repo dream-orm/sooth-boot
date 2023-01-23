@@ -65,7 +65,6 @@ public class SysLog extends BaseDict {
     private String exceptionClass;
 
     @Dict(code = "log_type")
-
     private String logType;
 
     private String bizModule;

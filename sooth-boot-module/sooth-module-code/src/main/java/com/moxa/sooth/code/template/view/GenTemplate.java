@@ -9,14 +9,9 @@ import lombok.Data;
 @View($GenTemplate.class)
 public class GenTemplate extends BaseEntity {
     private Long id;
-    /**
-     * 表ID
-     */
     private Long groupId;
 
     private String name;
 
     private String content;
-
-    private Boolean validStatus;
 }

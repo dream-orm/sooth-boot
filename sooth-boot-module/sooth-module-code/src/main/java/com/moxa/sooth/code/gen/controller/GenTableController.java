@@ -29,6 +29,12 @@ public class GenTableController extends BaseController<IGenTableService,GenTable
         super("代码生成");
     }
 
+    @RequestMapping(value = "/{datasourceId}/tableImport", method = RequestMethod.POST)
+    public Result<?> tableImport(@PathVariable Long datasourceId,@RequestBody List<String>tableNameList) {
+        genTableService.tableImport(datasourceId, tableNameList);
+        return Result.ok();
+    }
+
     @RequestMapping(value = "/getTableList", method = RequestMethod.GET)
     public Result<?> getTableList(long id) {
         List<GenTable> tableList = genTableService.getTableList(id);

@@ -31,14 +31,8 @@ public class DictAction implements Action {
             }
             BaseDict baseDict=(BaseDict)arg;
             ObjectWrapper dictWrapper = ObjectWrapper.wrapper(baseDict);
-            Object result = dictWrapper.get(property);
-            if(result!=null){
-                String value;
-                if(result instanceof Boolean){
-                    value=(Boolean)result?"1":"0";
-                }else{
-                    value=result.toString();
-                }
+            Object value = dictWrapper.get(property);
+            if(value!=null){
                 String name = App.getBean(ISysDictService.class).getDictItemName(code, value);
                 baseDict.put(property,name);
             }

@@ -89,9 +89,9 @@ public class DbSourceUtil {
             while (resultSet.next()) {
                 String columnName = resultSet.getString("COLUMN_NAME");
                 String remark = resultSet.getString("REMARKS");
-                int dataType = resultSet.getInt("DATA_TYPE");
+                int columnType = resultSet.getInt("DATA_TYPE");
                 String typeName = resultSet.getString("TYPE_NAME");
-                FieldType fieldType = fieldTypeService.selectById(dataType);
+                FieldType fieldType = fieldTypeService.selectById(columnType);
                 if (fieldType == null) {
                     throw new SoothBootException("请现在类型映射维护字段类型" + typeName);
                 }
@@ -100,7 +100,7 @@ public class DbSourceUtil {
                 genTableField.setColumnName(columnName);
                 genTableField.setAttrName(StrUtil.toCamelCase(columnName));
                 genTableField.setColumnComment(remark);
-                genTableField.setDataType(dataType);
+                genTableField.setColumnType(columnType);
                 genTableField.setTypeName(typeName);
                 genTableField.setAttrType(fieldType.getAttrType());
                 tableFieldList.add(genTableField);

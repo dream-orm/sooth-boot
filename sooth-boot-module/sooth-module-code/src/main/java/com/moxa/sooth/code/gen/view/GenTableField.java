@@ -28,7 +28,7 @@ public class GenTableField {
     /**
      * 字段类型
      */
-    private Integer dataType;
+    private Integer columnType;
     /**
      * 字段类型
      */

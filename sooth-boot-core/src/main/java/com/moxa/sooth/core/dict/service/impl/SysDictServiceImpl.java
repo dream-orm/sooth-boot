@@ -24,8 +24,15 @@ public class SysDictServiceImpl extends ServiceImpl<SysDict, SysDict> implements
     private ISysDictItemService dictItemService;
 
     @Override
-    public String getDictItemName(String code, String value) {
-        return sysDictMapper.getDictItemName(code, value);
+    public String getDictItemName(String code, Object value) {
+        String val;
+        if(value instanceof Boolean){
+            Boolean bool=(Boolean) value;
+            val=bool?"1":"0";
+        }else{
+            val=String.valueOf(value);
+        }
+        return sysDictMapper.getDictItemName(code, val);
     }
 
     @Transactional(rollbackFor = Exception.class)

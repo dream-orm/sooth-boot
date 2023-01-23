@@ -22,11 +22,13 @@ public class DictFetcher implements Fetcher {
         String code = StrUtil.utf8Str(paramMap.get(CODE));
         String name = StrUtil.utf8Str(paramMap.get(NAME));
         String table = StrUtil.utf8Str(paramMap.get(TABLE));
-//        String textValue = sysApiService.getDictItemName(table, name, code, value instanceof Boolean ? value : String.valueOf(value));
-        if (result instanceof BaseDict) {
-//            ((BaseDict) result).put(property, textValue);
-        } else {
-            throw new SoothBootException(result.getClass() + "必须继承" + BaseDict.class.getName());
+        String nameValue = sysApiService.getDictItemName(table, name, code, value);
+        if (nameValue != null) {
+            if (result instanceof BaseDict) {
+                ((BaseDict) result).put(property, nameValue);
+            } else {
+                throw new SoothBootException(result.getClass() + "必须继承" + BaseDict.class.getName());
+            }
         }
     }
 }

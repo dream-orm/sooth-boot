@@ -22,4 +22,5 @@ public class GenTemplateServiceImpl extends ServiceImpl<GenTemplateList, GenTemp
         genTemplateModel.setGroupId(groupId);
         return templateMapper.selectList(GenTemplate.class, genTemplateModel);
     }
+
 }
