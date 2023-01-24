@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View($SysUser.class)
-public class SysUserListView extends BaseDict{
+public class SysUserListView extends BaseDict {
 
     /**
      * id

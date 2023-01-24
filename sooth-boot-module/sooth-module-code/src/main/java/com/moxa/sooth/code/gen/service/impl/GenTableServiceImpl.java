@@ -27,7 +27,7 @@ import java.sql.Connection;
 import java.util.List;
 
 @Service
-public class GenTableServiceImpl extends ServiceImpl<GenTable,GenTable> implements IGenTableService {
+public class GenTableServiceImpl extends ServiceImpl<GenTable, GenTable> implements IGenTableService {
     @Autowired
     private TemplateMapper templateMapper;
     @Autowired

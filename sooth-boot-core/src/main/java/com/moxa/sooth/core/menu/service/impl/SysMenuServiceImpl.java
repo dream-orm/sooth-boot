@@ -1,15 +1,15 @@
-package com.moxa.sooth.core.permission.service.impl;
+package com.moxa.sooth.core.menu.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.core.permission.mapper.SysPermissionMapper;
-import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
-import com.moxa.sooth.core.permission.model.SysPermissionModel;
-import com.moxa.sooth.core.permission.model.SysRolePermissionModel;
-import com.moxa.sooth.core.permission.service.ISysPermissionService;
-import com.moxa.sooth.core.permission.service.ISysRolePermissionService;
-import com.moxa.sooth.core.permission.table.SysRolePermission;
-import com.moxa.sooth.core.permission.view.SysPermission;
+import com.moxa.sooth.core.menu.mapper.SysMenuMapper;
+import com.moxa.sooth.core.menu.model.SysMenuEditModel;
+import com.moxa.sooth.core.menu.model.SysMenuModel;
+import com.moxa.sooth.core.menu.model.SysRolePermissionModel;
+import com.moxa.sooth.core.menu.service.ISysMenuService;
+import com.moxa.sooth.core.menu.service.ISysRolePermissionService;
+import com.moxa.sooth.core.menu.table.SysRolePermission;
+import com.moxa.sooth.core.menu.view.SysMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,33 +23,33 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class SysPermissionServiceImpl extends ServiceImpl<SysPermission, SysPermission> implements ISysPermissionService {
+public class SysMenuServiceImpl extends ServiceImpl<SysMenu, SysMenu> implements ISysMenuService {
     @Autowired
-    private SysPermissionMapper sysPermissionMapper;
+    private SysMenuMapper sysMenuMapper;
 
     @Autowired
     private ISysRolePermissionService sysRolePermissionService;
 
     @Override
-    public List<SysPermission> selectAuths(String username) {
-        return sysPermissionMapper.selectAuths(username);
+    public List<SysMenu> selectAuths(String username) {
+        return sysMenuMapper.selectAuths(username);
     }
 
     @Override
     public JSONArray getMenu(String username) {
-        return sysPermissionMapper.getMenu(username);
+        return sysMenuMapper.getMenu(username);
     }
 
     @Override
-    public List<SysPermission> selectTree(SysPermissionModel sysPermissionModel) {
-        return templateMapper.selectTree(SysPermission.class, sysPermissionModel);
+    public List<SysMenu> selectTree(SysMenuModel sysMenuModel) {
+        return templateMapper.selectTree(SysMenu.class, sysMenuModel);
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void saveRolePermission(SysPermissionEditModel sysPermissionEditModel) {
-        Long roleId = sysPermissionEditModel.getRoleId();
-        List<Long> permissionIds = sysPermissionEditModel.getPermissionIds();
+    public void saveRolePermission(SysMenuEditModel sysMenuEditModel) {
+        Long roleId = sysMenuEditModel.getRoleId();
+        List<Long> permissionIds = sysMenuEditModel.getPermissionIds();
         SysRolePermissionModel sysRolePermissionModel = new SysRolePermissionModel();
         sysRolePermissionModel.setRoleId(roleId);
         Map<Long, Long> permissionMap = sysRolePermissionService.selectList(sysRolePermissionModel).stream()

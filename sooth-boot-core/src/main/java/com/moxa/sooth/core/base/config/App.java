@@ -19,14 +19,6 @@ public class App implements ApplicationContextAware {
      */
     private static ApplicationContext applicationContext;
 
-    /**
-     * 获取applicationContext
-     *
-     * @return
-     */
-    private static ApplicationContext getApp() {
-        return applicationContext;
-    }
 
     /**
      * 获取HttpServletRequest
@@ -49,7 +41,7 @@ public class App implements ApplicationContextAware {
      * @return
      */
     public static Object getBean(String name) {
-        return getApp().getBean(name);
+        return applicationContext.getBean(name);
     }
 
     /**
@@ -60,7 +52,7 @@ public class App implements ApplicationContextAware {
      * @return
      */
     public static <T> T getBean(Class<T> clazz) {
-        return getApp().getBean(clazz);
+        return applicationContext.getBean(clazz);
     }
 
     /**
@@ -72,7 +64,7 @@ public class App implements ApplicationContextAware {
      * @return
      */
     public static <T> T getBean(String name, Class<T> clazz) {
-        return getApp().getBean(name, clazz);
+        return applicationContext.getBean(name, clazz);
     }
 
     @Override

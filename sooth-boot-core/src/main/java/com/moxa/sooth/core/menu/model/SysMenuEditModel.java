@@ -1,11 +1,11 @@
-package com.moxa.sooth.core.permission.model;
+package com.moxa.sooth.core.menu.model;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class SysPermissionEditModel {
+public class SysMenuEditModel {
     private Long roleId;
     private List<Long> permissionIds;
 }

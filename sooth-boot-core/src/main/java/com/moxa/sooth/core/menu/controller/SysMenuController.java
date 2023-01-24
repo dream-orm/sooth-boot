@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.permission.controller;
+package com.moxa.sooth.core.menu.controller;
 
 
 import com.alibaba.fastjson.JSONArray;
@@ -6,14 +6,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.permission.model.SysPermissionEditModel;
-import com.moxa.sooth.core.permission.model.SysPermissionMenuTypeModel;
-import com.moxa.sooth.core.permission.model.SysPermissionModel;
-import com.moxa.sooth.core.permission.model.SysRolePermissionModel;
-import com.moxa.sooth.core.permission.service.ISysPermissionService;
-import com.moxa.sooth.core.permission.service.ISysRolePermissionService;
-import com.moxa.sooth.core.permission.table.SysRolePermission;
-import com.moxa.sooth.core.permission.view.SysPermission;
+import com.moxa.sooth.core.menu.model.SysMenuEditModel;
+import com.moxa.sooth.core.menu.model.SysMenuTypeModel;
+import com.moxa.sooth.core.menu.model.SysMenuModel;
+import com.moxa.sooth.core.menu.model.SysRolePermissionModel;
+import com.moxa.sooth.core.menu.service.ISysMenuService;
+import com.moxa.sooth.core.menu.service.ISysRolePermissionService;
+import com.moxa.sooth.core.menu.table.SysRolePermission;
+import com.moxa.sooth.core.menu.view.SysMenu;
 import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -26,12 +26,12 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
-@RequestMapping("/sys/permission")
-public class SysPermissionController extends BaseController<ISysPermissionService, SysPermission, SysPermissionModel> {
+@RequestMapping("/sys/menu")
+public class SysMenuController extends BaseController<ISysMenuService, SysMenu, SysMenuModel> {
     @Autowired
     private ISysRolePermissionService rolePermissionService;
 
-    public SysPermissionController() {
+    public SysMenuController() {
         super("权限管理");
     }
 
@@ -41,8 +41,8 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @return
      */
     @RequestMapping(value = "/listTree", method = RequestMethod.GET)
-    public Result<List<SysPermission>> list(SysPermissionModel sysPermissionModel) {
-        List<SysPermission> treeList = service.selectTree(sysPermissionModel);
+    public Result<List<SysMenu>> list(SysMenuModel sysMenuModel) {
+        List<SysMenu> treeList = service.selectTree(sysMenuModel);
         return Result.ok(treeList);
     }
 
@@ -87,7 +87,7 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
                 return Result.error("请登录系统！");
             }
             // 获取当前用户的权限集合
-            List<SysPermission> metaList = service.selectAuths(sysUser.getUsername());
+            List<SysMenu> metaList = service.selectAuths(sysUser.getUsername());
             // 按钮权限（用户拥有的权限集合）
             List<String> codeList = metaList.stream()
                     .filter((permission) -> CommonConstant.MENU_TYPE_2.equals(permission.getMenuType()) && CommonConstant.STATUS_1.equals(permission.getStatus()))
@@ -96,9 +96,9 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
             JSONArray authArray = new JSONArray();
             this.getAuthJsonArray(authArray, metaList);
             // 查询所有的权限
-            SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
-            sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
-            List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
+            SysMenuTypeModel sysMenuTypeModel = new SysMenuTypeModel();
+            sysMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
+            List<SysMenu> allAuthList = service.selectList(sysMenuTypeModel);
             JSONArray allAuthArray = new JSONArray();
             this.getAllAuthJsonArray(allAuthArray, allAuthList);
             JSONObject result = new JSONObject();
@@ -130,8 +130,8 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
     }
 
     @PostMapping("saveRolePermission")
-    public Result saveRolePermission(@RequestBody SysPermissionEditModel sysPermissionEditModel) {
-        service.saveRolePermission(sysPermissionEditModel);
+    public Result saveRolePermission(@RequestBody SysMenuEditModel sysMenuEditModel) {
+        service.saveRolePermission(sysMenuEditModel);
         return Result.ok(null, "角色授权成功");
     }
 
@@ -142,9 +142,9 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @param jsonArray
      * @param allList
      */
-    private void getAllAuthJsonArray(JSONArray jsonArray, List<SysPermission> allList) {
+    private void getAllAuthJsonArray(JSONArray jsonArray, List<SysMenu> allList) {
         JSONObject json = null;
-        for (SysPermission permission : allList) {
+        for (SysMenu permission : allList) {
             json = new JSONObject();
             json.put("action", permission.getPerms());
             json.put("status", permission.getStatus());
@@ -161,8 +161,8 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
      * @param jsonArray
      * @param metaList
      */
-    private void getAuthJsonArray(JSONArray jsonArray, List<SysPermission> metaList) {
-        for (SysPermission permission : metaList) {
+    private void getAuthJsonArray(JSONArray jsonArray, List<SysMenu> metaList) {
+        for (SysMenu permission : metaList) {
             if (permission.getMenuType() == null) {
                 continue;
             }

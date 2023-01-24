@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.permission.table;
+package com.moxa.sooth.core.menu.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;

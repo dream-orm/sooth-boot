@@ -1,10 +1,10 @@
-package com.moxa.sooth.core.permission.view;
+package com.moxa.sooth.core.menu.view;
 
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseEntity;
-import com.moxa.sooth.core.permission.table.$SysPermission;
+import com.moxa.sooth.core.menu.table.SysMenuTable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -15,10 +15,10 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@View($SysPermission.class)
-public class SysPermission extends BaseEntity implements Tree<Long> {
+@View(SysMenuTable.class)
+public class SysMenu extends BaseEntity implements Tree<Long> {
 
-    private List<SysPermission> children;
+    private List<SysMenu> children;
     /**
      * id
      */
@@ -142,12 +142,12 @@ public class SysPermission extends BaseEntity implements Tree<Long> {
     }
 
     @Override
-    public List<SysPermission> getChildren() {
+    public List<SysMenu> getChildren() {
         return children;
     }
 
     @Override
     public void setChildren(List<? extends Tree> children) {
-        this.children = (List<SysPermission>) children;
+        this.children = (List<SysMenu>) children;
     }
 }

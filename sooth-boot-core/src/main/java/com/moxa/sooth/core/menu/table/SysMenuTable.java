@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.permission.table;
+package com.moxa.sooth.core.menu.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;
@@ -10,8 +10,8 @@ import java.util.Date;
 
 
 @Data
-@Table("sys_permission")
-public class $SysPermission {
+@Table("sys_menu")
+public class SysMenuTable {
     /**
      * 菜单权限编码
      */

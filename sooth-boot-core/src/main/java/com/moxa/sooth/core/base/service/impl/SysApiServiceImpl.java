@@ -7,8 +7,8 @@ import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
-import com.moxa.sooth.core.permission.service.ISysPermissionService;
-import com.moxa.sooth.core.permission.view.SysPermission;
+import com.moxa.sooth.core.menu.service.ISysMenuService;
+import com.moxa.sooth.core.menu.view.SysMenu;
 import com.moxa.sooth.core.role.service.ISysRoleService;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -31,7 +31,7 @@ public class SysApiServiceImpl implements SysApiService {
     @Autowired
     private ISysRoleService sysRoleService;
     @Autowired
-    private ISysPermissionService sysPermissionService;
+    private ISysMenuService sysPermissionService;
     @Autowired
     private TemplateMapper templateMapper;
 
@@ -61,8 +61,8 @@ public class SysApiServiceImpl implements SysApiService {
     @Override
     public Set<String> selectAuths(String username) {
         Set<String> permissionSet = new HashSet<>();
-        List<SysPermission> permissionList = sysPermissionService.selectAuths(username);
-        for (SysPermission po : permissionList) {
+        List<SysMenu> permissionList = sysPermissionService.selectAuths(username);
+        for (SysMenu po : permissionList) {
             if (StrUtil.isNotEmpty(po.getPerms())) {
                 permissionSet.add(po.getPerms());
             }

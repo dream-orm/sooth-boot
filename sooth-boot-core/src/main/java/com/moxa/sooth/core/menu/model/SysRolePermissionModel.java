@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.permission.model;
+package com.moxa.sooth.core.menu.model;
 
 import com.moxa.dream.template.annotation.Conditional;
 import com.moxa.dream.template.condition.EqCondition;

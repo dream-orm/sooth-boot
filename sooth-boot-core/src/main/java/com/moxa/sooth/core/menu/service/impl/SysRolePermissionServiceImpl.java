@@ -1,8 +1,8 @@
-package com.moxa.sooth.core.permission.service.impl;
+package com.moxa.sooth.core.menu.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.core.permission.service.ISysRolePermissionService;
-import com.moxa.sooth.core.permission.table.SysRolePermission;
+import com.moxa.sooth.core.menu.service.ISysRolePermissionService;
+import com.moxa.sooth.core.menu.table.SysRolePermission;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

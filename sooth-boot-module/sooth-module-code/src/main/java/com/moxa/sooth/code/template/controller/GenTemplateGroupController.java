@@ -20,7 +20,7 @@ public class GenTemplateGroupController extends BaseController<IGenTemplateGroup
     }
 
     @GetMapping("/groupList")
-    public Result groupList(){
+    public Result groupList() {
         return Result.ok(service.groupList());
     }
 }

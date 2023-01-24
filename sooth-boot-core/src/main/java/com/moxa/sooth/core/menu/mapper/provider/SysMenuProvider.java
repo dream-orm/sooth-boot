@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.permission.mapper.provider;
+package com.moxa.sooth.core.menu.mapper.provider;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
@@ -11,16 +11,16 @@ import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
 import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.constant.SymbolConstant;
 import com.moxa.sooth.core.base.util.ConvertUtils;
-import com.moxa.sooth.core.permission.view.SysPermission;
+import com.moxa.sooth.core.menu.view.SysMenu;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SysPermissionProvider {
+public class SysMenuProvider {
     public String selectAuths() {
-        return "SELECT @all(sys_permission)\n" +
-                " FROM sys_permission p\n" +
+        return "SELECT @all(sys_menu)\n" +
+                " FROM sys_menu p\n" +
                 " WHERE exists(\n" +
                 " select a.id from sys_role_permission a\n" +
                 " inner join sys_role b on a.role_id = b.id\n" +
@@ -34,8 +34,8 @@ public class SysPermissionProvider {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return "SELECT @all(sys_permission)\n" +
-                        " FROM sys_permission p\n" +
+                return "SELECT @all(sys_menu)\n" +
+                        " FROM sys_menu p\n" +
                         " WHERE exists(\n" +
                         " select a.id from sys_role_permission a\n" +
                         " inner join sys_role b on a.role_id = b.id\n" +
@@ -53,16 +53,16 @@ public class SysPermissionProvider {
 
             @Override
             public Class<?> colType() {
-                return SysPermission.class;
+                return SysMenu.class;
             }
 
             @Override
             public ResultSetHandler resultSetHandler() {
                 ResultSetHandler resultSetHandler = new TreeResultSetHandler();
                 return (resultSet, mappedStatement, session) -> {
-                    List<SysPermission> permissionList = (List<SysPermission>) resultSetHandler.result(resultSet, mappedStatement, session);
+                    List<SysMenu> permissionList = (List<SysMenu>) resultSetHandler.result(resultSet, mappedStatement, session);
                     JSONArray menuArray = new JSONArray();
-                    for (SysPermission permission : permissionList) {
+                    for (SysMenu permission : permissionList) {
                         menuArray.add(getPermissionJsonObject(permission));
                     }
                     //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
@@ -77,7 +77,7 @@ public class SysPermissionProvider {
              * @param permission
              * @return
              */
-            private JSONObject getPermissionJsonObject(SysPermission permission) {
+            private JSONObject getPermissionJsonObject(SysMenu permission) {
                 JSONObject json = new JSONObject();
                 json.put("id", permission.getId());
                 if (permission.isRoute()) {
@@ -146,9 +146,9 @@ public class SysPermissionProvider {
                     meta.put("hideTab", true);
                 }
                 json.put("meta", meta);
-                List<SysPermission> children = permission.getChildren();
+                List<SysMenu> children = permission.getChildren();
                 if (CollUtil.isNotEmpty(children)) {
-                    for (SysPermission childPermission : children) {
+                    for (SysMenu childPermission : children) {
                         JSONObject permissionJsonObject = getPermissionJsonObject(childPermission);
                         if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
                             JSONObject metaJson = json.getJSONObject("meta");

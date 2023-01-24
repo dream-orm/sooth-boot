@@ -24,12 +24,26 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         this.bizModule = bizModule;
     }
 
+    @ResponseBody
+    @GetMapping(value = "/get")
+    public Result get(@RequestParam(name = "id") Long id) {
+        Object result = service.selectById(id);
+        return Result.ok(result);
+    }
+    @ResponseBody
+    @GetMapping("getOne")
+    public Result getOne(SearchModel searchModel) {
+        Object result = service.selectOne(searchModel);
+        return Result.ok(result);
+    }
+    @ResponseBody
     @GetMapping("page")
     public Result selectPage(SearchModel searchModel, PageModel pageModel) {
         Page page = service.selectPage(searchModel, pageModel.toPage());
         return Result.ok(page);
     }
 
+    @ResponseBody
     @GetMapping("list")
     public Result selectList(SearchModel searchModel) {
         List resultList = service.selectList(searchModel);
@@ -37,6 +51,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     }
 
     @AutoLog(value = "新增")
+    @ResponseBody
     @PostMapping(value = "/save")
     public Result save(@RequestBody EditView editView) {
         if (retBool(service.insert(editView))) {
@@ -47,6 +62,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     }
 
     @AutoLog(value = "非空修改")
+    @ResponseBody
     @PutMapping(value = "/edit")
     public Result putEdit(@RequestBody EditView editView) {
         if (retBool(service.updateNonById(editView))) {
@@ -57,6 +73,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     }
 
     @AutoLog(value = "修改")
+    @ResponseBody
     @PostMapping(value = "/edit")
     public Result postEdit(@RequestBody EditView editView) {
         if (retBool(service.updateById(editView))) {
@@ -67,6 +84,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     }
 
     @AutoLog(value = "删除")
+    @ResponseBody
     @DeleteMapping(value = "/remove")
     public Result remove(@RequestParam(name = "id") Long id) {
         if (retBool(service.deleteById(id))) {
@@ -77,6 +95,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     }
 
     @AutoLog(value = "批量删除")
+    @ResponseBody
     @DeleteMapping(value = "/removeBatch")
     public Result removeBatch(@RequestParam(name = "ids") List<Long> ids) {
         if (retBool(service.deleteByIds(ids))) {
@@ -84,12 +103,6 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         } else {
             return Result.error("批量删除失败");
         }
-    }
-
-    @GetMapping(value = "/get")
-    public Result get(@RequestParam(name = "id") Long id) {
-        Object result = service.selectById(id);
-        return Result.ok(result);
     }
 
     protected boolean retBool(int value) {

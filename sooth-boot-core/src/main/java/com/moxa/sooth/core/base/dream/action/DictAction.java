@@ -26,15 +26,15 @@ public class DictAction implements Action {
     @Override
     public void doAction(Session session, MappedStatement mappedStatement, Object arg) {
         if (arg != null) {
-            if(!(arg instanceof BaseDict)){
-                throw new DreamRunTimeException(arg.getClass().getName()+"必须是"+BaseDict.class.getName()+"子类");
+            if (!(arg instanceof BaseDict)) {
+                throw new DreamRunTimeException(arg.getClass().getName() + "必须是" + BaseDict.class.getName() + "子类");
             }
-            BaseDict baseDict=(BaseDict)arg;
+            BaseDict baseDict = (BaseDict) arg;
             ObjectWrapper dictWrapper = ObjectWrapper.wrapper(baseDict);
             Object value = dictWrapper.get(property);
-            if(value!=null){
+            if (value != null) {
                 String name = App.getBean(ISysDictService.class).getDictItemName(code, value);
-                baseDict.put(property,name);
+                baseDict.put(property, name);
             }
         }
     }

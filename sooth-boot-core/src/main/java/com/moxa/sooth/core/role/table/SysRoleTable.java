@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Data
 @Table("sys_role")
-public class $SysRole {
+public class SysRoleTable {
     /**
      * 创建人
      */

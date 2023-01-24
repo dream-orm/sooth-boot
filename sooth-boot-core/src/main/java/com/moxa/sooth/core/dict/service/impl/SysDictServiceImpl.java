@@ -7,7 +7,6 @@ import com.moxa.sooth.core.dict.model.SysDictCodeExistModel;
 import com.moxa.sooth.core.dict.service.ISysDictItemService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
 import com.moxa.sooth.core.dict.view.SysDict;
-import com.moxa.sooth.core.dict.view.SysDictItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +25,11 @@ public class SysDictServiceImpl extends ServiceImpl<SysDict, SysDict> implements
     @Override
     public String getDictItemName(String code, Object value) {
         String val;
-        if(value instanceof Boolean){
-            Boolean bool=(Boolean) value;
-            val=bool?"1":"0";
-        }else{
-            val=String.valueOf(value);
+        if (value instanceof Boolean) {
+            Boolean bool = (Boolean) value;
+            val = bool ? "1" : "0";
+        } else {
+            val = String.valueOf(value);
         }
         return sysDictMapper.getDictItemName(code, val);
     }

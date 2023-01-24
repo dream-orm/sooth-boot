@@ -7,5 +7,5 @@ public interface IGenCodeService {
 
     void preview(long tableId);
 
-    void generate(GenCodeModel genCodeModel);
+    byte[] generate(GenCodeModel genCodeModel);
 }

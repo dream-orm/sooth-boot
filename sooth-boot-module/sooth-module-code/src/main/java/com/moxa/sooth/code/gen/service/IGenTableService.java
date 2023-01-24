@@ -10,7 +10,7 @@ import com.moxa.sooth.core.base.entity.Result;
 import java.util.List;
 
 
-public interface IGenTableService extends IService<GenTable,GenTable> {
+public interface IGenTableService extends IService<GenTable, GenTable> {
 
 
     Result save(GenTable genTable);

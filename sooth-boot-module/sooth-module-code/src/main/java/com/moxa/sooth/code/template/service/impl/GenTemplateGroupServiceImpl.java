@@ -39,21 +39,21 @@ public class GenTemplateGroupServiceImpl extends ServiceImpl<GenTemplateGroup, G
     @Override
     public List<Map<String, Object>> groupList() {
         List<GenTemplateGroup> templateGroupList = selectList(null);
-        List<Map<String,Object>>mapList=new ArrayList<>();
-        if(CollUtil.isNotEmpty(templateGroupList)){
-            for(GenTemplateGroup genTemplateGroup:templateGroupList){
-                Map<String,Object>map=new HashMap();
-                map.put("label",genTemplateGroup.getName());
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        if (CollUtil.isNotEmpty(templateGroupList)) {
+            for (GenTemplateGroup genTemplateGroup : templateGroupList) {
+                Map<String, Object> map = new HashMap();
+                map.put("label", genTemplateGroup.getName());
                 Long groupId = genTemplateGroup.getId();
                 List<GenTemplate> genTemplateList = genTemplateService.selectByGroupId(groupId);
-                if(CollUtil.isNotEmpty(genTemplateList)){
+                if (CollUtil.isNotEmpty(genTemplateList)) {
                     List<Map<String, Object>> optionList = genTemplateList.stream().map(genTemplate -> {
                         Map<String, Object> templateMap = new HashMap<>();
                         templateMap.put("label", genTemplate.getName());
                         templateMap.put("value", genTemplate.getId());
                         return templateMap;
                     }).collect(Collectors.toList());
-                    map.put("options",optionList);
+                    map.put("options", optionList);
                     mapList.add(map);
                 }
             }

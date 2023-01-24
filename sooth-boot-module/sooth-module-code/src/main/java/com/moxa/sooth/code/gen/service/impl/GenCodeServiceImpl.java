@@ -2,6 +2,7 @@ package com.moxa.sooth.code.gen.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.service.IGenCodeService;
@@ -11,12 +12,17 @@ import com.moxa.sooth.code.gen.util.TemplateUtil;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.code.template.service.IGenTemplateService;
 import com.moxa.sooth.code.template.view.GenTemplate;
+import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Service
 public class GenCodeServiceImpl implements IGenCodeService {
@@ -33,7 +39,7 @@ public class GenCodeServiceImpl implements IGenCodeService {
     }
 
     @Override
-    public void generate(GenCodeModel genCodeModel) {
+    public byte[] generate(GenCodeModel genCodeModel) {
         if (StrUtil.isBlank(genCodeModel.getAuthor())) {
             genCodeModel.setAuthor(ClientUtil.getLoginUser().getUsername());
         }
@@ -42,12 +48,27 @@ public class GenCodeServiceImpl implements IGenCodeService {
         List<GenTemplate> genTemplateList = genTemplateService.selectByIds(genCodeModel.getTemplateIds());
         Map<String, Object> map = BeanUtil.beanToMap(genCodeModel);
         if (!CollUtil.isEmpty(genTemplateList)) {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            ZipOutputStream zip = new ZipOutputStream(outputStream);
             for (GenTemplate genTemplate : genTemplateList) {
-                map.put("templateName",genTemplate.getName());
+                map.put("templateName", genTemplate.getName());
                 String content = genTemplate.getContent();
                 String template = TemplateUtil.getContent(content, map);
-                System.out.println(template);
+                try {
+                    // 添加到zip
+                    zip.putNextEntry(new ZipEntry(genTemplate.getName()));
+                    IoUtil.writeUtf8(zip, false, template);
+                    zip.closeEntry();
+                } catch (IOException e) {
+                    throw new SoothBootException(e.getMessage(), e);
+                }
             }
+            IoUtil.close(zip);
+            // zip压缩包数据
+            byte[] data = outputStream.toByteArray();
+            return data;
+        } else {
+            throw new SoothBootException("模板不存在");
         }
     }
 }

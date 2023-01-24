@@ -3,7 +3,6 @@ package com.moxa.sooth.core.dict.mapper;
 import com.moxa.dream.system.annotation.Mapper;
 import com.moxa.dream.system.annotation.Param;
 import com.moxa.dream.system.annotation.Sql;
-import com.moxa.sooth.core.dict.view.SysDictItem;
 
 @Mapper
 public interface SysDictMapper {
