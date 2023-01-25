@@ -26,7 +26,7 @@ public class SysMenuProvider {
                 " inner join sys_role b on a.role_id = b.id\n" +
                 " inner join sys_user_role c on c.role_id = b.id\n" +
                 " inner join sys_user d on d.id = c.user_id\n" +
-                " where p.id = a.permission_id AND d.username = @?(username)\n" +
+                " where p.menu_type=2 and p.id = a.permission_id AND d.id = @?(userId)\n" +
                 " )order by sort_no ASC";
     }
 
@@ -41,7 +41,7 @@ public class SysMenuProvider {
                         " inner join sys_role b on a.role_id = b.id\n" +
                         " inner join sys_user_role c on c.role_id = b.id\n" +
                         " inner join sys_user d on d.id = c.user_id\n" +
-                        " where p.id = a.permission_id AND d.username = @?(username)\n" +
+                        " where p.id = a.permission_id AND d.id = @?(userId)\n" +
                         " and (p.menu_type=0 or p.menu_type=1)" +
                         " )order by sort_no ASC";
             }
@@ -94,12 +94,7 @@ public class SysMenuProvider {
                     json.put("path", permission.getUrl());
                 }
 
-                // 重要规则：路由name (通过URL生成路由name,路由name供前端开发，页面跳转使用)
-                if (StrUtil.isNotEmpty(permission.getComponentName())) {
-                    json.put("name", permission.getComponentName());
-                } else {
-                    json.put("name", urlToRouteName(permission.getUrl()));
-                }
+                json.put("name", urlToRouteName(permission.getUrl()));
 
                 JSONObject meta = new JSONObject();
                 // 是否隐藏路由，默认都是显示的
@@ -110,15 +105,9 @@ public class SysMenuProvider {
                 }
                 // 聚合路由
                 if (permission.isAlwaysShow()) {
-                    json.put("alwaysShow", true);
+                    meta.put("affix",true);
                 }
                 json.put("component", permission.getComponent());
-                // 由用户设置是否缓存页面 用布尔值
-                if (permission.isKeepAlive()) {
-                    meta.put("keepAlive", true);
-                } else {
-                    meta.put("keepAlive", false);
-                }
                 //外链菜单打开方式
                 if (permission.isInternalOrExternal()) {
                     meta.put("internalOrExternal", true);
@@ -127,10 +116,6 @@ public class SysMenuProvider {
                 }
                 meta.put("title", permission.getName());
 
-                String component = permission.getComponent();
-                if (StrUtil.isNotEmpty(permission.getComponentName()) || StrUtil.isNotEmpty(component)) {
-                    meta.put("componentName", ConvertUtils.getString(permission.getComponentName(), component.substring(component.lastIndexOf("/") + 1)));
-                }
                 if (StrUtil.isNotEmpty(permission.getRedirect())) {
                     // 一级菜单跳转地址
                     json.put("redirect", permission.getRedirect());

@@ -13,5 +13,5 @@ public interface SysApiService {
 
     Set<String> selectRoles(String username);
 
-    Set<String> selectAuths(String username);
+    Set<String> selectAuths(Long userId);
 }

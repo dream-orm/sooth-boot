@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface ISysMenuService extends IService<SysMenu, SysMenu> {
 
-    List<SysMenu> selectAuths(String username);
+    List<SysMenu> selectAuths(Long userId);
 
-    JSONArray getMenu(String username);
+    JSONArray getMenu(Long userId);
 
     List<SysMenu> selectTree(SysMenuModel sysMenuModel);
 

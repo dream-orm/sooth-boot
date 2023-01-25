@@ -84,11 +84,6 @@ public class SysMenuTable {
     @Column(value = "parent_id", jdbcType = Types.BIGINT)
     private Long parentId;
     /**
-     * 组件名字
-     */
-    @Column(value = "component_name", jdbcType = Types.VARCHAR)
-    private String componentName;
-    /**
      * 一级菜单跳转地址
      */
     @Column(value = "redirect", jdbcType = Types.VARCHAR)
@@ -114,20 +109,10 @@ public class SysMenuTable {
     @Column(value = "name", jdbcType = Types.VARCHAR)
     private String name;
     /**
-     * 是否叶子节点:    1是0否
-     */
-    @Column(value = "leaf", jdbcType = Types.BOOLEAN)
-    private Boolean leaf;
-    /**
      * 菜单类型(0:一级菜单; 1:子菜单:2:按钮权限)
      */
     @Column(value = "menu_type", jdbcType = Types.INTEGER)
     private Integer menuType;
-    /**
-     * 是否添加数据权限1是0否
-     */
-    @Column(value = "rule_flag", jdbcType = Types.INTEGER)
-    private Integer ruleFlag;
     /**
      * 创建人
      */
@@ -143,9 +128,4 @@ public class SysMenuTable {
      */
     @Column(value = "url", jdbcType = Types.VARCHAR)
     private String url;
-    /**
-     * 是否缓存该页面:    1:是   0:不是
-     */
-    @Column(value = "keep_alive", jdbcType = Types.BIT)
-    private Boolean keepAlive;
 }

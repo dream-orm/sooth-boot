@@ -53,7 +53,7 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
         if (sysUser == null) {
             return Result.error("请登录系统！");
         }
-        JSONArray menuArray = service.getMenu(sysUser.getUsername());
+        JSONArray menuArray = service.getMenu(sysUser.getId());
         JSONObject json = new JSONObject();
 //        JSONArray authjsonArray = new JSONArray();
 //        this.getAuthJsonArray(authjsonArray, menuArray);
@@ -72,12 +72,6 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
         return Result.ok(json);
     }
 
-    /**
-     * 【vue3专用】获取
-     * 1、查询用户拥有的按钮/表单访问权限
-     * 2、所有权限 (菜单权限配置)
-     * 3、系统安全模式 (开启则online报表的数据源必填)
-     */
     @RequestMapping(value = "/getPermCode", method = RequestMethod.GET)
     public Result<?> getPermCode() {
         try {
@@ -87,29 +81,10 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
                 return Result.error("请登录系统！");
             }
             // 获取当前用户的权限集合
-            List<SysMenu> metaList = service.selectAuths(sysUser.getUsername());
+            List<SysMenu> metaList = service.selectAuths(sysUser.getId());
             // 按钮权限（用户拥有的权限集合）
-            List<String> codeList = metaList.stream()
-                    .filter((permission) -> CommonConstant.MENU_TYPE_2.equals(permission.getMenuType()) && CommonConstant.STATUS_1.equals(permission.getStatus()))
-                    .collect(ArrayList::new, (list, permission) -> list.add(permission.getPerms()), ArrayList::addAll);
-            //
-            JSONArray authArray = new JSONArray();
-            this.getAuthJsonArray(authArray, metaList);
-            // 查询所有的权限
-            SysMenuTypeModel sysMenuTypeModel = new SysMenuTypeModel();
-            sysMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
-            List<SysMenu> allAuthList = service.selectList(sysMenuTypeModel);
-            JSONArray allAuthArray = new JSONArray();
-            this.getAllAuthJsonArray(allAuthArray, allAuthList);
-            JSONObject result = new JSONObject();
-            // 所拥有的权限编码
-            result.put("codeList", codeList);
-            //按钮权限（用户拥有的权限集合）
-            result.put("auth", authArray);
-            //全部权限配置集合（按钮权限，访问权限）
-            result.put("allAuth", allAuthArray);
-//            return Result.ok(result);
-            return Result.ok(allAuthArray);
+            List<String> codeList = metaList.stream().map(SysMenu::getPerms).collect(Collectors.toList());
+            return Result.ok(codeList);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return Result.error("查询失败:" + e.getMessage());

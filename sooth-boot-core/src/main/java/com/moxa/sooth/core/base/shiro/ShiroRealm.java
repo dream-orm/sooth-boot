@@ -51,8 +51,10 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         log.debug("===============Shiro权限认证开始============ [ roles、permissions]==========");
         String username = null;
+        Long userId=null;
         if (principals != null) {
             SysUser sysUser = (SysUser) principals.getPrimaryPrincipal();
+            userId=sysUser.getId();
             username = sysUser.getUsername();
         }
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -63,7 +65,7 @@ public class ShiroRealm extends AuthorizingRealm {
         info.setRoles(roleSet);
 
         // 设置用户拥有的权限集合，比如“sys:role:add,sys:user:add”
-        Set<String> permissionSet = sysApiService.selectAuths(username);
+        Set<String> permissionSet = sysApiService.selectAuths(userId);
         info.addStringPermissions(permissionSet);
         //System.out.println(permissionSet);
         log.info("===============Shiro权限认证成功==============");

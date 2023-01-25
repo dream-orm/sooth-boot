@@ -54,11 +54,6 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
     private String component;
 
     /**
-     * 组件名字
-     */
-    private String componentName;
-
-    /**
      * 路径
      */
     private String url;
@@ -80,20 +75,9 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
     private Integer menuType;
 
     /**
-     * 是否叶子节点: 1:是  0:不是
-     */
-    private boolean leaf;
-
-    /**
      * 是否路由菜单: 0:不是  1:是（默认值1）
      */
     private boolean route;
-
-
-    /**
-     * 是否缓存页面: 0:不是  1:是（默认值1）
-     */
-    private boolean keepAlive;
 
     /**
      * 描述
@@ -103,11 +87,6 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
      * 删除状态 0正常 1已删除
      */
     private Integer delFlag;
-
-    /**
-     * 是否配置菜单的数据权限 1是0否 默认0
-     */
-    private Integer ruleFlag;
 
     /**
      * 是否隐藏路由菜单: 0否,1是（默认值0）
