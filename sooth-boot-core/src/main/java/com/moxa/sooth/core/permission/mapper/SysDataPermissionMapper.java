@@ -6,7 +6,7 @@ import com.moxa.sooth.core.permission.table.SysDataPermission;
 
 @Mapper
 public interface SysDataPermissionMapper {
-    @Sql("SELECT MAX(permission) AS permission, GROUP_CONCAT(dept_ids) AS deptIds\n" +
+    @Sql("SELECT MAX(permission_code) AS permissionCode, GROUP_CONCAT(dept_ids) AS deptIds\n" +
             "FROM sys_data_permission\n" +
             "\tINNER JOIN sys_role ON sys_data_permission.role_id = sys_role.id\n" +
             "WHERE sys_role.id IN (\n" +

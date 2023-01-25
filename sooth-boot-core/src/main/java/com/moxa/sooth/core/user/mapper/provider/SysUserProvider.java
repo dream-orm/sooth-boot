@@ -9,9 +9,9 @@ public class SysUserProvider {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return "select @all() from sys_user where id in(select sys_user.id from sys_user " +
-                        "inner join sys_user_dept sud on sys_user.id=sud.user_id " +
-                        "inner join sys_dept on sys_dept.dept_id=sud.dept_id " +
+                return "select @all() from sys_user where id in(select sys_user.id from sys_dept " +
+                        "inner join sys_user_dept sud on sys_dept.dept_id=sud.dept_id " +
+                        "inner join sys_user on sys_user.id=sud.user_id " +
                         "where @not(sys_user.username like concat('%',@?(userModel.username),'%') " +
                         "and realname like concat('%',@?(userModel.realname),'%') " +
                         "and phone like concat('%',@?(userModel.phone),'%') " +

@@ -40,9 +40,7 @@ public class SoothPermissionHandler implements PermissionHandler {
         Permission permission = methodInfo.get(Permission.class);
         String deptId = tableInfo.getFieldName("dept_id");
         if (permission != null) {
-            if (deptId == null) {
-                throw new SoothBootException(tableInfo.getTable() + "不存在字段dept_id，不能注入权限");
-            } else {
+            if (deptId != null) {
                 return true;
             }
         }
@@ -108,7 +106,7 @@ public class SoothPermissionHandler implements PermissionHandler {
 
     private List<Long> getDeptId(Long userId) {
         List<SysUserDept> userDeptList = sysUserDeptService.getDeptByUserId(userId);
-        List<Long> deptIds = userDeptList.stream().map(userDept -> userDept.getId()).collect(Collectors.toList());
+        List<Long> deptIds = userDeptList.stream().map(userDept -> userDept.getDeptId()).collect(Collectors.toList());
         return deptIds;
     }
 
