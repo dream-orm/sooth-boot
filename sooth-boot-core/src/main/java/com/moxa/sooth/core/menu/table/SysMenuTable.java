@@ -18,11 +18,6 @@ public class SysMenuTable {
     @Column(value = "perms", jdbcType = Types.VARCHAR)
     private String perms;
     /**
-     * 按钮权限状态(0无效1有效)
-     */
-    @Column(value = "status", jdbcType = Types.VARCHAR)
-    private String status;
-    /**
      * 创建时间
      */
     @Column(value = "create_time", jdbcType = Types.TIMESTAMP)
@@ -43,26 +38,11 @@ public class SysMenuTable {
     @Column(value = "hidden", jdbcType = Types.BOOLEAN)
     private Boolean hidden;
     /**
-     * 权限策略1显示2禁用
-     */
-    @Column(value = "perms_type", jdbcType = Types.VARCHAR)
-    private String permsType;
-    /**
-     * 外链菜单打开方式 0/内部打开 1/外部打开
-     */
-    @Column(value = "internal_or_external", jdbcType = Types.BIT)
-    private Boolean internalOrExternal;
-    /**
      * 主键id
      */
     @Id
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;
-    /**
-     * 是否路由菜单: 0:不是  1:是（默认值1）
-     */
-    @Column(value = "route", jdbcType = Types.BOOLEAN)
-    private Boolean route;
     /**
      * 更新时间
      */

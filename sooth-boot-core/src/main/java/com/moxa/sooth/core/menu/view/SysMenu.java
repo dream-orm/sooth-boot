@@ -38,10 +38,6 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
      * 菜单权限编码，例如：“sys:schedule:list,sys:schedule:info”,多个逗号隔开
      */
     private String perms;
-    /**
-     * 权限策略1显示2禁用
-     */
-    private String permsType;
 
     /**
      * 菜单图标
@@ -75,11 +71,6 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
     private Integer menuType;
 
     /**
-     * 是否路由菜单: 0:不是  1:是（默认值1）
-     */
-    private boolean route;
-
-    /**
      * 描述
      */
     private String description;
@@ -99,21 +90,9 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
     private boolean hideTab;
 
     /**
-     * 按钮权限状态(0无效1有效)
-     */
-    private String status;
-
-    /**
      * alwaysShow
      */
     private boolean alwaysShow;
-
-    /*update_begin author:wuxianquan date:20190908 for:实体增加字段 */
-    /**
-     * 外链菜单打开方式 0/内部打开 1/外部打开
-     */
-    private boolean internalOrExternal;
-
 
     @Override
     public Long getTreeId() {

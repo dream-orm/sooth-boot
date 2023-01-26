@@ -64,16 +64,4 @@ public interface CommonConstant {
      * String 类型的空值
      */
     String STRING_NULL = "null";
-
-    /**
-     * http:// http协议
-     */
-    String HTTP_PROTOCOL = "http://";
-
-    /**
-     * https:// https协议
-     */
-    String HTTPS_PROTOCOL = "https://";
-
-
 }

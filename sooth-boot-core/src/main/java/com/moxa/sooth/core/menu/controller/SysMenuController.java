@@ -54,22 +54,7 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
             return Result.error("请登录系统！");
         }
         JSONArray menuArray = service.getMenu(sysUser.getId());
-        JSONObject json = new JSONObject();
-//        JSONArray authjsonArray = new JSONArray();
-//        this.getAuthJsonArray(authjsonArray, menuArray);
-//        //查询所有的权限
-//        SysPermissionMenuTypeModel sysPermissionMenuTypeModel = new SysPermissionMenuTypeModel();
-//        sysPermissionMenuTypeModel.setMenuType(CommonConstant.MENU_TYPE_2);
-//        List<SysPermission> allAuthList = service.selectList(sysPermissionMenuTypeModel);
-//        JSONArray allauthjsonArray = new JSONArray();
-//        this.getAllAuthJsonArray(allauthjsonArray, allAuthList);
-        //路由菜单
-        json.put("menu", menuArray);
-        //按钮权限（用户拥有的权限集合）
-//        json.put("auth", authjsonArray);
-        //全部权限配置集合（按钮权限，访问权限）
-//        json.put("allAuth", allauthjsonArray);
-        return Result.ok(json);
+        return Result.ok(menuArray);
     }
 
     @RequestMapping(value = "/getPermCode", method = RequestMethod.GET)
@@ -108,47 +93,5 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
     public Result saveRolePermission(@RequestBody SysMenuEditModel sysMenuEditModel) {
         service.saveRolePermission(sysMenuEditModel);
         return Result.ok(null, "角色授权成功");
-    }
-
-
-    /**
-     * 获取权限JSON数组
-     *
-     * @param jsonArray
-     * @param allList
-     */
-    private void getAllAuthJsonArray(JSONArray jsonArray, List<SysMenu> allList) {
-        JSONObject json = null;
-        for (SysMenu permission : allList) {
-            json = new JSONObject();
-            json.put("action", permission.getPerms());
-            json.put("status", permission.getStatus());
-            //1显示2禁用
-            json.put("type", permission.getPermsType());
-            json.put("describe", permission.getName());
-            jsonArray.add(json);
-        }
-    }
-
-    /**
-     * 获取权限JSON数组
-     *
-     * @param jsonArray
-     * @param metaList
-     */
-    private void getAuthJsonArray(JSONArray jsonArray, List<SysMenu> metaList) {
-        for (SysMenu permission : metaList) {
-            if (permission.getMenuType() == null) {
-                continue;
-            }
-            JSONObject json = null;
-            if (permission.getMenuType().equals(CommonConstant.MENU_TYPE_2) && CommonConstant.STATUS_1.equals(permission.getStatus())) {
-                json = new JSONObject();
-                json.put("action", permission.getPerms());
-                json.put("type", permission.getPermsType());
-                json.put("describe", permission.getName());
-                jsonArray.add(json);
-            }
-        }
     }
 }

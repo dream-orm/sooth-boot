@@ -8,11 +8,4 @@ public class SymbolConstant {
      */
     public static final String SINGLE_SLASH = "/";
 
-
-    /**
-     * 符号 {{
-     */
-    public static final String DOUBLE_LEFT_CURLY_BRACKET = "{{";
-
-
 }

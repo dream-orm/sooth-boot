@@ -10,7 +10,6 @@ import com.moxa.dream.system.provider.ActionProvider;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
 import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.constant.SymbolConstant;
-import com.moxa.sooth.core.base.util.ConvertUtils;
 import com.moxa.sooth.core.menu.view.SysMenu;
 
 import java.util.Collection;
@@ -80,19 +79,8 @@ public class SysMenuProvider {
             private JSONObject getPermissionJsonObject(SysMenu permission) {
                 JSONObject json = new JSONObject();
                 json.put("id", permission.getId());
-                if (permission.isRoute()) {
-                    //表示生成路由
-                    json.put("route", "1");
-                } else {
-                    //表示不生成路由
-                    json.put("route", "0");
-                }
 
-                if (isWwwHttpUrl(permission.getUrl())) {
-                    json.put("path", MD5.create().digestHex(permission.getUrl()));
-                } else {
-                    json.put("path", permission.getUrl());
-                }
+                json.put("path", permission.getUrl());
 
                 json.put("name", urlToRouteName(permission.getUrl()));
 
@@ -105,15 +93,9 @@ public class SysMenuProvider {
                 }
                 // 聚合路由
                 if (permission.isAlwaysShow()) {
-                    meta.put("affix",true);
+                    meta.put("affix", true);
                 }
                 json.put("component", permission.getComponent());
-                //外链菜单打开方式
-                if (permission.isInternalOrExternal()) {
-                    meta.put("internalOrExternal", true);
-                } else {
-                    meta.put("internalOrExternal", false);
-                }
                 meta.put("title", permission.getName());
 
                 if (StrUtil.isNotEmpty(permission.getRedirect())) {
@@ -124,9 +106,6 @@ public class SysMenuProvider {
                     meta.put("icon", permission.getIcon());
                 }
 
-                if (isWwwHttpUrl(permission.getUrl())) {
-                    meta.put("url", permission.getUrl());
-                }
                 if (permission.isHideTab()) {
                     meta.put("hideTab", true);
                 }
@@ -135,41 +114,16 @@ public class SysMenuProvider {
                 if (CollUtil.isNotEmpty(children)) {
                     for (SysMenu childPermission : children) {
                         JSONObject permissionJsonObject = getPermissionJsonObject(childPermission);
-                        if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_2)) {
-                            JSONObject metaJson = json.getJSONObject("meta");
-                            if (metaJson.containsKey("permissionList")) {
-                                metaJson.getJSONArray("permissionList").add(permissionJsonObject);
-                            } else {
-                                JSONArray permissionList = new JSONArray();
-                                permissionList.add(permissionJsonObject);
-                                metaJson.put("permissionList", permissionList);
-                            }
-                        } else if (childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_0) || childPermission.getMenuType().equals(CommonConstant.MENU_TYPE_1)) {
-                            if (json.containsKey("children")) {
-                                json.getJSONArray("children").add(permissionJsonObject);
-                            } else {
-                                JSONArray childrenArray = new JSONArray();
-                                childrenArray.add(permissionJsonObject);
-                                json.put("children", childrenArray);
-                            }
+                        if (json.containsKey("children")) {
+                            json.getJSONArray("children").add(permissionJsonObject);
+                        } else {
+                            JSONArray childrenArray = new JSONArray();
+                            childrenArray.add(permissionJsonObject);
+                            json.put("children", childrenArray);
                         }
                     }
                 }
                 return json;
-            }
-
-            /**
-             * 判断是否外网URL 例如： http://localhost:8080/jeecg-boot/swagger-ui.html#/ 支持特殊格式： {{
-             * window._CONFIG['domianURL'] }}/druid/ {{ JS代码片段 }}，前台解析会自动执行JS代码片段
-             *
-             * @return
-             */
-            private boolean isWwwHttpUrl(String url) {
-                boolean flag = url != null && (url.startsWith(CommonConstant.HTTP_PROTOCOL) || url.startsWith(CommonConstant.HTTPS_PROTOCOL) || url.startsWith(SymbolConstant.DOUBLE_LEFT_CURLY_BRACKET));
-                if (flag) {
-                    return true;
-                }
-                return false;
             }
 
             /**
