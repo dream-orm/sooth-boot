@@ -12,6 +12,4 @@ public interface SysApiService {
     String getDictItemName(String table, String name, String code, Object value);
 
     Set<String> selectRoles(String username);
-
-    Set<String> selectAuths(Long userId);
 }

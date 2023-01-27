@@ -2,12 +2,9 @@ package com.moxa.sooth.core.menu.controller;
 
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.menu.model.SysMenuEditModel;
-import com.moxa.sooth.core.menu.model.SysMenuTypeModel;
 import com.moxa.sooth.core.menu.model.SysMenuModel;
 import com.moxa.sooth.core.menu.model.SysRolePermissionModel;
 import com.moxa.sooth.core.menu.service.ISysMenuService;
@@ -20,7 +17,6 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,25 +51,6 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
         }
         JSONArray menuArray = service.getMenu(sysUser.getId());
         return Result.ok(menuArray);
-    }
-
-    @RequestMapping(value = "/getPermCode", method = RequestMethod.GET)
-    public Result<?> getPermCode() {
-        try {
-            // 直接获取当前用户
-            SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-            if (sysUser == null) {
-                return Result.error("请登录系统！");
-            }
-            // 获取当前用户的权限集合
-            List<SysMenu> metaList = service.selectAuths(sysUser.getId());
-            // 按钮权限（用户拥有的权限集合）
-            List<String> codeList = metaList.stream().map(SysMenu::getPerms).collect(Collectors.toList());
-            return Result.ok(codeList);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            return Result.error("查询失败:" + e.getMessage());
-        }
     }
 
     /**

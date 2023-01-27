@@ -11,9 +11,9 @@ spring:
   datasource:
     master:
       pool-name: MasterDataSource
-      jdbc-url: jdbc:mysql://192.168.0.236:3306/sooth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      jdbc-url: jdbc:mysql://192.168.0.3:3306/sooth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
       username: root
-      password: 123456
+      password: BMW#Halu@1234%
       driver-class-name: com.mysql.cj.jdbc.Driver
       minimum-idle: 3
       auto-commit: true
@@ -25,6 +25,7 @@ spring:
   #redis 配置
   redis:
     database: 0
-    host: 192.168.0.236
+    host: 192.168.0.106
     port: 6379
+    password: 'halu123456'
 

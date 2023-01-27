@@ -26,11 +26,11 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRole, SysRole> implements
 
     @Override
     public Page<SysRole> selectPage(Object conditionObject, Page page) {
-        return templateMapper.methodInfo(methodInfo -> methodInfo.set(Permission.class,new Permission(){
+        return templateMapper.methodInfo(methodInfo -> methodInfo.set(Permission.class, new Permission() {
             @Override
             public Class<? extends Annotation> annotationType() {
                 return Permission.class;
             }
-        })).selectPage(SysRole.class,conditionObject,page);
+        })).selectPage(SysRole.class, conditionObject, page);
     }
 }

@@ -30,12 +30,14 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         Object result = service.selectById(id);
         return Result.ok(result);
     }
+
     @ResponseBody
     @GetMapping("getOne")
     public Result getOne(SearchModel searchModel) {
         Object result = service.selectOne(searchModel);
         return Result.ok(result);
     }
+
     @ResponseBody
     @GetMapping("page")
     public Result selectPage(SearchModel searchModel, PageModel pageModel) {

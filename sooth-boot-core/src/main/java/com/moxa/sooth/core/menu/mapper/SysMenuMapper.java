@@ -9,7 +9,6 @@ import java.util.List;
 
 @Mapper(SysMenuProvider.class)
 public interface SysMenuMapper {
-    List<SysMenu> selectAuths(Long userId);
 
     JSONArray getMenu(Long userId);
 

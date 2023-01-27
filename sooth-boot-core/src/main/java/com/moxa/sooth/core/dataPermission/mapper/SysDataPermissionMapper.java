@@ -1,8 +1,8 @@
-package com.moxa.sooth.core.permission.mapper;
+package com.moxa.sooth.core.dataPermission.mapper;
 
 import com.moxa.dream.system.annotation.Mapper;
 import com.moxa.dream.system.annotation.Sql;
-import com.moxa.sooth.core.permission.table.SysDataPermission;
+import com.moxa.sooth.core.dataPermission.table.SysDataPermission;
 
 @Mapper
 public interface SysDataPermissionMapper {

@@ -1,4 +1,4 @@
-package com.moxa.sooth.core.permission.table;
+package com.moxa.sooth.core.dataPermission.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;
@@ -7,7 +7,6 @@ import com.moxa.sooth.core.base.dream.annotation.Unique;
 import lombok.Data;
 
 import java.sql.Types;
-import java.util.Date;
 
 @Data
 @Table("sys_data_permission")
@@ -19,7 +18,7 @@ public class SysDataPermission {
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;
     /**
-     *角色id
+     * 角色id
      */
     @Unique(msg = "角色id已存在")
     @Column(value = "role_id", jdbcType = Types.BIGINT)
@@ -33,6 +32,6 @@ public class SysDataPermission {
      * 指定部门
      */
     @Column(value = "dept_ids", jdbcType = Types.LONGNVARCHAR)
-    private Long[]deptIds;
+    private Long[] deptIds;
 
 }

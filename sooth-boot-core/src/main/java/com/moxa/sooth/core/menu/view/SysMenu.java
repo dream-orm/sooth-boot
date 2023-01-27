@@ -93,6 +93,10 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
      * alwaysShow
      */
     private boolean alwaysShow;
+    /**
+     * 是否缓存该页面:    1:是   0:不是
+     */
+    private boolean keepAlive;
 
     @Override
     public Long getTreeId() {

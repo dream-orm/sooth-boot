@@ -108,4 +108,9 @@ public class SysMenuTable {
      */
     @Column(value = "url", jdbcType = Types.VARCHAR)
     private String url;
+    /**
+     * 是否缓存该页面:    1:是   0:不是
+     */
+    @Column(value = "keep_alive", jdbcType = Types.BIT)
+    private Boolean keepAlive;
 }

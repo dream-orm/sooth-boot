@@ -1,7 +1,6 @@
 package com.moxa.sooth.code.gen.controller;
 
 import cn.hutool.core.io.IoUtil;
-import com.moxa.dream.util.exception.DreamRunTimeException;
 import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.service.IGenCodeService;
 import com.moxa.sooth.core.base.entity.Result;
@@ -9,7 +8,9 @@ import com.moxa.sooth.core.base.exception.SoothBootException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

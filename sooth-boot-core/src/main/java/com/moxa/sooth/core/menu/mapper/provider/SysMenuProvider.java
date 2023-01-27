@@ -2,13 +2,11 @@ package com.moxa.sooth.core.menu.mapper.provider;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.digest.MD5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.system.core.resultsethandler.ResultSetHandler;
 import com.moxa.dream.system.provider.ActionProvider;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
-import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.constant.SymbolConstant;
 import com.moxa.sooth.core.menu.view.SysMenu;
 
@@ -17,23 +15,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SysMenuProvider {
-    public String selectAuths() {
-        return "SELECT @all(sys_menu)\n" +
-                " FROM sys_menu p\n" +
-                " WHERE exists(\n" +
-                " select a.id from sys_role_permission a\n" +
-                " inner join sys_role b on a.role_id = b.id\n" +
-                " inner join sys_user_role c on c.role_id = b.id\n" +
-                " inner join sys_user d on d.id = c.user_id\n" +
-                " where p.menu_type=2 and p.id = a.permission_id AND d.id = @?(userId)\n" +
-                " )order by sort_no ASC";
-    }
-
     public ActionProvider getMenu() {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return "SELECT @all(sys_menu)\n" +
+                return "SELECT @all()\n" +
                         " FROM sys_menu p\n" +
                         " WHERE exists(\n" +
                         " select a.id from sys_role_permission a\n" +
@@ -41,7 +27,6 @@ public class SysMenuProvider {
                         " inner join sys_user_role c on c.role_id = b.id\n" +
                         " inner join sys_user d on d.id = c.user_id\n" +
                         " where p.id = a.permission_id AND d.id = @?(userId)\n" +
-                        " and (p.menu_type=0 or p.menu_type=1)" +
                         " )order by sort_no ASC";
             }
 
@@ -96,6 +81,8 @@ public class SysMenuProvider {
                     meta.put("affix", true);
                 }
                 json.put("component", permission.getComponent());
+                // 由用户设置是否缓存页面 用布尔值
+                meta.put("keepAlive", permission.isKeepAlive());
                 meta.put("title", permission.getName());
 
                 if (StrUtil.isNotEmpty(permission.getRedirect())) {

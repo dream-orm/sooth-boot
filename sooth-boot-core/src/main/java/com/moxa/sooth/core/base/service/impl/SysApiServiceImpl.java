@@ -57,16 +57,4 @@ public class SysApiServiceImpl implements SysApiService {
     public Set<String> selectRoles(String username) {
         return sysRoleService.selectRoles(username);
     }
-
-    @Override
-    public Set<String> selectAuths(Long userId) {
-        Set<String> permissionSet = new HashSet<>();
-        List<SysMenu> permissionList = sysPermissionService.selectAuths(userId);
-        for (SysMenu po : permissionList) {
-            if (StrUtil.isNotEmpty(po.getPerms())) {
-                permissionSet.add(po.getPerms());
-            }
-        }
-        return permissionSet;
-    }
 }

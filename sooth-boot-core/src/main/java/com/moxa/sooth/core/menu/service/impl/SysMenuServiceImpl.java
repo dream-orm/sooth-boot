@@ -30,10 +30,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenu, SysMenu> implements
     @Autowired
     private ISysRolePermissionService sysRolePermissionService;
 
-    @Override
-    public List<SysMenu> selectAuths(Long userId) {
-        return sysMenuMapper.selectAuths(userId);
-    }
 
     @Override
     public JSONArray getMenu(Long userId) {

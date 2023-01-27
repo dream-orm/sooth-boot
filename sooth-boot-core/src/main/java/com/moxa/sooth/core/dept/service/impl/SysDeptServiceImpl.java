@@ -22,7 +22,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDept, SysDept> implements
 
     @Override
     public List<SysDept> listTree(SysDeptModel deptModel) {
-        return templateMapper.methodInfo(methodInfo -> methodInfo.set(Permission.class,new Permission(){
+        return templateMapper.methodInfo(methodInfo -> methodInfo.set(Permission.class, new Permission() {
             @Override
             public Class<? extends Annotation> annotationType() {
                 return Permission.class;
