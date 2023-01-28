@@ -16,23 +16,6 @@ public interface CommonConstant {
     String PREFIX_USER_TOKEN = "prefix_user_token_";
 //    /** Token缓存时间：3600秒即一小时 */
 
-    /**
-     * 0：一级菜单
-     */
-    Integer MENU_TYPE_0 = 0;
-    /**
-     * 1：子菜单
-     */
-    Integer MENU_TYPE_1 = 1;
-    /**
-     * 2：按钮权限
-     */
-    Integer MENU_TYPE_2 = 2;
-
-
-    String STATUS_1 = "1";
-
-
     String X_ACCESS_TOKEN = "X-Access-Token";
 
     String USER_AGENT = "User-Agent";

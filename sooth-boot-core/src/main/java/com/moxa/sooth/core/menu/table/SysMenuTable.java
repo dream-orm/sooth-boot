@@ -13,11 +13,6 @@ import java.util.Date;
 @Table("sys_menu")
 public class SysMenuTable {
     /**
-     * 菜单权限编码
-     */
-    @Column(value = "perms", jdbcType = Types.VARCHAR)
-    private String perms;
-    /**
      * 创建时间
      */
     @Column(value = "create_time", jdbcType = Types.TIMESTAMP)

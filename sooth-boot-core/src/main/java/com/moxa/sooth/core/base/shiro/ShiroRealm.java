@@ -49,18 +49,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        log.debug("===============Shiro权限认证开始============ [ roles、permissions]==========");
-        String username = null;
-        if (principals != null) {
-            SysUser sysUser = (SysUser) principals.getPrimaryPrincipal();
-            username = sysUser.getUsername();
-        }
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-
-        // 设置用户拥有的角色集合，比如“admin,test”
-        Set<String> roleSet = sysApiService.selectRoles(username);
-        info.setRoles(roleSet);
-        log.info("===============Shiro权限认证成功==============");
         return info;
     }
 
@@ -124,7 +113,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     public boolean jwtTokenRefresh(String token, String userName, String passWord) {
         String cacheToken = (String) redisTemplate.opsForValue().get(CommonConstant.PREFIX_USER_TOKEN + token);
-        if (StrUtil.isNotBlank(cacheToken)) {
+        if (StrUtil.isNotEmpty(cacheToken)) {
             // 校验token有效性
             if (JwtUtil.verify(cacheToken, userName, passWord)) {
                 String newAuthorization = JwtUtil.sign(userName, passWord);

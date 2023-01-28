@@ -31,20 +31,6 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/sys/checkCaptcha", "anon"); //登录验证码接口排除
         filterChainDefinitionMap.put("/sys/login", "anon"); //登录接口排除
         filterChainDefinitionMap.put("/sys/logout", "anon"); //登出接口排除
-        filterChainDefinitionMap.put("/sys/getEncryptedString", "anon"); //获取加密串
-        filterChainDefinitionMap.put("/sys/checkAuth", "anon"); //授权接口排除
-
-//        filterChainDefinitionMap.put("/", "anon");
-//        filterChainDefinitionMap.put("/doc.html", "anon");
-//        filterChainDefinitionMap.put("/**/*.js", "anon");
-//        filterChainDefinitionMap.put("/**/*.css", "anon");
-//        filterChainDefinitionMap.put("/**/*.html", "anon");
-//        filterChainDefinitionMap.put("/**/*.svg", "anon");
-//        filterChainDefinitionMap.put("/**/*.pdf", "anon");
-//        filterChainDefinitionMap.put("/**/*.jpg", "anon");
-//        filterChainDefinitionMap.put("/**/*.png", "anon");
-//        filterChainDefinitionMap.put("/**/*.gif", "anon");
-//        filterChainDefinitionMap.put("/**/*.ico", "anon");
 
         // 添加自己的过滤器并且取名为jwt
         Map<String, Filter> filterMap = new HashMap<>(1);
@@ -53,10 +39,6 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setFilters(filterMap);
         // <!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边
         filterChainDefinitionMap.put("/**", "jwt");
-
-        // 未授权界面返回JSON
-        shiroFilterFactoryBean.setUnauthorizedUrl("/sys/common/403");
-        shiroFilterFactoryBean.setLoginUrl("/sys/common/403");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

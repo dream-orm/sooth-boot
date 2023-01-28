@@ -35,11 +35,6 @@ public class SysMenu extends BaseEntity implements Tree<Long> {
     private String name;
 
     /**
-     * 菜单权限编码，例如：“sys:schedule:list,sys:schedule:info”,多个逗号隔开
-     */
-    private String perms;
-
-    /**
      * 菜单图标
      */
     private String icon;
