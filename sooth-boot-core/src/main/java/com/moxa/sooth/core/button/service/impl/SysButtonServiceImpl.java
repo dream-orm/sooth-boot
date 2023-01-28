@@ -2,9 +2,12 @@ package com.moxa.sooth.core.button.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.moxa.dream.boot.impl.ServiceImpl;
+import com.moxa.sooth.core.button.mapper.SysButtonMapper;
 import com.moxa.sooth.core.button.model.SysButtonModel;
 import com.moxa.sooth.core.button.service.ISysButtonService;
 import com.moxa.sooth.core.button.table.SysButton;
+import com.moxa.sooth.core.button.view.MenuButton;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +16,8 @@ import java.util.*;
 @Service
 public class SysButtonServiceImpl extends ServiceImpl<SysButton, SysButton> implements ISysButtonService {
 
+    @Autowired
+    private SysButtonMapper buttonMapper;
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveButton(Long menuId, List<String> buttonTypeList) {
@@ -41,5 +46,10 @@ public class SysButtonServiceImpl extends ServiceImpl<SysButton, SysButton> impl
         if (CollUtil.isNotEmpty(saveSysButtons)) {
             batchInsert(saveSysButtons);
         }
+    }
+
+    @Override
+    public List<MenuButton> listMenuButtonTree(Long userId) {
+        return buttonMapper.listMenuButtonTree(userId);
     }
 }

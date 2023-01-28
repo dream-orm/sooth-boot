@@ -33,7 +33,7 @@ public class SysButtonPermissionController extends BaseController<ISysButtonPerm
 
     @AutoLog("保存")
     @PostMapping(value = "saveButtonPermission/{roleId}")
-    public Result saveButtonPermission(@PathVariable Long roleId,@RequestBody List<SysButtonPermission> buttonPermissionList) {
+    public Result saveButtonPermission(@PathVariable Long roleId,@RequestBody List<Long> buttonPermissionList) {
         service.saveButtonPermission(roleId,buttonPermissionList);
         return Result.ok(null,"保存成功");
     }

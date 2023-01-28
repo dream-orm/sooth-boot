@@ -20,17 +20,17 @@ public class SysButtonPermissionServiceImpl extends ServiceImpl<SysButtonPermiss
     private SysButtonPermissionMapper buttonPermissionMapper;
 
     @Override
-    public void saveButtonPermission(Long roleId, List<SysButtonPermission> buttonPermissionList) {
+    public void saveButtonPermission(Long roleId, List<Long> buttonIdList) {
         SysButtonPermissionModel buttonPermissionModel = new SysButtonPermissionModel();
         buttonPermissionModel.setRoleId(roleId);
-        List<SysButtonPermission> buttonPermissions = selectList(buttonPermissionList);
-        Set<String> buttonPermissionSet = buttonPermissions.stream().map(sysButtonPermission -> sysButtonPermission.getId()).collect(Collectors.toSet());
+        List<SysButtonPermission> buttonPermissions = selectList(buttonPermissionModel);
+        Set<Long> buttonPermissionSet = buttonPermissions.stream().map(sysButtonPermission -> sysButtonPermission.getId()).collect(Collectors.toSet());
         List<SysButtonPermission> saveSysButtonPermissions = new ArrayList<>();
-        for (SysButtonPermission sysButtonPermission : buttonPermissionList) {
-            String id = roleId + sysButtonPermission.getType() + sysButtonPermission.getMenuId();
-            if (!buttonPermissionSet.remove(id)) {
+        for (Long buttonId : buttonIdList) {
+            if (!buttonPermissionSet.remove(buttonId)) {
+                SysButtonPermission sysButtonPermission=new SysButtonPermission();
                 sysButtonPermission.setRoleId(roleId);
-                sysButtonPermission.setId(id);
+                sysButtonPermission.setButtonId(buttonId);
                 saveSysButtonPermissions.add(sysButtonPermission);
             }
         }

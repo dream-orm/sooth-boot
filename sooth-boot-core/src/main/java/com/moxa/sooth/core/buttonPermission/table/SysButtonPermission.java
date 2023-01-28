@@ -15,22 +15,18 @@ public class SysButtonPermission {
      * 主键id
      */
     @Id
-    @Column(value = "id", jdbcType = Types.VARCHAR)
-    private String id;
+    @Column(value = "id", jdbcType = Types.BIGINT)
+    private Long id;
     /**
      * 角色id
      */
     @Column(value = "role_id", jdbcType = Types.BIGINT)
     private Long roleId;
     /**
-     * 数据权限
+     * 按钮id
      */
-    @Column(value = "menu_id", jdbcType = Types.BIGINT)
-    private Long menuId;
-    /**
-     * 按钮类型
-     */
-    @Column(value = "type", jdbcType = Types.VARCHAR)
-    private String type;
+    @Column(value = "button_id", jdbcType = Types.BIGINT)
+    private Long buttonId;
+
 
 }
