@@ -1,9 +1,10 @@
 package com.moxa.sooth.core.menu.view;
 
+import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.sooth.core.base.annotation.Dict;
-import com.moxa.sooth.core.base.entity.BaseEntity;
+import com.moxa.sooth.core.base.entity.BaseDict;
 import com.moxa.sooth.core.menu.table.SysMenuTable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,8 +17,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View(SysMenuTable.class)
-public class SysMenu extends BaseEntity{
-
+public class SysMenuListView extends BaseDict implements Tree<Long> {
     /**
      * id
      */
@@ -57,7 +57,13 @@ public class SysMenu extends BaseEntity{
      */
     private Double sortNo;
 
+    /**
+     * 类型（0：一级菜单；1：子菜单 ；2：按钮权限）
+     */
+    @Dict(code = "menu_type")
+
     private Integer menuType;
+
     /**
      * 描述
      */
@@ -85,4 +91,25 @@ public class SysMenu extends BaseEntity{
      * 是否缓存该页面:    1:是   0:不是
      */
     private boolean keepAlive;
+
+    @Ignore(setter = true)
+    private String[] buttonTypeList;
+
+    @Ignore
+    private List<SysMenuListView> children;
+
+    @Override
+    public Long getTreeId() {
+        return id;
+    }
+
+    @Override
+    public List<SysMenuListView> getChildren() {
+        return children;
+    }
+
+    @Override
+    public void setChildren(List<? extends Tree> children) {
+        this.children = (List<SysMenuListView>) children;
+    }
 }

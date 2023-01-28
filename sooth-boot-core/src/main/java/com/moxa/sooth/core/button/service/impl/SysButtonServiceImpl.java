@@ -16,9 +16,9 @@ public class SysButtonServiceImpl extends ServiceImpl<SysButton, SysButton> impl
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveButton(Long menuId, List<String> buttonTypeList) {
-        SysButtonModel buttonPermissionModel = new SysButtonModel();
-        buttonPermissionModel.setMenuId(menuId);
-        List<SysButton> buttons = selectList(menuId);
+        SysButtonModel buttonModel = new SysButtonModel();
+        buttonModel.setMenuId(menuId);
+        List<SysButton> buttons = selectList(buttonModel);
         Map<String,Long>buttonMap=new HashMap<>();
         if(CollUtil.isNotEmpty(buttons)){
             for(SysButton button:buttons){

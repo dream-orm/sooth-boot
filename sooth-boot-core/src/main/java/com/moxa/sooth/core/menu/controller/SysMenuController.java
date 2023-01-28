@@ -11,6 +11,7 @@ import com.moxa.sooth.core.menu.service.ISysMenuService;
 import com.moxa.sooth.core.menu.service.ISysRolePermissionService;
 import com.moxa.sooth.core.menu.table.SysRolePermission;
 import com.moxa.sooth.core.menu.view.SysMenu;
+import com.moxa.sooth.core.menu.view.SysMenuListView;
 import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -36,9 +37,9 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
      *
      * @return
      */
-    @RequestMapping(value = "/listTree", method = RequestMethod.GET)
-    public Result<List<SysMenu>> list(SysMenuModel sysMenuModel) {
-        List<SysMenu> treeList = service.selectTree(sysMenuModel);
+    @RequestMapping(value = "/listMenuTree", method = RequestMethod.GET)
+    public Result<List<SysMenuListView>> listMenuTree(SysMenuModel sysMenuModel) {
+        List<SysMenuListView> treeList = service.listMenuTree(sysMenuModel);
         return Result.ok(treeList);
     }
 

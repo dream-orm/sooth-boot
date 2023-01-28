@@ -1,5 +1,6 @@
 package com.moxa.sooth.core.dept.view;
 
+import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.sooth.core.base.annotation.Dict;
@@ -13,7 +14,6 @@ import java.util.List;
 @Data
 @View($SysDept.class)
 public class SysDept extends BaseEntity implements Tree<Long> {
-    private List<SysDept> children;
     /**
      * ID
      */
@@ -47,6 +47,9 @@ public class SysDept extends BaseEntity implements Tree<Long> {
      * 删除状态（0，正常，1已删除）
      */
     private Integer delFlag;
+
+    @Ignore
+    private List<SysDept> children;
 
     @Override
     public Long getTreeId() {

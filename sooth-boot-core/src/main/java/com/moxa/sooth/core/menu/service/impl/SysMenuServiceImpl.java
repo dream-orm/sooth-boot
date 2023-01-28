@@ -10,6 +10,7 @@ import com.moxa.sooth.core.menu.service.ISysMenuService;
 import com.moxa.sooth.core.menu.service.ISysRolePermissionService;
 import com.moxa.sooth.core.menu.table.SysRolePermission;
 import com.moxa.sooth.core.menu.view.SysMenu;
+import com.moxa.sooth.core.menu.view.SysMenuListView;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class SysMenuServiceImpl extends ServiceImpl<SysMenu, SysMenu> implements ISysMenuService {
+public class SysMenuServiceImpl extends ServiceImpl<SysMenuListView, SysMenu> implements ISysMenuService {
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
@@ -37,8 +38,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenu, SysMenu> implements
     }
 
     @Override
-    public List<SysMenu> selectTree(SysMenuModel sysMenuModel) {
-        return templateMapper.selectTree(SysMenu.class, sysMenuModel);
+    public List<SysMenuListView> listMenuTree(SysMenuModel sysMenuModel) {
+        return sysMenuMapper.listMenuTree(sysMenuModel);
     }
 
     @Transactional(rollbackFor = Exception.class)

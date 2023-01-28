@@ -8,7 +8,7 @@ import com.moxa.dream.system.core.resultsethandler.ResultSetHandler;
 import com.moxa.dream.system.provider.ActionProvider;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
 import com.moxa.sooth.core.base.constant.SymbolConstant;
-import com.moxa.sooth.core.menu.view.SysMenu;
+import com.moxa.sooth.core.menu.view.SysMenuListView;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,14 +19,14 @@ public class SysMenuProvider {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return "SELECT @all()\n" +
-                        " FROM sys_menu p\n" +
-                        " WHERE exists(\n" +
-                        " select a.id from sys_role_permission a\n" +
-                        " inner join sys_role b on a.role_id = b.id\n" +
-                        " inner join sys_user_role c on c.role_id = b.id\n" +
-                        " inner join sys_user d on d.id = c.user_id\n" +
-                        " where p.id = a.permission_id AND d.id = @?(userId)\n" +
+                return "SELECT @all() " +
+                        " FROM sys_menu p " +
+                        " WHERE exists( " +
+                        " select a.id from sys_role_permission a " +
+                        " inner join sys_role b on a.role_id = b.id " +
+                        " inner join sys_user_role c on c.role_id = b.id " +
+                        " inner join sys_user d on d.id = c.user_id " +
+                        " where p.id = a.permission_id AND d.id = @?(userId) " +
                         " )order by sort_no ASC";
             }
 
@@ -37,16 +37,16 @@ public class SysMenuProvider {
 
             @Override
             public Class<?> colType() {
-                return SysMenu.class;
+                return SysMenuListView.class;
             }
 
             @Override
             public ResultSetHandler resultSetHandler() {
                 ResultSetHandler resultSetHandler = new TreeResultSetHandler();
                 return (resultSet, mappedStatement, session) -> {
-                    List<SysMenu> permissionList = (List<SysMenu>) resultSetHandler.result(resultSet, mappedStatement, session);
+                    List<SysMenuListView> permissionList = (List<SysMenuListView>) resultSetHandler.result(resultSet, mappedStatement, session);
                     JSONArray menuArray = new JSONArray();
-                    for (SysMenu permission : permissionList) {
+                    for (SysMenuListView permission : permissionList) {
                         menuArray.add(getPermissionJsonObject(permission));
                     }
                     //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
@@ -61,7 +61,7 @@ public class SysMenuProvider {
              * @param permission
              * @return
              */
-            private JSONObject getPermissionJsonObject(SysMenu permission) {
+            private JSONObject getPermissionJsonObject(SysMenuListView permission) {
                 JSONObject json = new JSONObject();
                 json.put("id", permission.getId());
 
@@ -97,9 +97,9 @@ public class SysMenuProvider {
                     meta.put("hideTab", true);
                 }
                 json.put("meta", meta);
-                List<SysMenu> children = permission.getChildren();
+                List<SysMenuListView> children = permission.getChildren();
                 if (CollUtil.isNotEmpty(children)) {
-                    for (SysMenu childPermission : children) {
+                    for (SysMenuListView childPermission : children) {
                         JSONObject permissionJsonObject = getPermissionJsonObject(childPermission);
                         if (json.containsKey("children")) {
                             json.getJSONArray("children").add(permissionJsonObject);
@@ -158,6 +158,50 @@ public class SysMenuProvider {
                     }
                     return returnObj;
                 }).collect(Collectors.toCollection(JSONArray::new));
+            }
+        };
+    }
+
+    public ActionProvider  listMenuTree(){
+        return new ActionProvider() {
+            @Override
+            public String sql() {
+                return "SELECT " +
+                        " @all(sys_menu), " +
+                        " menu_button.button_type_name buttonTypeList " +
+                        " FROM " +
+                        " sys_menu " +
+                        " INNER JOIN ( " +
+                        " SELECT " +
+                        " sys_menu.id, " +
+                        " GROUP_CONCAT( button_type.NAME order by button_type.order_no) button_type_name  " +
+                        " FROM " +
+                        " sys_menu " +
+                        " LEFT JOIN sys_button ON sys_menu.id = sys_button.menu_id " +
+                        " LEFT JOIN ( " +
+                        " SELECT " +
+                        " sys_dict_item.NAME NAME, " +
+                        " sys_dict_item.VALUE, " +
+                        " sys_dict_item.order_no  " +
+                        " FROM " +
+                        " sys_dict " +
+                        " INNER JOIN sys_dict_item ON sys_dict.id = sys_dict_item.dict_id  " +
+                        " WHERE " +
+                        " sys_dict.CODE = 'button_type'  " +
+                        " order by sys_dict_item.order_no " +
+                        " ) button_type ON sys_button.type = button_type.VALUE " +
+                        " where @not( " +
+                        " sys_menu.name like concat('%',@?(model.name),'%') " +
+                        " ) " +
+                        " GROUP BY " +
+                        " sys_menu.id  " +
+                        " ) menu_button ON sys_menu.id = menu_button.id "+
+                        " order by sys_menu.parent_id,sys_menu.sort_no";
+            }
+
+            @Override
+            public ResultSetHandler resultSetHandler() {
+                return new TreeResultSetHandler();
             }
         };
     }
