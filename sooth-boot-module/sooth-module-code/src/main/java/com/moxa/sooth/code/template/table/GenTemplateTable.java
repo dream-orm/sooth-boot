@@ -8,14 +8,10 @@ import lombok.Data;
 import java.sql.Types;
 import java.util.Date;
 
-/**
- * 表字段
- *
- * @author 阿沐 babamu@126.com
- */
+
 @Data
 @Table("gen_template")
-public class $GenTemplate {
+public class GenTemplateTable {
     @Id
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;
@@ -30,8 +26,6 @@ public class $GenTemplate {
 
     @Column(value = "content", jdbcType = Types.VARCHAR)
     private String content;
-    @Column(value = "valid_status", jdbcType = Types.BOOLEAN)
-    private Boolean validStatus;
     /**
      * 创建人
      */

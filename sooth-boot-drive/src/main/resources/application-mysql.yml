@@ -29,3 +29,6 @@ spring:
     port: 6379
     password: 'halu123456'
 
+dream:
+  toSQL: com.moxa.dream.antlr.sql.ToMYSQL
+

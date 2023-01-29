@@ -7,11 +7,6 @@ import lombok.Data;
 
 import java.sql.Types;
 
-/**
- * 数据表
- *
- * @author 阿沐 babamu@126.com
- */
 @Data
 @Table("gen_template_group")
 public class GenTemplateGroup {

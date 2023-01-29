@@ -3,6 +3,8 @@ package com.moxa.sooth.drive;
 import com.moxa.dream.antlr.invoker.Invoker;
 import com.moxa.dream.boot.bean.ConfigurationBean;
 import com.moxa.dream.drive.listener.DebugListener;
+import com.moxa.dream.mate.block.inject.BlockInject;
+import com.moxa.dream.mate.block.invoker.BlockInvoker;
 import com.moxa.dream.mate.permission.inject.PermissionInject;
 import com.moxa.dream.mate.permission.invoker.PermissionGetInvoker;
 import com.moxa.dream.mate.permission.invoker.PermissionInjectInvoker;
@@ -49,12 +51,12 @@ public class DreamConfig {
 
     @Bean
     public Invoker[] invokers() {
-        return new Invoker[]{new PermissionInjectInvoker(), new PermissionGetInvoker()};
+        return new Invoker[]{new PermissionInjectInvoker(), new PermissionGetInvoker(),new BlockInvoker("key.txt")};
     }
 
     @Bean
     public Inject[] injects() {
-        return new Inject[]{new PermissionInject(new SoothPermissionHandler())};
+        return new Inject[]{new PermissionInject(new SoothPermissionHandler()),new BlockInject()};
     }
 
     @Bean

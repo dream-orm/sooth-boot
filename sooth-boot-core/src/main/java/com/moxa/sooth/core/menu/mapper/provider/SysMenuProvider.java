@@ -125,9 +125,6 @@ public class SysMenuProvider {
                         url = url.substring(1);
                     }
                     url = url.replace("/", "-");
-
-                    // 特殊标记
-                    url = url.replace(":", "@");
                     return url;
                 } else {
                     return null;
@@ -174,22 +171,22 @@ public class SysMenuProvider {
                         " INNER JOIN ( " +
                         " SELECT " +
                         " sys_menu.id, " +
-                        " GROUP_CONCAT( button_type.NAME order by button_type.order_no) button_type_name  " +
+                        " GROUP_CONCAT( button_type.name order by button_type.order_no) button_type_name  " +
                         " FROM " +
                         " sys_menu " +
                         " LEFT JOIN sys_button ON sys_menu.id = sys_button.menu_id " +
                         " LEFT JOIN ( " +
                         " SELECT " +
-                        " sys_dict_item.NAME NAME, " +
-                        " sys_dict_item.VALUE, " +
+                        " sys_dict_item.name name, " +
+                        " sys_dict_item.value, " +
                         " sys_dict_item.order_no  " +
                         " FROM " +
                         " sys_dict " +
                         " INNER JOIN sys_dict_item ON sys_dict.id = sys_dict_item.dict_id  " +
                         " WHERE " +
-                        " sys_dict.CODE = 'button_type'  " +
+                        " sys_dict.code = 'button_type'  " +
                         " order by sys_dict_item.order_no " +
-                        " ) button_type ON sys_button.type = button_type.VALUE " +
+                        " ) button_type ON sys_button.type = button_type.value " +
                         " where @not( " +
                         " sys_menu.name like concat('%',@?(model.name),'%') " +
                         " ) " +

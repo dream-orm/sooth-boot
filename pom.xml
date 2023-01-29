@@ -17,6 +17,7 @@
         <soothboot.version>1.0.0</soothboot.version>
         <fastjson.version>1.2.83</fastjson.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
+        <pgsql-connector-java.version>42.5.1</pgsql-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
         <dream.version>1.0.0</dream.version>
         <http-client.version>4.5.13</http-client.version>
@@ -42,6 +43,11 @@
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-boot-core</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-code</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
@@ -86,6 +92,12 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <!--pgsql-->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${pgsql-connector-java.version}</version>
             </dependency>
             <!--JWT-->
             <dependency>

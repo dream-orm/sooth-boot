@@ -116,8 +116,7 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `table_name`(`table_name`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 126473795857 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -322,8 +321,7 @@ CREATE TABLE `sys_button`  (
   `id` bigint(20) NOT NULL,
   `menu_id` bigint(20) NULL DEFAULT NULL COMMENT '菜单id',
   `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '按钮权限类型',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_srp_permission_id`(`menu_id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -357,8 +355,7 @@ CREATE TABLE `sys_button_permission`  (
   `id` bigint(20) NOT NULL,
   `button_id` bigint(20) NULL DEFAULT NULL COMMENT '按钮id',
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色id',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_srp_permission_id`(`button_id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -389,8 +386,7 @@ CREATE TABLE `sys_data_permission`  (
   `permission_code` int(11) NULL DEFAULT NULL COMMENT '权限',
   `dept_ids` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '指定部门',
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色id',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_srp_permission_id`(`permission_code`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -440,9 +436,7 @@ CREATE TABLE `sys_dept`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新日期',
-  PRIMARY KEY (`dept_id`) USING BTREE,
-  INDEX `idx_sd_parent_id`(`parent_id`) USING BTREE,
-  INDEX `idx_sd_depart_order`(`order_no`) USING BTREE
+  PRIMARY KEY (`dept_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '组织机构表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -468,8 +462,7 @@ CREATE TABLE `sys_dict`  (
   `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `type` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '字典类型0为string,1为number',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `uk_sd_dict_code`(`code`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -494,10 +487,7 @@ CREATE TABLE `sys_dict_item`  (
   `value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典项值',
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `order_no` double NULL DEFAULT NULL COMMENT '排序',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_sdi_role_dict_id`(`dict_id`) USING BTREE,
-  INDEX `idx_sdi_role_sort_order`(`order_no`) USING BTREE,
-  INDEX `idx_sdi_dict_val`(`dict_id`, `value`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -549,10 +539,7 @@ CREATE TABLE `sys_log`  (
   `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '错误信息',
   `exception_class` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '异常类',
   `stack_trace` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '详尽异常',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_sl_userid`(`username`) USING BTREE,
-  INDEX `idx_sl_log_type`(`log_type`) USING BTREE,
-  INDEX `idx_sl_create_time`(`create_time`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统日志表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -669,9 +656,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` int(11) NULL DEFAULT 0 COMMENT '删除状态 0正常 1已删除',
   `keep_alive` tinyint(1) NULL DEFAULT NULL COMMENT '缓存路由: 1是0否',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `index_menu_type`(`menu_type`) USING BTREE,
-  INDEX `index_menu_hidden`(`hidden`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -713,9 +698,7 @@ CREATE TABLE `sys_role`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `uniq_sys_role_role_code`(`role_code`) USING BTREE,
-  INDEX `idx_sr_role_code`(`role_code`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -732,10 +715,7 @@ CREATE TABLE `sys_role_permission`  (
   `id` bigint(20) NOT NULL,
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色id',
   `permission_id` bigint(20) NULL DEFAULT NULL COMMENT '权限id',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_srp_role_per_id`(`role_id`, `permission_id`) USING BTREE,
-  INDEX `idx_srp_role_id`(`role_id`) USING BTREE,
-  INDEX `idx_srp_permission_id`(`permission_id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -780,11 +760,7 @@ CREATE TABLE `sys_user`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `uniq_sys_user_username`(`username`) USING BTREE,
-  UNIQUE INDEX `uniq_sys_user_phone`(`phone`) USING BTREE,
-  INDEX `idx_su_username`(`username`) USING BTREE,
-  INDEX `idx_su_del_flag`(`del_flag`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -801,10 +777,7 @@ CREATE TABLE `sys_user_dept`  (
   `id` bigint(20) NOT NULL COMMENT '主键id',
   `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
   `dept_id` bigint(20) NULL DEFAULT NULL COMMENT '部门id',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_sur_role_id`(`dept_id`) USING BTREE,
-  INDEX `idx_sur_user_id`(`user_id`) USING BTREE,
-  INDEX `idx_sur_user_role_id`(`user_id`, `dept_id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户部门表' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -822,10 +795,7 @@ CREATE TABLE `sys_user_role`  (
   `id` bigint(20) NOT NULL COMMENT '主键id',
   `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色id',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_sur_user_id`(`user_id`) USING BTREE,
-  INDEX `idx_sur_role_id`(`role_id`) USING BTREE,
-  INDEX `idx_sur_user_role_id`(`user_id`, `role_id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户角色表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------

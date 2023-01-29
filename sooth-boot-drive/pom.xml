@@ -19,23 +19,29 @@
         <dependency>
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-boot-plugin</artifactId>
-            <version>${soothboot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-boot-core</artifactId>
-            <version>${soothboot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-module-monitor</artifactId>
-            <version>${soothboot.version}</version>
         </dependency>
         <!--代码生成-->
         <dependency>
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-module-code</artifactId>
-            <version>${soothboot.version}</version>
+        </dependency>
+        <!-- 数据库驱动 -->
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
     </dependencies>
     <build>

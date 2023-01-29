@@ -30,7 +30,7 @@ public class SysMenuTable {
     /**
      * 是否隐藏路由: 0否,1是
      */
-    @Column(value = "hidden", jdbcType = Types.BOOLEAN)
+    @Column(value = "hidden", jdbcType = Types.TINYINT)
     private Boolean hidden;
     /**
      * 主键id
@@ -46,7 +46,7 @@ public class SysMenuTable {
     /**
      * 是否隐藏tab: 0否,1是
      */
-    @Column(value = "hide_tab", jdbcType = Types.BOOLEAN)
+    @Column(value = "hide_tab", jdbcType = Types.TINYINT)
     private Boolean hideTab;
     /**
      * 菜单排序

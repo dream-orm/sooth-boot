@@ -71,22 +71,22 @@ public class $GenTableField {
     /**
      * 主键 0：否  1：是
      */
-    @Column(value = "primary_pk", jdbcType = Types.BOOLEAN)
+    @Column(value = "primary_pk", jdbcType = Types.TINYINT)
     private boolean primaryPk;
     /**
      * 基类字段 0：否  1：是
      */
-    @Column(value = "base_field", jdbcType = Types.BOOLEAN)
+    @Column(value = "base_field", jdbcType = Types.TINYINT)
     private boolean baseField;
     /**
      * 表单项 0：否  1：是
      */
-    @Column(value = "form_item", jdbcType = Types.BOOLEAN)
+    @Column(value = "form_item", jdbcType = Types.TINYINT)
     private boolean formItem;
     /**
      * 表单必填 0：否  1：是
      */
-    @Column(value = "form_required", jdbcType = Types.BOOLEAN)
+    @Column(value = "form_required", jdbcType = Types.TINYINT)
     private boolean formRequired;
     /**
      * 表单类型
@@ -106,17 +106,17 @@ public class $GenTableField {
     /**
      * 列表项 0：否  1：是
      */
-    @Column(value = "grid_item", jdbcType = Types.BOOLEAN)
+    @Column(value = "grid_item", jdbcType = Types.TINYINT)
     private boolean gridItem;
     /**
      * 列表排序 0：否  1：是
      */
-    @Column(value = "grid_sort", jdbcType = Types.BOOLEAN)
+    @Column(value = "grid_sort", jdbcType = Types.TINYINT)
     private boolean gridSort;
     /**
      * 查询项 0：否  1：是
      */
-    @Column(value = "query_item", jdbcType = Types.BOOLEAN)
+    @Column(value = "query_item", jdbcType = Types.TINYINT)
     private boolean queryItem;
     /**
      * 查询方式

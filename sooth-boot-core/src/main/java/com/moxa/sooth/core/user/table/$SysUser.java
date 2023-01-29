@@ -51,12 +51,12 @@ public class $SysUser {
      * 性别
      */
     @Column(value = "sex", jdbcType = Types.BIT)
-    private Boolean sex;
+    private Integer sex;
     /**
      * 删除状态(0-正常,1-已删除)
      */
     @Column(value = "del_flag", jdbcType = Types.BIT)
-    private Boolean delFlag;
+    private Integer delFlag;
     /**
      * 真实姓名
      */
