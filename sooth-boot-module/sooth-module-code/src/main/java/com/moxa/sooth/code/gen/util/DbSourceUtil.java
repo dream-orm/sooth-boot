@@ -19,7 +19,7 @@ public class DbSourceUtil {
     public static Map<Integer, DataType> dataTypeMap = new HashMap<>();
 
     static {
-        dataTypeMap.put(Types.BIT, new DataType("Types.BIT", "Boolean"));
+        dataTypeMap.put(Types.BIT, new DataType("Types.BIT", "Byte"));
         dataTypeMap.put(Types.TINYINT, new DataType("Types.TINYINT", "Byte"));
         dataTypeMap.put(Types.SMALLINT, new DataType("Types.SMALLINT", "Short"));
         dataTypeMap.put(Types.INTEGER, new DataType("Types.INTEGER", "Integer"));
@@ -27,32 +27,26 @@ public class DbSourceUtil {
         dataTypeMap.put(Types.FLOAT, new DataType("Types.FLOAT", "Float"));
         dataTypeMap.put(Types.REAL, new DataType("Types.REAL", "Float"));
         dataTypeMap.put(Types.DOUBLE, new DataType("Types.DOUBLE", "Double"));
-        dataTypeMap.put(Types.NUMERIC, new DataType("Types.NUMERIC", "BigDecimal"));
-        dataTypeMap.put(Types.DECIMAL, new DataType("Types.DECIMAL", "BigDecimal"));
+        dataTypeMap.put(Types.NUMERIC, new DataType("Types.NUMERIC", "java.math.BigDecimal"));
+        dataTypeMap.put(Types.DECIMAL, new DataType("Types.DECIMAL", "java.math.BigDecimal"));
         dataTypeMap.put(Types.CHAR, new DataType("Types.CHAR", "String"));
         dataTypeMap.put(Types.VARCHAR, new DataType("Types.VARCHAR", "String"));
         dataTypeMap.put(Types.LONGVARCHAR, new DataType("Types.LONGVARCHAR", "String"));
-        dataTypeMap.put(Types.DATE, new DataType("Types.DATE", "Date"));
-        dataTypeMap.put(Types.TIME, new DataType("Types.TIME", "Time"));
-        dataTypeMap.put(Types.TIMESTAMP, new DataType("Types.TIMESTAMP", "Date"));
+        dataTypeMap.put(Types.DATE, new DataType("Types.DATE", "java.util.Date"));
+        dataTypeMap.put(Types.TIME, new DataType("Types.TIME", "java.sql.Time"));
+        dataTypeMap.put(Types.TIMESTAMP, new DataType("Types.TIMESTAMP", "java.util.Date"));
         dataTypeMap.put(Types.BINARY, new DataType("Types.BINARY", "Byte[]"));
         dataTypeMap.put(Types.VARBINARY, new DataType("Types.VARBINARY", "Byte[]"));
         dataTypeMap.put(Types.LONGVARBINARY, new DataType("Types.LONGVARBINARY", "Byte[]"));
         dataTypeMap.put(Types.NULL, new DataType("Types.NULL", "Object"));
         dataTypeMap.put(Types.OTHER, new DataType("Types.OTHER", "Object"));
-        dataTypeMap.put(Types.BLOB, new DataType("Types.BLOB", "InputStream"));
+        dataTypeMap.put(Types.BLOB, new DataType("Types.BLOB", "java.io.InputStream"));
         dataTypeMap.put(Types.CLOB, new DataType("Types.CLOB", "String"));
         dataTypeMap.put(Types.BOOLEAN, new DataType("Types.BOOLEAN", "Boolean"));
         dataTypeMap.put(Types.NCHAR, new DataType("Types.NCHAR", "String"));
         dataTypeMap.put(Types.NVARCHAR, new DataType("Types.NVARCHAR", "String"));
         dataTypeMap.put(Types.LONGNVARCHAR, new DataType("Types.LONGNVARCHAR", "String"));
         dataTypeMap.put(Types.NCLOB, new DataType("Types.NCLOB", "String"));
-    }
-
-    private DataSource dataSource;
-
-    public DbSourceUtil(DataSource dataSource) {
-        this.dataSource = dataSource;
     }
 
     public static List<GenTable> getTableList(Connection connection, String table) {
@@ -111,7 +105,7 @@ public class DbSourceUtil {
         }
     }
 
-    static class DataType {
+    public static class DataType {
         private String jdbcType;
         private String javaType;
 

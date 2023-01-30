@@ -3,8 +3,8 @@ package com.moxa.sooth.code.fieldtype.service.impl;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.sooth.code.fieldtype.mapper.FieldTypeMapper;
 import com.moxa.sooth.code.fieldtype.service.IFieldTypeService;
-import com.moxa.sooth.code.fieldtype.util.FieldTypeUtil;
 import com.moxa.sooth.code.fieldtype.view.FieldType;
+import com.moxa.sooth.code.gen.util.DbSourceUtil;
 import com.moxa.sooth.core.base.exception.SoothBootException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> impl
     @Override
     public void initFieldType() {
         Field[] fields = Types.class.getDeclaredFields();
-        Map<Integer, String> dataTypeMap = FieldTypeUtil.getDataTypeMap();
+        Map<Integer, DbSourceUtil.DataType> dataTypeMap = DbSourceUtil.dataTypeMap;
         List<FieldType> fieldTypeList = new ArrayList<>();
         List<FieldType> fieldTypeList2 = new ArrayList<>();
         for (Field field : fields) {
@@ -32,7 +32,11 @@ public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> impl
                 try {
                     int fieldCode = (int) field.get(null);
                     FieldType fieldType = templateMapper.selectById(FieldType.class, fieldCode);
-                    String attrType = dataTypeMap.get(fieldCode);
+                    DbSourceUtil.DataType dataType = dataTypeMap.get(fieldCode);
+                    String attrType=null;
+                    if(dataType!=null){
+                        attrType = dataType.getJavaType();
+                    }
                     if (attrType == null) {
                         attrType = "Object";
                     }

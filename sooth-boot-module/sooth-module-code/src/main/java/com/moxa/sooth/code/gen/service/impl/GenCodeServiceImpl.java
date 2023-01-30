@@ -21,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -56,8 +57,9 @@ public class GenCodeServiceImpl implements IGenCodeService {
                 String template = TemplateUtil.getContent(content, map);
                 try {
                     // 添加到zip
-                    zip.putNextEntry(new ZipEntry(genTemplate.getName()));
+                    zip.putNextEntry(new ZipEntry(UUID.randomUUID().toString()));
                     IoUtil.writeUtf8(zip, false, template);
+                    zip.flush();
                     zip.closeEntry();
                 } catch (IOException e) {
                     throw new SoothBootException(e.getMessage(), e);
@@ -66,6 +68,7 @@ public class GenCodeServiceImpl implements IGenCodeService {
             IoUtil.close(zip);
             // zip压缩包数据
             byte[] data = outputStream.toByteArray();
+            IoUtil.close(outputStream);
             return data;
         } else {
             throw new SoothBootException("模板不存在");

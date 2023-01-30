@@ -14,10 +14,10 @@ public class SysButtonProvider {
         return new ActionProvider() {
             private String menuSQL="SELECT " +
                     " sys_menu.id, " +
-                    " sys_menu.NAME, " +
-                    " NULL type, " +
+                    " sys_menu.name, " +
+                    " CAST(NULL as CHAR) type, " +
                     " sys_menu.parent_id parentId, " +
-                    " TRUE disableCheckbox  " +
+                    " 1 disableCheckbox  " +
                     " FROM " +
                     " sys_menu  " +
                     " WHERE " +
@@ -38,25 +38,23 @@ public class SysButtonProvider {
                     " sys_menu.sort_no ";
             private String buttonSQL="SELECT  " +
                     " id,  " +
-                    " dict.NAME NAME,  " +
+                    " dict.name name,  " +
                     " type,  " +
                     " menu_id parentId,  " +
-                    " FALSE disableCheckbox   " +
+                    " 0 disableCheckbox   " +
                     " FROM  " +
                     " sys_button  " +
                     " INNER JOIN (  " +
                     " SELECT  " +
-                    " sys_dict_item.NAME,  " +
-                    " sys_dict_item.  " +
-                    " VALUE  " +
-                    " ,  " +
+                    " sys_dict_item.name,  " +
+                    " sys_dict_item.value,  " +
                     " sys_dict_item.order_no   " +
                     " FROM  " +
                     " sys_dict  " +
                     " INNER JOIN sys_dict_item ON sys_dict.id = sys_dict_item.dict_id   " +
                     " WHERE  " +
-                    " sys_dict.CODE = 'button_type'   " +
-                    " ) dict ON sys_button.type = dict.VALUE  " +
+                    " sys_dict.code = 'button_type'   " +
+                    " ) dict ON sys_button.type = dict.value  " +
                     " ORDER BY  " +
                     " dict.order_no ";
             @Override
