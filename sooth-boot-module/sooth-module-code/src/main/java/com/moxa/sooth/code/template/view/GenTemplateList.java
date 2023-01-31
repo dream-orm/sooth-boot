@@ -13,4 +13,5 @@ public class GenTemplateList extends BaseDict {
     @Dict(table = "gen_template_group", name = "name", code = "id")
     private Long groupId;
     private String name;
+    private String fileName;
 }

@@ -1,6 +1,7 @@
 package com.moxa.sooth.code.gen.controller;
 
 
+import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.model.GenTableModel;
 import com.moxa.sooth.code.gen.service.IGenTableService;
 import com.moxa.sooth.code.gen.view.GenTable;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -40,5 +42,11 @@ public class GenTableController extends BaseController<IGenTableService, GenTabl
     public Result<?> getTableFieldList(long tableId) {
         List<GenTableField> tableFieldList = genTableService.getTableFieldList(tableId);
         return Result.ok(tableFieldList);
+    }
+
+    @RequestMapping(value = "/preview", method = RequestMethod.GET)
+    public Result<?> preview(GenCodeModel genCodeModel) {
+        List<Map<String, String>> resultList = genTableService.preview(genCodeModel);
+        return Result.ok(resultList);
     }
 }

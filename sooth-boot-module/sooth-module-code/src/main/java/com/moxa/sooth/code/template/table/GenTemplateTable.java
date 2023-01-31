@@ -24,6 +24,9 @@ public class GenTemplateTable {
     @Column(value = "name", jdbcType = Types.VARCHAR)
     private String name;
 
+    @Column(value = "file_name", jdbcType = Types.VARCHAR)
+    private String fileName;
+
     @Column(value = "content", jdbcType = Types.VARCHAR)
     private String content;
     /**

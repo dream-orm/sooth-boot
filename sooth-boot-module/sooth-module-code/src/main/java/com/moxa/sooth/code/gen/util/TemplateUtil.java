@@ -27,8 +27,8 @@ public class TemplateUtil {
         StringWriter sw = new StringWriter();
         try {
             // 渲染模板
-            String templateName = dataModel.get("templateName").toString();
-            Template template = new Template(templateName, reader, null, "utf-8");
+            String name = dataModel.get("name").toString();
+            Template template = new Template(name, reader, null, "utf-8");
             template.process(dataModel, sw);
             return sw.toString();
         } catch (Exception e) {

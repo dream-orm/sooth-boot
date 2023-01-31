@@ -75,14 +75,12 @@ public class LoginController {
      * 获取用户信息
      */
     @GetMapping("/user/getUserInfo")
-    public Result<JSONObject> getUserInfo(HttpServletRequest request) {
+    public Result<SysUser> getUserInfo(HttpServletRequest request) {
         String username = JwtUtil.getUserNameByToken(request);
         if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
             SysUser sysUser = sysApiService.selectOneUser(username);
-            JSONObject obj = new JSONObject();
-            obj.put("userInfo", sysUser);
-            return Result.ok(obj);
+            return Result.ok(sysUser);
         }
         return Result.error("获取用户信息失败");
     }

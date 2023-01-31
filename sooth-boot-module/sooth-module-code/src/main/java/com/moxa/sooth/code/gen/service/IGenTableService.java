@@ -1,39 +1,21 @@
 package com.moxa.sooth.code.gen.service;
 
-import com.moxa.dream.system.config.Page;
 import com.moxa.dream.template.service.IService;
-import com.moxa.sooth.code.gen.model.GenTableModel;
+import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
-import com.moxa.sooth.core.base.entity.Result;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface IGenTableService extends IService<GenTable, GenTable> {
 
-
-    Result save(GenTable genTable);
-
-
-    Result edit(GenTable genTable);
-
-
-    Result delete(String id);
-
-
-    int removeByIds(List<Long> ids);
-
-
-    Page<GenTable> selectPage(GenTableModel genTableModel, Page page);
-
-    List<GenTable> selectAll();
-
     List<GenTable> getTableList(long databaseId);
-
-    GenTable getTable(long id);
 
     void tableImport(Long datasourceId, List<String> tableNameList);
 
     List<GenTableField> getTableFieldList(long tableId);
+
+    List<Map<String,String>> preview(GenCodeModel genCodeModel);
 }

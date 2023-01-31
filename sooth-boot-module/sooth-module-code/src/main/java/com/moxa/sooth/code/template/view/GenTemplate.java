@@ -13,5 +13,7 @@ public class GenTemplate extends BaseEntity {
 
     private String name;
 
+    private String fileName;
+
     private String content;
 }
