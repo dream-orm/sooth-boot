@@ -44,6 +44,10 @@ public class SysMenuListView extends BaseDict implements Tree<Long> {
     private String component;
 
     /**
+     * 组件名字
+     */
+    private String componentName;
+    /**
      * 路径
      */
     private String url;
@@ -86,7 +90,7 @@ public class SysMenuListView extends BaseDict implements Tree<Long> {
     /**
      * alwaysShow
      */
-    private boolean alwaysShow;
+    private boolean fixedTab;
     /**
      * 是否缓存该页面:    1:是   0:不是
      */

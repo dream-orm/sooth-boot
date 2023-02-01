@@ -67,19 +67,13 @@ public class SysMenuProvider {
 
                 json.put("path", permission.getUrl());
 
-                json.put("name", urlToRouteName(permission.getUrl()));
+                json.put("name", permission.getComponentName());
 
                 JSONObject meta = new JSONObject();
                 // 是否隐藏路由，默认都是显示的
-                if (permission.isHidden()) {
-                    json.put("hidden", true);
-                    //vue3版本兼容代码
-                    meta.put("hideMenu", true);
-                }
+                 meta.put("hideMenu", permission.isHidden());
                 // 聚合路由
-                if (permission.isAlwaysShow()) {
-                    meta.put("affix", true);
-                }
+                 meta.put("fixedTab", permission.isFixedTab());
                 json.put("component", permission.getComponent());
                 // 由用户设置是否缓存页面 用布尔值
                 meta.put("keepAlive", permission.isKeepAlive());
@@ -113,23 +107,6 @@ public class SysMenuProvider {
                 return json;
             }
 
-            /**
-             * 通过URL生成路由name（去掉URL前缀斜杠，替换内容中的斜杠‘/’为-） 举例： URL = /isystem/role RouteName =
-             * isystem-role
-             *
-             * @return
-             */
-            private String urlToRouteName(String url) {
-                if (StrUtil.isNotEmpty(url)) {
-                    if (url.startsWith(SymbolConstant.SINGLE_SLASH)) {
-                        url = url.substring(1);
-                    }
-                    url = url.replace("/", "-");
-                    return url;
-                } else {
-                    return null;
-                }
-            }
 
             /**
              * 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示

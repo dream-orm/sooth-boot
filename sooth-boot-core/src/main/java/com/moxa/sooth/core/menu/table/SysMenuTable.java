@@ -59,6 +59,11 @@ public class SysMenuTable {
     @Column(value = "parent_id", jdbcType = Types.BIGINT)
     private Long parentId;
     /**
+     * 组件名字
+     */
+    @Column(value = "component_name", jdbcType = Types.VARCHAR)
+    private String componentName;
+    /**
      * 一级菜单跳转地址
      */
     @Column(value = "redirect", jdbcType = Types.VARCHAR)
@@ -76,8 +81,8 @@ public class SysMenuTable {
     /**
      * 聚合子路由: 1是0否
      */
-    @Column(value = "always_show", jdbcType = Types.BIT)
-    private Boolean alwaysShow;
+    @Column(value = "fixed_tab", jdbcType = Types.BIT)
+    private Boolean fixedTab;
     /**
      * 菜单标题
      */

@@ -44,6 +44,11 @@ public class SysMenu extends BaseEntity{
     private String component;
 
     /**
+     * 组件名字
+     */
+    private String componentName;
+
+    /**
      * 路径
      */
     private String url;
@@ -51,7 +56,6 @@ public class SysMenu extends BaseEntity{
      * 一级菜单跳转地址
      */
     private String redirect;
-
     /**
      * 菜单排序
      */
@@ -78,9 +82,9 @@ public class SysMenu extends BaseEntity{
     private boolean hideTab;
 
     /**
-     * alwaysShow
+     * 聚合路由
      */
-    private boolean alwaysShow;
+    private boolean fixedTab;
     /**
      * 是否缓存该页面:    1:是   0:不是
      */
