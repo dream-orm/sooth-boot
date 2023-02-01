@@ -5,6 +5,7 @@ import com.moxa.sooth.code.template.view.GenTemplate;
 import com.moxa.sooth.code.template.view.GenTemplateList;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface IGenTemplateService extends IService<GenTemplateList, GenTemplate> {
@@ -13,4 +14,5 @@ public interface IGenTemplateService extends IService<GenTemplateList, GenTempla
 
     List<GenTemplate> selectByGroupId(Long groupId);
 
+    List<Map<String, Object>> help();
 }
