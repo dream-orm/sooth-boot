@@ -28,7 +28,7 @@ public class SysButtonPermissionServiceImpl extends ServiceImpl<SysButtonPermiss
         List<SysButtonPermission> saveSysButtonPermissions = new ArrayList<>();
         for (Long buttonId : buttonIdList) {
             if (!buttonPermissionSet.remove(buttonId)) {
-                SysButtonPermission sysButtonPermission=new SysButtonPermission();
+                SysButtonPermission sysButtonPermission = new SysButtonPermission();
                 sysButtonPermission.setRoleId(roleId);
                 sysButtonPermission.setButtonId(buttonId);
                 saveSysButtonPermissions.add(sysButtonPermission);

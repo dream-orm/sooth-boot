@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ISysButtonService extends IService<SysButton, SysButton> {
 
-    void saveButton(Long roleId,List<String> buttonTypeList);
+    void saveButton(Long roleId, List<String> buttonTypeList);
 
     List<MenuButton> listMenuButtonTree(Long userId);
 }

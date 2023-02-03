@@ -5,6 +5,7 @@ import com.moxa.dream.template.resulthandler.Tree;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
 public class MenuButton implements Tree<Long> {
     private Long id;
@@ -13,7 +14,7 @@ public class MenuButton implements Tree<Long> {
     private String type;
     private boolean disableCheckbox;
     @Ignore
-    private List<MenuButton>children;
+    private List<MenuButton> children;
 
     @Override
     public Long getTreeId() {
@@ -32,6 +33,6 @@ public class MenuButton implements Tree<Long> {
 
     @Override
     public void setChildren(List children) {
-        this.children=children;
+        this.children = children;
     }
 }

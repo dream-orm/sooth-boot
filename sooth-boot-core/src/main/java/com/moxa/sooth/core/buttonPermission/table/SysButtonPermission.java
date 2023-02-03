@@ -3,7 +3,6 @@ package com.moxa.sooth.core.buttonPermission.table;
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;
 import com.moxa.dream.system.annotation.Table;
-import com.moxa.sooth.core.base.dream.annotation.Unique;
 import lombok.Data;
 
 import java.sql.Types;

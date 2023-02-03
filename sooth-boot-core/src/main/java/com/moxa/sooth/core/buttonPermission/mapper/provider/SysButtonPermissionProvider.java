@@ -4,7 +4,7 @@ public class SysButtonPermissionProvider {
 
     public String getPermCode() {
         return "SELECT " +
-                " concat(sys_menu.url,'/',sys_button.type) " +
+                " distinct concat(sys_menu.url,'/',sys_button.type) " +
                 " FROM " +
                 " sys_button_permission " +
                 " INNER JOIN sys_button ON sys_button_permission.button_id = sys_button.id " +

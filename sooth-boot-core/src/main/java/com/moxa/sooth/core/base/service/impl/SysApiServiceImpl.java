@@ -8,7 +8,6 @@ import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
 import com.moxa.sooth.core.menu.service.ISysMenuService;
-import com.moxa.sooth.core.menu.view.SysMenu;
 import com.moxa.sooth.core.role.service.ISysRoleService;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -16,8 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 

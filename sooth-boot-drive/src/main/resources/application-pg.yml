@@ -1,5 +1,5 @@
 server:
-  port: 3000
+  port: 3100
   servlet:
     context-path: /sooth
 management:
@@ -31,3 +31,5 @@ spring:
 
 dream:
   toSQL: com.moxa.dream.antlr.sql.ToPGSQL
+  listeners:
+    - com.moxa.dream.drive.listener.DebugListener

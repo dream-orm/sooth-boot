@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ISysButtonPermissionService extends IService<SysButtonPermission, SysButtonPermission> {
 
-    void saveButtonPermission(Long roleId,List<Long> buttonIdList);
+    void saveButtonPermission(Long roleId, List<Long> buttonIdList);
 
     List<String> getPermCode(Long id);
 }

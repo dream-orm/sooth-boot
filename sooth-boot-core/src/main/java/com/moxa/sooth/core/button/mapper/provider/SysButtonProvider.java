@@ -10,9 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SysButtonProvider {
-    public ActionProvider listMenuButtonTree(){
+    public ActionProvider listMenuButtonTree() {
         return new ActionProvider() {
-            private String menuSQL="SELECT " +
+            private String menuSQL = "SELECT " +
                     " sys_menu.id, " +
                     " sys_menu.name, " +
                     " CAST(NULL as CHAR) type, " +
@@ -36,7 +36,7 @@ public class SysButtonProvider {
                     " ORDER BY " +
                     " sys_menu.parent_id, " +
                     " sys_menu.sort_no ";
-            private String buttonSQL="SELECT  " +
+            private String buttonSQL = "SELECT  " +
                     " id,  " +
                     " dict.name name,  " +
                     " type,  " +
@@ -57,17 +57,18 @@ public class SysButtonProvider {
                     " ) dict ON sys_button.type = dict.value  " +
                     " ORDER BY  " +
                     " dict.order_no ";
+
             @Override
             public String sql() {
-                return "select * from ("+menuSQL+")menu union all select * from("+buttonSQL+") button";
+                return "select * from (" + menuSQL + ")menu union all select * from(" + buttonSQL + ") button";
             }
 
             @Override
             public ResultSetHandler resultSetHandler() {
                 ResultSetHandler resultSetHandler = new TreeResultSetHandler();
                 return (resultSet, mappedStatement, session) -> {
-                    List<MenuButton> menuButtonList = (List<MenuButton>)resultSetHandler.result(resultSet, mappedStatement, session);
-                    if(CollUtil.isNotEmpty(menuButtonList)) {
+                    List<MenuButton> menuButtonList = (List<MenuButton>) resultSetHandler.result(resultSet, mappedStatement, session);
+                    if (CollUtil.isNotEmpty(menuButtonList)) {
                         Iterator<MenuButton> iterator = menuButtonList.iterator();
                         while (iterator.hasNext()) {
                             MenuButton menuButton = iterator.next();

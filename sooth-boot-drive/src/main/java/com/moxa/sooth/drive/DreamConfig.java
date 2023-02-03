@@ -40,11 +40,6 @@ public class DreamConfig {
     }
 
     @Bean
-    public Listener[] listeners() {
-        return new Listener[]{new DebugListener()};
-    }
-
-    @Bean
     public Sequence sequence() {
         return new SnowFlakeSequence();
     }

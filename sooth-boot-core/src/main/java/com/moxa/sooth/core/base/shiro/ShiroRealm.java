@@ -20,7 +20,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j

@@ -7,12 +7,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.moxa.dream.system.core.resultsethandler.ResultSetHandler;
 import com.moxa.dream.system.provider.ActionProvider;
 import com.moxa.dream.template.resulthandler.TreeResultSetHandler;
-import com.moxa.sooth.core.base.constant.SymbolConstant;
 import com.moxa.sooth.core.menu.view.SysMenuListView;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SysMenuProvider {
     public ActionProvider getMenu() {
@@ -49,8 +47,6 @@ public class SysMenuProvider {
                     for (SysMenuListView permission : permissionList) {
                         menuArray.add(getPermissionJsonObject(permission));
                     }
-                    //一级菜单下的子菜单全部是隐藏路由，则一级菜单不显示
-                    this.handleFirstLevelMenuHidden(menuArray);
                     return menuArray;
                 };
             }
@@ -71,9 +67,9 @@ public class SysMenuProvider {
 
                 JSONObject meta = new JSONObject();
                 // 是否隐藏路由，默认都是显示的
-                 meta.put("hideMenu", permission.isHidden());
+                meta.put("hideMenu", permission.isHidden());
                 // 聚合路由
-                 meta.put("fixedTab", permission.isFixedTab());
+                meta.put("fixedTab", permission.isFixedTab());
                 json.put("component", permission.getComponent());
                 // 由用户设置是否缓存页面 用布尔值
                 meta.put("keepAlive", permission.isKeepAlive());
@@ -86,10 +82,7 @@ public class SysMenuProvider {
                 if (StrUtil.isNotEmpty(permission.getIcon())) {
                     meta.put("icon", permission.getIcon());
                 }
-
-                if (permission.isHideTab()) {
-                    meta.put("hideTab", true);
-                }
+                meta.put("hideTab", permission.isHideTab());
                 json.put("meta", meta);
                 List<SysMenuListView> children = permission.getChildren();
                 if (CollUtil.isNotEmpty(children)) {
@@ -106,37 +99,10 @@ public class SysMenuProvider {
                 }
                 return json;
             }
-
-
-            /**
-             * 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示
-             *
-             * @param jsonArray
-             */
-            private void handleFirstLevelMenuHidden(JSONArray jsonArray) {
-                final String CHILDREN = "children";
-                jsonArray.stream().map(obj -> {
-                    JSONObject returnObj = new JSONObject();
-                    JSONObject jsonObj = (JSONObject) obj;
-                    if (jsonObj.containsKey(CHILDREN)) {
-                        JSONArray childrens = jsonObj.getJSONArray(CHILDREN);
-                        childrens = childrens.stream().filter(arrObj -> !"true".equals(((JSONObject) arrObj).getString("hidden"))).collect(Collectors.toCollection(JSONArray::new));
-                        if (childrens == null || childrens.size() == 0) {
-                            jsonObj.put("hidden", true);
-
-                            //vue3版本兼容代码
-                            JSONObject meta = new JSONObject();
-                            meta.put("hideMenu", true);
-                            jsonObj.put("meta", meta);
-                        }
-                    }
-                    return returnObj;
-                }).collect(Collectors.toCollection(JSONArray::new));
-            }
         };
     }
 
-    public ActionProvider  listMenuTree(){
+    public ActionProvider listMenuTree() {
         return new ActionProvider() {
             @Override
             public String sql() {
@@ -169,7 +135,7 @@ public class SysMenuProvider {
                         " ) " +
                         " GROUP BY " +
                         " sys_menu.id  " +
-                        " ) menu_button ON sys_menu.id = menu_button.id "+
+                        " ) menu_button ON sys_menu.id = menu_button.id " +
                         " order by sys_menu.parent_id,sys_menu.sort_no";
             }
 

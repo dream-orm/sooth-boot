@@ -9,16 +9,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbUtil {
-    public static Connection getConnection(DataSource dataSource){
-        if(dataSource!=null) {
+    public static Connection getConnection(DataSource dataSource) {
+        if (dataSource != null) {
             try {
                 return dataSource.getConnection();
-            }catch (Exception e){
+            } catch (Exception e) {
                 throw new SoothBootException("连接失败：" + e.getMessage());
             }
         }
         return null;
     }
+
     public static Connection getConnection(String url, String username, String password) {
         if (StrUtil.isEmpty(url)) {
             throw new SoothBootException("连接URL不能为空");

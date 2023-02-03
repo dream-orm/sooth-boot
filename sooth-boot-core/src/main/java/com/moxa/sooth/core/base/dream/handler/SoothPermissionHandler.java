@@ -8,11 +8,11 @@ import com.moxa.dream.system.table.TableInfo;
 import com.moxa.sooth.core.base.annotation.Permission;
 import com.moxa.sooth.core.base.config.App;
 import com.moxa.sooth.core.base.util.ClientUtil;
+import com.moxa.sooth.core.dataPermission.service.ISysDataPermissionService;
+import com.moxa.sooth.core.dataPermission.table.SysDataPermission;
 import com.moxa.sooth.core.dept.service.ISysDeptService;
 import com.moxa.sooth.core.dept.service.ISysUserDeptService;
 import com.moxa.sooth.core.dept.table.SysUserDept;
-import com.moxa.sooth.core.dataPermission.service.ISysDataPermissionService;
-import com.moxa.sooth.core.dataPermission.table.SysDataPermission;
 import com.moxa.sooth.core.user.view.SysUser;
 
 import java.util.Arrays;

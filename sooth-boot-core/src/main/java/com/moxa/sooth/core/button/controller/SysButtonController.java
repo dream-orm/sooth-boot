@@ -23,9 +23,9 @@ public class SysButtonController extends BaseController<ISysButtonService, SysBu
 
     @AutoLog("保存")
     @PostMapping(value = "saveButton/{menuId}")
-    public Result saveButton(@PathVariable Long menuId,@RequestBody List<String> buttonTypeList) {
-        service.saveButton(menuId,buttonTypeList);
-        return Result.ok(null,"保存成功");
+    public Result saveButton(@PathVariable Long menuId, @RequestBody List<String> buttonTypeList) {
+        service.saveButton(menuId, buttonTypeList);
+        return Result.ok(null, "保存成功");
     }
 
     @RequestMapping(value = "/listMenuButtonTree", method = RequestMethod.GET)

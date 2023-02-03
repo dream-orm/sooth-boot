@@ -21,20 +21,20 @@ public class SysButtonPermissionController extends BaseController<ISysButtonPerm
 
     @RequestMapping(value = "/getPermCode", method = RequestMethod.GET)
     public Result<?> getPermCode() {
-            // 直接获取当前用户
-            SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-            if (sysUser == null) {
-                return Result.error("请登录系统！");
-            }
-            // 获取当前用户的权限集合
-            List<String> codeList = service.getPermCode(sysUser.getId());
-            return Result.ok(codeList);
+        // 直接获取当前用户
+        SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
+        if (sysUser == null) {
+            return Result.error("请登录系统！");
+        }
+        // 获取当前用户的权限集合
+        List<String> codeList = service.getPermCode(sysUser.getId());
+        return Result.ok(codeList);
     }
 
     @AutoLog("保存")
     @PostMapping(value = "saveButtonPermission/{roleId}")
-    public Result saveButtonPermission(@PathVariable Long roleId,@RequestBody List<Long> buttonPermissionList) {
-        service.saveButtonPermission(roleId,buttonPermissionList);
-        return Result.ok(null,"保存成功");
+    public Result saveButtonPermission(@PathVariable Long roleId, @RequestBody List<Long> buttonPermissionList) {
+        service.saveButtonPermission(roleId, buttonPermissionList);
+        return Result.ok(null, "保存成功");
     }
 }

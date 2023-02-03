@@ -1,22 +1,18 @@
 package com.moxa.sooth.core.menu.view;
 
 import com.moxa.dream.system.annotation.View;
-import com.moxa.dream.template.resulthandler.Tree;
-import com.moxa.sooth.core.base.annotation.Dict;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import com.moxa.sooth.core.menu.table.SysMenuTable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.List;
-
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @View(SysMenuTable.class)
-public class SysMenu extends BaseEntity{
+public class SysMenu extends BaseEntity {
 
     /**
      * id
