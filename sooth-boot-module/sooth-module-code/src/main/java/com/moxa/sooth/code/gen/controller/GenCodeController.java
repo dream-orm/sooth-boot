@@ -1,28 +1,32 @@
 package com.moxa.sooth.code.gen.controller;
 
 
+import cn.hutool.core.io.IoUtil;
 import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.model.GenTableModel;
-import com.moxa.sooth.code.gen.service.IGenTableService;
+import com.moxa.sooth.code.gen.service.IGenCodeService;
 import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.core.base.exception.SoothBootException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/gen/table")
-public class GenTableController extends BaseController<IGenTableService, GenTable, GenTableModel> {
+@RequestMapping("/gen/code")
+public class GenCodeController extends BaseController<IGenCodeService, GenTable, GenTableModel> {
     @Autowired
-    private IGenTableService genTableService;
+    private IGenCodeService genTableService;
 
-    public GenTableController() {
+    public GenCodeController() {
         super("代码生成");
     }
 
@@ -48,5 +52,20 @@ public class GenTableController extends BaseController<IGenTableService, GenTabl
     public Result<?> preview(GenCodeModel genCodeModel) {
         List<Map<String, String>> resultList = genTableService.preview(genCodeModel);
         return Result.ok(resultList);
+    }
+
+    @RequestMapping(value = "/generate", method = RequestMethod.POST)
+    public void generate(HttpServletResponse response, @RequestBody GenCodeModel genCodeModel) {
+        byte[]data = genTableService.generate(genCodeModel);
+        response.reset();
+        try {
+            response.reset();
+            response.setHeader("Content-Disposition", "attachment; filename=\"maku.zip\"");
+            response.addHeader("Content-Length", "" + data.length);
+            response.setContentType("application/octet-stream; charset=UTF-8");
+            IoUtil.write(response.getOutputStream(), false, data);
+        } catch (IOException e) {
+            throw new SoothBootException(e.getMessage(), e);
+        }
     }
 }

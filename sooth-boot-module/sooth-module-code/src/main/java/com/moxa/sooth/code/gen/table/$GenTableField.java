@@ -31,8 +31,8 @@ public class $GenTableField {
     /**
      * 排序
      */
-    @Column(value = "sort", jdbcType = Types.INTEGER)
-    private Integer sort;
+    @Column(value = "order_no", jdbcType = Types.INTEGER)
+    private Integer orderNo;
     /**
      * 字段类型
      */
@@ -59,78 +59,15 @@ public class $GenTableField {
     @Column(value = "attr_type", jdbcType = Types.VARCHAR)
     private String attrType;
     /**
-     * 属性包名
-     */
-    @Column(value = "package_name", jdbcType = Types.VARCHAR)
-    private String packageName;
-    /**
-     * 自动填充
-     */
-    @Column(value = "auto_fill", jdbcType = Types.VARCHAR)
-    private String autoFill;
-    /**
      * 主键 0：否  1：是
      */
     @Column(value = "primary_pk", jdbcType = Types.TINYINT)
     private boolean primaryPk;
     /**
-     * 基类字段 0：否  1：是
+     * 基类 0：否  1：是
      */
+
     @Column(value = "base_field", jdbcType = Types.TINYINT)
     private boolean baseField;
-    /**
-     * 表单项 0：否  1：是
-     */
-    @Column(value = "form_item", jdbcType = Types.TINYINT)
-    private boolean formItem;
-    /**
-     * 表单必填 0：否  1：是
-     */
-    @Column(value = "form_required", jdbcType = Types.TINYINT)
-    private boolean formRequired;
-    /**
-     * 表单类型
-     */
-    @Column(value = "form_type", jdbcType = Types.VARCHAR)
-    private String formType;
-    /**
-     * 表单字典类型
-     */
-    @Column(value = "form_dict", jdbcType = Types.VARCHAR)
-    private String formDict;
-    /**
-     * 表单效验
-     */
-    @Column(value = "form_validator", jdbcType = Types.VARCHAR)
-    private String formValidator;
-    /**
-     * 列表项 0：否  1：是
-     */
-    @Column(value = "grid_item", jdbcType = Types.TINYINT)
-    private boolean gridItem;
-    /**
-     * 列表排序 0：否  1：是
-     */
-    @Column(value = "grid_sort", jdbcType = Types.TINYINT)
-    private boolean gridSort;
-    /**
-     * 查询项 0：否  1：是
-     */
-    @Column(value = "query_item", jdbcType = Types.TINYINT)
-    private boolean queryItem;
-    /**
-     * 查询方式
-     */
-    @Column(value = "query_type", jdbcType = Types.VARCHAR)
-    private String queryType;
-    /**
-     * 查询表单类型
-     */
-    @Column(value = "query_form_type", jdbcType = Types.VARCHAR)
-    private String queryFormType;
-    /**
-     * 查询字典类型
-     */
-    @Column(value = "query_dict", jdbcType = Types.VARCHAR)
-    private String queryDict;
+
 }

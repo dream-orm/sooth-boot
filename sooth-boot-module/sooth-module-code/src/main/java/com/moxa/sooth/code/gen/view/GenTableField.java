@@ -24,7 +24,7 @@ public class GenTableField {
     /**
      * 排序
      */
-    private Integer sort;
+    private Integer orderNo;
     /**
      * 字段类型
      */
@@ -53,20 +53,4 @@ public class GenTableField {
      * 基类字段 0：否  1：是
      */
     private boolean baseField;
-    /**
-     * 表单项 0：否  1：是
-     */
-    private boolean formItem;
-    /**
-     * 表单类型
-     */
-    private String formType;
-    /**
-     * 表单字典类型
-     */
-    private String formDict;
-    /**
-     * 查询方式
-     */
-    private String queryType;
 }

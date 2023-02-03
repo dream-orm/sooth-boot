@@ -50,7 +50,7 @@ public class $SysUser {
     /**
      * 性别
      */
-    @Column(value = "sex", jdbcType = Types.BIT)
+    @Column(value = "sex", jdbcType = Types.SMALLINT)
     private Integer sex;
     /**
      * 删除状态(0-正常,1-已删除)

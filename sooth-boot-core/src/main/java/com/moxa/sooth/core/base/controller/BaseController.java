@@ -99,7 +99,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
     @AutoLog(value = "批量删除")
     @ResponseBody
     @DeleteMapping(value = "/removeBatch")
-    public Result removeBatch(@RequestParam(name = "ids") List<Long> ids) {
+    public Result removeBatch(@RequestBody List<Long> ids) {
         if (retBool(service.deleteByIds(ids))) {
             return Result.ok(null, "批量删除成功");
         } else {
