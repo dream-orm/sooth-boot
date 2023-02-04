@@ -33,8 +33,11 @@ public class GenTemplateServiceImpl extends ServiceImpl<GenTemplateList, GenTemp
         schemaMap.put("author","登录人昵称");
         schemaMap.put("tableName","表名");
         schemaMap.put("tableComment","表描述");
+        schemaMap.put("baseClass","基类");
+        schemaMap.put("baseFields","基类属性字段");
         schemaMap.put("columns","表所有字段");
         schemaMap.put("_.columnName","字段名");
+        schemaMap.put("_.columnType","字段类型");
         schemaMap.put("_.columnComment","字段描述");
         schemaMap.put("_.attrName","属性名");
         schemaMap.put("_.attrType","属性类型");

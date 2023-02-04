@@ -7,11 +7,6 @@ import lombok.Data;
 
 import java.sql.Types;
 
-/**
- * 表字段
- *
- * @author 阿沐 babamu@126.com
- */
 @Data
 @Table("gen_table_field")
 public class $GenTableField {
@@ -36,8 +31,8 @@ public class $GenTableField {
     /**
      * 字段类型
      */
-    @Column(value = "column_type", jdbcType = Types.INTEGER)
-    private Integer columnType;
+    @Column(value = "column_type", jdbcType = Types.VARCHAR)
+    private String columnType;
     /**
      * 字段类型
      */
@@ -63,11 +58,5 @@ public class $GenTableField {
      */
     @Column(value = "primary_pk", jdbcType = Types.TINYINT)
     private boolean primaryPk;
-    /**
-     * 基类 0：否  1：是
-     */
-
-    @Column(value = "base_field", jdbcType = Types.TINYINT)
-    private boolean baseField;
 
 }

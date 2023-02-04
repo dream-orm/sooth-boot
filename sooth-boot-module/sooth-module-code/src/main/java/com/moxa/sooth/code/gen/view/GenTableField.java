@@ -4,11 +4,6 @@ import com.moxa.dream.system.annotation.View;
 import com.moxa.sooth.code.gen.table.$GenTableField;
 import lombok.Data;
 
-/**
- * 表字段
- *
- * @author 阿沐 babamu@126.com
- */
 @Data
 @View($GenTableField.class)
 public class GenTableField {
@@ -28,11 +23,7 @@ public class GenTableField {
     /**
      * 字段类型
      */
-    private Integer columnType;
-    /**
-     * 字段类型
-     */
-    private String typeName;
+    private String columnType;
     /**
      * 字段说明
      */
@@ -49,8 +40,4 @@ public class GenTableField {
      * 主键 0：否  1：是
      */
     private boolean primaryPk;
-    /**
-     * 基类字段 0：否  1：是
-     */
-    private boolean baseField;
 }

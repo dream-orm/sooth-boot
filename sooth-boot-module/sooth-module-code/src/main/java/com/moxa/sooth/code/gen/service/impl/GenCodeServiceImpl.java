@@ -3,20 +3,23 @@ package com.moxa.sooth.code.gen.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.template.mapper.TemplateMapper;
 import com.moxa.dream.util.common.ObjectUtil;
+import com.moxa.sooth.code.baseclass.service.IBaseClassService;
+import com.moxa.sooth.code.baseclass.view.BaseClass;
 import com.moxa.sooth.code.datasource.service.ISysDataSourceService;
 import com.moxa.sooth.code.datasource.view.SysDataSource;
-import com.moxa.sooth.code.gen.mapper.CodeGenMapper;
 import com.moxa.sooth.code.gen.model.GenCodeModel;
 import com.moxa.sooth.code.gen.model.GenTableExistModel;
 import com.moxa.sooth.code.gen.model.GenTableFieldModel;
-import com.moxa.sooth.code.gen.service.IGenTableFieldService;
 import com.moxa.sooth.code.gen.service.IGenCodeService;
+import com.moxa.sooth.code.gen.service.IGenTableFieldService;
 import com.moxa.sooth.code.gen.util.DbSourceUtil;
 import com.moxa.sooth.code.gen.util.TemplateUtil;
+import com.moxa.sooth.code.gen.view.GenCodeView;
 import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.code.template.service.IGenTemplateService;
@@ -33,10 +36,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -45,21 +45,19 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
     @Autowired
     private TemplateMapper templateMapper;
     @Autowired
-    private CodeGenMapper codeGenMapper;
-    @Autowired
     private IGenTemplateService templateService;
     @Autowired
     private IGenTableFieldService genTableFieldService;
     @Autowired
+    private IBaseClassService baseClassService;
+    @Autowired
     private ISysDataSourceService dataSourceService;
-
-
 
 
     @Override
     public List<GenTable> getTableList(long id) {
         SysDataSource sysDataSource = dataSourceService.selectById(id);
-        List<GenTable> tableList = DbSourceUtil.getTableList(com.moxa.sooth.core.base.util.DbUtil.getConnection(sysDataSource.getUrl(),sysDataSource.getUsername(),sysDataSource.getPassword()), null);
+        List<GenTable> tableList = DbSourceUtil.getTableList(com.moxa.sooth.core.base.util.DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword()), null);
         return tableList;
     }
 
@@ -68,7 +66,7 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
     public void tableImport(Long datasourceId, List<String> tableNameList) {
         SysDataSource sysDataSource = dataSourceService.selectById(datasourceId);
 
-        Connection connection = DbUtil.getConnection(sysDataSource.getUrl(),sysDataSource.getUsername(),sysDataSource.getPassword());
+        Connection connection = DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword());
         try {
             for (String tableName : tableNameList) {
                 GenTableExistModel genTableExistModel = new GenTableExistModel();
@@ -106,26 +104,47 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
 
     @Override
     public List<Map<String, String>> preview(GenCodeModel genCodeModel) {
-        if (StrUtil.isBlank(genCodeModel.getAuthor())) {
-            SysUser loginUser = ClientUtil.getLoginUser();
-            if(loginUser!=null){
-                genCodeModel.setAuthor(loginUser.getUsername());
+        GenTable genTable = selectById(genCodeModel.getId());
+        if(genTable==null){
+            throw new SoothBootException("生成表不存在");
+        }
+        GenCodeView genCodeView = new GenCodeView();
+        genCodeView.setTableName(genTable.getTableName());
+        genCodeView.setTableComment(genTable.getTableComment());
+        genCodeView.setClassName(genCodeModel.getClassName());
+        genCodeView.setModuleName(genCodeModel.getModuleName());
+        genCodeView.setEntityName(genCodeModel.getEntityName());
+        genCodeView.setPackageName(genCodeModel.getPackageName());
+        SysUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser != null) {
+            genCodeView.setAuthor(loginUser.getUsername());
+        }
+        Long baseId = genCodeModel.getBaseId();
+        if(baseId!=null){
+            BaseClass baseClass = baseClassService.selectById(baseId);
+            if(baseClass==null){
+                throw new SoothBootException("基类未找到");
+            }
+            genCodeView.setBaseClass(baseClass.getClassName());
+            String[] fields = baseClass.getFields();
+            if(ArrayUtil.isNotEmpty(fields)){
+                genCodeView.setBaseFields(fields);
             }
         }
         List<GenTableField> columns = genTableFieldService.selectList(genCodeModel.getId());
-        genCodeModel.setColumns(columns);
+        genCodeView.setColumns(columns);
         List<GenTemplate> genTemplateList = templateService.selectByIds(genCodeModel.getTemplateIds());
-        Map<String, Object> map = BeanUtil.beanToMap(genCodeModel);
-        List<Map<String,String>>resultList=new ArrayList<>();
+        Map<String, Object> map = BeanUtil.beanToMap(genCodeView);
+        List<Map<String, String>> resultList = new ArrayList<>();
         if (!CollUtil.isEmpty(genTemplateList)) {
             for (GenTemplate genTemplate : genTemplateList) {
                 map.put("name", genTemplate.getName());
                 String fileName = TemplateUtil.getContent(genTemplate.getFileName(), map);
                 String content = genTemplate.getContent();
                 String template = TemplateUtil.getContent(content, map);
-                Map<String,String>resultMap=new HashMap<>();
-                resultMap.put("fileName",fileName);
-                resultMap.put("content",template);
+                Map<String, String> resultMap = new HashMap<>();
+                resultMap.put("fileName", fileName);
+                resultMap.put("content", template);
                 resultList.add(resultMap);
             }
         } else {
@@ -136,36 +155,23 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
 
     @Override
     public byte[] generate(GenCodeModel genCodeModel) {
-        if (StrUtil.isBlank(genCodeModel.getAuthor())) {
-            genCodeModel.setAuthor(ClientUtil.getLoginUser().getUsername());
-        }
-        List<GenTableField> columns = genTableFieldService.selectList(genCodeModel.getId());
-        genCodeModel.setColumns(columns);
-        List<GenTemplate> genTemplateList = templateService.selectByIds(genCodeModel.getTemplateIds());
-        Map<String, Object> map = BeanUtil.beanToMap(genCodeModel);
-        if (!CollUtil.isEmpty(genTemplateList)) {
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            ZipOutputStream zip = new ZipOutputStream(outputStream);
-            for (GenTemplate genTemplate : genTemplateList) {
-                map.put("name", genTemplate.getName());
-                String content = genTemplate.getContent();
-                String template = TemplateUtil.getContent(content, map);
-                try {
-                    // 添加到zip
-                    zip.putNextEntry(new ZipEntry(genTemplate.getName()));
-                    zip.write(template.getBytes(StandardCharsets.UTF_8));
-                    zip.closeEntry();
-                } catch (IOException e) {
-                    throw new SoothBootException(e.getMessage(), e);
-                }finally {
-                    IoUtil.close(zip);
-                    // zip压缩包数据
-                    IoUtil.close(outputStream);
-                }
+        List<Map<String, String>> mapList = preview(genCodeModel);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ZipOutputStream zip = new ZipOutputStream(outputStream);
+        try {
+            for (Map<String, String> map : mapList) {
+                // 添加到zip
+                zip.putNextEntry(new ZipEntry(map.get("fileName")));
+                zip.write(map.get("content").getBytes(StandardCharsets.UTF_8));
+                zip.closeEntry();
             }
-            return outputStream.toByteArray();
-        } else {
-            throw new SoothBootException("模板不存在");
+        } catch (IOException e) {
+            throw new SoothBootException(e.getMessage(), e);
+        } finally {
+            IoUtil.close(zip);
+            // zip压缩包数据
+            IoUtil.close(outputStream);
         }
+        return outputStream.toByteArray();
     }
 }

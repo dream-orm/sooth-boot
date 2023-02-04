@@ -60,10 +60,10 @@ public class GenCodeController extends BaseController<IGenCodeService, GenTable,
         response.reset();
         try {
             response.reset();
-            response.setHeader("Content-Disposition", "attachment; filename=\"maku.zip\"");
+            response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");
             response.addHeader("Content-Length", "" + data.length);
             response.setContentType("application/octet-stream; charset=UTF-8");
-            IoUtil.write(response.getOutputStream(), false, data);
+            IoUtil.write(response.getOutputStream(),true, data);
         } catch (IOException e) {
             throw new SoothBootException(e.getMessage(), e);
         }
