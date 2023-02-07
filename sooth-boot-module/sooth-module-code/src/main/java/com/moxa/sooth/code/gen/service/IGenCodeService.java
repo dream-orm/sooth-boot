@@ -17,7 +17,7 @@ public interface IGenCodeService extends IService<GenTable, GenTable> {
 
     List<GenTableField> getTableFieldList(long tableId);
 
-    List<Map<String,String>> preview(GenCodeModel genCodeModel);
+    List<Map<String, String>> preview(GenCodeModel genCodeModel);
 
     byte[] generate(GenCodeModel genCodeModel);
 }

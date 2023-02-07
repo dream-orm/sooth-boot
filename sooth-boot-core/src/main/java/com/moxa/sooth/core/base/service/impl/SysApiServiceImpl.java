@@ -7,7 +7,6 @@ import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.dict.service.ISysDictService;
-import com.moxa.sooth.core.menu.service.ISysMenuService;
 import com.moxa.sooth.core.role.service.ISysRoleService;
 import com.moxa.sooth.core.user.service.ISysUserService;
 import com.moxa.sooth.core.user.view.SysUser;
@@ -27,8 +26,6 @@ public class SysApiServiceImpl implements SysApiService {
     private ISysDictService sysDictService;
     @Autowired
     private ISysRoleService sysRoleService;
-    @Autowired
-    private ISysMenuService sysPermissionService;
     @Autowired
     private TemplateMapper templateMapper;
 

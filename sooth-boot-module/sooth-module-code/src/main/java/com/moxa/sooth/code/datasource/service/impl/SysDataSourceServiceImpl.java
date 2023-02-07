@@ -14,7 +14,7 @@ public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSource, SysData
 
     @Override
     public boolean testConnection(SysDataSource sysDataSource) {
-        DbUtil.getConnection(sysDataSource.getUrl(),sysDataSource.getUsername(),sysDataSource.getPassword());
+        DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword());
         return true;
     }
 

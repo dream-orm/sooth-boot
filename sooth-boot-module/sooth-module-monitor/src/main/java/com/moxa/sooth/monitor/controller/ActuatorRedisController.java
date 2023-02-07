@@ -17,10 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Description: ActuatorRedisController
- * @author: jeecg-boot
- */
+
 @Slf4j
 @RestController
 @RequestMapping("/sys/actuator/redis")

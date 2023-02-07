@@ -9,13 +9,12 @@ import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.core.base.controller.BaseController;
 import com.moxa.sooth.core.base.entity.Result;
-import com.moxa.sooth.core.base.exception.SoothBootException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -56,16 +55,17 @@ public class GenCodeController extends BaseController<IGenCodeService, GenTable,
 
     @RequestMapping(value = "/generate", method = RequestMethod.POST)
     public void generate(HttpServletResponse response, @RequestBody GenCodeModel genCodeModel) {
-        byte[]data = genTableService.generate(genCodeModel);
         response.reset();
         try {
-            response.reset();
-            response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");
-            response.addHeader("Content-Length", "" + data.length);
+            byte[] data = genTableService.generate(genCodeModel);
             response.setContentType("application/octet-stream; charset=UTF-8");
-            IoUtil.write(response.getOutputStream(),true, data);
-        } catch (IOException e) {
-            throw new SoothBootException(e.getMessage(), e);
+            IoUtil.write(response.getOutputStream(), true, data);
+        } catch (Exception e) {
+            response.setContentType("application/text; charset=UTF-8");
+            try {
+                IoUtil.write(response.getOutputStream(), true, e.getMessage().getBytes(StandardCharsets.UTF_8));
+            } catch (Exception e1) {
+            }
         }
     }
 }

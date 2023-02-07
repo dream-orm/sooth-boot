@@ -32,7 +32,7 @@ public class TemplateUtil {
             template.process(dataModel, sw);
             return sw.toString();
         } catch (Exception e) {
-            throw new SoothBootException("渲染模板失败，请检查模板语法", e);
+            throw new SoothBootException("渲染模板失败，请检查模板语法：" + e.getMessage(), e);
         } finally {
             IoUtil.close(reader);
             IoUtil.close(sw);

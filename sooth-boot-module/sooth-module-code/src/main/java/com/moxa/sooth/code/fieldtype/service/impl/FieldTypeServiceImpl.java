@@ -33,8 +33,8 @@ public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> impl
                     int fieldCode = (int) field.get(null);
                     FieldType fieldType = templateMapper.selectById(FieldType.class, fieldCode);
                     DbSourceUtil.DataType dataType = dataTypeMap.get(fieldCode);
-                    String attrType=null;
-                    if(dataType!=null){
+                    String attrType = null;
+                    if (dataType != null) {
                         attrType = dataType.getJavaType();
                     }
                     if (attrType == null) {

@@ -36,7 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -105,7 +108,7 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
     @Override
     public List<Map<String, String>> preview(GenCodeModel genCodeModel) {
         GenTable genTable = selectById(genCodeModel.getId());
-        if(genTable==null){
+        if (genTable == null) {
             throw new SoothBootException("生成表不存在");
         }
         GenCodeView genCodeView = new GenCodeView();
@@ -120,14 +123,14 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
             genCodeView.setAuthor(loginUser.getUsername());
         }
         Long baseId = genCodeModel.getBaseId();
-        if(baseId!=null){
+        if (baseId != null) {
             BaseClass baseClass = baseClassService.selectById(baseId);
-            if(baseClass==null){
+            if (baseClass == null) {
                 throw new SoothBootException("基类未找到");
             }
             genCodeView.setBaseClass(baseClass.getClassName());
             String[] fields = baseClass.getFields();
-            if(ArrayUtil.isNotEmpty(fields)){
+            if (ArrayUtil.isNotEmpty(fields)) {
                 genCodeView.setBaseFields(fields);
             }
         }

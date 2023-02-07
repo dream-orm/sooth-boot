@@ -14,6 +14,6 @@ public class GenCodeView {
     private String tableComment;
     private String tableName;
     private String baseClass;
-    private String[]baseFields;
+    private String[] baseFields;
     private List<GenTableField> columns;
 }

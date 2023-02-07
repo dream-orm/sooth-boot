@@ -1,29 +1,41 @@
 package com.moxa.sooth.core.base.exception;
 
+import cn.hutool.core.exceptions.ExceptionUtil;
 import com.moxa.dream.template.validate.ValidateDreamRunTimeException;
+import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.core.base.enums.LogType;
+import com.moxa.sooth.core.base.util.ClientUtil;
+import com.moxa.sooth.core.base.util.IpUtils;
+import com.moxa.sooth.core.log.service.ISysLogService;
+import com.moxa.sooth.core.log.view.SysLog;
+import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authz.AuthorizationException;
-import org.apache.shiro.authz.UnauthorizedException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.data.redis.connection.PoolException;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
-import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @RestControllerAdvice
 @Slf4j
 public class SoothBootExceptionHandler {
+
+    @Autowired
+    private ISysLogService logService;
 
     /**
      * 处理自定义异常
      */
     @ExceptionHandler(SoothBootException.class)
     public Result<?> handleSoothBootException(SoothBootException e) {
-        log.error(e.getMessage(), e);
+        Throwable throwable = e.getCause();
+        if (throwable != null) {
+            handleThrowable(throwable);
+        }
         return Result.error(e.getMessage());
     }
 
@@ -32,74 +44,42 @@ public class SoothBootExceptionHandler {
         return Result.error(e.getMessage());
     }
 
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public Result<?> handlerNoFoundException(Exception e) {
+    @ExceptionHandler(Throwable.class)
+    public Result<?> handleThrowable(Throwable e) {
+        Throwable curThrowable = e;
+        while (curThrowable.getCause() != null) {
+            curThrowable = curThrowable.getCause();
+        }
         log.error(e.getMessage(), e);
-        return Result.error("路径不存在，请检查路径是否正确");
-    }
-
-    @ExceptionHandler(DuplicateKeyException.class)
-    public Result<?> handleDuplicateKeyException(DuplicateKeyException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("数据库中已存在该记录");
-    }
-
-    @ExceptionHandler({UnauthorizedException.class, AuthorizationException.class})
-    public Result<?> handleAuthorizationException(AuthorizationException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("没有权限，请联系管理员授权");
-    }
-
-    @ExceptionHandler(Exception.class)
-    public Result<?> handleException(Exception e) {
-        log.error(e.getMessage(), e);
+        writeErrorLog(e);
         return Result.error("操作失败，" + e.getMessage());
     }
 
-    /**
-     * @param e
-     * @return
-     * @Author 政辉
-     */
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Result<?> httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("不支持");
-        sb.append(e.getMethod());
-        sb.append("请求方法，");
-        sb.append("支持以下");
-        String[] methods = e.getSupportedMethods();
-        if (methods != null) {
-            for (String str : methods) {
-                sb.append(str);
-                sb.append("、");
+    private void writeErrorLog(Throwable e) {
+        SysLog sysLog = new SysLog();
+        SysUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser != null) {
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            if (request != null) {
+                sysLog.setUsername(loginUser.getUsername());
+                sysLog.setRealname(loginUser.getRealname());
+                sysLog.setRequestType(request.getMethod());
+                sysLog.setRequestUrl(request.getRequestURI());
+                sysLog.setUserAgent(request.getHeader(CommonConstant.USER_AGENT));
+                //设置IP地址
+                sysLog.setIp(IpUtils.getIpAddr(request));
             }
         }
-        log.error(sb.toString(), e);
-        //return Result.error("没有权限，请联系管理员授权");
-        return Result.error(sb.toString());
+        sysLog.setLogType(LogType.ERROR.getCode());
+        sysLog.setCreateTime(new Date());
+        sysLog.setMessage(e.getMessage());
+        sysLog.setStackTrace(ExceptionUtil.stacktraceToString(e, 5000));
+        sysLog.setExceptionClass(e.getClass().getName());
+        sysLog.setStatus(1);
+        try {
+            logService.insert(sysLog);
+        } catch (Exception ex) {
+            log.error("写入日志失败", ex);
+        }
     }
-
-    /**
-     * spring默认上传大小100MB 超出大小捕获异常MaxUploadSizeExceededException
-     */
-    @ExceptionHandler(MaxUploadSizeExceededException.class)
-    public Result<?> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("文件大小超出10MB限制, 请压缩或降低文件质量! ");
-    }
-
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public Result<?> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
-        log.error(e.getMessage(), e);
-        //【issues/3624】数据库执行异常handleDataIntegrityViolationException提示有误 #3624
-        return Result.error("执行数据库异常,违反了完整性例如：违反惟一约束、违反非空限制、字段内容超出长度等");
-    }
-
-    @ExceptionHandler(PoolException.class)
-    public Result<?> handlePoolException(PoolException e) {
-        log.error(e.getMessage(), e);
-        return Result.error("Redis 连接异常!");
-    }
-
 }

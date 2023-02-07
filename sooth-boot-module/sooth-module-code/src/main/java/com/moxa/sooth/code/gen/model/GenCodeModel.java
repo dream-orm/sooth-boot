@@ -1,6 +1,5 @@
 package com.moxa.sooth.code.gen.model;
 
-import com.moxa.sooth.code.gen.view.GenTableField;
 import lombok.Data;
 
 import java.util.List;

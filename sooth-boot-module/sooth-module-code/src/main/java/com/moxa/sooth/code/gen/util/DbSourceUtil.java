@@ -7,9 +7,7 @@ import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.core.base.config.App;
 import com.moxa.sooth.core.base.exception.SoothBootException;
-import org.springframework.data.redis.connection.DataType;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -86,8 +84,8 @@ public class DbSourceUtil {
                 String remark = resultSet.getString("REMARKS");
                 int dataTypeId = resultSet.getInt("DATA_TYPE");
                 DataType dataType = dataTypeMap.get(dataTypeId);
-                if(dataType==null){
-                    throw new SoothBootException("数据库字段类型未找到，类型id："+dataTypeId);
+                if (dataType == null) {
+                    throw new SoothBootException("数据库字段类型未找到，类型id：" + dataTypeId);
                 }
                 String jdbcType = dataType.getJdbcType();
                 FieldType fieldType = fieldTypeService.selectById(dataTypeId);
