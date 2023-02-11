@@ -1,8 +1,8 @@
 package com.moxa.sooth.core.dict.view;
 
 import com.moxa.dream.system.annotation.View;
-import com.moxa.sooth.core.base.entity.BaseDict;
-import com.moxa.sooth.core.dict.table.$SysDictItem;
+import com.moxa.sooth.core.base.entity.BaseEntity;
+import com.moxa.sooth.core.dict.table.SysDict;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -11,39 +11,30 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@View($SysDictItem.class)
-public class SysDictItem extends BaseDict {
+@View(SysDict.class)
+public class SysDictView extends BaseEntity {
     /**
      * id
      */
     private Long id;
 
     /**
-     * 字典id
+     * 字典名称
      */
-    private Long dictId;
-
-    /**
-     * 字典项文本
-     */
-
     private String name;
 
     /**
-     * 字典项值
+     * 字典编码
      */
-
-    private String value;
+    private String code;
 
     /**
      * 描述
      */
-
     private String description;
 
     /**
-     * 排序
+     * 删除状态
      */
-
-    private Double orderNo;
+    private Integer delFlag;
 }

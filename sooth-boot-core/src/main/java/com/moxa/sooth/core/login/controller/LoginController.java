@@ -9,13 +9,13 @@ import com.moxa.dream.system.cache.Cache;
 import com.moxa.dream.system.cache.CacheFactory;
 import com.moxa.dream.system.config.Configuration;
 import com.moxa.sooth.core.base.constant.CommonConstant;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.service.SysApiService;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.base.util.JwtUtil;
 import com.moxa.sooth.core.base.util.RandImageUtil;
 import com.moxa.sooth.core.login.model.SysLoginModel;
-import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,27 +60,27 @@ public class LoginController {
             log.warn("验证码错误，key= {} , Ui checkCode= {}, Redis checkCode = {}", sysLoginModel.getCheckKey(), lowerCaseCaptcha, checkCode);
             return Result.error("验证码错误");
         }
-        SysUser sysUser = sysApiService.selectOneUser(username);
-        if (!BCrypt.checkpw(password, sysUser.getPassword())) {
+        LoginUser loginUser = sysApiService.getLoginUser(username);
+        if (!BCrypt.checkpw(password, loginUser.getPassword())) {
             return Result.error("用户名或密码错误");
         }
         //用户登录信息
-        JSONObject result = userInfo(sysUser);
+        JSONObject result = userInfo(loginUser);
         redisTemplate.delete(realKey);
         return Result.ok(result, "登录成功");
     }
 
-
     /**
-     * 获取用户信息
+     * 刷新页面：获取用户信息
      */
     @GetMapping("/user/getUserInfo")
-    public Result<SysUser> getUserInfo(HttpServletRequest request) {
+    public Result<LoginUser> getUserInfo(HttpServletRequest request) {
         String username = JwtUtil.getUserNameByToken(request);
         if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
-            SysUser sysUser = sysApiService.selectOneUser(username);
-            return Result.ok(sysUser);
+            LoginUser loginUser = sysApiService.getLoginUser(username);
+            ClientUtil.setLoginUser(loginUser);
+            return Result.ok(loginUser);
         }
         return Result.error("获取用户信息失败");
     }
@@ -102,7 +102,7 @@ public class LoginController {
         if (StrUtil.isEmpty(username)) {
             return Result.error("Token无效");
         }
-        SysUser loginUser = ClientUtil.getLoginUser();
+        LoginUser loginUser = ClientUtil.getLoginUser();
         if (loginUser == null || !loginUser.getUsername().equals(username)) {
             return Result.ok("退出登录失败");
         }
@@ -131,12 +131,12 @@ public class LoginController {
     /**
      * 用户信息
      *
-     * @param sysUser
+     * @param loginUser
      * @return
      */
-    private JSONObject userInfo(SysUser sysUser) {
-        String username = sysUser.getUsername();
-        String syspassword = sysUser.getPassword();
+    private JSONObject userInfo(LoginUser loginUser) {
+        String username = loginUser.getUsername();
+        String syspassword = loginUser.getPassword();
         // 获取用户部门信息
         JSONObject obj = new JSONObject(new LinkedHashMap<>());
 
@@ -145,7 +145,7 @@ public class LoginController {
         // 设置token缓存有效时间
         redisTemplate.opsForValue().set(CommonConstant.PREFIX_USER_TOKEN + token, token, JwtUtil.EXPIRE_TIME * 2 / 1000, TimeUnit.SECONDS);
         obj.put("token", token);
-        obj.put("userInfo", sysUser);
+        obj.put("userInfo", loginUser);
         return obj;
     }
 
@@ -166,7 +166,7 @@ public class LoginController {
             // 加入密钥作为混淆，避免简单的拼接，被外部利用，用户自定义该密钥即可
             String origin = lowerCaseCode + key;
             String realKey = MD5.create().digestHex(origin);
-            redisTemplate.opsForValue().set(realKey, lowerCaseCode, 60, TimeUnit.SECONDS);
+            redisTemplate.opsForValue().set(realKey, lowerCaseCode, 120, TimeUnit.SECONDS);
             log.info("获取验证码，Redis key = {}，checkCode = {}", realKey, code);
             //返回前端
             String base64 = RandImageUtil.generate(code);

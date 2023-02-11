@@ -1,15 +1,19 @@
 package com.moxa.sooth.core.base.entity;
 
-import java.util.List;
+import lombok.Data;
 
+import java.util.Set;
+
+@Data
 public class LoginUser {
     private Long id;
     private String username;
+    private String password;
     private String realname;
+    private String avator;
+    private Integer sex;
     private String phone;
-    private String sex;
-    private String avatar;
-    private Integer status;
-    private List<Long> deptList;
-    private List<Long> roleList;
+    private Set<String> permissionUrls;
+    private Set<String> roles;
+    private Set<String> permCodes;
 }

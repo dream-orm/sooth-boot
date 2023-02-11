@@ -3,9 +3,10 @@ package com.moxa.sooth.core.base.shiro;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.sooth.core.base.config.App;
 import com.moxa.sooth.core.base.constant.CommonConstant;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.service.SysApiService;
+import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.base.util.JwtUtil;
-import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -67,15 +68,15 @@ public class ShiroRealm extends AuthorizingRealm {
             throw new AuthenticationException("token为空!");
         }
         // 校验token有效性
-        SysUser sysUser;
+        LoginUser loginUser;
         try {
-            sysUser = this.checkUserTokenIsEffect(token);
+            loginUser = this.checkUserTokenIsEffect(token);
         } catch (AuthenticationException e) {
             JwtUtil.responseError(App.getHttpServletResponse(), 401, e.getMessage());
             e.printStackTrace();
             return null;
         }
-        return new SimpleAuthenticationInfo(sysUser, token, getName());
+        return new SimpleAuthenticationInfo(loginUser, token, getName());
     }
 
     /**
@@ -83,18 +84,21 @@ public class ShiroRealm extends AuthorizingRealm {
      *
      * @param token
      */
-    public SysUser checkUserTokenIsEffect(String token) throws AuthenticationException {
+    private LoginUser checkUserTokenIsEffect(String token) throws AuthenticationException {
         // 解密获得username，用于和数据库进行对比
         String username = JwtUtil.getUsername(token);
         if (username == null) {
             throw new AuthenticationException("token非法无效!");
         }
-        // 查询用户信息
-        SysUser sysUser = sysApiService.selectOneUser(username);
-        if (!jwtTokenRefresh(token, username, sysUser.getPassword())) {
+        LoginUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser == null) {
+            // 查询用户信息
+            loginUser = sysApiService.getLoginUser(username);
+        }
+        if (!jwtTokenRefresh(token, username, loginUser.getPassword())) {
             throw new AuthenticationException(CommonConstant.TOKEN_IS_INVALID_MSG);
         }
-        return sysUser;
+        return loginUser;
     }
 
     /**

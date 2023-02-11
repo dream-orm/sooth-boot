@@ -7,15 +7,15 @@ import com.moxa.sooth.core.base.annotation.AutoLog;
 import com.moxa.sooth.core.base.config.App;
 import com.moxa.sooth.core.base.constant.CommonConstant;
 import com.moxa.sooth.core.base.controller.ModuleController;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.enums.LogType;
 import com.moxa.sooth.core.base.exception.SoothBootException;
+import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.base.util.IpUtils;
 import com.moxa.sooth.core.log.service.ISysLogService;
 import com.moxa.sooth.core.log.view.SysLog;
-import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -124,10 +124,10 @@ public class LogAspect {
         //设置IP地址
         sysLog.setIp(IpUtils.getIpAddr(request));
         //获取登录用户信息
-        SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-        if (sysUser != null) {
-            sysLog.setUsername(sysUser.getUsername());
-            sysLog.setRealname(sysUser.getRealname());
+        LoginUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser != null) {
+            sysLog.setUsername(loginUser.getUsername());
+            sysLog.setRealname(loginUser.getRealname());
         }
     }
 

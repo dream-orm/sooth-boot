@@ -2,7 +2,7 @@ package com.moxa.sooth.core.role.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
-import com.moxa.sooth.core.base.annotation.Permission;
+import com.moxa.sooth.core.base.annotation.DataPermission;
 import com.moxa.sooth.core.role.mapper.SysRoleMapper;
 import com.moxa.sooth.core.role.service.ISysRoleService;
 import com.moxa.sooth.core.role.view.SysRole;
@@ -20,16 +20,16 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRole, SysRole> implements
     private SysRoleMapper sysRoleMapper;
 
     @Override
-    public Set<String> selectRoles(String username) {
-        return sysRoleMapper.selectRoles(username);
+    public Set<String> getRoles(Long userId) {
+        return sysRoleMapper.getRoles(userId);
     }
 
     @Override
     public Page<SysRole> selectPage(Object conditionObject, Page page) {
-        return templateMapper.methodInfo(methodInfo -> methodInfo.set(Permission.class, new Permission() {
+        return templateMapper.methodInfo(methodInfo -> methodInfo.set(DataPermission.class, new DataPermission() {
             @Override
             public Class<? extends Annotation> annotationType() {
-                return Permission.class;
+                return DataPermission.class;
             }
         })).selectPage(SysRole.class, conditionObject, page);
     }

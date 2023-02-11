@@ -1,6 +1,5 @@
 package com.moxa.sooth.core.base.util;
 
-import cn.hutool.core.util.StrUtil;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -104,9 +103,6 @@ public class JwtUtil {
     public static String getUserNameByToken(HttpServletRequest request) throws SoothBootException {
         String accessToken = request.getHeader(CommonConstant.X_ACCESS_TOKEN);
         String username = getUsername(accessToken);
-        if (StrUtil.isEmpty(username)) {
-            throw new SoothBootException("未获取到用户");
-        }
         return username;
     }
 

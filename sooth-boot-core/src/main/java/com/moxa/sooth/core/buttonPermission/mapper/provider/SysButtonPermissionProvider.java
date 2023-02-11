@@ -2,7 +2,7 @@ package com.moxa.sooth.core.buttonPermission.mapper.provider;
 
 public class SysButtonPermissionProvider {
 
-    public String getPermCode() {
+    public String getPermCodes() {
         return "SELECT " +
                 " distinct concat(sys_menu.url,'/',sys_button.type) " +
                 " FROM " +

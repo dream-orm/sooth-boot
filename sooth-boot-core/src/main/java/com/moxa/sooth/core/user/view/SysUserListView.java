@@ -2,7 +2,7 @@ package com.moxa.sooth.core.user.view;
 
 import com.moxa.dream.system.annotation.View;
 import com.moxa.sooth.core.base.entity.BaseDict;
-import com.moxa.sooth.core.dict.view.SysDict;
+import com.moxa.sooth.core.dict.view.SysDictView;
 import com.moxa.sooth.core.user.table.$SysUser;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,5 +41,5 @@ public class SysUserListView extends BaseDict {
 
     private String phone;
 
-    private SysDict sexDict;
+    private SysDictView sexDict;
 }

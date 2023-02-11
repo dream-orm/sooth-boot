@@ -6,6 +6,7 @@ import cn.hutool.crypto.digest.BCrypt;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.dream.system.config.Page;
 import com.moxa.sooth.core.base.config.SoothProperties;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.dept.service.ISysUserDeptService;
@@ -87,24 +88,24 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserListView, SysUser> im
         if (!newPassword.equals(confirmPassword)) {
             throw new SoothBootException("两次输入密码不一致");
         }
-        SysUser sysUser = ClientUtil.getLoginUser();
-        if (sysUser == null) {
+        LoginUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser == null) {
             throw new SoothBootException("用户不存在");
         }
-        if (!BCrypt.checkpw(oldPassword, sysUser.getPassword())) {
+        if (!BCrypt.checkpw(oldPassword, loginUser.getPassword())) {
             throw new SoothBootException("旧密码输入错误");
         }
         String password = BCrypt.hashpw(userPasswordModel.getPassword());
-        return sysUserMapper.updatePassword(sysUser.getId(), password);
+        return sysUserMapper.updatePassword(loginUser.getId(), password);
     }
 
     @Override
     public int updateBasicInfo(BasicInfoModel basicInfoModel) {
-        SysUser sysUser = ClientUtil.getLoginUser();
-        if (sysUser == null) {
+        LoginUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser == null) {
             throw new SoothBootException("用户不存在");
         }
-        basicInfoModel.setId(sysUser.getId());
+        basicInfoModel.setId(loginUser.getId());
         return templateMapper.updateById(basicInfoModel);
     }
 

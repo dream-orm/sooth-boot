@@ -3,13 +3,13 @@ package com.moxa.sooth.core.base.exception;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import com.moxa.dream.template.validate.ValidateDreamRunTimeException;
 import com.moxa.sooth.core.base.constant.CommonConstant;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.enums.LogType;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.base.util.IpUtils;
 import com.moxa.sooth.core.log.service.ISysLogService;
 import com.moxa.sooth.core.log.view.SysLog;
-import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -57,7 +57,7 @@ public class SoothBootExceptionHandler {
 
     private void writeErrorLog(Throwable e) {
         SysLog sysLog = new SysLog();
-        SysUser loginUser = ClientUtil.getLoginUser();
+        LoginUser loginUser = ClientUtil.getLoginUser();
         if (loginUser != null) {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             if (request != null) {

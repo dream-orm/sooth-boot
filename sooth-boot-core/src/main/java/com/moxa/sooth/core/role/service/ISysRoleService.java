@@ -7,6 +7,5 @@ import java.util.Set;
 
 public interface ISysRoleService extends IService<SysRole, SysRole> {
 
-
-    Set<String> selectRoles(String username);
+    Set<String> getRoles(Long userId);
 }

@@ -5,15 +5,15 @@ import cn.hutool.core.util.ArrayUtil;
 import com.moxa.dream.mate.permission.inject.PermissionHandler;
 import com.moxa.dream.system.config.MethodInfo;
 import com.moxa.dream.system.table.TableInfo;
-import com.moxa.sooth.core.base.annotation.Permission;
+import com.moxa.sooth.core.base.annotation.DataPermission;
 import com.moxa.sooth.core.base.config.App;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.dataPermission.service.ISysDataPermissionService;
 import com.moxa.sooth.core.dataPermission.table.SysDataPermission;
 import com.moxa.sooth.core.dept.service.ISysDeptService;
 import com.moxa.sooth.core.dept.service.ISysUserDeptService;
 import com.moxa.sooth.core.dept.table.SysUserDept;
-import com.moxa.sooth.core.user.view.SysUser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,9 +36,9 @@ public class SoothPermissionHandler implements PermissionHandler {
         if (sysDataPermissionService == null) {
             sysDataPermissionService = App.getBean(ISysDataPermissionService.class);
         }
-        Permission permission = methodInfo.get(Permission.class);
+        DataPermission dataPermission = methodInfo.get(DataPermission.class);
         String deptId = tableInfo.getFieldName("dept_id");
-        if (permission != null) {
+        if (dataPermission != null) {
             if (deptId != null) {
                 return true;
             }
@@ -48,7 +48,7 @@ public class SoothPermissionHandler implements PermissionHandler {
 
     @Override
     public String getPermission(MethodInfo methodInfo, TableInfo tableInfo, String alias) {
-        SysUser loginUser = ClientUtil.getLoginUser();
+        LoginUser loginUser = ClientUtil.getLoginUser();
         if (loginUser != null) {
             Long id = loginUser.getId();
             SysDataPermission dataPermission = sysDataPermissionService.getDataPermission(id);

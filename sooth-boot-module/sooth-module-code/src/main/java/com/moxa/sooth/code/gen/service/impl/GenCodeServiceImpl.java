@@ -24,10 +24,10 @@ import com.moxa.sooth.code.gen.view.GenTable;
 import com.moxa.sooth.code.gen.view.GenTableField;
 import com.moxa.sooth.code.template.service.IGenTemplateService;
 import com.moxa.sooth.code.template.view.GenTemplate;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.exception.SoothBootException;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.base.util.DbUtil;
-import com.moxa.sooth.core.user.view.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -118,7 +118,7 @@ public class GenCodeServiceImpl extends ServiceImpl<GenTable, GenTable> implemen
         genCodeView.setModuleName(genCodeModel.getModuleName());
         genCodeView.setEntityName(genCodeModel.getEntityName());
         genCodeView.setPackageName(genCodeModel.getPackageName());
-        SysUser loginUser = ClientUtil.getLoginUser();
+        LoginUser loginUser = ClientUtil.getLoginUser();
         if (loginUser != null) {
             genCodeView.setAuthor(loginUser.getUsername());
         }

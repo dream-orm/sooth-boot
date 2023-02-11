@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @Table("sys_dict")
-public class $SysDict {
+public class SysDict {
     /**
      *
      */

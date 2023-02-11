@@ -3,9 +3,9 @@ package com.moxa.sooth.core.log;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.LayoutBase;
 import com.moxa.dream.system.config.Command;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.log.model.SQLLogModel;
-import com.moxa.sooth.core.user.view.SysUser;
 
 import java.util.Date;
 
@@ -16,7 +16,7 @@ public class SQLLogLayout extends LayoutBase<ILoggingEvent> {
 
     @Override
     public String doLayout(ILoggingEvent iLoggingEvent) {
-        SysUser loginUser = ClientUtil.getLoginUser();
+        LoginUser loginUser = ClientUtil.getLoginUser();
         SQLLogModel sqlLogModel = new SQLLogModel();
         sqlLogModel.setUserId(loginUser.getId());
         sqlLogModel.setUsername(loginUser.getUsername());

@@ -43,7 +43,7 @@ public class SysButtonPermissionServiceImpl extends ServiceImpl<SysButtonPermiss
     }
 
     @Override
-    public List<String> getPermCode(Long id) {
-        return buttonPermissionMapper.getPermCode(id);
+    public Set<String> getPermCodes(Long id) {
+        return buttonPermissionMapper.getPermCodes(id);
     }
 }

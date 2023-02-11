@@ -20,7 +20,9 @@ public interface CommonConstant {
 
     String USER_AGENT = "User-Agent";
 
-    String TOKEN_IS_INVALID_MSG = "Token失效，请重新登录!";
+    String TOKEN_IS_INVALID_MSG = "Token失效，请重新登录";
+
+    String INVALID_PERMISSION = "没有权限，请联系管理员授权";
 
 
     /**

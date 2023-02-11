@@ -2,13 +2,13 @@ package com.moxa.sooth.core.button.controller;
 
 import com.moxa.sooth.core.base.annotation.AutoLog;
 import com.moxa.sooth.core.base.controller.BaseController;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.button.model.SysButtonModel;
 import com.moxa.sooth.core.button.service.ISysButtonService;
 import com.moxa.sooth.core.button.table.SysButton;
 import com.moxa.sooth.core.button.view.MenuButton;
-import com.moxa.sooth.core.user.view.SysUser;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class SysButtonController extends BaseController<ISysButtonService, SysBu
 
     @RequestMapping(value = "/listMenuButtonTree", method = RequestMethod.GET)
     public Result<List<MenuButton>> listMenuButtonTree() {
-        SysUser loginUser = ClientUtil.getLoginUser();
+        LoginUser loginUser = ClientUtil.getLoginUser();
         List<MenuButton> treeList = service.listMenuButtonTree(loginUser.getId());
         return Result.ok(treeList);
     }

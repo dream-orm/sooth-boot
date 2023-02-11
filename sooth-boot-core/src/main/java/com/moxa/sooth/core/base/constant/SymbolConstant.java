@@ -8,4 +8,8 @@ public class SymbolConstant {
      */
     public static final String SINGLE_SLASH = "/";
 
+    public static final String LEFT_BRACE = "{";
+
+    public static final String RIGHT_BRACE = "}";
+
 }

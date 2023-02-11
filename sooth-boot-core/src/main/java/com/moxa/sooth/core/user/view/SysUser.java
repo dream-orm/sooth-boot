@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -33,7 +32,6 @@ public class SysUser extends BaseEntity {
     /**
      * 真实姓名
      */
-
     private String realname;
 
     /**
@@ -44,25 +42,20 @@ public class SysUser extends BaseEntity {
     /**
      * 头像
      */
-
     private String avatar;
 
     /**
      * 性别
      */
-
     @Dict(code = "sex")
-
     private Integer sex;
     /**
      * 电话
      */
-
     private String phone;
 
     /**
      * 删除状态（0，正常，1已删除）
      */
-
     private Integer delFlag;
 }

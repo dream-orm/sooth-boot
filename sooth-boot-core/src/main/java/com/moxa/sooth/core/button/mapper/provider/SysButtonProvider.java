@@ -17,7 +17,7 @@ public class SysButtonProvider {
                     " sys_menu.name, " +
                     " CAST(NULL as CHAR) type, " +
                     " sys_menu.parent_id parentId, " +
-                    " 1 disableCheckbox  " +
+                    " 0 disableCheckbox  " +
                     " FROM " +
                     " sys_menu  " +
                     " WHERE " +
@@ -26,6 +26,7 @@ public class SysButtonProvider {
                     " ( sys_menu.id ) id  " +
                     " FROM " +
                     " sys_menu " +
+                    " INNER JOIN sys_button on sys_button.menu_id=sys_menu.id " +
                     " INNER JOIN sys_role_permission ON sys_menu.id = sys_role_permission.permission_id " +
                     " INNER JOIN sys_role ON sys_role_permission.role_id = sys_role.id " +
                     " INNER JOIN sys_user_role ON sys_role.id = sys_user_role.role_id " +
@@ -72,7 +73,7 @@ public class SysButtonProvider {
                         Iterator<MenuButton> iterator = menuButtonList.iterator();
                         while (iterator.hasNext()) {
                             MenuButton menuButton = iterator.next();
-                            if (!menuButton.isDisableCheckbox()) {
+                            if (menuButton.getType() != null) {
                                 iterator.remove();
                             }
                         }

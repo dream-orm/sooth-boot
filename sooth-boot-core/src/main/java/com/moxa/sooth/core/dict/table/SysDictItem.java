@@ -10,13 +10,18 @@ import java.sql.Types;
 
 @Data
 @Table("sys_dict_item")
-public class $SysDictItem {
+public class SysDictItem {
     /**
      *
      */
     @Id
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;
+    /**
+     * 颜色标签
+     */
+    @Column(value = "tag", jdbcType = Types.VARCHAR)
+    private String tag;
     /**
      * 描述
      */

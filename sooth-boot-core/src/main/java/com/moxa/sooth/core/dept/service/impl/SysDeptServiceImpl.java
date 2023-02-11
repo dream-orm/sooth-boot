@@ -1,7 +1,7 @@
 package com.moxa.sooth.core.dept.service.impl;
 
 import com.moxa.dream.boot.impl.ServiceImpl;
-import com.moxa.sooth.core.base.annotation.Permission;
+import com.moxa.sooth.core.base.annotation.DataPermission;
 import com.moxa.sooth.core.dept.mapper.SysDeptMapper;
 import com.moxa.sooth.core.dept.model.SysDeptModel;
 import com.moxa.sooth.core.dept.service.ISysDeptService;
@@ -22,10 +22,10 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDept, SysDept> implements
 
     @Override
     public List<SysDept> listTree(SysDeptModel deptModel) {
-        return templateMapper.methodInfo(methodInfo -> methodInfo.set(Permission.class, new Permission() {
+        return templateMapper.methodInfo(methodInfo -> methodInfo.set(DataPermission.class, new DataPermission() {
             @Override
             public Class<? extends Annotation> annotationType() {
-                return Permission.class;
+                return DataPermission.class;
             }
         })).selectTree(SysDept.class, deptModel);
     }

@@ -3,7 +3,9 @@ package com.moxa.sooth.core.menu.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.moxa.sooth.core.base.controller.BaseController;
+import com.moxa.sooth.core.base.entity.LoginUser;
 import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.core.base.util.ClientUtil;
 import com.moxa.sooth.core.menu.model.SysMenuEditModel;
 import com.moxa.sooth.core.menu.model.SysMenuModel;
 import com.moxa.sooth.core.menu.model.SysRolePermissionModel;
@@ -12,9 +14,7 @@ import com.moxa.sooth.core.menu.service.ISysRolePermissionService;
 import com.moxa.sooth.core.menu.table.SysRolePermission;
 import com.moxa.sooth.core.menu.view.SysMenu;
 import com.moxa.sooth.core.menu.view.SysMenuListView;
-import com.moxa.sooth.core.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,11 +46,11 @@ public class SysMenuController extends BaseController<ISysMenuService, SysMenu, 
     @GetMapping(value = "/getUserPermissionByToken")
     public Result<?> getUserPermissionByToken() {
         //直接获取当前用户不适用前端token
-        SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-        if (sysUser == null) {
+        LoginUser loginUser = ClientUtil.getLoginUser();
+        if (loginUser == null) {
             return Result.error("请登录系统！");
         }
-        JSONArray menuArray = service.getMenu(sysUser.getId());
+        JSONArray menuArray = service.getMenu(loginUser.getId());
         return Result.ok(menuArray);
     }
 

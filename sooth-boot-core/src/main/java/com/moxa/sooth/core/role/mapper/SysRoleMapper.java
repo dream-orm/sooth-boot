@@ -7,6 +7,6 @@ import java.util.Set;
 
 @Mapper
 public interface SysRoleMapper {
-    @Sql("select role_code from sys_role where id in (select role_id from sys_user_role where user_id = (select id from sys_user where username=@?(username)))")
-    Set<String> selectRoles(String username);
+    @Sql("select role_code from sys_role where id in (select role_id from sys_user_role where user_id = @?(userId))")
+    Set<String> getRoles(Long userId);
 }

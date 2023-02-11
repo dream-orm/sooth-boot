@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.system.config.Page;
 import com.moxa.dream.template.service.IService;
 import com.moxa.sooth.core.base.annotation.AutoLog;
+import com.moxa.sooth.core.base.annotation.InterfacePermission;
 import com.moxa.sooth.core.base.entity.PageModel;
 import com.moxa.sooth.core.base.entity.Result;
 import com.moxa.sooth.core.base.exception.SoothBootException;
@@ -24,6 +25,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         this.bizModule = bizModule;
     }
 
+    @InterfacePermission("主键查询")
     @ResponseBody
     @GetMapping(value = "/get")
     public Result get(@RequestParam(name = "id") Long id) {
@@ -31,6 +33,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         return Result.ok(result);
     }
 
+    @InterfacePermission("查询单条")
     @ResponseBody
     @GetMapping("getOne")
     public Result getOne(SearchModel searchModel) {
@@ -38,6 +41,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         return Result.ok(result);
     }
 
+    @InterfacePermission("分页查询")
     @ResponseBody
     @GetMapping("page")
     public Result selectPage(SearchModel searchModel, PageModel pageModel) {
@@ -45,6 +49,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         return Result.ok(page);
     }
 
+    @InterfacePermission("查询")
     @ResponseBody
     @GetMapping("list")
     public Result selectList(SearchModel searchModel) {
@@ -52,6 +57,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         return Result.ok(resultList);
     }
 
+    @InterfacePermission("新增")
     @AutoLog(value = "新增")
     @ResponseBody
     @PostMapping(value = "/save")
@@ -63,6 +69,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
+    @InterfacePermission("非空修改")
     @AutoLog(value = "非空修改")
     @ResponseBody
     @PutMapping(value = "/edit")
@@ -74,6 +81,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
+    @InterfacePermission("修改")
     @AutoLog(value = "修改")
     @ResponseBody
     @PostMapping(value = "/edit")
@@ -85,6 +93,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
+    @InterfacePermission("删除")
     @AutoLog(value = "删除")
     @ResponseBody
     @DeleteMapping(value = "/remove")
@@ -96,6 +105,7 @@ public abstract class BaseController<Service extends IService, EditView, SearchM
         }
     }
 
+    @InterfacePermission("批量删除")
     @AutoLog(value = "批量删除")
     @ResponseBody
     @DeleteMapping(value = "/removeBatch")
