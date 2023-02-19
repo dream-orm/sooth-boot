@@ -60,4 +60,10 @@ public class QuartzJobApiImpl implements IJobApi {
         }
         return type;
     }
+
+    @Override
+    public boolean isRunning(String id) throws SchedulerException {
+        TriggerKey triggerKey = TriggerKey.triggerKey(id);
+        return scheduler.checkExists(triggerKey);
+    }
 }

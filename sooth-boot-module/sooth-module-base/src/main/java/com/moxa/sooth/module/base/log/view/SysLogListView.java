@@ -40,11 +40,8 @@ public class SysLogListView extends BaseDict {
     private String description;
 
     @Dict(code = "log_type")
-
     private String logType;
 
-
-    @Dict(code = "success_status")
     private Integer status;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")

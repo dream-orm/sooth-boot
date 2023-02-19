@@ -33,7 +33,7 @@ public class SysQuartzLV {
     private String description;
 
     /**
-     * 状态 0正常 -1停止
+     * 状态 0未运行 -1运行
      */
     private Integer status;
 

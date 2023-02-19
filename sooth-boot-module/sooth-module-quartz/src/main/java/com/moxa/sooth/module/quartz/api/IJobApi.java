@@ -2,6 +2,7 @@ package com.moxa.sooth.module.quartz.api;
 
 
 import com.moxa.sooth.module.quartz.view.SysQuartzEV;
+import org.quartz.SchedulerException;
 
 public interface IJobApi {
     /**
@@ -25,4 +26,6 @@ public interface IJobApi {
      * @throws Exception
      */
     void stopExecute(String id) throws Exception;
+
+    boolean isRunning(String id) throws SchedulerException;
 }
