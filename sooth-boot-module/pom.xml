@@ -11,13 +11,10 @@
 
     <artifactId>sooth-boot-module</artifactId>
     <packaging>pom</packaging>
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
     <modules>
-        <!--代码生成器-->
+        <module>sooth-module-base</module>
         <module>sooth-module-code</module>
         <module>sooth-module-monitor</module>
+        <module>sooth-module-quartz</module>
     </modules>
 </project>

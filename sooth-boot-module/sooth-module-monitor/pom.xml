@@ -11,14 +11,10 @@
 
     <artifactId>sooth-module-monitor</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>com.moxa.sooth</groupId>
-            <artifactId>sooth-boot-core</artifactId>
+            <artifactId>sooth-module-base</artifactId>
         </dependency>
     </dependencies>
 </project>

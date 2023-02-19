@@ -4,13 +4,15 @@ import com.moxa.dream.antlr.invoker.Invoker;
 import com.moxa.dream.boot.bean.ConfigurationBean;
 import com.moxa.dream.mate.block.inject.BlockInject;
 import com.moxa.dream.mate.block.invoker.BlockInvoker;
+import com.moxa.dream.mate.logic.inject.LogicInject;
+import com.moxa.dream.mate.logic.invoker.LogicInvoker;
 import com.moxa.dream.mate.permission.inject.PermissionInject;
 import com.moxa.dream.mate.permission.invoker.PermissionGetInvoker;
 import com.moxa.dream.mate.permission.invoker.PermissionInjectInvoker;
 import com.moxa.dream.system.inject.Inject;
 import com.moxa.dream.template.sequence.Sequence;
-import com.moxa.sooth.core.base.dream.handler.SoothPermissionHandler;
-import com.moxa.sooth.core.base.dream.sequence.SnowFlakeSequence;
+import com.moxa.sooth.module.base.core.dream.handler.SoothPermissionHandler;
+import com.moxa.sooth.module.base.core.dream.sequence.SnowFlakeSequence;
 import com.moxa.sooth.plugin.Module;
 import com.moxa.sooth.plugin.ModuleSelector;
 import com.zaxxer.hikari.HikariDataSource;
@@ -44,12 +46,12 @@ public class DreamConfig {
 
     @Bean
     public Invoker[] invokers() {
-        return new Invoker[]{new PermissionInjectInvoker(), new PermissionGetInvoker(), new BlockInvoker("key.txt")};
+        return new Invoker[]{new PermissionInjectInvoker(), new PermissionGetInvoker(), new BlockInvoker("key.txt"), new LogicInvoker()};
     }
 
     @Bean
     public Inject[] injects() {
-        return new Inject[]{new PermissionInject(new SoothPermissionHandler()), new BlockInject()};
+        return new Inject[]{new PermissionInject(new SoothPermissionHandler()), new BlockInject(), new LogicInject(() -> "del_flag")};
     }
 
     @Bean

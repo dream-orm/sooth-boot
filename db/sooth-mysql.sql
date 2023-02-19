@@ -11,7 +11,7 @@
  Target Server Version : 50621
  File Encoding         : 65001
 
- Date: 12/02/2023 00:34:34
+ Date: 19/02/2023 18:45:31
 */
 
 SET NAMES utf8mb4;
@@ -130,6 +130,7 @@ INSERT INTO `gen_table` VALUES (197384967493, 'sys_role_permission', 'SysRolePer
 INSERT INTO `gen_table` VALUES (197384968837, 'sys_user', 'SysUser', '用户表', '2023-02-05 16:42:20', NULL, 'admin', NULL);
 INSERT INTO `gen_table` VALUES (197384970053, 'sys_user_dept', 'SysUserDept', '用户部门表', '2023-02-05 16:42:20', NULL, 'admin', NULL);
 INSERT INTO `gen_table` VALUES (197384971205, 'sys_user_role', 'SysUserRole', '用户角色表', '2023-02-05 16:42:20', NULL, 'admin', NULL);
+INSERT INTO `gen_table` VALUES (274868828933, 'sys_quartz', 'SysQuartz', '定时任务', '2023-02-19 17:00:25', NULL, 'admin', NULL);
 
 -- ----------------------------
 -- Table structure for gen_table_field
@@ -305,6 +306,28 @@ INSERT INTO `gen_table_field` VALUES (197384970183, 197384970053, 'dept_id', 'BI
 INSERT INTO `gen_table_field` VALUES (197384971333, 197384971205, 'id', 'BIGINT', '主键id', 'id', 'Long', NULL, 1);
 INSERT INTO `gen_table_field` VALUES (197384971334, 197384971205, 'user_id', 'BIGINT', '用户id', 'userId', 'Long', NULL, 0);
 INSERT INTO `gen_table_field` VALUES (197384971335, 197384971205, 'role_id', 'BIGINT', '角色id', 'roleId', 'Long', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735429, 274859734981, 'id', 'VARCHAR', NULL, 'id', 'String', NULL, 1);
+INSERT INTO `gen_table_field` VALUES (274859735430, 274859734981, 'create_by', 'VARCHAR', '创建人', 'createBy', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735431, 274859734981, 'create_time', 'TIMESTAMP', '创建时间', 'createTime', 'java.util.Date', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735432, 274859734981, 'del_flag', 'INTEGER', '删除状态', 'delFlag', 'Integer', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735433, 274859734981, 'update_by', 'VARCHAR', '修改人', 'updateBy', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735434, 274859734981, 'update_time', 'TIMESTAMP', '修改时间', 'updateTime', 'java.util.Date', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735435, 274859734981, 'job_name', 'VARCHAR', '任务名', 'jobName', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735436, 274859734981, 'cron_expression', 'VARCHAR', 'cron表达式', 'cronExpression', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735437, 274859734981, 'parameter', 'VARCHAR', '参数', 'parameter', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735438, 274859734981, 'description', 'VARCHAR', '描述', 'description', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274859735439, 274859734981, 'status', 'INTEGER', '状态 0正常 -1停止', 'status', 'Integer', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829253, 274868828933, 'id', 'VARCHAR', NULL, 'id', 'String', NULL, 1);
+INSERT INTO `gen_table_field` VALUES (274868829254, 274868828933, 'create_by', 'VARCHAR', '创建人', 'createBy', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829255, 274868828933, 'create_time', 'TIMESTAMP', '创建时间', 'createTime', 'java.util.Date', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829256, 274868828933, 'del_flag', 'INTEGER', '删除状态', 'delFlag', 'Integer', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829257, 274868828933, 'update_by', 'VARCHAR', '修改人', 'updateBy', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829258, 274868828933, 'update_time', 'TIMESTAMP', '修改时间', 'updateTime', 'java.util.Date', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829259, 274868828933, 'name', 'VARCHAR', '任务名', 'name', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829260, 274868828933, 'cron', 'VARCHAR', 'cron表达式', 'cron', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829261, 274868828933, 'parameter', 'VARCHAR', '参数', 'parameter', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829262, 274868828933, 'description', 'VARCHAR', '描述', 'description', 'String', NULL, 0);
+INSERT INTO `gen_table_field` VALUES (274868829263, 274868828933, 'status', 'INTEGER', '状态 0正常 -1停止', 'status', 'Integer', NULL, 0);
 
 -- ----------------------------
 -- Table structure for gen_template
@@ -336,7 +359,7 @@ INSERT INTO `gen_template` VALUES (192662837189, 'api请求页', 'import { BaseA
 INSERT INTO `gen_template` VALUES (192688658309, '列表页', '<template>\n  <div>\n    <BasicTable @register=\"registerTable\">\n      <template #toolbar>\n        <Button v-auth=\"PermEnum.ADD\" type=\"primary\" @click=\"handleAdd\"> 新增</Button>\n      </template>\n      <template #selected>\n        <a v-auth=\"PermEnum.REMOVE_BATCH\" @click=\"handleRemoveBatch\">删除</a>\n      </template>\n      <template #action=\"{ record }\">\n        <TableAction\n          :actions=\"getTableAction(record)\"\n          :dropDownActions=\"getDropDownAction(record)\"\n        />\n      </template>\n    </BasicTable>\n    <${entityName?cap_first}Modal @register=\"registerModal\" @success=\"handleSuccess\" />\n  </div>\n</template>\n<script lang=\"ts\" name=\"system-dept\" setup>\n  import { Button } from \'ant-design-vue\';\n  import { BasicTable, useTable, TableAction, ActionItem } from \'/@/components/Table\';\n  import { PermEnum } from \'/@/enums/permEnum\';\n  import { useModal } from \'/@/components/Modal\';\n  import ${entityName?cap_first}Modal from \'./${entityName?cap_first}Modal.vue\';\n  import { columns, searchFormSchema } from \'./${entityName}.data\';\n  import { ${entityName}Api } from \'./${entityName}.api.api\';\n  const [registerModal, { openModal }] = useModal();\n  const [registerTable, { reload, getSelectRowKeys }] = useTable({\n    title: \'列表\',\n    api: ${entityName}Api.page,\n    columns,\n    formConfig: {\n      labelWidth: 80,\n      schemas: searchFormSchema,\n    },\n    useSearchForm: true,\n    showTableSetting: true,\n    bordered: true,\n    actionColumn: {\n      width: 120,\n      title: \'操作\',\n    },\n  });\n\n  function handleAdd() {\n    openModal(true, {\n      isUpdate: false,\n    });\n  }\n\n  function handleEdit(record: Recordable) {\n    openModal(true, {\n      record,\n      isUpdate: true,\n    });\n  }\n\n  async function handleDelete(record: Recordable) {\n    await ${entityName}Api.remove({ id: record.deptId });\n    reload();\n  }\n  async function handleRemoveBatch() {\n    const selectRowKeys = getSelectRowKeys();\n    await ${entityName}Api.removeBatch(selectRowKeys, reload);\n  }\n  function handleSuccess() {\n    reload();\n  }\n\n  function getTableAction(record): ActionItem[] {\n    return [\n      {\n        tooltip: \'修改\',\n        icon: \'clarity:note-edit-line\',\n        onClick: handleEdit.bind(null, record),\n        auth: PermEnum.EDIT,\n      },\n      {\n        tooltip: \'删除\',\n        icon: \'ant-design:delete-outlined\',\n        color: \'error\',\n        auth: PermEnum.REMOVE,\n        popConfirm: {\n          title: \'是否确认删除\',\n          confirm: handleDelete.bind(null, record),\n        },\n      },\n    ];\n  }\n\n  function getDropDownAction(record): ActionItem[] | null {\n    return null;\n  }\n</script>', '2023-02-04 20:19:20', NULL, NULL, 'admin', 82324589637, 'index.vue');
 INSERT INTO `gen_template` VALUES (192702147397, '弹窗页', '<template>\n  <BasicModal v-bind=\"$attrs\" @register=\"registerModal\" :title=\"getTitle\" @ok=\"handleSubmit\">\n    <BasicForm @register=\"registerForm\" />\n  </BasicModal>\n</template>\n<script lang=\"ts\">\n  import { defineComponent, ref, computed, unref } from \'vue\';\n  import { BasicModal, useModalInner } from \'/@/components/Modal\';\n  import { BasicForm, useForm } from \'/@/components/Form/index\';\n  import { formSchema } from \'./${entityName}.data\';\n\n  import { ${entityName}Api } from \'./${entityName}.api\';\n\n  export default defineComponent({\n    name: \'${entityName?cap_first}Modal\',\n    components: { BasicModal, BasicForm },\n    emits: [\'success\', \'register\'],\n    setup(_, { emit }) {\n      const isUpdate = ref(true);\n\n      const [registerForm, { setFieldsValue, updateSchema, validate }] = useForm({\n        labelWidth: 80,\n        baseColProps: { span: 24 },\n        schemas: formSchema,\n        showActionButtonGroup: false,\n      });\n\n      const [registerModal, { openOKLoading, closeModal }] = useModalInner(async (data) => {\n        isUpdate.value = !!data?.isUpdate;\n        if (unref(isUpdate)) {\n          setFieldsValue({\n            ...data.record,\n          });\n      });\n\n      const getTitle = computed(() => (!unref(isUpdate) ? \'新增\' : \'编辑\'));\n\n      async function handleSubmit() {\n        const values = await validate();\n        openOKLoading(async () => {\n          await ${entityName}Api.saveOrEdit(values, unref(isUpdate));\n          closeModal();\n          emit(\'success\');\n        });\n      }\n      return { registerModal, registerForm, getTitle, handleSubmit };\n    },\n  });\n</script>', '2023-02-04 20:22:51', NULL, NULL, 'admin', 82324589637, '${entityName?cap_first}.vue');
 INSERT INTO `gen_template` VALUES (192707297157, '数据页', 'import { BasicColumn } from \'/@/components/Table\';\nimport { FormSchema } from \'/@/components/Table\';\n\nexport const columns: BasicColumn[] = [\n];\n\nexport const searchFormSchema: FormSchema[] = [\n];\n\nexport const formSchema: FormSchema[] = [\n];', '2023-02-04 20:24:12', NULL, NULL, 'admin', 82324589637, '${entityName}.data.ts');
-INSERT INTO `gen_template` VALUES (362832993636357, '数据库表java类映射', 'package ${packageName}.${moduleName}.${entityName}.table;\n\nimport com.moxa.dream.system.annotation.Column;\nimport com.moxa.dream.system.annotation.Id;\nimport com.moxa.dream.system.annotation.Table;\nimport lombok.Data;\n\nimport java.sql.Types;\n\n/**\n * @Description: ${tableComment!\'\'}\n * @Author: ${author!\'\'}\n * @Date: ${.now?string[\"yyyy-MM-dd HH:mm:ss\"]}\n */\n@Data\n@Table(\"${tableName}\")\npublic class ${className} {\n\n    <#list columns as column>\n  \n		/**\n     * ${column.columnComment}\n     */\n    <#if column.primaryPk>\n    @Id\n    </#if>\n    @Column(value = \"${column.columnName}\", jdbcType = Types.${column.columnType})\n    private ${column.attrType} ${column.attrName};\n</#list>\n}', '2022-12-11 08:31:15', 'admin', '2023-02-04 20:32:28', NULL, 82324589637, '${className}.java');
+INSERT INTO `gen_template` VALUES (362832993636357, '数据库表java类映射', 'package ${packageName}.${moduleName}.${entityName}.table;\n\nimport com.moxa.dream.system.annotation.Column;\nimport com.moxa.dream.system.annotation.Id;\nimport com.moxa.dream.system.annotation.Table;\nimport lombok.Data;\n\nimport java.sql.Types;\n\n/**\n * @Description: ${tableComment!\'\'}\n * @Author: ${author!\'\'}\n * @Date: ${.now?string[\"yyyy-MM-dd HH:mm:ss\"]}\n */\n@Data\n@Table(\"${tableName}\")\npublic class ${className} {\n\n    <#list columns as column>\n  \n		/**\n     * ${column.columnComment!\'\'}\n     */\n    <#if column.primaryPk>\n    @Id\n    </#if>\n    @Column(value = \"${column.columnName}\", jdbcType = Types.${column.columnType})\n    private ${column.attrType} ${column.attrName};\n</#list>\n}', '2022-12-11 08:31:15', 'admin', '2023-02-19 17:03:06', NULL, 82324589637, '${className}.java');
 
 -- ----------------------------
 -- Table structure for gen_template_group
@@ -418,6 +441,10 @@ INSERT INTO `sys_button` VALUES (179002517127, 19, 'sync');
 INSERT INTO `sys_button` VALUES (187263535685, 2, 'remove_batch');
 INSERT INTO `sys_button` VALUES (192006785029, 12, 'remove_batch');
 INSERT INTO `sys_button` VALUES (208603001541, 2, 'role_user');
+INSERT INTO `sys_button` VALUES (270339307653, 270244951749, 'add');
+INSERT INTO `sys_button` VALUES (270339307654, 270244951749, 'edit');
+INSERT INTO `sys_button` VALUES (270339307655, 270244951749, 'remove');
+INSERT INTO `sys_button` VALUES (270339307656, 270244951749, 'remove_batch');
 
 -- ----------------------------
 -- Table structure for sys_button_permission
@@ -433,53 +460,6 @@ CREATE TABLE `sys_button_permission`  (
 -- ----------------------------
 -- Records of sys_button_permission
 -- ----------------------------
-INSERT INTO `sys_button_permission` VALUES (208604134917, 153157080517, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134918, 153157080518, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134919, 153157080519, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134920, 159925289733, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134921, 153162963205, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134922, 153162963206, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134923, 153162963207, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134924, 173653609605, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134925, 192006785029, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134926, 173664974213, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134927, 173664974214, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134928, 173664974215, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134929, 173664974216, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134930, 178966814853, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134931, 178966814854, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134932, 178966814855, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134933, 178966814856, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134934, 178967663493, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134935, 178968322373, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134936, 178968322374, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134937, 178968322375, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134938, 178968322376, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134939, 178969028229, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134940, 178969028230, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134941, 178969028231, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134942, 178969028232, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134943, 179002517125, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134944, 179002517127, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134945, 179002517126, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134946, 178969766725, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134947, 178969766726, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134948, 178969766727, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134949, 178969766728, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134950, 153165063429, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134951, 153165063430, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134952, 153165063431, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134953, 173652824133, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134954, 173652824135, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134955, 173652824134, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134956, 153166387781, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134957, 153166387782, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134958, 153166387783, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134959, 187263535685, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134960, 153366975622, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134961, 153366975621, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134962, 153366975623, 1);
-INSERT INTO `sys_button_permission` VALUES (208604134963, 208603001541, 1);
 INSERT INTO `sys_button_permission` VALUES (226159902597, 153157080517, 226157928197);
 INSERT INTO `sys_button_permission` VALUES (226159902598, 153157080518, 226157928197);
 INSERT INTO `sys_button_permission` VALUES (226159902599, 153157080519, 226157928197);
@@ -527,6 +507,57 @@ INSERT INTO `sys_button_permission` VALUES (226159902640, 153366975622, 22615792
 INSERT INTO `sys_button_permission` VALUES (226159902641, 153366975621, 226157928197);
 INSERT INTO `sys_button_permission` VALUES (226159902642, 153366975623, 226157928197);
 INSERT INTO `sys_button_permission` VALUES (226159902643, 208603001541, 226157928197);
+INSERT INTO `sys_button_permission` VALUES (274846950853, 153157080517, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950854, 153157080518, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950855, 153157080519, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950856, 159925289733, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950857, 153162963205, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950858, 153162963206, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950859, 153162963207, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950860, 173653609605, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950861, 192006785029, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950862, 173664974213, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950863, 173664974214, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950864, 173664974215, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950865, 173664974216, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950866, 178966814853, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950867, 178966814854, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950868, 178966814855, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950869, 178966814856, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950870, 178967663493, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950871, 178968322373, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950872, 178968322374, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950873, 178968322375, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950874, 178968322376, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950875, 178969028229, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950876, 178969028230, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950877, 178969028231, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950878, 178969028232, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950879, 179002517125, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950880, 179002517127, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950881, 179002517126, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950882, 178969766725, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950883, 178969766726, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950884, 178969766727, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950885, 178969766728, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950886, 153165063429, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950887, 153165063430, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950888, 153165063431, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950889, 173652824133, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950890, 173652824135, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950891, 173652824134, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950892, 153166387781, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950893, 153166387782, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950894, 153166387783, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950895, 187263535685, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950896, 153366975622, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950897, 153366975621, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950917, 153366975623, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950918, 208603001541, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950919, 270339307653, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950920, 270339307654, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950921, 270339307655, 1);
+INSERT INTO `sys_button_permission` VALUES (274846950922, 270339307656, 1);
 
 -- ----------------------------
 -- Table structure for sys_data_permission
@@ -555,7 +586,7 @@ CREATE TABLE `sys_data_source`  (
   `id` bigint(20) NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '数据源名称',
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
-  `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '数据源地址',
+  `url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '数据源地址',
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -582,7 +613,7 @@ CREATE TABLE `sys_dept`  (
   `dept_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构/部门名称',
   `dept_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '机构/部门编码',
   `order_no` double NULL DEFAULT NULL COMMENT '排序',
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '描述',
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '描述',
   `status` int(11) NULL DEFAULT NULL COMMENT '状态（1启用，0不启用）',
   `del_flag` int(11) NULL DEFAULT NULL COMMENT '删除状态（0，正常，1已删除）',
   `create_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -595,10 +626,10 @@ CREATE TABLE `sys_dept`  (
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
-INSERT INTO `sys_dept` VALUES (1, NULL, '研发部', '01', 1, '', NULL, NULL, 'admin', '2023-01-02 00:40:23', 'admin', '2023-02-11 20:28:50');
-INSERT INTO `sys_dept` VALUES (42083908293, 1, '中台研发部', '0101', 1, '', 0, NULL, 'admin', '2023-01-08 14:39:21', NULL, NULL);
-INSERT INTO `sys_dept` VALUES (42089689925, NULL, '产品部', '02', 2, NULL, NULL, NULL, 'admin', '2023-01-08 14:40:51', 'admin', '2023-02-03 19:40:21');
-INSERT INTO `sys_dept` VALUES (42202626373, NULL, '测试部', '03', 3, NULL, 0, NULL, 'admin', '2023-01-08 15:10:16', NULL, NULL);
+INSERT INTO `sys_dept` VALUES (1, NULL, '研发部', '01', 1, '', NULL, 0, 'admin', '2023-01-02 00:40:23', 'admin', '2023-02-11 20:28:50');
+INSERT INTO `sys_dept` VALUES (42083908293, 1, '中台研发部', '0101', 1, '', 0, 0, 'admin', '2023-01-08 14:39:21', NULL, NULL);
+INSERT INTO `sys_dept` VALUES (42089689925, NULL, '产品部', '02', 2, NULL, NULL, 0, 'admin', '2023-01-08 14:40:51', 'admin', '2023-02-19 16:54:12');
+INSERT INTO `sys_dept` VALUES (42202626373, NULL, '测试部', '03', 3, NULL, 0, 0, 'admin', '2023-01-08 15:10:16', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict
@@ -621,13 +652,14 @@ CREATE TABLE `sys_dict`  (
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
-INSERT INTO `sys_dict` VALUES (8616451013, '性别', 'sex', NULL, NULL, 'admin', '2023-01-02 13:23:52', 'admin', '2023-02-04 16:42:20', NULL);
-INSERT INTO `sys_dict` VALUES (71375867077, '数据权限', 'data_permission', '控制数据查看范围', NULL, 'admin', '2023-01-13 21:47:28', 'admin', '2023-01-13 21:47:46', NULL);
-INSERT INTO `sys_dict` VALUES (74316854597, '数据库类型', 'database_type', NULL, NULL, 'admin', '2023-01-14 10:33:21', NULL, NULL, NULL);
-INSERT INTO `sys_dict` VALUES (76765765253, '成功状态', 'success_status', NULL, NULL, 'admin', '2023-01-14 21:11:05', NULL, NULL, NULL);
-INSERT INTO `sys_dict` VALUES (77499306373, '日志类型', 'log_type', NULL, NULL, 'admin', '2023-01-15 00:22:07', NULL, NULL, NULL);
-INSERT INTO `sys_dict` VALUES (140960825093, '按钮权限', 'button_type', NULL, NULL, 'admin', '2023-01-26 11:48:33', 'admin', '2023-01-26 14:57:05', 0);
-INSERT INTO `sys_dict` VALUES (153462050245, '是否', 'whether', NULL, NULL, 'admin', '2023-01-28 18:04:05', NULL, NULL, 0);
+INSERT INTO `sys_dict` VALUES (8616451013, '性别', 'sex', NULL, 0, 'admin', '2023-01-02 13:23:52', 'admin', '2023-02-04 16:42:20', NULL);
+INSERT INTO `sys_dict` VALUES (71375867077, '数据权限', 'data_permission', '控制数据查看范围', 0, 'admin', '2023-01-13 21:47:28', 'admin', '2023-01-13 21:47:46', NULL);
+INSERT INTO `sys_dict` VALUES (74316854597, '数据库类型', 'database_type', NULL, 1, 'admin', '2023-01-14 10:33:21', NULL, NULL, NULL);
+INSERT INTO `sys_dict` VALUES (76765765253, '成功状态', 'success_status', NULL, 0, 'admin', '2023-01-14 21:11:05', NULL, NULL, NULL);
+INSERT INTO `sys_dict` VALUES (77499306373, '日志类型', 'log_type', NULL, 0, 'admin', '2023-01-15 00:22:07', NULL, NULL, NULL);
+INSERT INTO `sys_dict` VALUES (140960825093, '按钮权限', 'button_type', NULL, 0, 'admin', '2023-01-26 11:48:33', 'admin', '2023-01-26 14:57:05', 0);
+INSERT INTO `sys_dict` VALUES (153462050245, '是否', 'whether', NULL, 1, 'admin', '2023-01-28 18:04:05', NULL, NULL, 0);
+INSERT INTO `sys_dict` VALUES (270588795589, '运行状态', 'run_status', NULL, 0, 'admin', '2023-02-18 22:25:50', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_item
@@ -653,7 +685,6 @@ INSERT INTO `sys_dict_item` VALUES (71381259781, 71375867077, '本人', '1', '�
 INSERT INTO `sys_dict_item` VALUES (71389730373, 71375867077, '本部门', '2', '只能查看本部门数据', 2, NULL);
 INSERT INTO `sys_dict_item` VALUES (71398373445, 71375867077, '本部门以及子部门', '3', '只能查看部门以及子部门数据', 3, NULL);
 INSERT INTO `sys_dict_item` VALUES (71400237445, 71375867077, '所有部门', '4', '查看所有部门数据', 4, NULL);
-INSERT INTO `sys_dict_item` VALUES (74318393285, 74316854597, 'MySQL', 'MySQL', NULL, 1, NULL);
 INSERT INTO `sys_dict_item` VALUES (76767618309, 76765765253, '成功', '0', NULL, 1, 'success');
 INSERT INTO `sys_dict_item` VALUES (76768298309, 76765765253, '失败', '1', NULL, 2, 'error');
 INSERT INTO `sys_dict_item` VALUES (77513234117, 77499306373, '认证日志', 'auth', NULL, 1, NULL);
@@ -667,8 +698,6 @@ INSERT INTO `sys_dict_item` VALUES (153236810181, 140960825093, '按钮权限', 
 INSERT INTO `sys_dict_item` VALUES (153239148101, 140960825093, '数据权限', 'data_permission', '角色管理', 5, NULL);
 INSERT INTO `sys_dict_item` VALUES (153391879877, 140960825093, '按钮配置', 'button_setting', '菜单权限', 5, NULL);
 INSERT INTO `sys_dict_item` VALUES (153395673029, 140960825093, '添加下级', 'add_sub', '菜单权限', 5, NULL);
-INSERT INTO `sys_dict_item` VALUES (153462962053, 153462050245, '是', '1', NULL, 2, NULL);
-INSERT INTO `sys_dict_item` VALUES (153463594373, 153462050245, '否', '0', NULL, 1, NULL);
 INSERT INTO `sys_dict_item` VALUES (178905837061, 140960825093, '角色用户', 'role_user', '角色权限', 6, NULL);
 INSERT INTO `sys_dict_item` VALUES (178986906693, 140960825093, '导入', 'import', '通用', 4, NULL);
 INSERT INTO `sys_dict_item` VALUES (178989785861, 140960825093, '导出', 'export', '通用', 4, NULL);
@@ -688,172 +717,6 @@ CREATE TABLE `sys_interface_permission`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '角色权限表' ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of sys_interface_permission
--- ----------------------------
-INSERT INTO `sys_interface_permission` VALUES (231421759877, 'POST:/sys/dict/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759878, 'DELETE:/sys/dict/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759879, 'POST:/sys/dict/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759880, 'GET:/sys/dict/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759881, 'GET:/sys/dict/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759941, 'GET:/sys/dict/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759942, 'DELETE:/sys/dict/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759943, 'GET:/sys/dict/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759944, 'PUT:/sys/dict/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759945, 'POST:/gen/code/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759946, 'DELETE:/gen/code/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759947, 'POST:/gen/code/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759948, 'GET:/gen/code/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759949, 'GET:/gen/code/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759950, 'GET:/gen/code/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759951, 'DELETE:/gen/code/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759952, 'GET:/gen/code/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759953, 'PUT:/gen/code/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759954, 'POST:/sys/dictItem/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759955, 'DELETE:/sys/dictItem/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759956, 'POST:/sys/dictItem/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759957, 'GET:/sys/dictItem/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759958, 'GET:/sys/dictItem/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759959, 'GET:/sys/dictItem/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759960, 'DELETE:/sys/dictItem/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759961, 'GET:/sys/dictItem/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759962, 'PUT:/sys/dictItem/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759963, 'POST:/sys/dept/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759964, 'DELETE:/sys/dept/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759965, 'POST:/sys/dept/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759966, 'GET:/sys/dept/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759967, 'GET:/sys/dept/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759968, 'GET:/sys/dept/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759969, 'DELETE:/sys/dept/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759970, 'GET:/sys/dept/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759971, 'PUT:/sys/dept/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759972, 'POST:/generate/fieldType/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759973, 'DELETE:/generate/fieldType/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759974, 'POST:/generate/fieldType/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759975, 'GET:/generate/fieldType/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759976, 'GET:/generate/fieldType/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759977, 'GET:/generate/fieldType/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759978, 'DELETE:/generate/fieldType/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759979, 'GET:/generate/fieldType/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759980, 'PUT:/generate/fieldType/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759981, 'POST:/sys/dataSource/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759982, 'DELETE:/sys/dataSource/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759983, 'POST:/sys/dataSource/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759984, 'GET:/sys/dataSource/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759985, 'GET:/sys/dataSource/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759986, 'GET:/sys/dataSource/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759987, 'DELETE:/sys/dataSource/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759988, 'GET:/sys/dataSource/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759989, 'PUT:/sys/dataSource/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759990, 'POST:/generate/baseClass/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759991, 'DELETE:/generate/baseClass/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759992, 'POST:/generate/baseClass/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759993, 'GET:/generate/baseClass/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759994, 'GET:/generate/baseClass/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759995, 'GET:/generate/baseClass/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759996, 'DELETE:/generate/baseClass/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759997, 'GET:/generate/baseClass/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759998, 'PUT:/generate/baseClass/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421759999, 'POST:/sys/menu/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760005, 'DELETE:/sys/menu/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760006, 'POST:/sys/menu/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760007, 'GET:/sys/menu/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760008, 'GET:/sys/menu/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760009, 'GET:/sys/menu/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760010, 'DELETE:/sys/menu/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760011, 'GET:/sys/menu/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760012, 'PUT:/sys/menu/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760013, 'POST:/sys/button/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760014, 'DELETE:/sys/button/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760015, 'POST:/sys/button/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760016, 'GET:/sys/button/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760017, 'GET:/sys/button/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760018, 'GET:/sys/button/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760019, 'DELETE:/sys/button/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760020, 'GET:/sys/button/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760021, 'PUT:/sys/button/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760022, 'POST:/sys/userDept/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760023, 'DELETE:/sys/userDept/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760024, 'POST:/sys/userDept/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760025, 'GET:/sys/userDept/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760026, 'GET:/sys/userDept/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760027, 'GET:/sys/userDept/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760028, 'DELETE:/sys/userDept/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760029, 'GET:/sys/userDept/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760030, 'PUT:/sys/userDept/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760031, 'POST:/generate/template/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760032, 'DELETE:/generate/template/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760033, 'POST:/generate/template/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760034, 'GET:/generate/template/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760035, 'GET:/generate/template/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760036, 'GET:/generate/template/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760037, 'DELETE:/generate/template/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760038, 'GET:/generate/template/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760039, 'PUT:/generate/template/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760040, 'POST:/sys/userRole/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760041, 'DELETE:/sys/userRole/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760042, 'POST:/sys/userRole/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760043, 'GET:/sys/userRole/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760044, 'GET:/sys/userRole/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760045, 'GET:/sys/userRole/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760046, 'DELETE:/sys/userRole/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760047, 'GET:/sys/userRole/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760048, 'PUT:/sys/userRole/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760049, 'POST:/sys/buttonPermission/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760050, 'DELETE:/sys/buttonPermission/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760051, 'POST:/sys/buttonPermission/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760052, 'GET:/sys/buttonPermission/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760053, 'GET:/sys/buttonPermission/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760054, 'GET:/sys/buttonPermission/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760055, 'DELETE:/sys/buttonPermission/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760056, 'GET:/sys/buttonPermission/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760057, 'PUT:/sys/buttonPermission/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760058, 'POST:/sys/user/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760059, 'DELETE:/sys/user/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760060, 'POST:/sys/user/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760061, 'GET:/sys/user/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760062, 'GET:/sys/user/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760063, 'GET:/sys/user/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760069, 'DELETE:/sys/user/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760070, 'GET:/sys/user/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760071, 'PUT:/sys/user/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760072, 'POST:/sys/dataPermission/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760073, 'DELETE:/sys/dataPermission/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760074, 'POST:/sys/dataPermission/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760075, 'GET:/sys/dataPermission/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760076, 'GET:/sys/dataPermission/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760077, 'GET:/sys/dataPermission/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760078, 'DELETE:/sys/dataPermission/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760079, 'GET:/sys/dataPermission/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760080, 'PUT:/sys/dataPermission/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760082, 'DELETE:/sys/role/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760083, 'POST:/sys/role/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760084, 'GET:/sys/role/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760085, 'GET:/sys/role/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760086, 'GET:/sys/role/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760087, 'DELETE:/sys/role/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760088, 'GET:/sys/role/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760089, 'PUT:/sys/role/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760090, 'POST:/generate/templateGroup/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760091, 'DELETE:/generate/templateGroup/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760092, 'POST:/generate/templateGroup/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760093, 'GET:/generate/templateGroup/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760094, 'GET:/generate/templateGroup/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760095, 'GET:/generate/templateGroup/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760096, 'DELETE:/generate/templateGroup/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760097, 'GET:/generate/templateGroup/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760098, 'PUT:/generate/templateGroup/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760099, 'POST:/sys/log/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760100, 'DELETE:/sys/log/remove', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760101, 'POST:/sys/log/save', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760102, 'GET:/sys/log/list', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760103, 'GET:/sys/log/get', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760104, 'GET:/sys/log/page', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760105, 'DELETE:/sys/log/removeBatch', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760106, 'GET:/sys/log/getOne', 1);
-INSERT INTO `sys_interface_permission` VALUES (231421760107, 'PUT:/sys/log/edit', 1);
-INSERT INTO `sys_interface_permission` VALUES (232144862213, 'POST:/sys/role/edit', 1);
-
--- ----------------------------
 -- Table structure for sys_log
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log`;
@@ -863,7 +726,7 @@ CREATE TABLE `sys_log`  (
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作用户账号',
   `realname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作用户名称',
   `ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'IP',
-  `method` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '请求java方法',
+  `method` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '请求java方法',
   `request_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求路径',
   `request_param` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '请求参数',
   `request_type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求类型',
@@ -911,26 +774,70 @@ CREATE TABLE `sys_menu`  (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES (1, NULL, '系统管理', '/system', 'layouts/default/index', '/system/user', 0, 2, 0, 'ant-design:setting', 0, 0, NULL, NULL, '2018-12-25 20:34:38', 'admin', '2022-12-20 23:27:32', 0, NULL, 'system');
-INSERT INTO `sys_menu` VALUES (2, 22, '角色管理', '/privilege/role', 'privilege/role/index', NULL, 1, 2, 0, 'ant-design:solution', 0, 0, NULL, NULL, '2018-12-25 20:34:38', 'admin', '2023-01-13 21:35:23', NULL, 1, 'privilege-role');
-INSERT INTO `sys_menu` VALUES (3, 1, '用户管理', '/system/user', 'system/user/index', NULL, 1, 1, 0, 'ant-design:user', 0, 0, NULL, NULL, '2018-12-25 20:34:38', 'admin', '2023-02-02 00:09:56', NULL, 1, 'system-user');
-INSERT INTO `sys_menu` VALUES (4, 1, '部门管理', '/system/dept', 'system/dept/index', NULL, 1, 2, 0, 'ant-design:team', 0, 0, NULL, 'admin', '2019-01-29 18:47:40', 'admin', '2023-01-29 22:07:03', NULL, 1, 'system-dept');
-INSERT INTO `sys_menu` VALUES (5, 22, '菜单管理', '/privilege/menu', 'privilege/menu/index', NULL, 1, 1, 0, 'ant-design:menu-outlined', 0, 0, NULL, 'admin', '2019-09-08 15:00:05', 'admin', '2023-01-27 10:43:27', NULL, 1, 'privilege-menu');
-INSERT INTO `sys_menu` VALUES (6, NULL, 'Dashboard', '/dashboard', 'layouts/default/index', '/dashboard/home', 0, 1, 0, 'ion:grid-outline', 0, 0, NULL, 'admin', '2021-09-15 19:51:23', 'admin', '2023-02-04 09:46:53', NULL, 0, 'dashboard');
-INSERT INTO `sys_menu` VALUES (8, 15, '数据字典', '/basic/dict', 'basic/dict/index', NULL, 1, 10, 0, 'ant-design:hdd-twotone', 0, 0, NULL, 'admin', '2021-09-17 16:31:27', 'admin', '2023-01-02 00:20:50', NULL, 1, 'basic-dict');
+INSERT INTO `sys_menu` VALUES (2, 22, '角色管理', '/privilege/role', 'privilege/role/index', NULL, 1, 2, 0, 'ant-design:solution', 0, 0, NULL, NULL, '2018-12-25 20:34:38', 'admin', '2023-01-13 21:35:23', 0, 1, 'privilege-role');
+INSERT INTO `sys_menu` VALUES (3, 1, '用户管理', '/system/user', 'system/user/index', NULL, 1, 1, 0, 'ant-design:user', 0, 0, NULL, NULL, '2018-12-25 20:34:38', 'admin', '2023-02-02 00:09:56', 0, 1, 'system-user');
+INSERT INTO `sys_menu` VALUES (4, 1, '部门管理', '/system/dept', 'system/dept/index', NULL, 1, 2, 0, 'ant-design:team', 0, 0, NULL, 'admin', '2019-01-29 18:47:40', 'admin', '2023-01-29 22:07:03', 0, 1, 'system-dept');
+INSERT INTO `sys_menu` VALUES (5, 22, '菜单管理', '/privilege/menu', 'privilege/menu/index', NULL, 1, 1, 0, 'ant-design:menu-outlined', 0, 0, NULL, 'admin', '2019-09-08 15:00:05', 'admin', '2023-01-27 10:43:27', 0, 1, 'privilege-menu');
+INSERT INTO `sys_menu` VALUES (6, NULL, 'Dashboard', '/dashboard', 'layouts/default/index', '/dashboard/home', 0, 1, 0, 'ion:grid-outline', 0, 0, NULL, 'admin', '2021-09-15 19:51:23', 'admin', '2023-02-19 16:54:31', 0, 0, 'dashboard');
+INSERT INTO `sys_menu` VALUES (8, 15, '数据字典', '/basic/dict', 'basic/dict/index', NULL, 1, 1, 0, 'ant-design:hdd-twotone', 0, 0, NULL, 'admin', '2021-09-17 16:31:27', 'admin', '2023-02-18 21:11:09', 0, 1, 'basic-dict');
 INSERT INTO `sys_menu` VALUES (9, NULL, '系统监控', '/monitor', 'layouts/default/index', NULL, 0, 5, 0, 'ant-design:video-camera-filled', 0, 0, NULL, 'admin', '2021-09-19 09:19:22', 'admin', '2022-12-20 23:27:52', 0, NULL, 'monitor');
-INSERT INTO `sys_menu` VALUES (11, 16, '数据源管理', '/generate/datasource', 'generate/datasource/index', NULL, 1, 3, 0, 'ant-design:hdd-filled', 0, 0, NULL, 'admin', '2021-09-19 16:48:17', 'admin', '2023-01-13 22:19:14', NULL, 1, 'generate-datasource');
-INSERT INTO `sys_menu` VALUES (12, 15, '日志管理', '/basic/log', 'basic/log/index', NULL, 1, 5, 0, 'ant-design:interaction-outlined', 0, 0, NULL, 'admin', '2021-09-19 18:15:56', 'admin', '2023-01-15 15:00:17', NULL, 1, 'basic-log');
-INSERT INTO `sys_menu` VALUES (13, 9, '性能监控', '/monitor/server', 'monitor/server/index', NULL, 1, 9, 0, 'ant-design:thunderbolt-filled', 0, 0, NULL, 'admin', '2021-09-20 11:42:22', 'admin', '2023-01-02 00:20:10', NULL, 1, 'monitor-server');
-INSERT INTO `sys_menu` VALUES (14, 9, 'Redis监控', '/monitor/redis', 'monitor/redis/index', NULL, 1, 10, 0, 'ant-design:trademark-outlined', 0, 0, NULL, 'admin', '2021-09-20 14:31:04', 'admin', '2023-01-02 00:20:17', NULL, 1, 'monitor-redis');
+INSERT INTO `sys_menu` VALUES (11, 16, '数据源管理', '/generate/datasource', 'generate/datasource/index', NULL, 1, 3, 0, 'ant-design:hdd-filled', 0, 0, NULL, 'admin', '2021-09-19 16:48:17', 'admin', '2023-01-13 22:19:14', 0, 1, 'generate-datasource');
+INSERT INTO `sys_menu` VALUES (12, 15, '日志管理', '/basic/log', 'basic/log/index', NULL, 1, 5, 0, 'ant-design:interaction-outlined', 0, 0, NULL, 'admin', '2021-09-19 18:15:56', 'admin', '2023-01-15 15:00:17', 0, 1, 'basic-log');
+INSERT INTO `sys_menu` VALUES (13, 9, '性能监控', '/monitor/server', 'monitor/server/index', NULL, 1, 9, 0, 'ant-design:thunderbolt-filled', 0, 0, NULL, 'admin', '2021-09-20 11:42:22', 'admin', '2023-01-02 00:20:10', 0, 1, 'monitor-server');
+INSERT INTO `sys_menu` VALUES (14, 9, 'Redis监控', '/monitor/redis', 'monitor/redis/index', NULL, 1, 10, 0, 'ant-design:trademark-outlined', 0, 0, NULL, 'admin', '2021-09-20 14:31:04', 'admin', '2023-01-02 00:20:17', 0, 1, 'monitor-redis');
 INSERT INTO `sys_menu` VALUES (15, NULL, '基础管理', '/basic', 'layouts/default/index', NULL, 0, 3, 0, 'ant-design:android-outlined', 0, 0, NULL, 'admin', '2022-11-12 20:34:52', 'admin', '2022-12-20 23:27:39', 0, NULL, 'basic');
-INSERT INTO `sys_menu` VALUES (16, NULL, '代码生成', '/generate', 'layouts/default/index', NULL, 0, 3, 0, 'ant-design:block-outlined', 0, 0, NULL, 'admin', '2022-11-18 20:22:43', 'admin', '2023-02-10 20:50:41', NULL, 0, 'generate');
-INSERT INTO `sys_menu` VALUES (17, 16, '类型映射', '/generate/field-type', 'generate/field-type/index', NULL, 1, 1, 0, 'ant-design:gateway-outlined', 0, 0, NULL, 'admin', '2022-11-18 20:26:01', 'admin', '2023-01-12 08:52:09', NULL, 1, 'generate-field-type');
-INSERT INTO `sys_menu` VALUES (18, 16, '基类管理', '/generate/base-class', 'generate/base-class/index', NULL, 1, 1, 0, 'ant-design:flag-twotone', 0, 0, NULL, 'admin', '2022-11-18 20:29:20', 'admin', '2023-01-12 08:51:49', NULL, 1, 'generate-base-class');
-INSERT INTO `sys_menu` VALUES (19, 16, '代码生成', '/generate/code-gen', 'generate/code-gen/index', NULL, 1, 1, 0, 'ant-design:file-word-outlined', 0, 0, NULL, 'admin', '2022-11-18 20:30:52', 'admin', '2023-01-12 08:51:26', NULL, 1, 'generate-code-gen');
-INSERT INTO `sys_menu` VALUES (20, 16, '模板配置', '/generate/template', 'generate/template/index', NULL, 1, 1, 0, 'ant-design:radius-setting-outlined', 0, 0, NULL, 'admin', '2022-11-29 21:24:46', 'admin', '2023-01-12 08:50:42', NULL, 1, 'generate-template');
-INSERT INTO `sys_menu` VALUES (21, 6, '首页', '/dashboard/home', 'dashboard/home/index', NULL, 1, 1, 1, 'ant-design:home-twotone', 0, 0, NULL, 'admin', '2022-12-20 23:12:49', 'admin', '2023-01-25 15:16:46', NULL, 1, 'dashboard-home');
-INSERT INTO `sys_menu` VALUES (22, NULL, '权限管理', '/privilege', 'layouts/default/index', '', 0, 4, 0, 'ant-design:property-safety-outlined', 0, 0, NULL, 'admin', '2023-01-13 20:47:59', 'admin', '2023-01-13 20:49:22', NULL, NULL, 'privilege');
-INSERT INTO `sys_menu` VALUES (23, 1, '账户设置', '/system/setting', '/system/setting/index', NULL, 1, 10, 0, 'ant-design:user-switch-outlined', 1, 0, NULL, 'admin', '2023-01-13 23:47:22', 'admin', '2023-01-26 15:50:00', NULL, 1, 'system-setting');
+INSERT INTO `sys_menu` VALUES (16, NULL, '代码生成', '/generate', 'layouts/default/index', NULL, 0, 3, 0, 'ant-design:block-outlined', 0, 0, NULL, 'admin', '2022-11-18 20:22:43', 'admin', '2023-02-10 20:50:41', 0, 0, 'generate');
+INSERT INTO `sys_menu` VALUES (17, 16, '类型映射', '/generate/field-type', 'generate/field-type/index', NULL, 1, 1, 0, 'ant-design:gateway-outlined', 0, 0, NULL, 'admin', '2022-11-18 20:26:01', 'admin', '2023-01-12 08:52:09', 0, 1, 'generate-field-type');
+INSERT INTO `sys_menu` VALUES (18, 16, '基类管理', '/generate/base-class', 'generate/base-class/index', NULL, 1, 1, 0, 'ant-design:flag-twotone', 0, 0, NULL, 'admin', '2022-11-18 20:29:20', 'admin', '2023-01-12 08:51:49', 0, 1, 'generate-base-class');
+INSERT INTO `sys_menu` VALUES (19, 16, '代码生成', '/generate/code-gen', 'generate/code-gen/index', NULL, 1, 1, 0, 'ant-design:file-word-outlined', 0, 0, NULL, 'admin', '2022-11-18 20:30:52', 'admin', '2023-01-12 08:51:26', 0, 1, 'generate-code-gen');
+INSERT INTO `sys_menu` VALUES (20, 16, '模板配置', '/generate/template', 'generate/template/index', NULL, 1, 1, 0, 'ant-design:radius-setting-outlined', 0, 0, NULL, 'admin', '2022-11-29 21:24:46', 'admin', '2023-01-12 08:50:42', 0, 1, 'generate-template');
+INSERT INTO `sys_menu` VALUES (21, 6, '首页', '/dashboard/home', 'dashboard/home/index', NULL, 1, 1, 1, 'ant-design:home-twotone', 0, 0, NULL, 'admin', '2022-12-20 23:12:49', 'admin', '2023-01-25 15:16:46', 0, 1, 'dashboard-home');
+INSERT INTO `sys_menu` VALUES (22, NULL, '权限管理', '/privilege', 'layouts/default/index', '', 0, 4, 0, 'ant-design:property-safety-outlined', 0, 0, NULL, 'admin', '2023-01-13 20:47:59', 'admin', '2023-01-13 20:49:22', 0, NULL, 'privilege');
+INSERT INTO `sys_menu` VALUES (23, 1, '账户设置', '/system/setting', '/system/setting/index', NULL, 1, 10, 0, 'ant-design:user-switch-outlined', 1, 0, NULL, 'admin', '2023-01-13 23:47:22', 'admin', '2023-01-26 15:50:00', 0, 1, 'system-setting');
+INSERT INTO `sys_menu` VALUES (270244951749, 15, '定时任务', '/basic/quartz', 'basic/quartz/index', NULL, 1, 3, 0, 'ant-design:field-time-outlined', 0, 0, NULL, 'admin', '2023-02-18 20:56:17', 'admin', '2023-02-18 21:23:51', 0, 0, 'quartz');
+
+-- ----------------------------
+-- Table structure for sys_quartz
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_quartz`;
+CREATE TABLE `sys_quartz`  (
+  `id` bigint(20) NOT NULL,
+  `create_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `del_flag` int(11) NULL DEFAULT NULL COMMENT '删除状态',
+  `update_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务名',
+  `cron` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'cron表达式',
+  `parameter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '参数',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `status` int(11) NULL DEFAULT NULL COMMENT '状态 0正常 -1停止',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '定时任务' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of sys_quartz
+-- ----------------------------
+INSERT INTO `sys_quartz` VALUES (275051435013, 'admin', '2023-02-19 17:47:59', 0, 'admin', '2023-02-19 17:50:28', 'testJob', '* * * * * ? *', '{\'type\':\'A\'}', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for sys_quartz_job
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_quartz_job`;
+CREATE TABLE `sys_quartz_job`  (
+  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `create_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `del_flag` int(1) NULL DEFAULT NULL COMMENT '删除状态',
+  `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `job_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务名',
+  `cron_expression` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'cron表达式',
+  `parameter` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '参数',
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `status` int(1) NULL DEFAULT NULL COMMENT '状态 0正常 -1停止',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -1033,6 +940,7 @@ INSERT INTO `sys_role_permission` VALUES (226159395926, 226157928197, 2);
 INSERT INTO `sys_role_permission` VALUES (226159395927, 226157928197, 9);
 INSERT INTO `sys_role_permission` VALUES (226159395928, 226157928197, 13);
 INSERT INTO `sys_role_permission` VALUES (226159395929, 226157928197, 14);
+INSERT INTO `sys_role_permission` VALUES (270341797317, 1, 270244951749);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -1057,7 +965,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', '$2a$10$GK123CZgMaU2HQXFJGM46Or3EcQyZktQm6xeN1rR548Zvb/KA6QPG', '', 0, '', 0, NULL, '2019-06-21 17:54:10', 'admin', '2023-02-11 19:11:17');
+INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', '$2a$10$GK123CZgMaU2HQXFJGM46Or3EcQyZktQm6xeN1rR548Zvb/KA6QPG', '', 0, '', 0, NULL, '2019-06-21 17:54:10', 'admin', '2023-02-19 16:48:22');
 INSERT INTO `sys_user` VALUES (85465348741, 'test', '测试员', '$2a$10$Wm4Op/aI30y5DhhZ6vHrluc09JeoMysgU83URfH0kJLh4UOJ2UDyK', NULL, 0, NULL, 0, 'admin', '2023-01-16 10:56:36', 'admin', '2023-02-11 20:28:42');
 
 -- ----------------------------

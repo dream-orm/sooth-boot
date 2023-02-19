@@ -25,7 +25,6 @@ public class ModuleSelector implements ImportSelector {
 
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-        String[] importList = MODULE_LIST.stream().map(module -> module.getClass().getName()).collect(Collectors.toList()).toArray(new String[0]);
-        return importList;
+        return MODULE_LIST.stream().map(module -> module.getClass().getName()).collect(Collectors.toList()).toArray(new String[0]);
     }
 }

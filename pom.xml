@@ -24,10 +24,10 @@
         <shiro.version>1.10.0</shiro.version>
         <java-jwt.version>4.2.1</java-jwt.version>
         <hutool.version>5.3.8</hutool.version>
+        <xxl-job.version>2.3.1</xxl-job.version>
     </properties>
 
     <modules>
-        <module>sooth-boot-core</module>
         <module>sooth-boot-module</module>
         <module>sooth-boot-plugin</module>
         <module>sooth-boot-drive</module>
@@ -39,15 +39,19 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-            <!-- sooth core -->
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-boot-core</artifactId>
+                <artifactId>sooth-module-base</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-module-code</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-quartz</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
