@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ComponentScan
-public class SysCodeModule implements Module {
+public class SysGenCodeModule implements Module {
     public List<String> tables() {
         return Arrays.asList(this.getClass().getPackage().getName());
     }

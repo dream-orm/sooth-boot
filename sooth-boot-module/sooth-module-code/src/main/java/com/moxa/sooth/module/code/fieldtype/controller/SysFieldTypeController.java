@@ -5,8 +5,8 @@ import com.moxa.sooth.module.base.core.annotation.AutoLog;
 import com.moxa.sooth.module.base.core.controller.BaseController;
 import com.moxa.sooth.module.base.core.entity.Result;
 import com.moxa.sooth.module.code.fieldtype.model.FieldTypeModel;
-import com.moxa.sooth.module.code.fieldtype.service.IFieldTypeService;
-import com.moxa.sooth.module.code.fieldtype.view.FieldType;
+import com.moxa.sooth.module.code.fieldtype.service.ISysFieldTypeService;
+import com.moxa.sooth.module.code.fieldtype.view.SysFieldTypeLV;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/generate/fieldType")
-public class FieldTypeController extends BaseController<IFieldTypeService, FieldType, FieldTypeModel> {
+@RequestMapping("/sys/gen/fieldType")
+public class SysFieldTypeController extends BaseController<ISysFieldTypeService, SysFieldTypeLV, FieldTypeModel> {
 
     @Autowired
-    private IFieldTypeService fieldTypeService;
+    private ISysFieldTypeService fieldTypeService;
 
-    public FieldTypeController() {
+    public SysFieldTypeController() {
         super("字段映射");
     }
 

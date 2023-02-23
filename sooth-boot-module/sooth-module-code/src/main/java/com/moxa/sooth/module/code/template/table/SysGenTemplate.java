@@ -1,4 +1,4 @@
-package com.moxa.sooth.module.code.baseclass.table;
+package com.moxa.sooth.module.code.template.table;
 
 import com.moxa.dream.system.annotation.Column;
 import com.moxa.dream.system.annotation.Id;
@@ -10,26 +10,25 @@ import java.util.Date;
 
 
 @Data
-@Table("gen_base_class")
-public class $BaseClass {
-    /**
-     *
-     */
+@Table("sys_gen_template")
+public class SysGenTemplate {
     @Id
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;
     /**
-     * 基类全类名
+     * 表ID
      */
-    @Column(value = "class_name", jdbcType = Types.VARCHAR)
-    private String className;
+    @Column(value = "group_id", jdbcType = Types.BIGINT)
+    private Long groupId;
 
-    /**
-     * 基类字段
-     */
-    @Column(value = "fields", jdbcType = Types.VARCHAR)
-    private String fields;
+    @Column(value = "name", jdbcType = Types.VARCHAR)
+    private String name;
 
+    @Column(value = "file_name", jdbcType = Types.VARCHAR)
+    private String fileName;
+
+    @Column(value = "content", jdbcType = Types.VARCHAR)
+    private String content;
     /**
      * 创建人
      */

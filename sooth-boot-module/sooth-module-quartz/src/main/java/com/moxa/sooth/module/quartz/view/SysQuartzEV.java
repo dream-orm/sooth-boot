@@ -36,11 +36,6 @@ public class SysQuartzEV extends BaseEntity {
     private String description;
 
     /**
-     * 状态 0正常 -1停止
-     */
-    private Integer status;
-
-    /**
      * 删除状态
      */
     @Wrap(ZeroWrapper.class)

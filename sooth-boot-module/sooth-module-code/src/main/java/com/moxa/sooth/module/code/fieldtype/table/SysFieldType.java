@@ -14,8 +14,8 @@ import java.sql.Types;
  * @date 2022-11-13
  */
 @Data
-@Table("gen_field_type")
-public class $FieldType {
+@Table("sys_field_type")
+public class SysFieldType {
     /**
      *
      */

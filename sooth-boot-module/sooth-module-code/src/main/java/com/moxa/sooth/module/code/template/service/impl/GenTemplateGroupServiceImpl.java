@@ -8,8 +8,8 @@ import com.moxa.sooth.module.code.template.model.GenTemplateModel;
 import com.moxa.sooth.module.code.template.service.IGenTemplateGroupService;
 import com.moxa.sooth.module.code.template.service.IGenTemplateService;
 import com.moxa.sooth.module.code.template.view.GenTemplate;
-import com.moxa.sooth.module.code.template.view.GenTemplateGroup;
 import com.moxa.sooth.module.code.template.view.GenTemplateList;
+import com.moxa.sooth.module.code.template.view.SysGenGroupLV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class GenTemplateGroupServiceImpl extends ServiceImpl<GenTemplateGroup, GenTemplateGroup> implements IGenTemplateGroupService {
+public class GenTemplateGroupServiceImpl extends ServiceImpl<SysGenGroupLV, SysGenGroupLV> implements IGenTemplateGroupService {
     @Autowired
     private IGenTemplateService genTemplateService;
 
@@ -32,19 +32,19 @@ public class GenTemplateGroupServiceImpl extends ServiceImpl<GenTemplateGroup, G
         if (selectPage.getTotal() > 0) {
             throw new SoothException("存在模板，不能删除当前模板组");
         }
-        return templateMapper.deleteById(GenTemplateGroup.class, id);
+        return templateMapper.deleteById(SysGenGroupLV.class, id);
     }
 
 
     @Override
     public List<Map<String, Object>> groupList() {
-        List<GenTemplateGroup> templateGroupList = selectList(null);
+        List<SysGenGroupLV> templateGroupList = selectList(null);
         List<Map<String, Object>> mapList = new ArrayList<>();
         if (CollUtil.isNotEmpty(templateGroupList)) {
-            for (GenTemplateGroup genTemplateGroup : templateGroupList) {
+            for (SysGenGroupLV sysGenGroupLV : templateGroupList) {
                 Map<String, Object> map = new HashMap();
-                map.put("label", genTemplateGroup.getName());
-                Long groupId = genTemplateGroup.getId();
+                map.put("label", sysGenGroupLV.getName());
+                Long groupId = sysGenGroupLV.getId();
                 List<GenTemplate> genTemplateList = genTemplateService.selectByGroupId(groupId);
                 if (CollUtil.isNotEmpty(genTemplateList)) {
                     List<Map<String, Object>> optionList = genTemplateList.stream().map(genTemplate -> {

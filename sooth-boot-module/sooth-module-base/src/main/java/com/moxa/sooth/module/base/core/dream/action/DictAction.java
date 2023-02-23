@@ -5,9 +5,9 @@ import com.moxa.dream.system.core.action.Action;
 import com.moxa.dream.system.core.session.Session;
 import com.moxa.dream.util.common.ObjectWrapper;
 import com.moxa.dream.util.exception.DreamRunTimeException;
+import com.moxa.sooth.module.base.core.config.App;
 import com.moxa.sooth.module.base.core.entity.BaseDict;
 import com.moxa.sooth.module.base.dict.service.ISysDictService;
-import com.moxa.sooth.module.base.core.config.App;
 
 public class DictAction implements Action {
     private final String code;

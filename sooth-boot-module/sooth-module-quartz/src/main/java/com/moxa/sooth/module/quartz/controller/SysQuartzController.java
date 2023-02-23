@@ -22,7 +22,7 @@ public class SysQuartzController extends BaseController<ISysQuartzService, SysQu
     @RequestMapping("nowExecute")
     public Result nowExecute(@RequestParam Long id) {
         service.nowExecute(id);
-        return Result.ok(null,"执行成功");
+        return Result.ok(null, "执行成功");
     }
 
     /**
@@ -31,7 +31,7 @@ public class SysQuartzController extends BaseController<ISysQuartzService, SysQu
     @RequestMapping("scheduleExecute")
     public Result scheduleExecute(@RequestParam Long id) {
         service.scheduleExecute(id);
-        return Result.ok(null,"调度成功");
+        return Result.ok(null, "调度成功");
     }
 
     /**
@@ -43,6 +43,6 @@ public class SysQuartzController extends BaseController<ISysQuartzService, SysQu
     @RequestMapping("stopExecute")
     public Result stopExecute(@RequestParam Long id) {
         service.stopExecute(id);
-        return Result.ok(null,"停止成功");
+        return Result.ok(null, "停止成功");
     }
 }

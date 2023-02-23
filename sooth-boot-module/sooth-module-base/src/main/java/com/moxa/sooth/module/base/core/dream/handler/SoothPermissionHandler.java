@@ -6,6 +6,7 @@ import com.moxa.dream.mate.permission.inject.PermissionHandler;
 import com.moxa.dream.system.config.MethodInfo;
 import com.moxa.dream.system.table.TableInfo;
 import com.moxa.sooth.module.base.core.annotation.DataPermission;
+import com.moxa.sooth.module.base.core.config.App;
 import com.moxa.sooth.module.base.core.entity.LoginUser;
 import com.moxa.sooth.module.base.core.util.ClientUtil;
 import com.moxa.sooth.module.base.dataPermission.service.ISysDataPermissionService;
@@ -13,7 +14,6 @@ import com.moxa.sooth.module.base.dataPermission.table.SysDataPermission;
 import com.moxa.sooth.module.base.dept.service.ISysDeptService;
 import com.moxa.sooth.module.base.dept.service.ISysUserDeptService;
 import com.moxa.sooth.module.base.dept.table.SysUserDept;
-import com.moxa.sooth.module.base.core.config.App;
 
 import java.util.Arrays;
 import java.util.List;

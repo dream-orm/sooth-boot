@@ -3,10 +3,10 @@ package com.moxa.sooth.module.base.core.dream.fetch;
 import cn.hutool.core.util.StrUtil;
 import com.moxa.dream.template.fetch.Fetcher;
 import com.moxa.dream.util.common.ObjectWrapper;
+import com.moxa.sooth.module.base.core.config.App;
 import com.moxa.sooth.module.base.core.entity.BaseDict;
 import com.moxa.sooth.module.base.core.exception.SoothException;
 import com.moxa.sooth.module.base.core.service.SysApiService;
-import com.moxa.sooth.module.base.core.config.App;
 
 import java.util.Map;
 

@@ -1,18 +1,22 @@
 package com.moxa.sooth.module.code.gen.util;
 
+import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
-import com.moxa.sooth.module.base.core.exception.SoothException;
-import com.moxa.sooth.module.code.fieldtype.service.IFieldTypeService;
-import com.moxa.sooth.module.code.fieldtype.view.FieldType;
-import com.moxa.sooth.module.code.gen.view.GenTable;
-import com.moxa.sooth.module.code.gen.view.GenTableField;
 import com.moxa.sooth.module.base.core.config.App;
+import com.moxa.sooth.module.base.core.entity.BaseEntity;
+import com.moxa.sooth.module.base.core.exception.SoothException;
+import com.moxa.sooth.module.code.fieldtype.service.ISysFieldTypeService;
+import com.moxa.sooth.module.code.fieldtype.view.SysFieldTypeLV;
+import com.moxa.sooth.module.code.gen.enums.ControlType;
+import com.moxa.sooth.module.code.gen.view.SysGenFieldLV;
+import com.moxa.sooth.module.code.gen.view.SysGenTableEV;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DbSourceUtil {
     public static Map<Integer, DataType> dataTypeMap = new HashMap<>();
@@ -48,18 +52,18 @@ public class DbSourceUtil {
         dataTypeMap.put(Types.NCLOB, new DataType("NCLOB", "String"));
     }
 
-    public static List<GenTable> getTableList(Connection connection, String table) {
+    public static List<SysGenTableEV> getTableList(Connection connection, String table) {
         try {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet resultSet = metaData.getTables(connection.getCatalog(), connection.getSchema(), table, new String[]{"TABLE"});
-            List<GenTable> tableInfoList = new ArrayList<>();
+            List<SysGenTableEV> tableInfoList = new ArrayList<>();
             while (resultSet.next()) {
                 String tableName = resultSet.getString("TABLE_NAME");
                 String remark = resultSet.getString("REMARKS");
-                GenTable genTable = new GenTable();
-                genTable.setTableName(tableName);
-                genTable.setTableComment(remark);
-                tableInfoList.add(genTable);
+                SysGenTableEV sysGenTableEV = new SysGenTableEV();
+                sysGenTableEV.setTableName(tableName);
+                sysGenTableEV.setTableComment(remark);
+                tableInfoList.add(sysGenTableEV);
             }
             return tableInfoList;
         } catch (Exception e) {
@@ -67,8 +71,9 @@ public class DbSourceUtil {
         }
     }
 
-    public static List<GenTableField> listColumn(Connection connection, String table) {
-        IFieldTypeService fieldTypeService = App.getBean(IFieldTypeService.class);
+    public static List<SysGenFieldLV> listColumn(Connection connection, String table) {
+        ISysFieldTypeService fieldTypeService = App.getBean(ISysFieldTypeService.class);
+        Set<String> fieldNameSet = Arrays.stream(ReflectUtil.getFieldsDirectly(BaseEntity.class, true)).map(field -> field.getName()).collect(Collectors.toSet());
         try {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet resultSet = metaData.getPrimaryKeys(connection.getCatalog(), connection.getSchema(), table);
@@ -78,7 +83,7 @@ public class DbSourceUtil {
                 keySet.add(columnName);
             }
             resultSet = metaData.getColumns(connection.getCatalog(), connection.getSchema(), table, null);
-            List<GenTableField> tableFieldList = new ArrayList<>();
+            List<SysGenFieldLV> tableFieldList = new ArrayList<>();
             while (resultSet.next()) {
                 String columnName = resultSet.getString("COLUMN_NAME");
                 String remark = resultSet.getString("REMARKS");
@@ -88,18 +93,32 @@ public class DbSourceUtil {
                     throw new SoothException("数据库字段类型未找到，类型id：" + dataTypeId);
                 }
                 String jdbcType = dataType.getJdbcType();
-                FieldType fieldType = fieldTypeService.selectById(dataTypeId);
-                if (fieldType == null) {
+                SysFieldTypeLV sysFieldTypeLV = fieldTypeService.selectById(dataTypeId);
+                if (sysFieldTypeLV == null) {
                     throw new SoothException("请先初始化类型映射");
                 }
-                GenTableField genTableField = new GenTableField();
-                genTableField.setPrimaryPk(keySet.contains(columnName));
-                genTableField.setColumnName(columnName);
-                genTableField.setAttrName(StrUtil.toCamelCase(columnName));
-                genTableField.setColumnComment(remark);
-                genTableField.setColumnType(jdbcType);
-                genTableField.setAttrType(fieldType.getAttrType());
-                tableFieldList.add(genTableField);
+                SysGenFieldLV sysGenFieldLV = new SysGenFieldLV();
+                sysGenFieldLV.setPrimaryPk(keySet.contains(columnName));
+                sysGenFieldLV.setColumnName(columnName);
+                sysGenFieldLV.setAttrName(StrUtil.toCamelCase(columnName));
+                sysGenFieldLV.setColumnComment(remark);
+                sysGenFieldLV.setColumnType(jdbcType);
+                sysGenFieldLV.setAttrType(sysFieldTypeLV.getAttrType());
+                if (dataTypeId == Types.BIT || dataTypeId == Types.SMALLINT || dataTypeId == Types.INTEGER || dataTypeId == Types.DOUBLE || dataTypeId == Types.FLOAT || dataTypeId == Types.BIGINT || dataTypeId == Types.DECIMAL || dataTypeId == Types.REAL) {
+                    sysGenFieldLV.setControlType(ControlType.NUMBER.getValue());
+                } else if (dataTypeId == Types.DATE) {
+                    sysGenFieldLV.setControlType(ControlType.DATE.getValue());
+                } else {
+                    sysGenFieldLV.setControlType(ControlType.INPUT.getValue());
+                }
+                if (sysGenFieldLV.isPrimaryPk()) {
+                    sysGenFieldLV.setShowListType("0");
+                    sysGenFieldLV.setShowEditType("0");
+                } else if (!fieldNameSet.contains(sysGenFieldLV.getAttrName())) {
+                    sysGenFieldLV.setShowListType("1");
+                    sysGenFieldLV.setShowEditType("1");
+                }
+                tableFieldList.add(sysGenFieldLV);
             }
             return tableFieldList;
         } catch (Exception e) {

@@ -7,8 +7,7 @@ import com.moxa.sooth.module.base.core.entity.Result;
 import com.moxa.sooth.module.code.gen.model.GenCodeModel;
 import com.moxa.sooth.module.code.gen.model.GenTableModel;
 import com.moxa.sooth.module.code.gen.service.IGenCodeService;
-import com.moxa.sooth.module.code.gen.view.GenTable;
-import com.moxa.sooth.module.code.gen.view.GenTableField;
+import com.moxa.sooth.module.code.gen.view.SysGenTableEV;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +19,8 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/gen/code")
-public class GenCodeController extends BaseController<IGenCodeService, GenTable, GenTableModel> {
+@RequestMapping("/sys/gen/code")
+public class GenCodeController extends BaseController<IGenCodeService, SysGenTableEV, GenTableModel> {
     @Autowired
     private IGenCodeService genTableService;
 
@@ -37,14 +36,8 @@ public class GenCodeController extends BaseController<IGenCodeService, GenTable,
 
     @RequestMapping(value = "/getTableList", method = RequestMethod.GET)
     public Result<?> getTableList(long id) {
-        List<GenTable> tableList = genTableService.getTableList(id);
+        List<SysGenTableEV> tableList = genTableService.getTableList(id);
         return Result.ok(tableList);
-    }
-
-    @RequestMapping(value = "/getTableFieldList", method = RequestMethod.GET)
-    public Result<?> getTableFieldList(long tableId) {
-        List<GenTableField> tableFieldList = genTableService.getTableFieldList(tableId);
-        return Result.ok(tableFieldList);
     }
 
     @RequestMapping(value = "/preview", method = RequestMethod.GET)

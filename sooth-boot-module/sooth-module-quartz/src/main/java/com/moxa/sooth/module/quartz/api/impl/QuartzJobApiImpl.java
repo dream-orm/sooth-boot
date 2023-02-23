@@ -2,10 +2,10 @@ package com.moxa.sooth.module.quartz.api.impl;
 
 
 import cn.hutool.core.util.ClassUtil;
+import com.moxa.sooth.module.base.core.config.App;
 import com.moxa.sooth.module.quartz.api.IJobApi;
 import com.moxa.sooth.module.quartz.util.QuartzConstant;
 import com.moxa.sooth.module.quartz.view.SysQuartzEV;
-import com.moxa.sooth.module.base.core.config.App;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class QuartzJobApiImpl implements IJobApi {
                 .startNow().build();
         String jobName = sysQuartzEV.getName();
         JobDetail jobDetail = JobBuilder.newJob(getType(jobName))
-                .usingJobData(QuartzConstant.PARAMETER,sysQuartzEV.getParameter())
+                .usingJobData(QuartzConstant.PARAMETER, sysQuartzEV.getParameter())
                 .build();
         scheduler.scheduleJob(jobDetail, trigger);
         scheduler.start();
@@ -32,16 +32,16 @@ public class QuartzJobApiImpl implements IJobApi {
 
     @Override
     public void scheduleExecute(SysQuartzEV sysQuartzEV) throws Exception {
+        scheduler.start();
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(sysQuartzEV.getCron());
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity(String.valueOf(sysQuartzEV.getId()))
                 .withSchedule(scheduleBuilder).build();
         String jobName = sysQuartzEV.getName();
         JobDetail jobDetail = JobBuilder.newJob(getType(jobName))
-                .usingJobData(QuartzConstant.PARAMETER,sysQuartzEV.getParameter())
+                .usingJobData(QuartzConstant.PARAMETER, sysQuartzEV.getParameter())
                 .build();
         scheduler.scheduleJob(jobDetail, trigger);
-        scheduler.start();
     }
 
     @Override

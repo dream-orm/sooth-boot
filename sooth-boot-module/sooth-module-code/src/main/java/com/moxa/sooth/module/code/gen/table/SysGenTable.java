@@ -9,8 +9,8 @@ import java.sql.Types;
 import java.util.Date;
 
 @Data
-@Table("gen_table")
-public class $GenTable {
+@Table("sys_gen_table")
+public class SysGenTable {
     @Id
     @Column(value = "id", jdbcType = Types.BIGINT)
     private Long id;

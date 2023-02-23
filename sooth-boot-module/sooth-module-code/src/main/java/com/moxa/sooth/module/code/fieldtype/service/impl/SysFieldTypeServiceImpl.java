@@ -3,8 +3,8 @@ package com.moxa.sooth.module.code.fieldtype.service.impl;
 import com.moxa.dream.boot.impl.ServiceImpl;
 import com.moxa.sooth.module.base.core.exception.SoothException;
 import com.moxa.sooth.module.code.fieldtype.mapper.FieldTypeMapper;
-import com.moxa.sooth.module.code.fieldtype.service.IFieldTypeService;
-import com.moxa.sooth.module.code.fieldtype.view.FieldType;
+import com.moxa.sooth.module.code.fieldtype.service.ISysFieldTypeService;
+import com.moxa.sooth.module.code.fieldtype.view.SysFieldTypeLV;
 import com.moxa.sooth.module.code.gen.util.DbSourceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> implements IFieldTypeService {
+public class SysFieldTypeServiceImpl extends ServiceImpl<SysFieldTypeLV, SysFieldTypeLV> implements ISysFieldTypeService {
     @Autowired
     private FieldTypeMapper fieldTypeMapper;
 
@@ -25,13 +25,13 @@ public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> impl
     public void initFieldType() {
         Field[] fields = Types.class.getDeclaredFields();
         Map<Integer, DbSourceUtil.DataType> dataTypeMap = DbSourceUtil.dataTypeMap;
-        List<FieldType> fieldTypeList = new ArrayList<>();
-        List<FieldType> fieldTypeList2 = new ArrayList<>();
+        List<SysFieldTypeLV> sysFieldTypeLVList = new ArrayList<>();
+        List<SysFieldTypeLV> sysFieldTypeLVList2 = new ArrayList<>();
         for (Field field : fields) {
             if (field.getType() == int.class) {
                 try {
                     int fieldCode = (int) field.get(null);
-                    FieldType fieldType = templateMapper.selectById(FieldType.class, fieldCode);
+                    SysFieldTypeLV sysFieldTypeLV = templateMapper.selectById(SysFieldTypeLV.class, fieldCode);
                     DbSourceUtil.DataType dataType = dataTypeMap.get(fieldCode);
                     String attrType = null;
                     if (dataType != null) {
@@ -40,16 +40,16 @@ public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> impl
                     if (attrType == null) {
                         attrType = "Object";
                     }
-                    if (fieldType == null) {
+                    if (sysFieldTypeLV == null) {
                         String fieldName = field.getName();
-                        fieldType = new FieldType();
-                        fieldType.setId(fieldCode);
-                        fieldType.setColumnType(fieldName);
-                        fieldType.setAttrType(attrType);
-                        fieldTypeList.add(fieldType);
-                    } else if (!attrType.equals(fieldType.getAttrType())) {
-                        fieldType.setAttrType(attrType);
-                        fieldTypeList2.add(fieldType);
+                        sysFieldTypeLV = new SysFieldTypeLV();
+                        sysFieldTypeLV.setId(fieldCode);
+                        sysFieldTypeLV.setColumnType(fieldName);
+                        sysFieldTypeLV.setAttrType(attrType);
+                        sysFieldTypeLVList.add(sysFieldTypeLV);
+                    } else if (!attrType.equals(sysFieldTypeLV.getAttrType())) {
+                        sysFieldTypeLV.setAttrType(attrType);
+                        sysFieldTypeLVList2.add(sysFieldTypeLV);
                     }
 
                 } catch (IllegalAccessException e) {
@@ -57,11 +57,11 @@ public class FieldTypeServiceImpl extends ServiceImpl<FieldType, FieldType> impl
                 }
             }
         }
-        if (!fieldTypeList.isEmpty()) {
-            templateMapper.batchInsert(fieldTypeList);
+        if (!sysFieldTypeLVList.isEmpty()) {
+            templateMapper.batchInsert(sysFieldTypeLVList);
         }
-        if (!fieldTypeList2.isEmpty()) {
-            templateMapper.batchUpdateById(fieldTypeList2);
+        if (!sysFieldTypeLVList2.isEmpty()) {
+            templateMapper.batchUpdateById(sysFieldTypeLVList2);
         }
     }
 

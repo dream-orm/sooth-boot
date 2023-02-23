@@ -4,17 +4,17 @@ import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotBlank;
 import com.moxa.sooth.module.base.core.dream.annotation.Unique;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
-import com.moxa.sooth.module.code.baseclass.table.$BaseClass;
+import com.moxa.sooth.module.code.baseclass.table.SysBaseClass;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 
 @Data
-@View($BaseClass.class)
+@View(SysBaseClass.class)
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class BaseClass extends BaseEntity {
+public class SysBaseClassEV extends BaseEntity {
     /**
      * id
      */

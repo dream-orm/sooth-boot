@@ -1,5 +1,6 @@
 package com.moxa.sooth.module.quartz.view;
 
+import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.sooth.module.quartz.table.SysQuartz;
 import lombok.Data;
@@ -32,13 +33,15 @@ public class SysQuartzLV {
      */
     private String description;
 
-    /**
-     * 状态 0未运行 -1运行
-     */
-    private Integer status;
 
     /**
      * 删除状态
      */
     private Integer delFlag;
+
+    /**
+     * 状态 0未运行 -1运行
+     */
+    @Ignore
+    private Integer status;
 }

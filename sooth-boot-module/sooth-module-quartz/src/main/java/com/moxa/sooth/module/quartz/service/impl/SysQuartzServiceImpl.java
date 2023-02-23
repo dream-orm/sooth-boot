@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
 @Slf4j
 @Service
 public class SysQuartzServiceImpl extends ServiceImpl<SysQuartzLV, SysQuartzEV> implements ISysQuartzService {
@@ -58,13 +59,13 @@ public class SysQuartzServiceImpl extends ServiceImpl<SysQuartzLV, SysQuartzEV> 
     public Page<SysQuartzLV> selectPage(Object conditionObject, Page page) {
         Page<SysQuartzLV> quartzLVPage = super.selectPage(conditionObject, page);
         Collection<SysQuartzLV> sysQuartzLVS = quartzLVPage.getRows();
-        if(CollUtil.isNotEmpty(sysQuartzLVS)){
-            for(SysQuartzLV sysQuartzLV:sysQuartzLVS) {
+        if (CollUtil.isNotEmpty(sysQuartzLVS)) {
+            for (SysQuartzLV sysQuartzLV : sysQuartzLVS) {
                 try {
                     boolean running = jobApi.isRunning(String.valueOf(sysQuartzLV.getId()));
-                    sysQuartzLV.setStatus(running?1:0);
-                }catch (Exception e){
-                    log.error(e.getMessage(),e);
+                    sysQuartzLV.setStatus(running ? 1 : 0);
+                } catch (Exception e) {
+                    log.error(e.getMessage(), e);
                 }
             }
         }

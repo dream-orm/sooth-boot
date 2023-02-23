@@ -77,10 +77,4 @@ public class SysQuartz {
      */
     @Column(value = "description", jdbcType = Types.VARCHAR)
     private String description;
-
-    /**
-     * 状态 0正常 -1停止
-     */
-    @Column(value = "status", jdbcType = Types.INTEGER)
-    private Integer status;
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/generate/template")
+@RequestMapping("/sys/gen/template")
 public class GenTemplateController extends BaseController<IGenTemplateService, GenTemplate, GenTemplateModel> {
     public GenTemplateController() {
         super("模板配置");
