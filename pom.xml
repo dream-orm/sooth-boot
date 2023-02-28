@@ -57,6 +57,11 @@
             </dependency>
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-program</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-boot-plugin</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>

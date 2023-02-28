@@ -28,6 +28,10 @@
             <groupId>com.moxa.sooth</groupId>
             <artifactId>sooth-module-monitor</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.moxa.sooth</groupId>
+            <artifactId>sooth-module-program</artifactId>
+        </dependency>
         <!--代码生成-->
         <dependency>
             <groupId>com.moxa.sooth</groupId>
