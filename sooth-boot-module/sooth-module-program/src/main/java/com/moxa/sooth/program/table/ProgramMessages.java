@@ -43,12 +43,12 @@ public class ProgramMessages {
     /**
      * 创建时间
      */
-    @Column(value = "creat_time", jdbcType = Types.TIMESTAMP)
-    private java.util.Date creatTime;
+    @Column(value = "create_time", jdbcType = Types.TIMESTAMP)
+    private java.util.Date createTime;
 
     /**
      * 更新时间
      */
-    @Column(value = "update_tim", jdbcType = Types.TIMESTAMP)
-    private java.util.Date updateTim;
+    @Column(value = "update_time", jdbcType = Types.TIMESTAMP)
+    private java.util.Date updateTime;
 }

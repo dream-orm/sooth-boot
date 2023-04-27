@@ -19,5 +19,6 @@
         <!--代码生成器-->
         <module>sooth-module-code</module>
         <module>sooth-module-monitor</module>
+        <module>sooth-module-program</module>
     </modules>
 </project>

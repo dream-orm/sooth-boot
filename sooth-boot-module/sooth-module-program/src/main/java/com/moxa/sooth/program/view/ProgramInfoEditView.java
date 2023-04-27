@@ -34,11 +34,11 @@ public class ProgramInfoEditView {
      */
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private java.util.Date creatTime;
+    private java.util.Date createTime;
     /**
      * 更新时间
      */
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private java.util.Date updateTim;
+    private java.util.Date updateTime;
 }

@@ -7,13 +7,19 @@ import com.moxa.dream.mate.block.invoker.BlockInvoker;
 import com.moxa.dream.mate.permission.inject.PermissionInject;
 import com.moxa.dream.mate.permission.invoker.PermissionGetInvoker;
 import com.moxa.dream.mate.permission.invoker.PermissionInjectInvoker;
+import com.moxa.dream.system.cache.Cache;
+import com.moxa.dream.system.cache.CacheFactory;
+import com.moxa.dream.system.cache.DefaultCacheFactory;
 import com.moxa.dream.system.inject.Inject;
 import com.moxa.dream.template.sequence.Sequence;
+import com.moxa.dream.util.common.ObjectUtil;
+import com.moxa.dream.util.reflect.ReflectUtil;
 import com.moxa.sooth.core.base.dream.handler.SoothPermissionHandler;
 import com.moxa.sooth.core.base.dream.sequence.SnowFlakeSequence;
 import com.moxa.sooth.plugin.Module;
 import com.moxa.sooth.plugin.ModuleSelector;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +42,10 @@ public class DreamConfig {
         }
         return new ConfigurationBean(tableList, mapperList);
     }
-
+    @Bean
+    public CacheFactory cacheFactory() {
+        return new DefaultCacheFactory();
+    }
     @Bean
     public Sequence sequence() {
         return new SnowFlakeSequence();

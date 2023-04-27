@@ -18,6 +18,9 @@ import com.moxa.sooth.core.base.util.RandImageUtil;
 import com.moxa.sooth.core.login.model.SysLoginModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -79,7 +82,6 @@ public class LoginController {
         if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
             LoginUser loginUser = sysApiService.getLoginUser(username);
-            ClientUtil.setLoginUser(loginUser);
             return Result.ok(loginUser);
         }
         return Result.error("获取用户信息失败");

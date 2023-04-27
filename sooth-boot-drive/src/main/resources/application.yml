@@ -1,7 +1,42 @@
+server:
+  port: 3100
+  servlet:
+    context-path: /sooth
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,httptrace
 spring:
   application:
     name: sooth-boot
-  profiles:
-    active: dev
   freemarker:
     checkTemplateLocation: false
+  datasource:
+    master:
+      pool-name: MasterDataSource
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/sooth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      minimum-idle: 3
+      auto-commit: true
+      connection-test-query: select 1
+      maximum-pool-size: 50
+      idle-timeout: 10000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  #redis 配置
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+
+sooth:
+  defaultPassword: 123456
+
+dream:
+  toSQL: com.moxa.dream.antlr.sql.ToMYSQL
+  listeners:
+    - com.moxa.dream.drive.listener.DebugListener
