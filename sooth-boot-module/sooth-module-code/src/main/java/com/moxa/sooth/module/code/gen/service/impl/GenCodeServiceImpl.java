@@ -60,8 +60,13 @@ public class GenCodeServiceImpl extends ServiceImpl<SysGenTableEV, SysGenTableEV
     @Override
     public List<SysGenTableEV> getTableList(long id) {
         SysDataSource sysDataSource = dataSourceService.selectById(id);
-        List<SysGenTableEV> tableList = DbSourceUtil.getTableList(DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword()), null);
-        return tableList;
+        Connection connection = DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword());
+        try {
+            List<SysGenTableEV> tableList = DbSourceUtil.getTableList(connection, null);
+            return tableList;
+        }finally {
+            DbUtil.close(connection);
+        }
     }
 
     @Override

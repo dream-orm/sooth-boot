@@ -7,6 +7,7 @@ import com.moxa.sooth.module.code.datasource.view.SysDataSource;
 import com.moxa.sooth.module.code.datasource.view.SysDataSourceListView;
 import org.springframework.stereotype.Service;
 
+import java.sql.Connection;
 import java.util.List;
 
 @Service
@@ -14,7 +15,8 @@ public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSource, SysData
 
     @Override
     public boolean testConnection(SysDataSource sysDataSource) {
-        DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword());
+        Connection connection = DbUtil.getConnection(sysDataSource.getUrl(), sysDataSource.getUsername(), sysDataSource.getPassword());
+        DbUtil.close(connection);
         return true;
     }
 

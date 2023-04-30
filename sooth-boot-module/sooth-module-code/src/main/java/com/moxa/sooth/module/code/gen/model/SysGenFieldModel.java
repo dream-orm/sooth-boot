@@ -9,6 +9,6 @@ import lombok.Data;
 @Data
 @View(SysGenField.class)
 public class SysGenFieldModel {
-    @Conditional(value = EqCondition.class, filterNull = false)
+    @Conditional(value = EqCondition.class, nullFlag = false)
     private Long tableId;
 }

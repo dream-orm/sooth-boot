@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 public class SysUserRoleExistModel {
-    @Conditional(value = EqCondition.class, filterNull = false)
+    @Conditional(value = EqCondition.class, nullFlag = false)
     private Long roleId;
-    @Conditional(value = EqCondition.class, filterNull = false)
+    @Conditional(value = EqCondition.class, nullFlag = false)
     private Long userId;
 }

@@ -42,6 +42,12 @@ public class GenTemplateServiceImpl extends ServiceImpl<GenTemplateList, GenTemp
         schemaMap.put("_.attrName", "属性名");
         schemaMap.put("_.attrType", "属性类型");
         schemaMap.put("_.primaryPk", "是否主键");
+        schemaMap.put("_.searchType", "查询方式");
+        schemaMap.put("_.showListType", "列表页显示方式");
+        schemaMap.put("_.showEditType", "编辑页显示方式");
+        schemaMap.put("_.validType", "校验方式");
+        schemaMap.put("_.controlType", "控件类型");
+        schemaMap.put("_.dictCode", "字典");
         List<Map<String, Object>> resultList = new ArrayList<>(schemaMap.size());
         schemaMap.forEach((key, value) -> {
             Map<String, Object> map = new HashMap<>();

@@ -79,7 +79,6 @@ public class LoginController {
         if (StrUtil.isNotEmpty(username)) {
             // 根据用户名查询用户信息
             LoginUser loginUser = sysApiService.getLoginUser(username);
-            ClientUtil.setLoginUser(loginUser);
             return Result.ok(loginUser);
         }
         return Result.error("获取用户信息失败");
