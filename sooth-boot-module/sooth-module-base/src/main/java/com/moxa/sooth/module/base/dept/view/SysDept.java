@@ -6,7 +6,7 @@ import com.moxa.dream.template.annotation.Wrap;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.dream.template.wrap.ZeroWrapper;
 import com.moxa.sooth.module.base.core.annotation.Dict;
-import com.moxa.sooth.module.base.core.dream.annotation.Unique;
+import com.moxa.dream.template.annotation.validate.Unique;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
 import com.moxa.sooth.module.base.dept.table.$SysDept;
 import lombok.Data;

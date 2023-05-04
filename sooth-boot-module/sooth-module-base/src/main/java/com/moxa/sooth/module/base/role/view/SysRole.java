@@ -3,7 +3,7 @@ package com.moxa.sooth.module.base.role.view;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotNull;
 import com.moxa.sooth.module.base.core.annotation.Dict;
-import com.moxa.sooth.module.base.core.dream.annotation.Unique;
+import com.moxa.dream.template.annotation.validate.Unique;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
 import com.moxa.sooth.module.base.role.table.SysRoleTable;
 import lombok.Data;

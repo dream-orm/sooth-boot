@@ -2,7 +2,7 @@ package com.moxa.sooth.module.code.baseclass.view;
 
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotBlank;
-import com.moxa.sooth.module.base.core.dream.annotation.Unique;
+import com.moxa.dream.template.annotation.validate.Unique;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
 import com.moxa.sooth.module.code.baseclass.table.SysBaseClass;
 import lombok.Data;
