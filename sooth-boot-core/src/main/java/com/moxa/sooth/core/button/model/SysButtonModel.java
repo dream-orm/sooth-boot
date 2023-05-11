@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class SysButtonModel {
-    @Conditional(value = EqCondition.class, filterNull = false)
+    @Conditional(value = EqCondition.class, nullFlag = false)
     private Long menuId;
 }

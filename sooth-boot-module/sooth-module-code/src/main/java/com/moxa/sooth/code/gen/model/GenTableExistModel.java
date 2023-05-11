@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class GenTableExistModel {
-    @Conditional(value = EqCondition.class, filterNull = false)
+    @Conditional(value = EqCondition.class, nullFlag = false)
     private String tableName;
 
 }
