@@ -19,7 +19,7 @@ import java.util.Date;
 
 public class JwtUtil {
 
-    public static final long EXPIRE_TIME = 60 * 60 * 1000;
+    public static final long EXPIRE_TIME = 3 * 24 * 60 * 60 * 1000;
 
     /**
      * @param response

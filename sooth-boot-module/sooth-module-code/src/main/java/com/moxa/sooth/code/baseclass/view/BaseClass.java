@@ -3,7 +3,7 @@ package com.moxa.sooth.code.baseclass.view;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotBlank;
 import com.moxa.sooth.code.baseclass.table.$BaseClass;
-import com.moxa.sooth.core.base.dream.annotation.Unique;
+import com.moxa.dream.template.annotation.validate.Unique;
 import com.moxa.sooth.core.base.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
