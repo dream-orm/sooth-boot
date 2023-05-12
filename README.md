@@ -1,4 +1,4 @@
-简介 soothboot（https://github.com/moxa-lzf/sooth-boot）是一款前端基于vben:2.8.0，后端借鉴jeecg而开发的脚手架，它的诞生看似重复造轮子，实则是作者寄托将幻想变成现实的窗口。
+简介 soothboot（https://github.com/moxa-lzf/sooth-boot）是一款前端基于vben:2.8.0，后端借鉴jeecg而开发的脚手架。
 前端 保留了vben已有的功能，可以原汁原味的使用ven改了重大几处功能 tab切换，去除动画，理由：限制了template里不能多组件 新增功能：
 
 1. 项目设置暴露全局控制tab是否缓存
