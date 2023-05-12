@@ -66,6 +66,11 @@
             </dependency>
             <dependency>
                 <groupId>com.moxa.dream</groupId>
+                <artifactId>dream-drive</artifactId>
+                <version>${dream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.dream</groupId>
                 <artifactId>dream-boot-starter</artifactId>
                 <version>${dream.version}</version>
             </dependency>

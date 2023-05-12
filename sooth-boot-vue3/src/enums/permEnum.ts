@@ -1,0 +1,16 @@
+export enum PermEnum {
+  ADD = 'add',
+  EDIT = 'edit',
+  REMOVE = 'remove',
+  REMOVE_BATCH = 'remove_batch',
+  IMPORT = 'import',
+  EXPORT = 'export',
+  ADD_SUB = 'add_sub',
+  BUTTON_SETTING = 'button_setting',
+  MENU_PERMISSION = 'menu_permission',
+  BUTTON_PERMISSION = 'button_permission',
+  DATA_PERMISSION = 'data_permission',
+  ROLE_USER = 'role_user',
+  SYNC = 'sync',
+  GENERATE = 'generate',
+}

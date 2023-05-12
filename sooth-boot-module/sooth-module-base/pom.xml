@@ -17,6 +17,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
@@ -38,7 +42,15 @@
         <!-- dream -->
         <dependency>
             <groupId>com.moxa.dream</groupId>
+            <artifactId>dream-drive</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../../lib/dream-drive-1.0.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.moxa.dream</groupId>
             <artifactId>dream-boot-starter</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../../lib/dream-boot-starter-1.0.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
