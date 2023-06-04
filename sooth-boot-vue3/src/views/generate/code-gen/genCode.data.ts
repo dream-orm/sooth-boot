@@ -7,13 +7,18 @@ import { baseClassApi } from '/@/views/generate/base-class/baseClass.api';
 import { dictItemApi } from '/@/views/basic/dict/dict-item.api';
 import { ref,unref } from 'vue';
 
-const showTypes = ref(await dictItemApi.dictItemCode('show_type'));
-const searchTypes = ref(await dictItemApi.dictItemCode('search_type'));
-const controlTypes = ref(await dictItemApi.dictItemCode('control_type'));
-const validTypes = ref(await dictItemApi.dictItemCode('valid_type'));
-const fieldTypes = ref(await fieldTypeApi.listAttrType({}));
-const dictTypes = ref(await dictApi.list({}));
-
+const showTypes = ref([]);
+const searchTypes = ref([]);
+const controlTypes = ref([]);
+const validTypes = ref([]);
+const fieldTypes = ref([]);
+const dictTypes = ref([]);
+dictItemApi.dictItemCode('show_type').then(res => showTypes.value=res);
+dictItemApi.dictItemCode('search_type').then(res => searchTypes.value=res);
+dictItemApi.dictItemCode('control_type').then(res => controlTypes.value=res);
+dictItemApi.dictItemCode('valid_type').then(res => validTypes.value=res);
+fieldTypeApi.listAttrType({}).then(res => fieldTypes.value=res);
+dictApi.list({}).then(res => dictTypes.value=res);
 
 export const columns: BasicColumn[] = [
   {

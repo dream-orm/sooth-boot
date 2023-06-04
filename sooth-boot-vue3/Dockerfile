@@ -1,11 +1,11 @@
 FROM nginx
-MAINTAINER micro
+MAINTAINER sooth
 VOLUME /tmp
 ENV LANG en_US.UTF-8
 RUN echo "server {  \
                       listen       80; \
-                      location   /micro/ { \
-                      proxy_pass              http://localhost:4100/micro/; \
+                      location   /sooth/ { \
+                      proxy_pass              http://192.168.0.237:3000/sooth/; \
                       proxy_redirect          off; \
                       proxy_set_header        Host \$http_host; \
                       proxy_set_header        X-Real-IP \$remote_addr; \
@@ -28,17 +28,3 @@ RUN echo "server {  \
 ADD dist/ /var/www/html/
 EXPOSE 80
 EXPOSE 443
-
-
-server {
-  listen       80;
-  location / {
-  root   /var/www/html/;
-  index  index.html index.htm;
-  if (!-e $request_filename) {
-    rewrite ^(.*)$ /index.html?s=$1 last;
-    break;
-  }
-}
-  access_log  /var/log/nginx/access.log;
-}
