@@ -2,6 +2,13 @@ package com.moxa.sooth.module.base.core.service.impl;
 
 
 import cn.hutool.core.util.StrUtil;
+import com.moxa.dream.antlr.exception.AntlrException;
+import com.moxa.dream.antlr.expr.SymbolExpr;
+import com.moxa.dream.antlr.factory.InvokerFactory;
+import com.moxa.dream.antlr.read.ExprReader;
+import com.moxa.dream.antlr.smt.Statement;
+import com.moxa.dream.antlr.sql.ToSQL;
+import com.moxa.dream.mate.block.invoker.BlockInvoker;
 import com.moxa.dream.template.mapper.TemplateMapper;
 import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.module.base.buttonPermission.service.ISysButtonPermissionService;
@@ -35,7 +42,10 @@ public class SysApiServiceImpl implements SysApiService {
     private ISysInterfacePermissionService interfacePermissionService;
     @Autowired
     private TemplateMapper templateMapper;
-
+    @Autowired
+    private ToSQL toSQL;
+    @Autowired
+    private InvokerFactory invokerFactory;
     @Override
     public LoginUser getLoginUser(String username) {
         SysUser sysUser = sysUserService.selectOneUser(username);
@@ -65,7 +75,17 @@ public class SysApiServiceImpl implements SysApiService {
         if (StrUtil.isBlank(table)) {
             return sysDictService.getDictItemName(code, value);
         } else {
-            return templateMapper.selectOne("select " + name + " from " + table + " where " + code + "=@?(value)", new ObjectMap(value), String.class);
+            String nameTans=name;
+            BlockInvoker blockInvoker=(BlockInvoker) invokerFactory.getInvoker(BlockInvoker.FUNCTION,BlockInvoker.DEFAULT_NAMESPACE);
+            if(blockInvoker!=null&&blockInvoker.getFilterSet().contains(name)) {
+                try {
+                    Statement statement = new SymbolExpr(new ExprReader("`" + name + "`")).expr();
+                    nameTans = toSQL.toStr(statement, null, null);
+                } catch (AntlrException e) {
+                    throw new SoothException(e.getMessage());
+                }
+            }
+            return templateMapper.selectOne("select " + nameTans + " from " + table + " where " + code + "=@?(value)", new ObjectMap(value), String.class);
         }
     }
 }

@@ -11,13 +11,13 @@ spring:
   datasource:
     master:
       pool-name: MasterDataSource
-      jdbc-url: jdbc:postgresql://127.0.0.1:5432/sooth
-      username: postgres
-      password: 123456
-      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:oracle:thin:@//192.168.0.236:1521/helowin
+      username: test
+      password: test
+      driver-class-name: oracle.jdbc.driver.OracleDriver
       minimum-idle: 3
       auto-commit: true
-      connection-test-query: select 1
+      connection-test-query: select 1 from dual
       maximum-pool-size: 50
       idle-timeout: 10000
       max-lifetime: 1800000
@@ -25,21 +25,11 @@ spring:
   #redis 配置
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 192.168.0.106
     port: 6379
-    password:
-
-sooth:
-  defaultPassword: 123456
-
+    password: 'halu123456'
 
 dream:
-  toSQL: com.moxa.dream.antlr.sql.ToPGSQL
-  listeners:
-    - com.moxa.dream.drive.listener.DebugListener
-
-
-dream:
-  toSQL: com.moxa.dream.antlr.sql.ToPGSQL
+  toSQL: com.moxa.dream.antlr.sql.ToORACLE
   listeners:
     - com.moxa.dream.drive.listener.DebugListener
