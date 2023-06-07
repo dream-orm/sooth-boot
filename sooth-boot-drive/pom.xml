@@ -48,10 +48,8 @@
             <artifactId>postgresql</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc7</artifactId>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../lib/ojdbc7-12.1.0.2.jar</systemPath>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
         </dependency>
     </dependencies>
     <build>

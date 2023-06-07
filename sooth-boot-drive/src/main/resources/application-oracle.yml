@@ -14,7 +14,7 @@ spring:
       jdbc-url: jdbc:oracle:thin:@//192.168.0.236:1521/helowin
       username: test
       password: test
-      driver-class-name: oracle.jdbc.driver.OracleDriver
+      driver-class-name: oracle.jdbc.OracleDriver
       minimum-idle: 3
       auto-commit: true
       connection-test-query: select 1 from dual

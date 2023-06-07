@@ -18,7 +18,7 @@
         <fastjson.version>1.2.83</fastjson.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
         <pgsql-connector-java.version>42.5.1</pgsql-connector-java.version>
-        <oracle-connector-java.version>12.1.0.2</oracle-connector-java.version>
+        <oracle-connector-java.version>21.6.0.0</oracle-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
         <dream.version>1.0.0</dream.version>
         <http-client.version>4.5.13</http-client.version>
@@ -111,11 +111,9 @@
             </dependency>
             <!--oracle-->
             <dependency>
-                <groupId>com.oracle</groupId>
-                <artifactId>ojdbc7</artifactId>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc8</artifactId>
                 <version>${oracle-connector-java.version}</version>
-                <scope>system</scope>
-                <systemPath>${project.basedir}/lib/ojdbc7-12.1.0.2.jar</systemPath>
             </dependency>
             <!--JWT-->
             <dependency>
