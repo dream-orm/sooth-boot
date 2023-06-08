@@ -1,0 +1,35 @@
+server:
+  port: 3100
+  servlet:
+    context-path: /sooth
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,httptrace
+spring:
+  datasource:
+    master:
+      pool-name: MasterDataSource
+      jdbc-url: jdbc:dm://192.168.0.232:5236
+      username: sooth
+      password: moxa@sooth
+      driver-class-name: dm.jdbc.driver.DmDriver
+      minimum-idle: 3
+      auto-commit: true
+      connection-test-query: select 1
+      maximum-pool-size: 50
+      idle-timeout: 10000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  #redis 配置
+  redis:
+    database: 0
+    host: 192.168.0.106
+    port: 6379
+    password: 'halu123456'
+
+dream:
+  toSQL: com.moxa.dream.antlr.sql.ToDM
+  listeners:
+    - com.moxa.dream.drive.listener.DebugListener

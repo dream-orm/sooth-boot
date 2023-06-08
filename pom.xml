@@ -19,6 +19,7 @@
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
         <pgsql-connector-java.version>42.5.1</pgsql-connector-java.version>
         <oracle-connector-java.version>21.6.0.0</oracle-connector-java.version>
+        <dm-connector-java.version>8.1.2.141</dm-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
         <dream.version>1.0.0</dream.version>
         <http-client.version>4.5.13</http-client.version>
@@ -114,6 +115,11 @@
                 <groupId>com.oracle.database.jdbc</groupId>
                 <artifactId>ojdbc8</artifactId>
                 <version>${oracle-connector-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dameng</groupId>
+                <artifactId>DmJdbcDriver18</artifactId>
+                <version>${dm-connector-java.version}</version>
             </dependency>
             <!--JWT-->
             <dependency>
