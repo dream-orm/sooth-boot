@@ -128,7 +128,6 @@ public class SysMenuProvider {
                         " INNER JOIN sys_dict_item ON sys_dict.id = sys_dict_item.dict_id  " +
                         " WHERE " +
                         " sys_dict.code = 'button_type'  " +
-                        " order by sys_dict_item.order_no " +
                         " ) button_type ON sys_button.type = button_type.value " +
                         " where @not( " +
                         " sys_menu.name like concat('%',@?(model.name),'%') " +

@@ -18,6 +18,7 @@
         <fastjson.version>1.2.83</fastjson.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
         <pgsql-connector-java.version>42.5.1</pgsql-connector-java.version>
+        <mssql-connector-java.version>11.2.1.jre8</mssql-connector-java.version>
         <oracle-connector-java.version>21.6.0.0</oracle-connector-java.version>
         <dm-connector-java.version>8.1.2.141</dm-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
@@ -26,7 +27,6 @@
         <shiro.version>1.10.0</shiro.version>
         <java-jwt.version>4.2.1</java-jwt.version>
         <hutool.version>5.3.8</hutool.version>
-        <xxl-job.version>2.3.1</xxl-job.version>
     </properties>
 
     <modules>
@@ -109,6 +109,12 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${pgsql-connector-java.version}</version>
+            </dependency>
+            <!--mssql-->
+            <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId>mssql-jdbc</artifactId>
+                <version>${mssql-connector-java.version}</version>
             </dependency>
             <!--oracle-->
             <dependency>

@@ -130,6 +130,7 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.19.4" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.5.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8" level="project" />
     <orderEntry type="library" name="Maven: com.oracle.database.jdbc:ojdbc8:21.6.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.dameng:DmJdbcDriver18:8.1.2.141" level="project" />
   </component>
