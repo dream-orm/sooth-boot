@@ -1,12 +1,13 @@
 package com.moxa.sooth.module.base.dept.view;
 
+import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.Wrap;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.dream.template.wrap.ZeroWrapper;
-import com.moxa.sooth.module.base.core.annotation.Dict;
 import com.moxa.dream.template.annotation.validate.Unique;
+import com.moxa.sooth.module.base.core.dream.extract.DictExtractor;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
 import com.moxa.sooth.module.base.dept.table.$SysDept;
 import lombok.Data;
@@ -42,8 +43,7 @@ public class SysDept extends BaseEntity implements Tree<Long> {
      */
 
     private String description;
-    @Dict(code = "status")
-
+    @Extract(value = DictExtractor.class,args = "status")
     private Integer status;
     /**
      * 删除状态（0，正常，1已删除）

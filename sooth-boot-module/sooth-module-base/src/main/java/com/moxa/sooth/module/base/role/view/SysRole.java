@@ -1,9 +1,10 @@
 package com.moxa.sooth.module.base.role.view;
 
+import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.validate.NotNull;
-import com.moxa.sooth.module.base.core.annotation.Dict;
 import com.moxa.dream.template.annotation.validate.Unique;
+import com.moxa.sooth.module.base.core.dream.extract.DictExtractor;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
 import com.moxa.sooth.module.base.role.table.SysRoleTable;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class SysRole extends BaseEntity {
     private String roleName;
 
     @NotNull(msg = "角色部门不能为空")
-    @Dict(code = "dept_id", name = "dept_name", table = "sys_dept")
+    @Extract(value = DictExtractor.class,args = {"dept_id","sys_dept","dept_name"})
     private Long deptId;
 
     /**

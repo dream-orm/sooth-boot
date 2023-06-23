@@ -1,12 +1,13 @@
 package com.moxa.sooth.module.base.user.view;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.Wrap;
 import com.moxa.dream.template.annotation.validate.NotNull;
 import com.moxa.dream.template.annotation.validate.Unique;
 import com.moxa.dream.template.wrap.ZeroWrapper;
-import com.moxa.sooth.module.base.core.annotation.Dict;
+import com.moxa.sooth.module.base.core.dream.extract.DictExtractor;
 import com.moxa.sooth.module.base.core.entity.BaseEntity;
 import com.moxa.sooth.module.base.user.table.$SysUser;
 import lombok.Data;
@@ -49,7 +50,7 @@ public class SysUser extends BaseEntity {
     /**
      * 性别
      */
-    @Dict(code = "sex")
+    @Extract(value = DictExtractor.class,args = "sex")
     private Integer sex;
     /**
      * 电话

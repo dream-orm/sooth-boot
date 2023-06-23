@@ -10,6 +10,7 @@ import com.moxa.dream.mate.permission.inject.PermissionInject;
 import com.moxa.dream.mate.permission.invoker.PermissionGetInvoker;
 import com.moxa.dream.mate.permission.invoker.PermissionInjectInvoker;
 import com.moxa.dream.system.inject.Inject;
+import com.moxa.dream.system.inject.PageInject;
 import com.moxa.dream.template.sequence.Sequence;
 import com.moxa.sooth.module.base.core.dream.handler.SoothPermissionHandler;
 import com.moxa.sooth.module.base.core.dream.sequence.SnowFlakeSequence;
@@ -51,7 +52,7 @@ public class DreamConfig {
 
     @Bean
     public Inject[] injects() {
-        return new Inject[]{new PermissionInject(new SoothPermissionHandler()), new BlockInject(), new LogicInject(() -> "del_flag")};
+        return new Inject[]{new PermissionInject(new SoothPermissionHandler()),new PageInject(false), new BlockInject(), new LogicInject(() -> "del_flag")};
     }
 
     @Bean

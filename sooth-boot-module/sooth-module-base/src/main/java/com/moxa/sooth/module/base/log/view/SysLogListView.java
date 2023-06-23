@@ -1,8 +1,9 @@
 package com.moxa.sooth.module.base.log.view;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.View;
-import com.moxa.sooth.module.base.core.annotation.Dict;
+import com.moxa.sooth.module.base.core.dream.extract.DictExtractor;
 import com.moxa.sooth.module.base.core.entity.BaseDict;
 import com.moxa.sooth.module.base.log.table.$SysLog;
 import lombok.Data;
@@ -39,7 +40,7 @@ public class SysLogListView extends BaseDict {
 
     private String description;
 
-    @Dict(code = "log_type")
+    @Extract(value = DictExtractor.class,args = "log_type")
     private String logType;
 
     private Integer status;

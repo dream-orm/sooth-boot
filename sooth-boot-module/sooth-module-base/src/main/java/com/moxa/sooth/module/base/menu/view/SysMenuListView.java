@@ -1,11 +1,12 @@
 package com.moxa.sooth.module.base.menu.view;
 
+import com.moxa.dream.system.annotation.Extract;
 import com.moxa.dream.system.annotation.Ignore;
 import com.moxa.dream.system.annotation.View;
 import com.moxa.dream.template.annotation.Wrap;
 import com.moxa.dream.template.resulthandler.Tree;
 import com.moxa.dream.template.wrap.ZeroWrapper;
-import com.moxa.sooth.module.base.core.annotation.Dict;
+import com.moxa.sooth.module.base.core.dream.extract.DictExtractor;
 import com.moxa.sooth.module.base.core.entity.BaseDict;
 import com.moxa.sooth.module.base.menu.table.SysMenuTable;
 import lombok.Data;
@@ -66,8 +67,7 @@ public class SysMenuListView extends BaseDict implements Tree<Long> {
     /**
      * 类型（0：一级菜单；1：子菜单 ；2：按钮权限）
      */
-    @Dict(code = "menu_type")
-
+    @Extract(value = DictExtractor.class,args = "menu_type")
     private Integer menuType;
 
     /**
