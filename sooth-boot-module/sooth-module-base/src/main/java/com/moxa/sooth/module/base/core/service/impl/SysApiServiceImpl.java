@@ -9,6 +9,10 @@ import com.moxa.dream.antlr.read.ExprReader;
 import com.moxa.dream.antlr.smt.Statement;
 import com.moxa.dream.antlr.sql.ToSQL;
 import com.moxa.dream.mate.block.invoker.BlockInvoker;
+import com.moxa.dream.system.config.Command;
+import com.moxa.dream.system.config.MappedSql;
+import com.moxa.dream.system.config.MappedStatement;
+import com.moxa.dream.system.config.MethodInfo;
 import com.moxa.dream.template.mapper.TemplateMapper;
 import com.moxa.dream.util.common.ObjectMap;
 import com.moxa.sooth.module.base.buttonPermission.service.ISysButtonPermissionService;
@@ -22,8 +26,10 @@ import com.moxa.sooth.module.base.user.service.ISysUserService;
 import com.moxa.sooth.module.base.user.view.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -41,11 +47,11 @@ public class SysApiServiceImpl implements SysApiService {
     @Autowired
     private ISysInterfacePermissionService interfacePermissionService;
     @Autowired
-    private TemplateMapper templateMapper;
-    @Autowired
     private ToSQL toSQL;
     @Autowired
     private InvokerFactory invokerFactory;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
     @Override
     public LoginUser getLoginUser(String username) {
         SysUser sysUser = sysUserService.selectOneUser(username);
@@ -85,7 +91,7 @@ public class SysApiServiceImpl implements SysApiService {
                     throw new SoothException(e.getMessage());
                 }
             }
-            return templateMapper.selectOne("select " + nameTans + " from " + table + " where " + code + "=@?(value)", new ObjectMap(value), String.class);
+            return jdbcTemplate.queryForObject("select " + nameTans + " from " + table + " where " + code + "=?",String.class,value);
         }
     }
 }
