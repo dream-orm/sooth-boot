@@ -1,0 +1,165 @@
+2023-06-30 21:16:02.610 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 1486 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-30 21:16:02.615 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-30 21:16:04.852 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-30 21:16:04.858 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-30 21:16:04.914 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 32 ms. Found 0 Redis repository interfaces.
+2023-06-30 21:16:05.439 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-30 21:16:05.747 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$de51097c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.439 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$e0e44821] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.519 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.525 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$bc732b90] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.623 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$401c730c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.656 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.678 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.727 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.742 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.757 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.766 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.781 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.790 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.793 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.825 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:06.843 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/1244394767] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.009 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.153 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.166 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-30 21:16:07.253 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.298 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.665 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.707 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:07.816 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 21:16:08.570 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-30 21:16:08.584 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-30 21:16:08.600 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 21:16:08.602 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-30 21:16:08.742 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 21:16:08.742 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 6014 ms
+2023-06-30 21:16:11.035 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-30 21:16:11.067 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-30 21:16:11.070 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-30 21:16:11.074 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-30 21:16:11.079 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-30 21:16:11.080 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-30 21:16:11.080 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-30 21:16:11.081 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@71fb1da3
+2023-06-30 21:16:14.478 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-30 21:16:14.567 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-30 21:16:14.615 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-30 21:16:14.620 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-30 21:16:14.620 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-30 21:16:14.652 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 12.923 seconds (JVM running for 14.058)
+2023-06-30 21:16:52.570 [http-nio-3100-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-30 21:16:52.576 [http-nio-3100-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-30 21:16:52.585 [http-nio-3100-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 9 ms
+2023-06-30 21:16:52.784 [http-nio-3100-exec-2] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-30 21:16:52.930 [http-nio-3100-exec-2] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-30 21:16:54.275 [http-nio-3100-exec-4] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 4b36162e4f9832b0b99f89c0d515e405，checkCode = PLY9
+2023-06-30 21:17:03.445 [http-nio-3100-exec-3] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 46c68773a91bb01be59146627e21aeaa，checkCode = ttLL
+2023-06-30 22:11:19.611 [http-nio-3100-exec-5] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 3eef936ed1e560885d056260a0b24ac5，checkCode = lgkR
+2023-06-30 22:11:27.114 [http-nio-3100-exec-7] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 1d84bccf46cedc432b924e5a1b21686c，checkCode = QmyW
+2023-06-30 22:11:46.062 [http-nio-3100-exec-9] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 599ecbab545d333f4b5a8d81fe747bc7，checkCode = 6NLp
+2023-06-30 22:20:18.645 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-30 22:20:18.756 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-30 22:20:18.758 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-30 22:20:18.759 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-30 22:20:18.761 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-30 22:20:29.325 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 5073 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-30 22:20:29.331 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-30 22:20:31.465 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-30 22:20:31.470 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-30 22:20:31.520 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 30 ms. Found 0 Redis repository interfaces.
+2023-06-30 22:20:31.981 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-30 22:20:32.384 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$bd9f1d67] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.061 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$c0325c0c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.186 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.193 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$9bc13f7b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.306 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$1f6a86f7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.341 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.350 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.386 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.391 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.404 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.411 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.428 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.439 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.442 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.469 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.487 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/1395740534] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.641 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.778 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.793 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-30 22:20:33.873 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:33.927 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:34.266 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:34.310 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:34.421 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-30 22:20:35.388 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-30 22:20:35.403 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-30 22:20:35.403 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 22:20:35.404 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-30 22:20:35.543 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 22:20:35.543 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 6111 ms
+2023-06-30 22:20:37.722 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-30 22:20:37.747 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-30 22:20:37.748 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-30 22:20:37.749 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-30 22:20:37.750 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-30 22:20:37.752 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-30 22:20:37.753 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-30 22:20:37.754 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3831f4c2
+2023-06-30 22:20:40.513 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-30 22:20:40.621 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-30 22:20:40.672 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-30 22:20:40.679 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-30 22:20:40.680 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-30 22:20:40.714 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 12.261 seconds (JVM running for 13.181)
+2023-06-30 22:45:51.903 [http-nio-3100-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-30 22:45:51.909 [http-nio-3100-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-30 22:45:51.923 [http-nio-3100-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 12 ms
+2023-06-30 22:45:53.395 [http-nio-3100-exec-2] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 484d2af7d133a9dbed1ef7278dd5bb90，checkCode = vCMq
+2023-06-30 22:45:53.390 [http-nio-3100-exec-5] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 29f5693dd3dd37bb4e5923c059a69f0a，checkCode = 61Rv
+2023-06-30 22:45:53.395 [http-nio-3100-exec-1] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 92af527591250ee3a83c418f08bee7ca，checkCode = jbaE
+2023-06-30 22:45:53.623 [http-nio-3100-exec-6] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 8af4ee90150e8475af6c19f8349aabeb，checkCode = DBS5
+2023-06-30 22:45:53.624 [http-nio-3100-exec-7] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 42d7e92b9f316736640919bec7787c46，checkCode = 59ve
+2023-06-30 22:45:53.624 [http-nio-3100-exec-3] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = d2205d9a35c22c39a8f22f3194492c1f，checkCode = n06w
+2023-06-30 22:49:41.929 [lettuce-eventExecutorLoop-1-7] INFO  io.lettuce.core.protocol.ConnectionWatchdog:171 - Reconnecting, last destination was /127.0.0.1:6379
+2023-06-30 22:49:46.457 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-30 22:49:46.871 [lettuce-nioEventLoop-4-2] WARN  io.lettuce.core.protocol.ConnectionWatchdog:105 - Cannot reconnect to [127.0.0.1:6379]: Connection reset by peer
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:378)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:258)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:722)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:584)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:496)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:750)
+2023-06-30 22:49:47.011 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-30 22:49:47.025 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-30 22:49:47.028 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-30 22:49:47.032 [lettuce-eventExecutorLoop-1-8] INFO  io.lettuce.core.protocol.ConnectionWatchdog:171 - Reconnecting, last destination was 127.0.0.1:6379
+2023-06-30 22:49:47.039 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-30 22:49:47.119 [lettuce-nioEventLoop-4-3] WARN  io.lettuce.core.protocol.ConnectionWatchdog:151 - Cannot reconnect to [127.0.0.1:6379]: Connection refused: /127.0.0.1:6379

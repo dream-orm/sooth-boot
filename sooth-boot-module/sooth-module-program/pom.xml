@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>com.moxa.sooth</groupId>
-            <artifactId>sooth-boot-core</artifactId>
+            <artifactId>sooth-module-base</artifactId>
         </dependency>
     </dependencies>
 </project>

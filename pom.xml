@@ -17,6 +17,7 @@
         <soothboot.version>1.0.0</soothboot.version>
         <fastjson.version>1.2.83</fastjson.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
+        <mariadb-connector-java.version>3.1.4</mariadb-connector-java.version>
         <pgsql-connector-java.version>42.5.1</pgsql-connector-java.version>
         <hutool.version>5.3.8</hutool.version>
         <dream.version>1.0.0</dream.version>
@@ -24,10 +25,10 @@
         <shiro.version>1.10.0</shiro.version>
         <java-jwt.version>4.2.1</java-jwt.version>
         <hutool.version>5.3.8</hutool.version>
+        <xxl-job.version>2.3.1</xxl-job.version>
     </properties>
 
     <modules>
-        <module>sooth-boot-core</module>
         <module>sooth-boot-module</module>
         <module>sooth-boot-plugin</module>
         <module>sooth-boot-drive</module>
@@ -39,10 +40,9 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-            <!-- sooth core -->
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-boot-core</artifactId>
+                <artifactId>sooth-module-base</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
@@ -52,18 +52,28 @@
             </dependency>
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-module-monitor</artifactId>
+                <artifactId>sooth-module-program</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
-                <artifactId>sooth-module-program</artifactId>
+                <artifactId>sooth-module-quartz</artifactId>
+                <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.sooth</groupId>
+                <artifactId>sooth-module-monitor</artifactId>
                 <version>${soothboot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.moxa.sooth</groupId>
                 <artifactId>sooth-boot-plugin</artifactId>
                 <version>${soothboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moxa.dream</groupId>
+                <artifactId>dream-drive</artifactId>
+                <version>${dream.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.moxa.dream</groupId>
@@ -91,6 +101,12 @@
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring-boot-starter</artifactId>
                 <version>${shiro.version}</version>
+            </dependency>
+            <!--mariadb-->
+            <dependency>
+                <groupId>org.mariadb.jdbc</groupId>
+                <artifactId>mariadb-java-client</artifactId>
+                <version>${mariadb-connector-java.version}</version>
             </dependency>
             <!--mysql-->
             <dependency>

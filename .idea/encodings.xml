@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/sooth-boot-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-drive/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-drive/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-code/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-code/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-monitor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-monitor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-program/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-quartz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/sooth-module-quartz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-module/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-plugin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sooth-boot-plugin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

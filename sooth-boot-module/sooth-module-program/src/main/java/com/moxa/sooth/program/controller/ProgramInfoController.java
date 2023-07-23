@@ -1,7 +1,7 @@
 package com.moxa.sooth.program.controller;
 
-import com.moxa.sooth.core.base.controller.BaseController;
-import com.moxa.sooth.core.base.entity.Result;
+import com.moxa.sooth.module.base.core.controller.BaseController;
+import com.moxa.sooth.module.base.core.entity.Result;
 import com.moxa.sooth.program.model.ProgramInfoModel;
 import com.moxa.sooth.program.service.IProgramInfoService;
 import com.moxa.sooth.program.view.ProgramInfoEditView;

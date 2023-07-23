@@ -1,0 +1,1056 @@
+2023-06-29 22:17:05.950 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 4541 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 22:17:05.956 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 22:17:08.073 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 22:17:08.078 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 22:17:08.128 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+2023-06-29 22:17:08.650 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 22:17:08.977 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$d8858650] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.679 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$db18c4f5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.773 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.779 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$b6a7a864] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.877 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$3a50efe0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.909 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.918 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.957 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.964 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.973 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:09.983 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.002 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.010 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.013 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.043 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.076 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/502863983] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.211 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.330 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.343 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 22:17:10.413 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.455 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.912 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:10.962 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:11.070 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:17:11.625 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 22:17:11.640 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:17:11.642 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 22:17:11.642 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 22:17:11.781 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 22:17:11.782 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 5734 ms
+2023-06-29 22:17:13.936 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 22:17:13.959 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 22:17:13.961 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 22:17:13.962 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 22:17:13.963 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 22:17:13.964 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 22:17:13.964 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 22:17:13.964 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@552088cc
+2023-06-29 22:17:16.709 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 22:17:17.041 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:17:17.086 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 22:17:17.096 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 22:17:17.096 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 22:17:17.125 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 11.957 seconds (JVM running for 12.897)
+2023-06-29 22:17:30.946 [http-nio-3100-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 22:17:30.949 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 22:17:30.955 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 5 ms
+2023-06-29 22:17:31.182 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 22:17:31.312 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 22:22:41.384 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:22:41.442 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 22:22:41.444 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 22:22:41.444 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:22:41.445 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 22:22:41.453 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 22:22:41.480 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - MasterDataSource - Shutdown completed.
+2023-06-29 22:22:45.265 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 4907 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 22:22:45.271 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 22:22:47.330 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 22:22:47.337 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 22:22:47.382 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2023-06-29 22:22:47.795 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 22:22:48.118 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$cd32145d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:48.815 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$cfc55302] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:48.908 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:48.914 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$ab543671] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.012 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$2efd7ded] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.037 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.047 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.085 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.092 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.102 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.111 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.129 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.137 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.140 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.169 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.190 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/1684854630] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.300 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.422 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.435 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 22:22:49.504 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.543 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.913 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:49.961 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:50.084 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:22:50.632 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 22:22:50.648 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:22:50.650 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 22:22:50.650 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 22:22:50.800 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 22:22:50.801 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 5365 ms
+2023-06-29 22:22:53.071 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 22:22:53.099 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 22:22:53.100 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 22:22:53.101 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 22:22:53.103 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 22:22:53.103 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 22:22:53.104 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 22:22:53.104 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@19213a74
+2023-06-29 22:22:55.818 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 22:22:55.927 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:22:55.984 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 22:22:55.992 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 22:22:55.994 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 22:22:56.031 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 11.54 seconds (JVM running for 12.288)
+2023-06-29 22:24:01.976 [http-nio-3100-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 22:24:01.981 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 22:24:01.988 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 4 ms
+2023-06-29 22:24:02.189 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 22:24:02.344 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 22:40:22.924 [http-nio-3100-exec-6] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 7184e8c1473f24a37b49e555ff428986，checkCode = qvL8
+2023-06-29 22:41:00.301 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:41:00.361 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 22:41:00.363 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 22:41:00.364 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:41:00.365 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 22:41:00.373 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 22:41:00.393 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - MasterDataSource - Shutdown completed.
+2023-06-29 22:41:03.709 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 5934 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 22:41:03.717 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 22:41:05.709 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 22:41:05.714 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 22:41:05.761 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 29 ms. Found 0 Redis repository interfaces.
+2023-06-29 22:41:06.214 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 22:41:06.520 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$de51097c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.165 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$e0e44821] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.248 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.254 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$bc732b90] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.350 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$401c730c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.382 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.392 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.428 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.433 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.443 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.452 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.469 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.480 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.483 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.510 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.543 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/1138190994] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.649 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.766 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.780 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 22:41:07.845 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:07.880 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:08.224 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:08.267 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:08.372 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:41:09.000 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 22:41:09.018 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:41:09.019 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 22:41:09.019 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 22:41:09.150 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 22:41:09.150 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 5284 ms
+2023-06-29 22:41:11.162 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 22:41:11.185 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 22:41:11.186 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 22:41:11.188 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 22:41:11.189 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 22:41:11.191 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 22:41:11.192 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 22:41:11.192 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1e66bf2d
+2023-06-29 22:41:13.736 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 22:41:13.833 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:41:13.892 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 22:41:13.899 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 22:41:13.900 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 22:41:13.928 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 10.992 seconds (JVM running for 11.778)
+2023-06-29 22:41:19.844 [http-nio-3100-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 22:41:19.849 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 22:41:19.855 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 5 ms
+2023-06-29 22:41:20.069 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 22:41:20.193 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 22:43:06.434 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:43:06.489 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 22:43:06.491 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 22:43:06.491 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:43:06.491 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 22:43:06.497 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 22:43:06.518 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - MasterDataSource - Shutdown completed.
+2023-06-29 22:43:12.314 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 6055 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 22:43:12.320 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 22:43:14.393 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 22:43:14.398 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 22:43:14.438 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2023-06-29 22:43:14.814 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 22:43:15.135 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$6f2d0399] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:15.765 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$71c0423e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:15.856 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:15.862 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$4d4f25ad] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:15.959 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$d0f86d29] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:15.984 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.005 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.043 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.050 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.066 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.076 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.097 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.106 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.108 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.143 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.165 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/1153180745] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.290 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.411 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.427 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 22:43:16.494 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.526 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.838 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:16.868 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:17.057 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:43:17.712 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 22:43:17.726 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:43:17.727 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 22:43:17.727 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 22:43:17.854 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 22:43:17.854 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 5431 ms
+2023-06-29 22:43:19.894 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 22:43:19.917 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 22:43:19.918 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 22:43:19.919 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 22:43:19.920 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 22:43:19.922 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 22:43:19.922 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 22:43:19.922 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@30a791a6
+2023-06-29 22:43:22.565 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 22:43:22.670 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:43:22.729 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 22:43:22.738 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 22:43:22.739 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 22:43:22.777 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 11.237 seconds (JVM running for 12.004)
+2023-06-29 22:43:54.423 [http-nio-3100-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 22:43:54.427 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 22:43:54.431 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 3 ms
+2023-06-29 22:43:54.621 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 22:43:54.792 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 22:46:15.628 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:46:15.692 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 22:46:15.693 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 22:46:15.693 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:46:15.695 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 22:46:15.705 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 22:46:22.104 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 6240 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 22:46:22.110 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 22:46:24.149 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 22:46:24.154 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 22:46:24.198 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+2023-06-29 22:46:24.602 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 22:46:24.906 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$d2080bc3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.591 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$d49b4a68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.679 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.684 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$b02a2dd7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.773 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$33d37553] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.798 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.806 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.840 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.847 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.856 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.864 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.881 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.893 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.897 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.927 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:25.948 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/1586519852] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.055 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.167 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.184 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 22:46:26.252 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.286 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.624 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.666 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:26.799 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:46:27.433 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 22:46:27.449 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:46:27.450 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 22:46:27.450 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 22:46:27.605 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 22:46:27.605 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 5385 ms
+2023-06-29 22:46:29.773 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 22:46:29.793 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 22:46:29.795 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 22:46:29.796 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 22:46:29.797 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 22:46:29.798 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 22:46:29.798 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 22:46:29.798 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1e66bf2d
+2023-06-29 22:46:32.224 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 22:46:32.323 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:46:32.381 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 22:46:32.389 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 22:46:32.391 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 22:46:32.421 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 11.074 seconds (JVM running for 11.81)
+2023-06-29 22:46:55.291 [http-nio-3100-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 22:46:55.296 [http-nio-3100-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 22:46:55.302 [http-nio-3100-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 4 ms
+2023-06-29 22:46:55.524 [http-nio-3100-exec-3] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 22:46:55.669 [http-nio-3100-exec-3] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 22:47:40.320 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:47:40.377 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 22:47:40.379 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 22:47:40.381 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 22:47:40.382 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 22:47:40.389 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 22:47:40.405 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - MasterDataSource - Shutdown completed.
+2023-06-29 22:47:43.729 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 6317 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 22:47:43.735 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 22:47:45.782 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 22:47:45.786 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 22:47:45.828 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+2023-06-29 22:47:54.848 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 22:47:55.146 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$6bff27f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:55.841 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$6e92669d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:55.929 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:55.934 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$4a214a0c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.029 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$cdca9188] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.052 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.059 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.090 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.097 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.108 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.115 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.130 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.138 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.140 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.169 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.187 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/936544568] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.297 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.411 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.431 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 22:47:56.497 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.536 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.881 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:56.937 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:57.065 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 22:47:57.628 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 22:47:57.647 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:47:57.649 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 22:47:57.649 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 22:47:57.877 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 22:47:57.878 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 14035 ms
+2023-06-29 22:48:00.338 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 22:48:00.358 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 22:48:00.360 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 22:48:00.361 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 22:48:00.362 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 22:48:00.364 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 22:48:00.364 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 22:48:00.364 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@26feccf7
+2023-06-29 22:48:02.904 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 22:48:03.075 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 22:48:03.127 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 22:48:03.133 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 22:48:03.134 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 22:48:03.161 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 20.189 seconds (JVM running for 20.953)
+2023-06-29 22:48:11.496 [http-nio-3100-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 22:48:11.501 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 22:48:11.506 [http-nio-3100-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 4 ms
+2023-06-29 22:48:11.755 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 22:48:11.892 [http-nio-3100-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 22:49:03.299 [MasterDataSource housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:788 - MasterDataSource - Thread starvation or clock leap detected (housekeeper delta=51s298ms).
+2023-06-29 22:59:21.847 [http-nio-3100-exec-4] INFO  c.m.s.m.monitor.controller.ActuatorRedisController:38 - [RedisInfo{key='used_memory_dataset_perc', value='81.87%', desctiption='null'}, RedisInfo{key='aof_current_rewrite_time_sec', value='-1', desctiption='如果rewrite操作正在进行，则记录所使用的时间，单位秒'}, RedisInfo{key='used_memory_peak_perc', value='98.72%', desctiption='内存使用率峰值'}, RedisInfo{key='rss_overhead_ratio', value='0.76', desctiption='null'}, RedisInfo{key='db0', value='keys=3,expires=1,avg_ttl=7194217', desctiption='db0的key的数量,以及带有生存期的key的数,平均存活时间'}, RedisInfo{key='active_defrag_hits', value='0', desctiption='null'}, RedisInfo{key='atomicvar_api', value='c11-builtin', desctiption='atomicvar_api'}, RedisInfo{key='rss_overhead_bytes', value='-2465792', desctiption='null'}, RedisInfo{key='used_memory_vm_total', value='64512', desctiption='null'}, RedisInfo{key='gcc_version', value='10.2.1', desctiption='编译 Redis 时所使用的 GCC 版本'}, RedisInfo{key='keyspace_misses', value='2', desctiption='没命中次数'}, RedisInfo{key='redis_git_dirty', value='0', desctiption='Git dirty flag'}, RedisInfo{key='connected_clients', value='1', desctiption='已连接客户端的数量（不包括通过从属服务器连接的客户端）'}, RedisInfo{key='master_repl_offset', value='0', desctiption='主从同步偏移量,此值如果和上面的offset相同说明主从一致没延迟'}, RedisInfo{key='repl_backlog_active', value='0', desctiption='复制积压缓冲区是否开启'}, RedisInfo{key='rdb_changes_since_last_save', value='58', desctiption='离最近一次成功生成rdb文件，写入命令的个数，即有多少个写入命令没有持久化'}, RedisInfo{key='client_recent_max_output_buffer', value='0', desctiption='null'}, RedisInfo{key='rejected_connections', value='0', desctiption='拒绝的连接个数，redis连接个数达到maxclients限制，拒绝新连接的个数'}, RedisInfo{key='unexpected_error_replies', value='0', desctiption='null'}, RedisInfo{key='io_threads_active', value='0', desctiption='null'}, RedisInfo{key='async_loading', value='0', desctiption='null'}, RedisInfo{key='mem_cluster_links', value='0', desctiption='null'}, RedisInfo{key='run_id', value='1fe1aa1ae1fdefcdddb070ebafb5bd14439ee967', desctiption='Redis 服务器的随机标识符（用于 Sentinel 和集群）'}, RedisInfo{key='maxmemory', value='0', desctiption='最大内存限制，0表示无限制'}, RedisInfo{key='mem_allocator', value='jemalloc-5.2.1', desctiption='在编译时指定的， Redis 所使用的内存分配器。可以是 libc 、 jemalloc 或者 tcmalloc'}, RedisInfo{key='rdb_last_load_keys_loaded', value='2', desctiption='null'}, RedisInfo{key='used_cpu_sys', value='11.339372', desctiption='将所有redis主进程在核心态所占用的CPU时求和累计起来'}, RedisInfo{key='expired_stale_perc', value='0.00', desctiption='null'}, RedisInfo{key='blocked_clients', value='0', desctiption='正在等待阻塞命令（BLPOP、BRPOP、BRPOPLPUSH）的客户端的数量'}, RedisInfo{key='total_eviction_exceeded_time', value='0', desctiption='null'}, RedisInfo{key='total_commands_processed', value='214', desctiption='redis处理的命令数'}, RedisInfo{key='current_active_defrag_time', value='0', desctiption='null'}, RedisInfo{key='sync_partial_err', value='0', desctiption='主从部分同步失败次数'}, RedisInfo{key='current_save_keys_total', value='0', desctiption='null'}, RedisInfo{key='total_connections_received', value='8', desctiption='新创建连接个数,如果新创建连接过多，过度地创建和销毁连接对性能有影响，说明短连接严重或连接池使用有问题，需调研代码的连接设置'}, RedisInfo{key='evicted_keys', value='0', desctiption='运行以来剔除(超过了maxmemory后)的key的数量'}, RedisInfo{key='maxmemory_policy', value='noeviction', desctiption='超过内存限制后的处理策略'}, RedisInfo{key='used_cpu_sys_main_thread', value='11.330232', desctiption='null'}, RedisInfo{key='config_file', value='', desctiption='配置文件目录'}, RedisInfo{key='used_memory_human', value='996.90K', desctiption='以人类可读的格式返回 Redis 分配的内存总量'}, RedisInfo{key='allocator_rss_ratio', value='1.41', desctiption='null'}, RedisInfo{key='connected_slaves', value='0', desctiption='连接的slave实例个数'}, RedisInfo{key='role', value='master', desctiption='实例的角色，是master or slave'}, RedisInfo{key='process_supervised', value='no', desctiption='null'}, RedisInfo{key='aof_last_cow_size', value='0', desctiption='null'}, RedisInfo{key='used_memory_rss_human', value='7.59M', desctiption='以人类可读的方式返回 Redis 已分配的内存总量'}, RedisInfo{key='cluster_enabled', value='0', desctiption='实例是否启用集群模式'}, RedisInfo{key='total_net_repl_output_bytes', value='0', desctiption='null'}, RedisInfo{key='allocator_rss_bytes', value='3014656', desctiption='null'}, RedisInfo{key='mem_fragmentation_ratio', value='7.81', desctiption='sed_memory_rss 和 used_memory 之间的比率'}, RedisInfo{key='used_memory_scripts', value='184', desctiption='null'}, RedisInfo{key='repl_backlog_size', value='1048576', desctiption='复制积压缓冲大小'}, RedisInfo{key='current_eviction_exceeded_time', value='0', desctiption='null'}, RedisInfo{key='uptime_in_days', value='0', desctiption='自 Redis 服务器启动以来，经过的天数'}, RedisInfo{key='pubsubshard_channels', value='0', desctiption='null'}, RedisInfo{key='used_memory_peak', value='1034024', desctiption=' Redis 的内存消耗峰值(以字节为单位)'}, RedisInfo{key='number_of_cached_scripts', value='0', desctiption='null'}, RedisInfo{key='mem_fragmentation_bytes', value='6936024', desctiption='null'}, RedisInfo{key='used_memory_startup', value='895616', desctiption='null'}, RedisInfo{key='total_system_memory_human', value='7.67G', desctiption='以人类可读的方式返回系统总内存'}, RedisInfo{key='number_of_functions', value='0', desctiption='null'}, RedisInfo{key='hz', value='10', desctiption='redis内部调度（进行关闭timeout的客户端，删除过期key等等）频率，程序规定serverCron每秒运行10次。'}, RedisInfo{key='used_memory_lua_human', value='31.00K', desctiption='以人类可读的方式返回Lua 引擎所使用的内存大小'}, RedisInfo{key='instantaneous_input_kbps', value='2.34', desctiption='redis网络入口kps'}, RedisInfo{key='used_memory_scripts_human', value='184B', desctiption='null'}, RedisInfo{key='rdb_bgsave_in_progress', value='0', desctiption='服务器是否正在创建rdb文件'}, RedisInfo{key='monotonic_clock', value='POSIX clock_gettime', desctiption='null'}, RedisInfo{key='total_net_output_bytes', value='14877', desctiption='redis网络出口流量字节数'}, RedisInfo{key='uptime_in_seconds', value='5491', desctiption='自 Redis 服务器启动以来，经过的秒数'}, RedisInfo{key='mem_clients_normal', value='22272', desctiption='null'}, RedisInfo{key='total_forks', value='1', desctiption='null'}, RedisInfo{key='evicted_clients', value='0', desctiption='null'}, RedisInfo{key='slave_expires_tracked_keys', value='0', desctiption='null'}, RedisInfo{key='current_fork_perc', value='0.00', desctiption='null'}, RedisInfo{key='master_replid2', value='0000000000000000000000000000000000000000', desctiption='null'}, RedisInfo{key='total_net_input_bytes', value='48036', desctiption='redis网络入口流量字节数'}, RedisInfo{key='total_net_repl_input_bytes', value='0', desctiption='null'}, RedisInfo{key='current_cow_peak', value='0', desctiption='null'}, RedisInfo{key='used_memory_scripts_eval', value='0', desctiption='null'}, RedisInfo{key='instantaneous_output_kbps', value='0.69', desctiption='redis网络出口kps'}, RedisInfo{key='expired_keys', value='6', desctiption='运行以来过期的key的数量'}, RedisInfo{key='allocator_frag_ratio', value='4.23', desctiption='null'}, RedisInfo{key='aof_last_write_status', value='ok', desctiption='上次aof写入状态'}, RedisInfo{key='used_memory_vm_functions', value='32768', desctiption='null'}, RedisInfo{key='redis_version', value='7.0.5', desctiption='Redis 服务器版本'}, RedisInfo{key='allocator_frag_bytes', value='5652864', desctiption='null'}, RedisInfo{key='mem_total_replication_buffers', value='0', desctiption='null'}, RedisInfo{key='maxmemory_human', value='0B', desctiption='以人类可读的方式返回最大限制内存'}, RedisInfo{key='rdb_last_save_time', value='1688048871', desctiption='离最近一次成功创建rdb文件的时间戳。当前时间戳 - rdb_last_save_time=多少秒未成功生成rdb文件'}, RedisInfo{key='lazyfree_pending_objects', value='0', desctiption='null'}, RedisInfo{key='aof_rewrite_scheduled', value='0', desctiption='rewrite任务计划，当客户端发送bgrewriteaof指令，如果当前rewrite子进程正在执行，那么将客户端请求的bgrewriteaof变为计划任务，待aof子进程结束后执行rewrite '}, RedisInfo{key='migrate_cached_sockets', value='0', desctiption='null'}, RedisInfo{key='keyspace_hits', value='97', desctiption='命中次数'}, RedisInfo{key='allocator_allocated', value='1752704', desctiption='null'}, RedisInfo{key='used_memory', value='1020824', desctiption='由 Redis 分配器分配的内存总量，以字节（byte）为单位'}, RedisInfo{key='mem_replication_backlog', value='0', desctiption='null'}, RedisInfo{key='used_memory_dataset', value='102512', desctiption='null'}, RedisInfo{key='rdb_saves', value='1', desctiption='null'}, RedisInfo{key='pubsub_patterns', value='0', desctiption='当前使用的模式的数量'}, RedisInfo{key='used_cpu_user_children', value='0.002861', desctiption='将后台进程在用户态所占用的CPU时求和累计起来'}, RedisInfo{key='master_replid', value='04f0fe6436af19fe10c89c60acbf6ed2a403e816', desctiption='null'}, RedisInfo{key='total_error_replies', value='0', desctiption='null'}, RedisInfo{key='mem_aof_buffer', value='0', desctiption='null'}, RedisInfo{key='rdb_last_bgsave_status', value='ok', desctiption='最近一次rdb持久化是否成功'}, RedisInfo{key='redis_mode', value='standalone', desctiption='运行模式，单机（standalone）或者集群（cluster）'}, RedisInfo{key='total_writes_processed', value='199', desctiption='null'}, RedisInfo{key='allocator_resident', value='10420224', desctiption='null'}, RedisInfo{key='instantaneous_output_repl_kbps', value='0.00', desctiption='null'}, RedisInfo{key='allocator_active', value='7405568', desctiption='null'}, RedisInfo{key='total_active_defrag_time', value='0', desctiption='null'}, RedisInfo{key='current_cow_size_age', value='0', desctiption='null'}, RedisInfo{key='current_save_keys_processed', value='0', desctiption='null'}, RedisInfo{key='expired_time_cap_reached_count', value='0', desctiption='null'}, RedisInfo{key='sync_full', value='0', desctiption='主从完全同步成功次数'}, RedisInfo{key='instantaneous_input_repl_kbps', value='0.00', desctiption='null'}, RedisInfo{key='rdb_current_bgsave_time_sec', value='-1', desctiption='如果服务器正在创建rdb文件，那么这个域记录的就是当前的创建操作已经耗费的秒数'}, RedisInfo{key='aof_rewrite_in_progress', value='0', desctiption='标识aof的rewrite操作是否在进行中'}, RedisInfo{key='multiplexing_api', value='epoll', desctiption='Redis 所使用的事件处理机制'}, RedisInfo{key='module_fork_in_progress', value='0', desctiption='null'}, RedisInfo{key='tracking_clients', value='0', desctiption='null'}, RedisInfo{key='rdb_last_cow_size', value='634880', desctiption='null'}, RedisInfo{key='mem_not_counted_for_evict', value='0', desctiption='null'}, RedisInfo{key='dump_payload_sanitizations', value='0', desctiption='null'}, RedisInfo{key='redis_git_sha1', value='00000000', desctiption='Git SHA1'}, RedisInfo{key='tracking_total_keys', value='0', desctiption='null'}, RedisInfo{key='maxclients', value='10000', desctiption='null'}, RedisInfo{key='clients_in_timeout_table', value='0', desctiption='null'}, RedisInfo{key='latest_fork_usec', value='2094', desctiption='最近一次fork操作阻塞redis进程的耗时数，单位微秒'}, RedisInfo{key='reply_buffer_expands', value='0', desctiption='null'}, RedisInfo{key='rdb_last_bgsave_time_sec', value='0', desctiption='最近一次成功生成rdb文件耗时秒数'}, RedisInfo{key='os', value='Linux 5.15.49-linuxkit aarch64', desctiption='Redis 服务器的宿主操作系统'}, RedisInfo{key='used_cpu_sys_children', value='0.015524', desctiption='将后台进程在核心态所占用的CPU时求和累计起来'}, RedisInfo{key='sync_partial_ok', value='0', desctiption='主从部分同步成功次数'}, RedisInfo{key='module_fork_last_cow_size', value='0', desctiption='null'}, RedisInfo{key='arch_bits', value='64', desctiption=' 架构（32 或 64 位）'}, RedisInfo{key='used_memory_vm_eval', value='31744', desctiption='null'}, RedisInfo{key='used_memory_lua', value='31744', desctiption='Lua 引擎所使用的内存大小（以字节为单位）'}, RedisInfo{key='mem_clients_slaves', value='0', desctiption='null'}, RedisInfo{key='tracking_total_items', value='0', desctiption='null'}, RedisInfo{key='used_cpu_user_main_thread', value='7.279463', desctiption='null'}, RedisInfo{key='lazyfreed_objects', value='0', desctiption='null'}, RedisInfo{key='process_id', value='1', desctiption='服务器进程的 PID'}, RedisInfo{key='tracking_total_prefixes', value='0', desctiption='null'}, RedisInfo{key='total_system_memory', value='8231948288', desctiption='系统总内存'}, RedisInfo{key='master_failover_state', value='no-failover', desctiption='null'}, RedisInfo{key='aof_rewrites_consecutive_failures', value='0', desctiption='null'}, RedisInfo{key='repl_backlog_histlen', value='0', desctiption='此值等于 master_repl_offset - repl_backlog_first_byte_offset,该值不会超过repl_backlog_size的大小'}, RedisInfo{key='used_memory_vm_total_human', value='63.00K', desctiption='null'}, RedisInfo{key='executable', value='/data/redis-server', desctiption='server脚本目录'}, RedisInfo{key='used_memory_rss', value='7954432', desctiption='从操作系统的角度，返回 Redis 已分配的内存总量（俗称常驻集大小）。这个值和 top 、 ps 等命令的输出一致'}, RedisInfo{key='loading', value='0', desctiption='服务器是否正在载入持久化文件'}, RedisInfo{key='active_defrag_running', value='0', desctiption='null'}, RedisInfo{key='used_memory_peak_human', value='1009.79K', desctiption='以人类可读的格式返回 Redis 的内存消耗峰值'}, RedisInfo{key='reply_buffer_shrinks', value='8', desctiption='null'}, RedisInfo{key='aof_enabled', value='0', desctiption='是否开启了aof'}, RedisInfo{key='io_threaded_reads_processed', value='0', desctiption='null'}, RedisInfo{key='rdb_last_load_keys_expired', value='0', desctiption='null'}, RedisInfo{key='second_repl_offset', value='-1', desctiption='null'}, RedisInfo{key='total_reads_processed', value='207', desctiption='null'}, RedisInfo{key='active_defrag_misses', value='0', desctiption='null'}, RedisInfo{key='configured_hz', value='10', desctiption='null'}, RedisInfo{key='active_defrag_key_hits', value='0', desctiption='null'}, RedisInfo{key='number_of_libraries', value='0', desctiption='null'}, RedisInfo{key='used_cpu_user', value='7.279849', desctiption='将所有redis主进程在用户态所占用的CPU时求和累计起来'}, RedisInfo{key='io_threaded_writes_processed', value='0', desctiption='null'}, RedisInfo{key='aof_rewrites', value='0', desctiption='null'}, RedisInfo{key='redis_build_id', value='115cbd201a7e65ad', desctiption='redis_build_id'}, RedisInfo{key='cluster_connections', value='0', desctiption='null'}, RedisInfo{key='aof_last_bgrewrite_status', value='ok', desctiption='上次bgrewrite aof操作的状态'}, RedisInfo{key='client_recent_max_input_buffer', value='20480', desctiption='null'}, RedisInfo{key='active_defrag_key_misses', value='0', desctiption='null'}, RedisInfo{key='used_memory_functions', value='184', desctiption='null'}, RedisInfo{key='repl_backlog_first_byte_offset', value='0', desctiption='复制缓冲区里偏移量的大小'}, RedisInfo{key='instantaneous_ops_per_sec', value='9', desctiption='redis当前的qps，redis内部较实时的每秒执行的命令数'}, RedisInfo{key='expire_cycle_cpu_milliseconds', value='257', desctiption='null'}, RedisInfo{key='current_cow_size', value='0', desctiption='null'}, RedisInfo{key='tcp_port', value='6379', desctiption='TCP/IP 监听端口'}, RedisInfo{key='pubsub_channels', value='0', desctiption='当前使用中的频道数量'}, RedisInfo{key='server_time_usec', value='1688050761822275', desctiption='null'}, RedisInfo{key='lru_clock', value='10329161', desctiption=' 以分钟为单位进行自增的时钟，用于 LRU 管理'}, RedisInfo{key='aof_last_rewrite_time_sec', value='-1', desctiption='最近一次aof rewrite耗费的时长'}, RedisInfo{key='used_memory_overhead', value='918312', desctiption='null'}]
+2023-06-29 23:04:37.967 [http-nio-3100-exec-8] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 3c83089f3b25c0ebc89969ee00d139f5，checkCode = T1al
+2023-06-29 23:04:43.135 [http-nio-3100-exec-4] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = a94b7b6e8c34ea12489caac5a856474d，checkCode = CuTp
+2023-06-29 23:04:48.488 [http-nio-3100-exec-10] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = a5f9082f65241716a604df9d17e59736，checkCode = jkHS
+2023-06-29 23:12:16.450 [http-nio-3100-exec-9] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = e7809ad2750591bdbf7c06ad2ce81d16，checkCode = q3lU
+2023-06-29 23:12:19.298 [http-nio-3100-exec-10] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 792273c3afe313745f63a2a86de98d4d，checkCode = Zedf
+2023-06-29 23:12:23.170 [http-nio-3100-exec-1] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = d70a5817904f54f02e0186b15f7c5ef1，checkCode = A0Eb
+2023-06-29 23:12:29.911 [http-nio-3100-exec-2] INFO  c.m.s.module.base.login.controller.LoginController:169 - 获取验证码，Redis key = 54ce45fe8d9debcd004f0311548cf968，checkCode = fNXw
+2023-06-29 23:13:26.318 [http-nio-3100-exec-4] INFO  c.m.s.m.monitor.controller.ActuatorRedisController:38 - [RedisInfo{key='used_memory_dataset_perc', value='77.79%', desctiption='null'}, RedisInfo{key='aof_current_rewrite_time_sec', value='-1', desctiption='如果rewrite操作正在进行，则记录所使用的时间，单位秒'}, RedisInfo{key='used_memory_peak_perc', value='100.16%', desctiption='内存使用率峰值'}, RedisInfo{key='rss_overhead_ratio', value='0.81', desctiption='null'}, RedisInfo{key='db0', value='keys=8,expires=6,avg_ttl=3518552', desctiption='db0的key的数量,以及带有生存期的key的数,平均存活时间'}, RedisInfo{key='active_defrag_hits', value='0', desctiption='null'}, RedisInfo{key='atomicvar_api', value='c11-builtin', desctiption='atomicvar_api'}, RedisInfo{key='rss_overhead_bytes', value='-1916928', desctiption='null'}, RedisInfo{key='used_memory_vm_total', value='64512', desctiption='null'}, RedisInfo{key='gcc_version', value='10.2.1', desctiption='编译 Redis 时所使用的 GCC 版本'}, RedisInfo{key='keyspace_misses', value='2', desctiption='没命中次数'}, RedisInfo{key='redis_git_dirty', value='0', desctiption='Git dirty flag'}, RedisInfo{key='connected_clients', value='1', desctiption='已连接客户端的数量（不包括通过从属服务器连接的客户端）'}, RedisInfo{key='master_repl_offset', value='0', desctiption='主从同步偏移量,此值如果和上面的offset相同说明主从一致没延迟'}, RedisInfo{key='repl_backlog_active', value='0', desctiption='复制积压缓冲区是否开启'}, RedisInfo{key='rdb_changes_since_last_save', value='50', desctiption='离最近一次成功生成rdb文件，写入命令的个数，即有多少个写入命令没有持久化'}, RedisInfo{key='client_recent_max_output_buffer', value='0', desctiption='null'}, RedisInfo{key='rejected_connections', value='0', desctiption='拒绝的连接个数，redis连接个数达到maxclients限制，拒绝新连接的个数'}, RedisInfo{key='unexpected_error_replies', value='0', desctiption='null'}, RedisInfo{key='io_threads_active', value='0', desctiption='null'}, RedisInfo{key='async_loading', value='0', desctiption='null'}, RedisInfo{key='mem_cluster_links', value='0', desctiption='null'}, RedisInfo{key='run_id', value='1fe1aa1ae1fdefcdddb070ebafb5bd14439ee967', desctiption='Redis 服务器的随机标识符（用于 Sentinel 和集群）'}, RedisInfo{key='maxmemory', value='0', desctiption='最大内存限制，0表示无限制'}, RedisInfo{key='mem_allocator', value='jemalloc-5.2.1', desctiption='在编译时指定的， Redis 所使用的内存分配器。可以是 libc 、 jemalloc 或者 tcmalloc'}, RedisInfo{key='rdb_last_load_keys_loaded', value='2', desctiption='null'}, RedisInfo{key='used_cpu_sys', value='13.144306', desctiption='将所有redis主进程在核心态所占用的CPU时求和累计起来'}, RedisInfo{key='expired_stale_perc', value='0.00', desctiption='null'}, RedisInfo{key='blocked_clients', value='0', desctiption='正在等待阻塞命令（BLPOP、BRPOP、BRPOPLPUSH）的客户端的数量'}, RedisInfo{key='total_eviction_exceeded_time', value='0', desctiption='null'}, RedisInfo{key='total_commands_processed', value='434', desctiption='redis处理的命令数'}, RedisInfo{key='current_active_defrag_time', value='0', desctiption='null'}, RedisInfo{key='sync_partial_err', value='0', desctiption='主从部分同步失败次数'}, RedisInfo{key='current_save_keys_total', value='0', desctiption='null'}, RedisInfo{key='total_connections_received', value='8', desctiption='新创建连接个数,如果新创建连接过多，过度地创建和销毁连接对性能有影响，说明短连接严重或连接池使用有问题，需调研代码的连接设置'}, RedisInfo{key='evicted_keys', value='0', desctiption='运行以来剔除(超过了maxmemory后)的key的数量'}, RedisInfo{key='maxmemory_policy', value='noeviction', desctiption='超过内存限制后的处理策略'}, RedisInfo{key='used_cpu_sys_main_thread', value='13.135755', desctiption='null'}, RedisInfo{key='config_file', value='', desctiption='配置文件目录'}, RedisInfo{key='used_memory_human', value='1.04M', desctiption='以人类可读的格式返回 Redis 分配的内存总量'}, RedisInfo{key='allocator_rss_ratio', value='1.16', desctiption='null'}, RedisInfo{key='connected_slaves', value='0', desctiption='连接的slave实例个数'}, RedisInfo{key='role', value='master', desctiption='实例的角色，是master or slave'}, RedisInfo{key='process_supervised', value='no', desctiption='null'}, RedisInfo{key='aof_last_cow_size', value='0', desctiption='null'}, RedisInfo{key='used_memory_rss_human', value='7.67M', desctiption='以人类可读的方式返回 Redis 已分配的内存总量'}, RedisInfo{key='cluster_enabled', value='0', desctiption='实例是否启用集群模式'}, RedisInfo{key='total_net_repl_output_bytes', value='0', desctiption='null'}, RedisInfo{key='allocator_rss_bytes', value='1376256', desctiption='null'}, RedisInfo{key='mem_fragmentation_ratio', value='7.52', desctiption='sed_memory_rss 和 used_memory 之间的比率'}, RedisInfo{key='used_memory_scripts', value='184', desctiption='null'}, RedisInfo{key='repl_backlog_size', value='1048576', desctiption='复制积压缓冲大小'}, RedisInfo{key='current_eviction_exceeded_time', value='0', desctiption='null'}, RedisInfo{key='uptime_in_days', value='0', desctiption='自 Redis 服务器启动以来，经过的天数'}, RedisInfo{key='pubsubshard_channels', value='0', desctiption='null'}, RedisInfo{key='used_memory_peak', value='1091952', desctiption=' Redis 的内存消耗峰值(以字节为单位)'}, RedisInfo{key='number_of_cached_scripts', value='0', desctiption='null'}, RedisInfo{key='mem_fragmentation_bytes', value='6974944', desctiption='null'}, RedisInfo{key='used_memory_startup', value='895616', desctiption='null'}, RedisInfo{key='total_system_memory_human', value='7.67G', desctiption='以人类可读的方式返回系统总内存'}, RedisInfo{key='number_of_functions', value='0', desctiption='null'}, RedisInfo{key='hz', value='10', desctiption='redis内部调度（进行关闭timeout的客户端，删除过期key等等）频率，程序规定serverCron每秒运行10次。'}, RedisInfo{key='used_memory_lua_human', value='31.00K', desctiption='以人类可读的方式返回Lua 引擎所使用的内存大小'}, RedisInfo{key='instantaneous_input_kbps', value='1.49', desctiption='redis网络入口kps'}, RedisInfo{key='used_memory_scripts_human', value='184B', desctiption='null'}, RedisInfo{key='rdb_bgsave_in_progress', value='0', desctiption='服务器是否正在创建rdb文件'}, RedisInfo{key='monotonic_clock', value='POSIX clock_gettime', desctiption='null'}, RedisInfo{key='total_net_output_bytes', value='126005', desctiption='redis网络出口流量字节数'}, RedisInfo{key='uptime_in_seconds', value='6336', desctiption='自 Redis 服务器启动以来，经过的秒数'}, RedisInfo{key='mem_clients_normal', value='42776', desctiption='null'}, RedisInfo{key='total_forks', value='2', desctiption='null'}, RedisInfo{key='evicted_clients', value='0', desctiption='null'}, RedisInfo{key='slave_expires_tracked_keys', value='0', desctiption='null'}, RedisInfo{key='current_fork_perc', value='0.00', desctiption='null'}, RedisInfo{key='master_replid2', value='0000000000000000000000000000000000000000', desctiption='null'}, RedisInfo{key='total_net_input_bytes', value='90045', desctiption='redis网络入口流量字节数'}, RedisInfo{key='total_net_repl_input_bytes', value='0', desctiption='null'}, RedisInfo{key='current_cow_peak', value='0', desctiption='null'}, RedisInfo{key='used_memory_scripts_eval', value='0', desctiption='null'}, RedisInfo{key='instantaneous_output_kbps', value='0.44', desctiption='redis网络出口kps'}, RedisInfo{key='expired_keys', value='8', desctiption='运行以来过期的key的数量'}, RedisInfo{key='allocator_frag_ratio', value='3.35', desctiption='null'}, RedisInfo{key='aof_last_write_status', value='ok', desctiption='上次aof写入状态'}, RedisInfo{key='used_memory_vm_functions', value='32768', desctiption='null'}, RedisInfo{key='redis_version', value='7.0.5', desctiption='Redis 服务器版本'}, RedisInfo{key='allocator_frag_bytes', value='6024176', desctiption='null'}, RedisInfo{key='mem_total_replication_buffers', value='0', desctiption='null'}, RedisInfo{key='maxmemory_human', value='0B', desctiption='以人类可读的方式返回最大限制内存'}, RedisInfo{key='rdb_last_save_time', value='1688051008', desctiption='离最近一次成功创建rdb文件的时间戳。当前时间戳 - rdb_last_save_time=多少秒未成功生成rdb文件'}, RedisInfo{key='lazyfree_pending_objects', value='0', desctiption='null'}, RedisInfo{key='aof_rewrite_scheduled', value='0', desctiption='rewrite任务计划，当客户端发送bgrewriteaof指令，如果当前rewrite子进程正在执行，那么将客户端请求的bgrewriteaof变为计划任务，待aof子进程结束后执行rewrite '}, RedisInfo{key='migrate_cached_sockets', value='0', desctiption='null'}, RedisInfo{key='keyspace_hits', value='183', desctiption='命中次数'}, RedisInfo{key='allocator_allocated', value='2561040', desctiption='null'}, RedisInfo{key='used_memory', value='1091952', desctiption='由 Redis 分配器分配的内存总量，以字节（byte）为单位'}, RedisInfo{key='mem_replication_backlog', value='0', desctiption='null'}, RedisInfo{key='used_memory_dataset', value='152720', desctiption='null'}, RedisInfo{key='rdb_saves', value='2', desctiption='null'}, RedisInfo{key='pubsub_patterns', value='0', desctiption='当前使用的模式的数量'}, RedisInfo{key='used_cpu_user_children', value='0.003976', desctiption='将后台进程在用户态所占用的CPU时求和累计起来'}, RedisInfo{key='master_replid', value='04f0fe6436af19fe10c89c60acbf6ed2a403e816', desctiption='null'}, RedisInfo{key='total_error_replies', value='0', desctiption='null'}, RedisInfo{key='mem_aof_buffer', value='0', desctiption='null'}, RedisInfo{key='rdb_last_bgsave_status', value='ok', desctiption='最近一次rdb持久化是否成功'}, RedisInfo{key='redis_mode', value='standalone', desctiption='运行模式，单机（standalone）或者集群（cluster）'}, RedisInfo{key='total_writes_processed', value='358', desctiption='null'}, RedisInfo{key='allocator_resident', value='9961472', desctiption='null'}, RedisInfo{key='instantaneous_output_repl_kbps', value='0.00', desctiption='null'}, RedisInfo{key='allocator_active', value='8585216', desctiption='null'}, RedisInfo{key='total_active_defrag_time', value='0', desctiption='null'}, RedisInfo{key='current_cow_size_age', value='0', desctiption='null'}, RedisInfo{key='current_save_keys_processed', value='0', desctiption='null'}, RedisInfo{key='expired_time_cap_reached_count', value='0', desctiption='null'}, RedisInfo{key='sync_full', value='0', desctiption='主从完全同步成功次数'}, RedisInfo{key='instantaneous_input_repl_kbps', value='0.00', desctiption='null'}, RedisInfo{key='rdb_current_bgsave_time_sec', value='-1', desctiption='如果服务器正在创建rdb文件，那么这个域记录的就是当前的创建操作已经耗费的秒数'}, RedisInfo{key='aof_rewrite_in_progress', value='0', desctiption='标识aof的rewrite操作是否在进行中'}, RedisInfo{key='multiplexing_api', value='epoll', desctiption='Redis 所使用的事件处理机制'}, RedisInfo{key='module_fork_in_progress', value='0', desctiption='null'}, RedisInfo{key='tracking_clients', value='0', desctiption='null'}, RedisInfo{key='rdb_last_cow_size', value='626688', desctiption='null'}, RedisInfo{key='mem_not_counted_for_evict', value='0', desctiption='null'}, RedisInfo{key='dump_payload_sanitizations', value='0', desctiption='null'}, RedisInfo{key='redis_git_sha1', value='00000000', desctiption='Git SHA1'}, RedisInfo{key='tracking_total_keys', value='0', desctiption='null'}, RedisInfo{key='maxclients', value='10000', desctiption='null'}, RedisInfo{key='clients_in_timeout_table', value='0', desctiption='null'}, RedisInfo{key='latest_fork_usec', value='2142', desctiption='最近一次fork操作阻塞redis进程的耗时数，单位微秒'}, RedisInfo{key='reply_buffer_expands', value='19', desctiption='null'}, RedisInfo{key='rdb_last_bgsave_time_sec', value='0', desctiption='最近一次成功生成rdb文件耗时秒数'}, RedisInfo{key='os', value='Linux 5.15.49-linuxkit aarch64', desctiption='Redis 服务器的宿主操作系统'}, RedisInfo{key='used_cpu_sys_children', value='0.023333', desctiption='将后台进程在核心态所占用的CPU时求和累计起来'}, RedisInfo{key='sync_partial_ok', value='0', desctiption='主从部分同步成功次数'}, RedisInfo{key='module_fork_last_cow_size', value='0', desctiption='null'}, RedisInfo{key='arch_bits', value='64', desctiption=' 架构（32 或 64 位）'}, RedisInfo{key='used_memory_vm_eval', value='31744', desctiption='null'}, RedisInfo{key='used_memory_lua', value='31744', desctiption='Lua 引擎所使用的内存大小（以字节为单位）'}, RedisInfo{key='mem_clients_slaves', value='0', desctiption='null'}, RedisInfo{key='tracking_total_items', value='0', desctiption='null'}, RedisInfo{key='used_cpu_user_main_thread', value='8.499533', desctiption='null'}, RedisInfo{key='lazyfreed_objects', value='0', desctiption='null'}, RedisInfo{key='process_id', value='1', desctiption='服务器进程的 PID'}, RedisInfo{key='tracking_total_prefixes', value='0', desctiption='null'}, RedisInfo{key='total_system_memory', value='8231948288', desctiption='系统总内存'}, RedisInfo{key='master_failover_state', value='no-failover', desctiption='null'}, RedisInfo{key='aof_rewrites_consecutive_failures', value='0', desctiption='null'}, RedisInfo{key='repl_backlog_histlen', value='0', desctiption='此值等于 master_repl_offset - repl_backlog_first_byte_offset,该值不会超过repl_backlog_size的大小'}, RedisInfo{key='used_memory_vm_total_human', value='63.00K', desctiption='null'}, RedisInfo{key='executable', value='/data/redis-server', desctiption='server脚本目录'}, RedisInfo{key='used_memory_rss', value='8044544', desctiption='从操作系统的角度，返回 Redis 已分配的内存总量（俗称常驻集大小）。这个值和 top 、 ps 等命令的输出一致'}, RedisInfo{key='loading', value='0', desctiption='服务器是否正在载入持久化文件'}, RedisInfo{key='active_defrag_running', value='0', desctiption='null'}, RedisInfo{key='used_memory_peak_human', value='1.04M', desctiption='以人类可读的格式返回 Redis 的内存消耗峰值'}, RedisInfo{key='reply_buffer_shrinks', value='25', desctiption='null'}, RedisInfo{key='aof_enabled', value='0', desctiption='是否开启了aof'}, RedisInfo{key='io_threaded_reads_processed', value='0', desctiption='null'}, RedisInfo{key='rdb_last_load_keys_expired', value='0', desctiption='null'}, RedisInfo{key='second_repl_offset', value='-1', desctiption='null'}, RedisInfo{key='total_reads_processed', value='366', desctiption='null'}, RedisInfo{key='active_defrag_misses', value='0', desctiption='null'}, RedisInfo{key='configured_hz', value='10', desctiption='null'}, RedisInfo{key='active_defrag_key_hits', value='0', desctiption='null'}, RedisInfo{key='number_of_libraries', value='0', desctiption='null'}, RedisInfo{key='used_cpu_user', value='8.501025', desctiption='将所有redis主进程在用户态所占用的CPU时求和累计起来'}, RedisInfo{key='io_threaded_writes_processed', value='0', desctiption='null'}, RedisInfo{key='aof_rewrites', value='0', desctiption='null'}, RedisInfo{key='redis_build_id', value='115cbd201a7e65ad', desctiption='redis_build_id'}, RedisInfo{key='cluster_connections', value='0', desctiption='null'}, RedisInfo{key='aof_last_bgrewrite_status', value='ok', desctiption='上次bgrewrite aof操作的状态'}, RedisInfo{key='client_recent_max_input_buffer', value='20480', desctiption='null'}, RedisInfo{key='active_defrag_key_misses', value='0', desctiption='null'}, RedisInfo{key='used_memory_functions', value='184', desctiption='null'}, RedisInfo{key='repl_backlog_first_byte_offset', value='0', desctiption='复制缓冲区里偏移量的大小'}, RedisInfo{key='instantaneous_ops_per_sec', value='6', desctiption='redis当前的qps，redis内部较实时的每秒执行的命令数'}, RedisInfo{key='expire_cycle_cpu_milliseconds', value='300', desctiption='null'}, RedisInfo{key='current_cow_size', value='0', desctiption='null'}, RedisInfo{key='tcp_port', value='6379', desctiption='TCP/IP 监听端口'}, RedisInfo{key='pubsub_channels', value='0', desctiption='当前使用中的频道数量'}, RedisInfo{key='server_time_usec', value='1688051606308426', desctiption='null'}, RedisInfo{key='lru_clock', value='10330006', desctiption=' 以分钟为单位进行自增的时钟，用于 LRU 管理'}, RedisInfo{key='aof_last_rewrite_time_sec', value='-1', desctiption='最近一次aof rewrite耗费的时长'}, RedisInfo{key='used_memory_overhead', value='939232', desctiption='null'}]
+2023-06-29 23:22:22.744 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 23:22:22.814 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 23:22:22.815 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 23:22:22.815 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 23:22:22.816 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 23:22:22.824 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 23:22:22.842 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - MasterDataSource - Shutdown completed.
+2023-06-29 23:23:38.725 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:55 - Starting SoothBootApplication using Java 1.8.0_333 on 192.168.0.196 with PID 8783 (/Users/moxa/Desktop/Projects/sooth-boot/sooth-boot-drive/target/classes started by moxa in /Users/moxa/Desktop/Projects/sooth-boot)
+2023-06-29 23:23:38.731 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:640 - No active profile set, falling back to 1 default profile: "default"
+2023-06-29 23:23:40.763 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:262 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-06-29 23:23:40.768 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:132 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-29 23:23:40.819 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate:201 - Finished Spring Data repository scanning in 32 ms. Found 0 Redis repository interfaces.
+2023-06-29 23:23:41.281 [main] INFO  o.s.c.annotation.ConfigurationClassPostProcessor:426 - Cannot enhance @Configuration bean definition 'dreamConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-06-29 23:23:41.606 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$919ca8e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.262 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$942fe789] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.351 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'sooth-com.moxa.sooth.module.base.core.config.SoothProperties' of type [com.moxa.sooth.module.base.core.config.SoothProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.353 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'shiroConfig' of type [com.moxa.sooth.module.base.core.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$6fbecaf8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.432 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConfig' of type [com.moxa.sooth.module.base.core.redis.config.RedisConfig$$EnhancerBySpringCGLIB$$f3681274] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.463 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.481 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.522 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.531 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.548 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'management.metrics.export.prometheus-org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.556 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusPropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.577 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'collectorRegistry' of type [io.prometheus.client.CollectorRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.586 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.589 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.623 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'prometheusMeterRegistry' of type [io.micrometer.prometheus.PrometheusMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.643 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceMetrics' of type [org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration$$Lambda$418/875487383] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.786 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.920 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:42.936 [main] INFO  c.m.s.module.base.core.redis.config.RedisConfig:26 -  --- redis config init --- 
+2023-06-29 23:23:43.012 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:43.056 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'realm' of type [com.moxa.sooth.module.base.core.shiro.ShiroRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:43.409 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'webSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:43.463 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:43.640 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376 - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-29 23:23:44.191 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 3100 (http)
+2023-06-29 23:23:44.207 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-3100"]
+2023-06-29 23:23:44.209 [main] INFO  org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-29 23:23:44.209 [main] INFO  org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-06-29 23:23:44.356 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-29 23:23:44.357 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:290 - Root WebApplicationContext: initialization completed in 5529 ms
+2023-06-29 23:23:46.557 [main] INFO  org.quartz.impl.StdSchedulerFactory:1220 - Using default implementation for ThreadExecutor
+2023-06-29 23:23:46.580 [main] INFO  org.quartz.core.SchedulerSignalerImpl:61 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-06-29 23:23:46.581 [main] INFO  org.quartz.core.QuartzScheduler:229 - Quartz Scheduler v.2.3.2 created.
+2023-06-29 23:23:46.583 [main] INFO  org.quartz.simpl.RAMJobStore:155 - RAMJobStore initialized.
+2023-06-29 23:23:46.585 [main] INFO  org.quartz.core.QuartzScheduler:294 - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-06-29 23:23:46.585 [main] INFO  org.quartz.impl.StdSchedulerFactory:1374 - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-06-29 23:23:46.586 [main] INFO  org.quartz.impl.StdSchedulerFactory:1378 - Quartz scheduler version: 2.3.2
+2023-06-29 23:23:46.586 [main] INFO  org.quartz.core.QuartzScheduler:2293 - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@17e2835c
+2023-06-29 23:23:49.307 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver:58 - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-29 23:23:49.445 [main] INFO  org.apache.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-3100"]
+2023-06-29 23:23:49.491 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 3100 (http) with context path '/sooth'
+2023-06-29 23:23:49.499 [main] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:729 - Starting Quartz Scheduler now
+2023-06-29 23:23:49.500 [main] INFO  org.quartz.core.QuartzScheduler:547 - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-06-29 23:23:49.531 [main] INFO  com.moxa.sooth.drive.SoothBootApplication:61 - Started SoothBootApplication in 11.574 seconds (JVM running for 12.497)
+2023-06-29 23:23:51.851 [http-nio-3100-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/sooth]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-29 23:23:51.853 [http-nio-3100-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2023-06-29 23:23:51.857 [http-nio-3100-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet:547 - Completed initialization in 3 ms
+2023-06-29 23:23:52.104 [http-nio-3100-exec-2] INFO  com.zaxxer.hikari.HikariDataSource:110 - MasterDataSource - Starting...
+2023-06-29 23:23:52.303 [http-nio-3100-exec-2] INFO  com.zaxxer.hikari.HikariDataSource:123 - MasterDataSource - Start completed.
+2023-06-29 23:24:59.430 [http-nio-3100-exec-2] ERROR c.m.s.m.b.core.exception.SoothBootExceptionHandler:53 - java.net.SocketTimeoutException
+org.apache.catalina.connector.ClientAbortException: java.net.SocketTimeoutException
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:353)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:515)
+	at com.fasterxml.jackson.databind.ser.std.StringSerializer.serialize(StringSerializer.java:41)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:458)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:373)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:370)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+	Suppressed: org.apache.catalina.connector.ClientAbortException: java.io.IOException: java.net.SocketTimeoutException
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:353)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+		at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.close(UTF8JsonGenerator.java:1214)
+		at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:460)
+		... 75 common frames omitted
+	Caused by: java.io.IOException: java.net.SocketTimeoutException
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1368)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:112)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+		at org.apache.coyote.Response.doWrite(Response.java:615)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		... 84 common frames omitted
+	Caused by: java.net.SocketTimeoutException: null
+Caused by: java.net.SocketTimeoutException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1380)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:112)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+	at org.apache.coyote.Response.doWrite(Response.java:615)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+	... 98 common frames omitted
+2023-06-29 23:24:59.430 [http-nio-3100-exec-3] ERROR c.m.s.m.b.core.exception.SoothBootExceptionHandler:53 - java.net.SocketTimeoutException
+org.apache.catalina.connector.ClientAbortException: java.net.SocketTimeoutException
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:353)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:515)
+	at com.fasterxml.jackson.databind.ser.std.StringSerializer.serialize(StringSerializer.java:41)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:458)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:373)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:370)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+	Suppressed: org.apache.catalina.connector.ClientAbortException: java.io.IOException: java.net.SocketTimeoutException
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:353)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+		at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.close(UTF8JsonGenerator.java:1214)
+		at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:460)
+		... 75 common frames omitted
+	Caused by: java.io.IOException: java.net.SocketTimeoutException
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1368)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:112)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+		at org.apache.coyote.Response.doWrite(Response.java:615)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		... 84 common frames omitted
+	Caused by: java.net.SocketTimeoutException: null
+Caused by: java.net.SocketTimeoutException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1380)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:112)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+	at org.apache.coyote.Response.doWrite(Response.java:615)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+	... 98 common frames omitted
+2023-06-29 23:24:59.565 [http-nio-3100-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver:434 - Failure in @ExceptionHandler com.moxa.sooth.module.base.core.exception.SoothBootExceptionHandler#handleThrowable(Throwable)
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: java.net.SocketTimeoutException
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:353)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1184)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1009)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:428)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:75)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1327)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1138)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1084)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:458)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:373)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:370)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: java.net.SocketTimeoutException
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1368)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:110)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+	at org.apache.coyote.Response.doWrite(Response.java:615)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+	... 88 common frames omitted
+Caused by: java.net.SocketTimeoutException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1380)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:112)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+	at org.apache.coyote.Response.doWrite(Response.java:615)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:515)
+	at com.fasterxml.jackson.databind.ser.std.StringSerializer.serialize(StringSerializer.java:41)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	... 66 common frames omitted
+2023-06-29 23:24:59.566 [http-nio-3100-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver:434 - Failure in @ExceptionHandler com.moxa.sooth.module.base.core.exception.SoothBootExceptionHandler#handleThrowable(Throwable)
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: java.net.SocketTimeoutException
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:353)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1184)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1009)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:428)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:75)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1327)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1138)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1084)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:458)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:373)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:370)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:154)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: java.net.SocketTimeoutException
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1368)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:110)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+	at org.apache.coyote.Response.doWrite(Response.java:615)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+	... 88 common frames omitted
+Caused by: java.net.SocketTimeoutException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1380)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:766)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:586)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:530)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:547)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:112)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:194)
+	at org.apache.coyote.Response.doWrite(Response.java:615)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:783)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:688)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:388)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:366)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at org.springframework.util.StreamUtils$NonClosingOutputStream.write(StreamUtils.java:287)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2171)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:515)
+	at com.fasterxml.jackson.databind.ser.std.StringSerializer.serialize(StringSerializer.java:41)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	... 66 common frames omitted
+2023-06-29 23:29:43.047 [MasterDataSource housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:788 - MasterDataSource - Thread starvation or clock leap detected (housekeeper delta=50s515ms).
+2023-06-29 23:31:20.212 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 23:31:20.266 [SpringApplicationShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean:847 - Shutting down Quartz Scheduler
+2023-06-29 23:31:20.267 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:666 - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-06-29 23:31:20.268 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:585 - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-06-29 23:31:20.268 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler:740 - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-06-29 23:31:20.274 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - MasterDataSource - Shutdown initiated...
+2023-06-29 23:31:20.299 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - MasterDataSource - Shutdown completed.
