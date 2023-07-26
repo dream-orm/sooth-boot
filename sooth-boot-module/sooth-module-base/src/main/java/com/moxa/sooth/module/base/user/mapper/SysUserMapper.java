@@ -15,7 +15,7 @@ import java.util.List;
 
 @Mapper(SysUserProvider.class)
 public interface SysUserMapper {
-    @Sql("select @all() from sys_user where username=@?(username)")
+    @Sql("select @*() from sys_user where username=@?(username)")
     SysUser selectOneUser(String username);
 
     @DataPermission

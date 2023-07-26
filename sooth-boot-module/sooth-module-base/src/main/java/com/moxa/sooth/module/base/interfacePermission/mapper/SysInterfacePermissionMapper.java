@@ -13,6 +13,6 @@ import java.util.Set;
 public interface SysInterfacePermissionMapper {
     Set<String> getPermissionUrls(Long userId);
 
-    @Sql("select @all() from sys_interface_permission where role_id=@?(roleId)")
+    @Sql("select @*() from sys_interface_permission where role_id=@?(roleId)")
     List<SysInterfacePermission> getPermissions(Long roleId);
 }

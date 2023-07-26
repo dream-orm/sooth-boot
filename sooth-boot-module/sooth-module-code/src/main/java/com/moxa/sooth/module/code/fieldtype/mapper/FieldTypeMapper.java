@@ -11,7 +11,7 @@ public interface FieldTypeMapper {
     @Sql("select id from sys_field_type where column_type=@?(columnType) limit 1")
     Long selectByColumnType(String columnType);
 
-    @Sql("select @all() from sys_field_type")
+    @Sql("select @*() from sys_field_type")
     List<SysFieldTypeLV> selectAll();
 
     @Sql("select distinct attr_type from sys_field_type")

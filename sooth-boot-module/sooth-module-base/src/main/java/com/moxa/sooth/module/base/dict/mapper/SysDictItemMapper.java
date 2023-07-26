@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface SysDictItemMapper {
-    @Sql("select @all() from sys_dict_item  where dict_id = (select id from sys_dict where code = @?(code)) order by order_no asc")
+    @Sql("select @*() from sys_dict_item  where dict_id = (select id from sys_dict where code = @?(code)) order by order_no asc")
     List<SysDictItemView> getDictItems(@Param("code") String code);
 
     @Sql("delete from sys_dict_item where dict_id=@?(dictId)")

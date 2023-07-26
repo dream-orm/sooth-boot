@@ -99,7 +99,7 @@ public class SysMenuListView extends BaseDict implements Tree<Long> {
      */
     private boolean keepAlive;
 
-    @Ignore(setter = true)
+    @Ignore
     private String[] buttonTypeList;
 
     @Ignore

@@ -17,7 +17,7 @@ public class SysMenuProvider {
         return new ActionProvider() {
             @Override
             public String sql() {
-                return "SELECT @all() " +
+                return "SELECT @*() " +
                         " FROM sys_menu p " +
                         " WHERE exists( " +
                         " select a.id from sys_role_permission a " +

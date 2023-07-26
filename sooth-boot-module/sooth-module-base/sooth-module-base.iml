@@ -84,13 +84,24 @@
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.31" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.18" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.18" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-drive:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-antlr:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-util:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-system:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-template:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-mate:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.moxa.dream:dream-boot-starter:1.0.0" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.moxa.dream:dream-drive:1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../lib/dream-drive-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.moxa.dream:dream-boot-starter:1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../lib/dream-boot-starter-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.15" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />

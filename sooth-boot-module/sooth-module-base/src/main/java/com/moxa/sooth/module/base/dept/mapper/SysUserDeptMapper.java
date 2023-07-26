@@ -10,6 +10,6 @@ import java.util.List;
 @Mapper
 public interface SysUserDeptMapper {
 
-    @Sql("select @all() from sys_user_dept where user_id=@?(id)")
+    @Sql("select @*() from sys_user_dept where user_id=@?(id)")
     List<SysUserDept> getDeptByUserId(@Param("id") Long id);
 }
